@@ -59,7 +59,7 @@ from .phonestokeys import CuedSpeechKeys
 # ---------------------------------------------------------------------------
 
 
-class sppasWhatKeyPredictor(object):
+class sppasWhatKeyPredictor:
     """Cued Speech keys automatic generator from a sequence of phonemes.
 
     See the following reference for details:

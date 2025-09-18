@@ -57,7 +57,7 @@ from .positions import WhereVowelPositionsPredictor
 # ---------------------------------------------------------------------------
 
 
-class sppasWherePositionsPredictor(object):
+class sppasWherePositionsPredictor:
     """Predict the position of all the vowels from sights in a file.
 
     Create a tier indicating the position of CS vowels.

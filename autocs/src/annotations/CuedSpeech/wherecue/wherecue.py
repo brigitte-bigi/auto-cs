@@ -45,6 +45,7 @@ import logging
 
 from sppas.core.coreutils import sppasTypeError
 from sppas.src.anndata import sppasTranscription
+from sppas.src.anndata import sppasTier
 from sppas.src.imgdata import sppasSights
 from sppas.src.annotations.FaceSights import sppasSightsVideoReader
 
@@ -60,10 +61,10 @@ from .targetprobas import TargetProbabilitiesEstimator
 # ---------------------------------------------------------------------------
 
 
-class sppasWhereCuePredictor(object):
+class sppasWhereCuePredictor:
     """Create a tier indicating the position of 2 points of the hand.
 
-    Predict the position of points S0 and S9 of an hand relatively to
+    Predict the position of points S0 and S9 of a hand relatively to
     sights of a face.
 
     """

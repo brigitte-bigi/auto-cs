@@ -53,7 +53,7 @@ MSG_DESCRIPTION_BASE = \
 # ---------------------------------------------------------------------------
 
 
-class BaseWhenTransitionPredictor(object):
+class BaseWhenTransitionPredictor:
     """Base class to predict hand transition moments [D1,D2] and [M1,M2].
 
     A Cued Speech key is defined as follows:

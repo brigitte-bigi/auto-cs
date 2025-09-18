@@ -56,7 +56,7 @@ from .whatkeyexc import sppasCuedRulesMaxValueError
 # ----------------------------------------------------------------------------
 
 
-class CuedSpeechCueingRules(object):
+class CuedSpeechCueingRules:
     """Rules data structure for a system to predict Cued Speech keys.
 
     Format of the rules:

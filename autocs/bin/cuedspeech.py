@@ -37,8 +37,12 @@ import sys
 import os
 from argparse import ArgumentParser
 
+# Search for SPPAS API
 PROGRAM = os.path.abspath(__file__)
-SPPAS = os.path.dirname(os.path.dirname(os.path.dirname(PROGRAM)))
+SPPAS = "C:\\Storage\\Projects\\sppas-code\\" # os.getenv('SPPAS')
+if SPPAS is None or (SPPAS is not None and os.path.exists(SPPAS) is False):
+    # This program is probably already installed into SPPAS package
+    SPPAS = os.path.dirname(os.path.dirname(os.path.dirname(PROGRAM)))
 sys.path.append(SPPAS)
 
 from sppas.core.config import sg
@@ -47,12 +51,23 @@ from sppas.core.config import lgs
 from sppas.core.config import symbols
 from sppas.core.coreutils import sppasPythonFeatureError
 from sppas.src.anndata.aio.aioutils import serialize_labels
-from sppas.src.annotations import sppasCuedSpeech
-from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 from sppas.src.annotations import sppasParam
 from sppas.src.annotations import sppasFiles
 from sppas.src.annotations import sppasAnnotationsManager
 from sppas.src.wkps import sppasWkpRW
+
+try:
+    # The spin-off is installed within SPPAS
+    from sppas.src.annotations.CuedSpeech import sppasCuedSpeech
+    from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
+except ImportError as e:
+    # The local spin-off is used instead
+    # Fix the spin-off root-path and append it
+    SPINOFF = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    sys.path.append(os.path.join(SPINOFF, "autocs"))
+    # Import the annotation
+    from src.annotations.CuedSpeech import sppasCuedSpeech
+    from src.annotations.CuedSpeech import CuedSpeechKeys
 
 # ---------------------------------------------------------------------------
 
@@ -87,7 +102,15 @@ if __name__ == "__main__":
     # Fix initial annotation parameters
     # -----------------------------------------------------------------------
 
-    parameters = sppasParam(["cuedspeech.json"])
+    if hasattr(ann, "get_config_filename"):
+        # From SPPAS-4.30
+        json = ann.get_config_filename()
+    else:
+        json = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
+            "etc",
+            "cuedspeech.json")
+    parameters = sppasParam([json])
     ann_step_idx = parameters.activate_annotation("cuedspeech")
     if ann_step_idx == -1:
         print("This annotation can't be enabled.")

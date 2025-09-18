@@ -54,12 +54,12 @@ MSG_DESCRIPTION_BASE = "The hand angles are always predicted the same whatever t
 # ---------------------------------------------------------------------------
 
 
-class BaseWhereAnglePredictor(object):
+class BaseWhereAnglePredictor:
     """Base class to predict the angle of the hand.
 
     Currently, 5 vowel positions are possible, and they are associated to
     only one angle value.
-    For English langage, this will have to be changed because some vowels have
+    For English language, this will have to be changed because some vowels have
     a movement effect: side-forward, side-down.
 
     Angle value is given relatively to the horizontal axis, like in the

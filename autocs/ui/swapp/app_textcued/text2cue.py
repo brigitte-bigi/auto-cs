@@ -50,7 +50,7 @@ from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 # ----------------------------------------------------------------------------
 
 
-class TextToCues(object):
+class TextToCues:
     """Generates cued keys of a text.
 
         1- Text Normalization

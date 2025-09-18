@@ -48,7 +48,7 @@ from sppas.src.imgdata import sppasCoords
 # ---------------------------------------------------------------------------
 
 
-class Trajectory(object):
+class Trajectory:
     """Define coordinates all along a trajectory between points.
 
     """

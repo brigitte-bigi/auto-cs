@@ -46,7 +46,7 @@ from sppas.src.imgdata import sppasSights
 # ---------------------------------------------------------------------------
 
 
-class FaceTwoDim(object):
+class FaceTwoDim:
     """Some (x, y) coordinates among the 68 sights on a 1000x1000px face.
 
     :Example:

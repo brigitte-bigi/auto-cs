@@ -86,7 +86,11 @@ class sppasCuedSpeech(sppasBaseAnnotation):
         :param log: (sppasLog) Human-readable logs.
 
         """
-        super(sppasCuedSpeech, self).__init__("cuedspeech.json", log)
+        json = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))),
+            "etc",
+            "cuedspeech.json")
+        super(sppasCuedSpeech, self).__init__(json, log)
         self.__lang = "und"
 
         # A rule-based system to convert a sequence of phonemes into keys

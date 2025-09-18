@@ -59,16 +59,16 @@ if sys.version_info > (3, 8):
     from .sppascuedspeech import sppasCuedSpeech
 
 else:
-    class CuedSpeechKeys(object):
+    class CuedSpeechKeys:
         def __init__(self, *args, **kwargs):
             raise sppasPythonFeatureError("cuedspeech", "3.8+")
 
-    class CuedSpeechVideoTagger(object):
+    class CuedSpeechVideoTagger:
         OPTIONS = {}
         def __init__(self, *args, **kwargs):
             raise sppasPythonFeatureError("cuedspeech", "3.8+")
 
-    class sppasCuedSpeech(object):
+    class sppasCuedSpeech:
         def __init__(self, *args, **kwargs):
             raise sppasPythonFeatureError("cuedspeech", "3.8+")
 

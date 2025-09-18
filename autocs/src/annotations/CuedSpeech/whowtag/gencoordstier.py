@@ -55,7 +55,7 @@ MSG_ERROR_MISMATCH = "The given {:d} coordinates in CSV/XRA file doesn't " \
 # ---------------------------------------------------------------------------
 
 
-class sppasHandCoordsGenerator(object):
+class sppasHandCoordsGenerator:
     """Create a tier indicating the position of 3 points of the hand.
 
     - point 1: target position
