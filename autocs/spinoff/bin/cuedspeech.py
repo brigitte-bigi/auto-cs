@@ -37,13 +37,25 @@ import sys
 import os
 from argparse import ArgumentParser
 
-# Search for SPPAS API
+# Add SPPAS to the python path
 PROGRAM = os.path.abspath(__file__)
 SPPAS = "C:\\Storage\\Projects\\sppas-code\\" # os.getenv('SPPAS')
 if SPPAS is None or (SPPAS is not None and os.path.exists(SPPAS) is False):
     # This program is probably already installed into SPPAS package
     SPPAS = os.path.dirname(os.path.dirname(os.path.dirname(PROGRAM)))
 sys.path.append(SPPAS)
+
+try:
+    # The spin-off is installed within SPPAS -- prod
+    from sppas.src.annotations.CuedSpeech import sppasCuedSpeech
+    from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
+except ImportError as e:
+    # Add this spin-off to the python path
+    SPINOFF = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    sys.path.append(SPINOFF)
+    # The local spin-off is used instead -- dev
+    from spinoff.src.annotations.CuedSpeech import sppasCuedSpeech
+    from spinoff.src.annotations.CuedSpeech import CuedSpeechKeys
 
 from sppas.core.config import sg
 from sppas.core.config import separators
@@ -55,19 +67,6 @@ from sppas.src.annotations import sppasParam
 from sppas.src.annotations import sppasFiles
 from sppas.src.annotations import sppasAnnotationsManager
 from sppas.src.wkps import sppasWkpRW
-
-try:
-    # The spin-off is installed within SPPAS
-    from sppas.src.annotations.CuedSpeech import sppasCuedSpeech
-    from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
-except ImportError as e:
-    # The local spin-off is used instead
-    # Fix the spin-off root-path and append it
-    SPINOFF = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    sys.path.append(os.path.join(SPINOFF, "autocs"))
-    # Import the annotation
-    from src.annotations.CuedSpeech import sppasCuedSpeech
-    from src.annotations.CuedSpeech import CuedSpeechKeys
 
 # ---------------------------------------------------------------------------
 
@@ -141,7 +140,7 @@ if __name__ == "__main__":
         metavar="file",
         help="Filename of the Procedure Outcome Report (default: None)")
 
-    # Add arguments for input/output files
+    # Add arguments for manual definition
     # ------------------------------------
 
     group_io = parser.add_argument_group('Files (manual)')
@@ -166,32 +165,35 @@ if __name__ == "__main__":
         metavar="file",
         help='Output filename with Cued Speech key codes.')
 
-    group_wkp = parser.add_argument_group('Files (auto)')
+    group_io.add_argument(
+        "-r",
+        metavar="rules",
+        help='File with Cued Speech keys description')
 
-    group_wkp.add_argument(
+    # Add arguments for automatic definition
+    # ------------------------------------
+
+    group_auto = parser.add_argument_group('Files (auto)')
+
+    group_auto.add_argument(
         "-W",
         metavar="wkp",
         help='Workspace filename')
 
-    group_wkp.add_argument(
+    group_auto.add_argument(
         "-I",
         metavar="file",
         action='append',
         help='Input filename or folder (append).')
 
-    group_wkp.add_argument(
-        "-r",
-        metavar="rules",
-        help='File with Cued Speech keys description')
-
-    group_wkp.add_argument(
+    group_auto.add_argument(
         "-l",
         metavar="lang",
         choices=parameters.get_langlist(ann_step_idx),
         help='Language code (iso8859-3). One of: {:s}.'
              ''.format(" ".join(parameters.get_langlist(ann_step_idx))))
 
-    group_wkp.add_argument(
+    group_auto.add_argument(
         "-e",
         metavar=".ext",
         default=parameters.get_output_extension("ANNOT"),

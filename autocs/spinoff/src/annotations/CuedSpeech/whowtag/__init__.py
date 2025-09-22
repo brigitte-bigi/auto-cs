@@ -87,7 +87,12 @@ if cfg.feature_installed("video") and cfg.feature_installed("cuedspeech"):
             # Define class in case we have no hands set in the 'resources/cuedspeech' folder.
             # -----------------------------------------------------------------------
             class CuedSpeechVideoTagger:
-                OPTIONS = {}
+                OPTIONS = {
+                    "handsset": "drawncue",
+                    "handsfilter": "",
+                    "infotext": False,
+                    "vowelspos": False
+                }
                 def __init__(self, *args, **kwargs):
                     raise sppasError("The 'resources/cuedspeech' folder doesn't contains any hand-set.")
 
@@ -109,9 +114,18 @@ if cfg.feature_installed("video") and cfg.feature_installed("cuedspeech"):
         # -----------------------------------------------------------------------
 
         class CuedSpeechVideoTagger:
-            OPTIONS = {}
+            OPTIONS = {
+                "handsset": "drawncue",
+                "handsfilter": "",
+                "infotext": False,
+                "vowelspos": False
+            }
             def __init__(self, *args, **kwargs):
                 raise sppasPythonFeatureError("cuedspeech", "3.8+")
+
+            @staticmethod
+            def get_hands_filters() -> list:
+                return []
 
 else:
     # -----------------------------------------------------------------------
@@ -119,9 +133,18 @@ else:
     # -----------------------------------------------------------------------
 
     class CuedSpeechVideoTagger:
-        OPTIONS = {}
+        OPTIONS = {
+            "handsset": "drawncue",
+            "handsfilter": "",
+            "infotext": False,
+            "vowelspos": False
+        }
         def __init__(self, *args, **kwargs):
             raise sppasEnableFeatureError("cuedspeech")
+
+        @staticmethod
+        def get_hands_filters() -> list:
+            return []
 
 
 __all__ = (

@@ -40,39 +40,22 @@
 
 """
 
-import sys
-
 from sppas.core.coreutils import sppasPythonFeatureError
 
 # ---------------------------------------------------------------------------
-# Answering the "what" question does not require any specific feature
-# ---------------------------------------------------------------------------
 
-if sys.version_info > (3, 8):
-    from .whatkey import sppasCuedRulesValueError
-    from .whatkey import sppasCuedRulesMinValueError
-    from .whatkey import sppasCuedRulesMaxValueError
-    from .whatkey import CuedSpeechCueingRules
-    from .whatkey import CuedSpeechKeys
-    from .whatkey import sppasWhatKeyPredictor
-    from .whowtag import CuedSpeechVideoTagger
-    from .sppascuedspeech import sppasCuedSpeech
 
-else:
-    class CuedSpeechKeys:
-        def __init__(self, *args, **kwargs):
-            raise sppasPythonFeatureError("cuedspeech", "3.8+")
-
-    class CuedSpeechVideoTagger:
-        OPTIONS = {}
-        def __init__(self, *args, **kwargs):
-            raise sppasPythonFeatureError("cuedspeech", "3.8+")
-
-    class sppasCuedSpeech:
-        def __init__(self, *args, **kwargs):
-            raise sppasPythonFeatureError("cuedspeech", "3.8+")
+from .whatkey import sppasCuedRulesValueError
+from .whatkey import sppasCuedRulesMinValueError
+from .whatkey import sppasCuedRulesMaxValueError
+from .whatkey import CuedSpeechCueingRules
+from .whatkey import CuedSpeechKeys
+from .whatkey import sppasWhatKeyPredictor
+from .whowtag import CuedSpeechVideoTagger
+from .sppascuedspeech import sppasCuedSpeech
 
 # ---------------------------------------------------------------------------
+
 
 __all__ = (
     # what

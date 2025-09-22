@@ -182,7 +182,6 @@ class sppasCuedSpeech(sppasBaseAnnotation):
         :param options: (sppasOption)
 
         """
-
         for opt in options:
             key = opt.get_key()
 
