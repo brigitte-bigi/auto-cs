@@ -19,6 +19,5 @@ of contributing authors.
 
 ## Contributors:
 
-* April 2023-June 2023 and February 2024-June 2024: Florian Lopitaux (cued speech tagger)
-* April 2025-July 2025: Alexandre Rizzante--Madonna (text-to-cue ui)
+* April 2023-June 2023 and February 2024-June 2024: Florian Lopitaux
 

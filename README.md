@@ -1,10 +1,12 @@
 # AutoCuedSpeech
 
-autocs is a Python program. It contains all the components dedicated to the automatic 
-annotation of Cued Speech. This source code is not a standalone tool: it only runs i
-nside SPPAS. It is integrated by means of the **spin-off** mechanism provided by SPPAS, 
-which allows external code bases to remain separate while still being dynamically 
-discovered and used by the main framework.
+autocs is a Python program developed within the project AutoCuedSpeech: 
+<https://auto-cuedspeech.org>. 
+It contains all the components dedicated to the automatic annotation of Cued Speech. 
+This source code is not a standalone tool: it only runs inside SPPAS. It is integrated 
+by means of the **spin-off** mechanism provided by SPPAS, which allows external code 
+bases to remain separate while still being dynamically discovered and used by the main 
+framework.
 
 > autocs requires video feature of SPPAS, for opencv and numpy dependencies.
 
@@ -14,8 +16,7 @@ discovered and used by the main framework.
 
 ### Overview
 
-AutoCuedSpeech divides the problem of automatically cueing speech into four 
-sequential tasks:
+autocs divides the problem of automatically cueing speech into four sequential tasks:
 
     1. WHAT? From the time-aligned phonemes, what are the keys?
     2. WHEN? From the time-aligned keys, when moving the hand (position and shape)?
@@ -34,6 +35,7 @@ And the 1st stable version of this system is described in the following referenc
 > Bridging the Gap: Design and Evaluation of an Automated System for French Cued Speech
 > International Conference on Natural Language and Speech Processing, Odense, Danemark.
 > <https://hal.science/hal-05242638>
+
 
 ### What?
 
@@ -214,7 +216,7 @@ It produces a video file.
 
 Two user interfaces are under development. The first one is dedicated to the 
 automatic conversion of a written text into cues: it's development is almost
-achieved. The second one allows the automatic encoding of a video. It's 
+achieved. The second one allows the automatic encoding of a video. Its 
 development is less than 50%.
 
 
