@@ -235,12 +235,3 @@ class TextCuedResponseRecipe(WhakerKitResponse):
 
         # Append view in the body_main
         self._htree.body_main.append_child(view)
-
-        # Special for cued speech view
-        if view.identifier == "cuedspeech":
-            script = view.get_js_script(self._htree.head.identifier)
-            self._htree.head.remove_child(script.identifier)
-            self._htree.head.append_child(script)
-            wexa_module = view.get_js_module(self._htree.head.identifier)
-            self._htree.head.remove_child(wexa_module.identifier)
-            self._htree.head.append_child(wexa_module)
