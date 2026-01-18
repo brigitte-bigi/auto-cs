@@ -48,6 +48,85 @@ from .annotate_manager import AnnViewBar
 # -----------------------------------------------------------------------
 
 
+JS_SCRIPT = """
+// Function to change button selected
+function select_token_phon(button) {
+    if (button.classList.contains("phon_chosen")) {
+        console.log("button phon already chosen!");
+        return null;
+    }
+
+    const token_buttons = document.getElementsByName(button.name);
+    token_buttons.forEach(current_btn => {
+        current_btn.classList.remove("phon_chosen");
+        current_btn.classList.add("phon_not_chosen");
+        current_btn.disabled = false;
+    });
+
+    button.classList.add("phon_chosen");
+    button.disabled = true;
+
+    // remove text in the input
+    const token = button.name.split('_')[0];
+    let input_phon = document.getElementById(token + "_phon_input");
+    input_phon.value = "";
+}
+
+// Function onchange of the input to deselected the phon button
+function input_onchange(input) {
+    if (input.value.length > 0) {
+        const token = input.name.split('_')[0];
+        const phon_buttons = document.getElementsByName(token + "_button");
+
+        for (let current_button of phon_buttons) {
+            current_button.classList.remove("phon_chosen");
+            current_button.classList.add("phon_not_chosen");
+            current_button.disabled = false;
+        }
+    }
+}
+"""
+
+JS_WEXA_ONLOAD = """
+window.Wexa.onload.addLoadFunction(() => {
+    // Override submit of the cuedspeech form to send phonemes chooses by the user
+    let base_form = document.getElementById("annotate_form");
+
+    base_form.addEventListener("submit", event => {
+        // create a new form
+        const valid_form = document.createElement("form");
+        valid_form.method = "POST";
+        valid_form.style.display = "none";
+
+        // find all phon inputs to set the correct phon values selected
+        for (let input of base_form) {
+            let name = input.name;
+            let value = input.value;
+
+            // if it's an input where the user write the custom phon
+            if (name.endsWith("phon_input")) {
+                // if it's empty we take the selected phon
+                if (value.length === 0) {
+                    const token = name.split('_')[0];
+                    const phonemes = document.getElementsByName(token + "_button");
+
+                    // find the selected phon
+                    for (let phon_button of phonemes) {
+                        if (phon_button.classList.contains("phon_chosen")) {
+                            input.value = phon_button.innerText;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    });
+});
+
+"""
+
 MSG_APP_TITLE = _("Automatic CuedSpeech from Text")
 MSG_TITLE = _("Text Cueing")
 MSG_DESCR = _("Allows to generate automatically the sequence of keys to be cued from a written text")
@@ -101,8 +180,13 @@ class TextCuedResponseRecipe(WhakerKitResponse):
         # Add custom statics
         self._htree.head.link("stylesheet", wapp_settings.css + "/main_swapp.css", link_type="text/css")
         self._htree.head.link("stylesheet", wapp_settings.css + "/page_textcued.css", link_type="text/css")
-        #self._htree.head.append_child(HTMLNode(self._htree.head.identifier, None, "script",
-        #    value=ACSAnnotateResponse.JS_SCRIPT))
+
+        # JS for CS generation -- required only for the cuedspeech fieldset.
+        script = HTMLNode(self._htree.head.identifier, None, "script",
+                          value=JS_WEXA_ONLOAD, attributes={'type': "module"})
+        self._htree.head.append_child(script)
+        script = HTMLNode(self._htree.head.identifier, "view-script", "script", value=JS_SCRIPT)
+        self._htree.head.append_child(script)
 
         self._htree.body_header = SwappHeader(self._htree.identifier, title=MSG_APP_TITLE)
         self._htree.body_footer = SwappFooter(self._htree.identifier)
@@ -154,6 +238,9 @@ class TextCuedResponseRecipe(WhakerKitResponse):
 
         # Special for cued speech view
         if view.identifier == "cuedspeech":
-            script = view.get_script(self._htree.head.identifier)
+            script = view.get_js_script(self._htree.head.identifier)
             self._htree.head.remove_child(script.identifier)
             self._htree.head.append_child(script)
+            wexa_module = view.get_js_module(self._htree.head.identifier)
+            self._htree.head.remove_child(wexa_module.identifier)
+            self._htree.head.append_child(wexa_module)

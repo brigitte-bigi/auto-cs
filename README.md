@@ -243,7 +243,7 @@ Send this file by e-mail to the author.
 
 See the accompanying `LICENSE` and `AUTHORS.md` files for the full list of contributors.
 
-Copyright (C) 2023-2025 [Brigitte Bigi](https://sppas.org/bigi/), CNRS - <contact@sppas.org>
+Copyright (C) 2023-2026 [Brigitte Bigi](https://sppas.org/bigi/), CNRS - <contact@sppas.org>
 Laboratoire Parole et Langage, Aix-en-Provence, France
 
 This program is free software: you can redistribute it and/or modify
@@ -279,5 +279,17 @@ The AutoCuedSpeech logo was designed by Laurent Lopez -see "le Nébleu" at <http
 and is used with full rights granted to the project. 
  
 It is not covered by the AGPL license. All rights reserved.
+
+
+## Versions
+
+### 1.0 - Attached to SPPAS-4.29
+
+First release.
+
+### 1.1 - Attached to SPPAS-4.30
+
+Migrated to Whakerexa 2.0.
+
 
 

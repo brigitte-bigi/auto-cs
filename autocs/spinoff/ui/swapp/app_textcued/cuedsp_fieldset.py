@@ -45,82 +45,6 @@ from .annotate_view import SPPASAnnotateNode
 
 # ---------------------------------------------------------------------------
 
-JS_SCRIPT = """
-// Function to change button selected
-function select_token_phon(button) {
-    if (button.classList.contains("phon_chosen")) {
-        console.log("button phon already chosen!");
-        return null;
-    }
-
-    const token_buttons = document.getElementsByName(button.name);
-    token_buttons.forEach(current_btn => {
-        current_btn.classList.remove("phon_chosen");
-        current_btn.classList.add("phon_not_chosen");
-        current_btn.disabled = false;
-    });
-
-    button.classList.add("phon_chosen");
-    button.disabled = true;
-    
-    // remove text in the input
-    const token = button.name.split('_')[0];
-    let input_phon = document.getElementById(token + "_phon_input");
-    input_phon.value = "";
-}
-
-// Function onchange of the input to deselected the phon button
-function input_onchange(input) {
-    if (input.value.length > 0) {
-        const token = input.name.split('_')[0];
-        const phon_buttons = document.getElementsByName(token + "_button");
-        
-        for (let current_button of phon_buttons) {
-            current_button.classList.remove("phon_chosen");
-            current_button.classList.add("phon_not_chosen");
-            current_button.disabled = false;
-        }
-    }
-}
-
-OnLoadManager.addLoadFunction(() => {
-    // Override submit of the cuedspeech form to send phonemes chooses by the user
-    let base_form = document.getElementById("annotate_form");
-
-    base_form.addEventListener("submit", event => {
-        // create a new form
-        const valid_form = document.createElement("form");
-        valid_form.method = "POST";
-        valid_form.style.display = "none";
-
-        // find all phon inputs to set the correct phon values selected
-        for (let input of base_form) {
-            let name = input.name;
-            let value = input.value;
-
-            // if it's an input where the user write the custom phon
-            if (name.endsWith("phon_input")) {
-                // if it's empty we take the selected phon
-                if (value.length === 0) {
-                    const token = name.split('_')[0];
-                    const phonemes = document.getElementsByName(token + "_button");
-                    
-                    // find the selected phon
-                    for (let phon_button of phonemes) {
-                        if (phon_button.classList.contains("phon_chosen")) {
-                            input.value = phon_button.innerText;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        return true;
-    });
-});
-
-"""
 
 MSG_FIELD_LEGEND = _("Sequence of phonemes to be cued")
 MSG_BREADCRUMB = _("Phonetized text")
@@ -200,11 +124,6 @@ class CuedspeechFieldset(SPPASAnnotateNode):
 
     # ---------------------------------------------------------------------------
     # PUBLIC METHODS
-    # ---------------------------------------------------------------------------
-
-    def get_script(self, parent_id: str) -> HTMLNode:
-        return HTMLNode(parent_id, "view-script", "script", value=JS_SCRIPT, attributes={'type': "application/javascript"})
-
     # ---------------------------------------------------------------------------
 
     def set_phon(self, token: str, phon: str):

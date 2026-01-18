@@ -147,7 +147,7 @@ class VideoCuedResponseRecipe(WhakerKitResponse):
         current_view = self.__views.get_current_view()
 
         # set script of the current view
-        script = current_view.get_script(self._htree.head.identifier)
+        script = current_view.get_js_module(self._htree.head.identifier)
         self._htree.head.remove_child(script.identifier)
         self._htree.head.append_child(script)
 
