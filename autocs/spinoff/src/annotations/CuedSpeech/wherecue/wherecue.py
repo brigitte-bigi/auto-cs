@@ -1,25 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.wherecue.wherecue.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: CS Hand coordinates predictor. Answer the "Where?" question.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  CS Hand coordinates predictor. Answer the "Where?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-    ---------------------------------------------------------------------
-
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -37,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -45,7 +35,6 @@ import logging
 
 from sppas.core.coreutils import sppasTypeError
 from sppas.src.anndata import sppasTranscription
-from sppas.src.anndata import sppasTier
 from sppas.src.imgdata import sppasSights
 from sppas.src.annotations.FaceSights import sppasSightsVideoReader
 
@@ -61,10 +50,10 @@ from .targetprobas import TargetProbabilitiesEstimator
 # ---------------------------------------------------------------------------
 
 
-class sppasWhereCuePredictor:
+class sppasWhereCuePredictor(object):
     """Create a tier indicating the position of 2 points of the hand.
 
-    Predict the position of points S0 and S9 of a hand relatively to
+    Predict the position of points S0 and S9 of an hand relatively to
     sights of a face.
 
     """
@@ -143,11 +132,9 @@ class sppasWhereCuePredictor:
         """Change the angle predictor version number.
 
         :param version_number: (int) One of the supported versions.
-        :raises: ValueError: Given version is not an integer
         :raises: sppasKeyError: if invalid version number
 
         """
-        version_number = int(version_number)
         self.__angle_predictor.set_version_number(version_number)
 
     # -----------------------------------------------------------------------
@@ -189,7 +176,7 @@ class sppasWhereCuePredictor:
     # Predictor
     # -----------------------------------------------------------------------
 
-    def predict_where(self, file_sights: str, tier_pos_transitions: sppasTier, tier_shapes_transitions: sppasTier):
+    def predict_where(self, file_sights, tier_pos_transitions, tier_shapes_transitions):
         """Prodict where to cue, hand angle and hand size from face sights.
 
         :param file_sights: (str) Filename with 68 sights of a face for each image of a video

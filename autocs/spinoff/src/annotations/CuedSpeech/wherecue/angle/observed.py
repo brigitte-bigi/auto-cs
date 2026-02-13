@@ -5,21 +5,11 @@
 :contact: contact@sppas.org
 :summary: A few observed values for hand angles. Answer the "Where?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######  ########  ########     ###     ######
-    ##    ## ##     ## ##     ##   ## ##   ##    ##     the automatic
-    ##       ##     ## ##     ##  ##   ##  ##            annotation
-     ######  ########  ########  ##     ##  ######        and
-          ## ##        ##        #########       ##        analysis
-    ##    ## ##        ##        ##     ## ##    ##         of speech
-     ######  ##        ##        ##     ##  ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -45,8 +35,8 @@ from __future__ import annotations
 
 from .baseangle import BaseWhereAnglePredictor
 
-# ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
 
 MSG_DESCRIPTION_RULES = \
     "The angles were observed on 25 selected pictures of CLeLfPC corpus."

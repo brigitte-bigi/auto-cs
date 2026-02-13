@@ -5,20 +5,11 @@
 :contact: contact@sppas.org
 :summary: SPPAS integration of the Cued Speech automatic annotation.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -36,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -86,11 +77,7 @@ class sppasCuedSpeech(sppasBaseAnnotation):
         :param log: (sppasLog) Human-readable logs.
 
         """
-        json = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))),
-            "etc",
-            "cuedspeech.json")
-        super(sppasCuedSpeech, self).__init__(json, log)
+        super(sppasCuedSpeech, self).__init__("cuedspeech.json", log)
         self.__lang = "und"
 
         # A rule-based system to convert a sequence of phonemes into keys
@@ -142,24 +129,19 @@ class sppasCuedSpeech(sppasBaseAnnotation):
     # -----------------------------------------------------------------------
 
     def __set_video_tagger(self):
-        if cfg.feature_installed("video") is False or cfg.feature_installed("cuedspeech") is False:
-            logging.warning("Cued Speech Video Tagger can't be enabled. "
-                            "Either feature 'video' or 'cuedspeech' or both are not installed.")
-            self.__tagger = None
-        else:
-            try:
-                if self.__tagger is None:
-                    self.__tagger = CuedSpeechVideoTagger(self.__cued)
-                    for key in CuedSpeechVideoTagger.OPTIONS:
-                        if key in self._options:
-                            self.__tagger.set_option(key, self._options[key])
-                else:
-                    self.__tagger.set_cue_rules(self.__cued)
+        try:
+            if self.__tagger is None:
+                self.__tagger = CuedSpeechVideoTagger(self.__cued)
+                for  key in CuedSpeechVideoTagger.OPTIONS:
+                    if key in self._options:
+                        self.__tagger.set_option(key, self._options[key])
+            else:
+                self.__tagger.set_cue_rules(self.__cued)
 
-            except Exception as e:
-                self.__tagger = None
-                logging.warning("Cued Speech Video Tagger can't be enabled: {:s}"
-                                "".format(str(e)))
+        except sppasEnableFeatureError as e:
+            self.__tagger = None
+            logging.warning("Cued Speech Video Tagger can't be enabled: {:s}"
+                            "".format(str(e)))
 
     # -----------------------------------------------------------------------
     # Methods to fix options
@@ -182,6 +164,7 @@ class sppasCuedSpeech(sppasBaseAnnotation):
         :param options: (sppasOption)
 
         """
+
         for opt in options:
             key = opt.get_key()
 

@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.whenhand.whenhandtrans.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: CS hand transitions generator. Answer the "When?" question.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  CS hand transitions generator. Answer the "When?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######  ########  ########     ###     ######
-    ##    ## ##     ## ##     ##   ## ##   ##    ##     the automatic
-    ##       ##     ## ##     ##  ##   ##  ##            annotation
-     ######  ########  ########  ##     ##  ######        and
-          ## ##        ##        #########       ##        analysis
-    ##    ## ##        ##        ##     ## ##    ##         of speech
-     ######  ##        ##        ##     ##  ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -69,9 +60,6 @@ class PredictedWhenHand:
     """
 
     def __init__(self):
-        """Initialize a PredictedWhenHand to store predicted results.
-        
-        """
         self.__start = list()
         self.__end = list()
         self.__tags = list()
@@ -246,8 +234,8 @@ class sppasWhenHandTransitionPredictor:
         - 4: empirical rules from B. Bigi & Datha
         - 5: revised rules by B. Bigi
 
-        :raises: TypeError: Given value is not an integer
-        :raises: sppasKeyError: Given value is an invalid transition model number
+        :raises: sppasKeyError:
+        :raises: TypeError:
 
         """
         value = int(value)
@@ -317,7 +305,6 @@ class sppasWhenHandTransitionPredictor:
 
         """
         self.__transitions.reset_key_intervals()
-        
         for ii in range(len(tier_keys)):
             ann = tier_keys[ii]
             interval = ann.get_location()
@@ -497,9 +484,7 @@ class sppasWhenHandTransitionPredictor:
 
     @staticmethod
     def __get_phones(tier, interval) -> str:
-        """Return the serialized best label of the tier in the given interval.
-        
-        """
+        """Return the serialized best label of the tier in the given interval."""
         begin = interval.get_lowest_localization()
         end = interval.get_highest_localization()
         anns = tier.find(begin, end)

@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Document author="SPPAS 4.25 (C) Brigitte Bigi" date="2025-04-22T19:43:08+02:00" format="1.5" name="ImageSights">
+	<Metadata>
+		<Entry key="id">50258e2f-f455-4384-a5c9-6b0f3e8d80e5</Entry>
+		<Entry key="software_name">SPPAS</Entry>
+		<Entry key="software_version">4.25</Entry>
+		<Entry key="software_url">https://sppas.org/</Entry>
+		<Entry key="software_author">Brigitte Bigi</Entry>
+		<Entry key="software_contact">contact@sppas.org</Entry>
+		<Entry key="software_copyright">Copyright (C) 2011-2025 Brigitte Bigi, CNRS</Entry>
+		<Entry key="language_iso">iso639-3</Entry>
+		<Entry key="language_code_0">und</Entry>
+		<Entry key="language_name_0">Undetermined</Entry>
+		<Entry key="language_url_0">https://iso639-3.sil.org/code/und</Entry>
+		<Entry key="file_license_text_0">GNU AGPL V3</Entry>
+		<Entry key="file_license_url_0">https://www.gnu.org/licenses/gpl-3.0.en.html</Entry>
+		<Entry key="file_created_date">2025-04-22T16:01:40+02:00</Entry>
+		<Entry key="file_created_author">SPPAS 4.25 (C) Brigitte Bigi</Entry>
+		<Entry key="annotator">Brigitte Bigi</Entry>
+	</Metadata>
+
+	<Tier id="fa5688d8-6fa7-4e44-879b-8a499e764084" tiername="ImgSights">
+		<Annotation id="6a108b1b-8075-43f8-96ad-8be67bf32066">
+			<Metadata>
+				<Entry key="image_name">D:\AMUBox\VizemCuedSpeech\Images\Mascotte\yoyo_selfie-sights.jpg</Entry>
+			</Metadata>
+			<Location>
+				<Point midpoint="1" />
+			</Location>
+			<Label key="sight 0">
+				<Tag type="point">(233,300)</Tag>
+			</Label>
+			<Label key="sight 1">
+				<Tag type="point">(234,330)</Tag>
+			</Label>
+			<Label key="sight 2">
+				<Tag type="point">(235,360)</Tag>
+			</Label>
+			<Label key="sight 3">
+				<Tag type="point">(240,395)</Tag>
+			</Label>
+			<Label key="sight 4">
+				<Tag type="point">(250,425)</Tag>
+			</Label>
+			<Label key="sight 5">
+				<Tag type="point">(275,455)</Tag>
+			</Label>
+			<Label key="sight 6">
+				<Tag type="point">(310,475)</Tag>
+			</Label>
+			<Label key="sight 7">
+				<Tag type="point">(350,485)</Tag>
+			</Label>
+			<Label key="sight 8">
+				<Tag type="point">(395,490)</Tag>
+			</Label>
+			<Label key="sight 9">
+				<Tag type="point">(440,485)</Tag>
+			</Label>
+			<Label key="sight10">
+				<Tag type="point">(480,475)</Tag>
+			</Label>
+			<Label key="sight11">
+				<Tag type="point">(515,455)</Tag>
+			</Label>
+			<Label key="sight12">
+				<Tag type="point">(535,425)</Tag>
+			</Label>
+			<Label key="sight13">
+				<Tag type="point">(550,395)</Tag>
+			</Label>
+			<Label key="sight14">
+				<Tag type="point">(555,360)</Tag>
+			</Label>
+			<Label key="sight15">
+				<Tag type="point">(556,330)</Tag>
+			</Label>
+			<Label key="sight16">
+				<Tag type="point">(557,300)</Tag>
+			</Label>
+			<Label key="sight17">
+				<Tag type="point">(285,255)</Tag>
+			</Label>
+			<Label key="sight18">
+				<Tag type="point">(300,245)</Tag>
+			</Label>
+			<Label key="sight19">
+				<Tag type="point">(315,240)</Tag>
+			</Label>
+			<Label key="sight20">
+				<Tag type="point">(335,242)</Tag>
+			</Label>
+			<Label key="sight21">
+				<Tag type="point">(350,250)</Tag>
+			</Label>
+			<Label key="sight22">
+				<Tag type="point">(440,250)</Tag>
+			</Label>
+			<Label key="sight23">
+				<Tag type="point">(455,242)</Tag>
+			</Label>
+			<Label key="sight24">
+				<Tag type="point">(470,240)</Tag>
+			</Label>
+			<Label key="sight25">
+				<Tag type="point">(490,245)</Tag>
+			</Label>
+			<Label key="sight26">
+				<Tag type="point">(500,255)</Tag>
+			</Label>
+			<Label key="sight27">
+				<Tag type="point">(395,298)</Tag>
+			</Label>
+			<Label key="sight28">
+				<Tag type="point">(395,320)</Tag>
+			</Label>
+			<Label key="sight29">
+				<Tag type="point">(395,342)</Tag>
+			</Label>
+			<Label key="sight30">
+				<Tag type="point">(395,365)</Tag>
+			</Label>
+			<Label key="sight31">
+				<Tag type="point">(365,385)</Tag>
+			</Label>
+			<Label key="sight32">
+				<Tag type="point">(375,390)</Tag>
+			</Label>
+			<Label key="sight33">
+				<Tag type="point">(395,395)</Tag>
+			</Label>
+			<Label key="sight34">
+				<Tag type="point">(415,390)</Tag>
+			</Label>
+			<Label key="sight35">
+				<Tag type="point">(425,385)</Tag>
+			</Label>
+			<Label key="sight36">
+				<Tag type="point">(300,315)</Tag>
+			</Label>
+			<Label key="sight37">
+				<Tag type="point">(305,290)</Tag>
+			</Label>
+			<Label key="sight38">
+				<Tag type="point">(340,290)</Tag>
+			</Label>
+			<Label key="sight39">
+				<Tag type="point">(345,315)</Tag>
+			</Label>
+			<Label key="sight40">
+				<Tag type="point">(340,335)</Tag>
+			</Label>
+			<Label key="sight41">
+				<Tag type="point">(305,335)</Tag>
+			</Label>
+			<Label key="sight42">
+				<Tag type="point">(435,315)</Tag>
+			</Label>
+			<Label key="sight43">
+				<Tag type="point">(440,290)</Tag>
+			</Label>
+			<Label key="sight44">
+				<Tag type="point">(480,290)</Tag>
+			</Label>
+			<Label key="sight45">
+				<Tag type="point">(485,315)</Tag>
+			</Label>
+			<Label key="sight46">
+				<Tag type="point">(480,335)</Tag>
+			</Label>
+			<Label key="sight47">
+				<Tag type="point">(440,335)</Tag>
+			</Label>
+			<Label key="sight48">
+				<Tag type="point">(345,425)</Tag>
+			</Label>
+			<Label key="sight49">
+				<Tag type="point">(360,420)</Tag>
+			</Label>
+			<Label key="sight50">
+				<Tag type="point">(375,420)</Tag>
+			</Label>
+			<Label key="sight51">
+				<Tag type="point">(395,420)</Tag>
+			</Label>
+			<Label key="sight52">
+				<Tag type="point">(415,420)</Tag>
+			</Label>
+			<Label key="sight53">
+				<Tag type="point">(430,420)</Tag>
+			</Label>
+			<Label key="sight54">
+				<Tag type="point">(445,425)</Tag>
+			</Label>
+			<Label key="sight55">
+				<Tag type="point">(430,435)</Tag>
+			</Label>
+			<Label key="sight56">
+				<Tag type="point">(415,435)</Tag>
+			</Label>
+			<Label key="sight57">
+				<Tag type="point">(395,435)</Tag>
+			</Label>
+			<Label key="sight58">
+				<Tag type="point">(375,435)</Tag>
+			</Label>
+			<Label key="sight59">
+				<Tag type="point">(360,435)</Tag>
+			</Label>
+			<Label key="sight60">
+				<Tag type="point">(350,425)</Tag>
+			</Label>
+			<Label key="sight61">
+				<Tag type="point">(375,430)</Tag>
+			</Label>
+			<Label key="sight62">
+				<Tag type="point">(415,430)</Tag>
+			</Label>
+			<Label key="sight63">
+				<Tag type="point">(415,430)</Tag>
+			</Label>
+			<Label key="sight64">
+				<Tag type="point">(440,425)</Tag>
+			</Label>
+			<Label key="sight65">
+				<Tag type="point">(415,430)</Tag>
+			</Label>
+			<Label key="sight66">
+				<Tag type="point">(395,430)</Tag>
+			</Label>
+			<Label key="sight67">
+				<Tag type="point">(375,430)</Tag>
+			</Label>
+		</Annotation>
+	</Tier>
+
+	<Media id="4450d39a-1caf-4200-b8e4-4b616f8cc72e" url="D:\AMUBox\VizemCuedSpeech\Images\Mascotte\yoyo_selfie-sights.jpg" mimetype="image/jpeg">
+		<Tier id="fa5688d8-6fa7-4e44-879b-8a499e764084" />
+	</Media>
+
+	<Hierarchy />
+</Document>
+

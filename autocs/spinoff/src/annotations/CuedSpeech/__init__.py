@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.__init__.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: Cued Speech automatic annotation package.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  Cued Speech automatic annotation.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -36,26 +27,42 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
+
+import sys
 
 from sppas.core.coreutils import sppasPythonFeatureError
 
 # ---------------------------------------------------------------------------
-
-
-from .whatkey import sppasCuedRulesValueError
-from .whatkey import sppasCuedRulesMinValueError
-from .whatkey import sppasCuedRulesMaxValueError
-from .whatkey import CuedSpeechCueingRules
-from .whatkey import CuedSpeechKeys
-from .whatkey import sppasWhatKeyPredictor
-from .whowtag import CuedSpeechVideoTagger
-from .sppascuedspeech import sppasCuedSpeech
-
+# Answering the "what" question does not require any specific feature
 # ---------------------------------------------------------------------------
 
+if sys.version_info > (3, 9):
+    from .whatkey import sppasCuedRulesValueError
+    from .whatkey import sppasCuedRulesMinValueError
+    from .whatkey import sppasCuedRulesMaxValueError
+    from .whatkey import CuedSpeechCueingRules
+    from .whatkey import CuedSpeechKeys
+    from .whatkey import sppasWhatKeyPredictor
+    from .whowtag import CuedSpeechVideoTagger
+    from .sppascuedspeech import sppasCuedSpeech
+
+else:
+    class CuedSpeechKeys(object):
+        def __init__(self, *args, **kwargs):
+            raise sppasPythonFeatureError("cuedspeech", "3.9+")
+
+    class CuedSpeechVideoTagger(object):
+        def __init__(self, *args, **kwargs):
+            raise sppasPythonFeatureError("cuedspeech", "3.9+")
+
+    class sppasCuedSpeech(object):
+        def __init__(self, *args, **kwargs):
+            raise sppasPythonFeatureError("cuedspeech", "3.9+")
+
+# ---------------------------------------------------------------------------
 
 __all__ = (
     # what

@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.whenhand.transitions.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: Hand transitions predictors. Answer the "When?" question.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  Hand transitions predictors. Answer the "When?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######  ########  ########     ###     ######
-    ##    ## ##     ## ##     ##   ## ##   ##    ##     the automatic
-    ##       ##     ## ##     ##  ##   ##  ##            annotation
-     ######  ########  ########  ##     ##  ######        and
-          ## ##        ##        #########       ##        analysis
-    ##    ## ##        ##        ##     ## ##    ##         of speech
-     ######  ##        ##        ##     ##  ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -40,7 +31,6 @@
 
 """
 
-from __future__ import annotations
 import logging
 
 from sppas.core.coreutils import sppasKeyError
@@ -56,7 +46,7 @@ from .whenhandexc import sppasCuedPredictorError
 # ---------------------------------------------------------------------------
 
 
-class WhenTransitionPredictor:
+class WhenTransitionPredictor(object):
     """Hand transitions predictor for both hand shape and hand position.
 
     There are several solutions to estimate transition intervals. These

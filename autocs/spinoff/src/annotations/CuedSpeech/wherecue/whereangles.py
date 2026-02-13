@@ -4,19 +4,11 @@
 :contact: contact@sppas.org
 :summary: CS Hand angle coordinates predictor. Answer the "Where?" question.
 
-.. _This file is part of SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -34,7 +26,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -57,7 +49,7 @@ class sppasWhereAnglesPredictor:
 
     """
 
-    def __init__(self, predictor_version:int = WhereAnglesPredictor.DEFAULT_VERSION):
+    def __init__(self, predictor_version=WhereAnglesPredictor.DEFAULT_VERSION):
         """Create a new instance of angles predictor.
 
         """
@@ -82,11 +74,9 @@ class sppasWhereAnglesPredictor:
         """Change the predictor version number.
 
         :param version_number: (int) One of the supported versions.
-        :raises: ValueError: Given version is not an integer
         :raises: sppasKeyError: if invalid version number
 
         """
-        version_number = int(version_number)
         self.__predictor.set_version_number(version_number)
 
     # -----------------------------------------------------------------------
@@ -105,7 +95,7 @@ class sppasWhereAnglesPredictor:
 
     # -----------------------------------------------------------------------
 
-    def hand_angles(self, tier_pos: sppasTier, face_sights: sppasTier = None) -> sppsaTier:
+    def hand_angles(self, tier_pos: sppasTier, face_sights: sppasTier = None):
         """Predict the angles for the given vowels.
 
         Notice that the coordinates of the position can have negative values.

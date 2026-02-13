@@ -1,6 +1,21 @@
-# AutoCuedSpeech
+```
+-------------------------------------------------------------------------
 
-autocs is a Python program developed within the project AutoCuedSpeech: 
+         █████╗ ██╗   ██╗████████╗ ██████╗        ██████╗███████╗
+        ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗      ██╔════╝██╔════╝
+        ███████║██║   ██║   ██║   ██║   ██║█████╗██║     ███████╗
+        ██╔══██║██║   ██║   ██║   ██║   ██║╚════╝██║     ╚════██║
+        ██║  ██║╚██████╔╝   ██║   ╚██████╔╝      ╚██████╗███████║
+        ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝        ╚═════╝╚══════╝
+                                                    
+               Copyright (C) 2021-2026  Brigitte Bigi, CNRS
+        Laboratoire Parole et Langage, Aix-en-Provence, France
+-------------------------------------------------------------------------
+```
+
+# Auto-CS
+
+`Auto-CS` is a Python program developed within the project AutoCuedSpeech: 
 <https://auto-cuedspeech.org>. 
 It contains all the components dedicated to the automatic annotation of Cued Speech. 
 This source code is not a standalone tool: it only runs inside SPPAS. It is integrated 
@@ -8,7 +23,7 @@ by means of the **spin-off** mechanism provided by SPPAS, which allows external 
 bases to remain separate while still being dynamically discovered and used by the main 
 framework.
 
-> autocs requires video feature of SPPAS, for opencv and numpy dependencies.
+> Auto-CS requires video feature of SPPAS, for opencv and numpy dependencies.
 
 
 ## Automatic Annotation
@@ -16,7 +31,7 @@ framework.
 
 ### Overview
 
-autocs divides the problem of automatically cueing speech into four sequential tasks:
+`Auto-CS` divides the problem of automatically cueing speech into four sequential tasks:
 
     1. WHAT? From the time-aligned phonemes, what are the keys?
     2. WHEN? From the time-aligned keys, when moving the hand (position and shape)?
@@ -214,10 +229,18 @@ It produces a video file.
 
 ## User Interfaces
 
-Two user interfaces are under development. The first one is dedicated to the 
-automatic conversion of a written text into cues: it's development is almost
-achieved. The second one allows the automatic encoding of a video. Its 
-development is less than 50%.
+### Command-line User Interface
+
+Annotations can be performed thanks to `sppas/bin/autocs.py`.
+
+
+### Graphical-User Interface
+
+
+
+
+Another user interface is under development. It allows the automatic encoding 
+of a video. Its development is less than 30%.
 
 
 ## Legal issues
@@ -243,7 +266,7 @@ Send this file by e-mail to the author.
 
 See the accompanying `LICENSE` and `AUTHORS.md` files for the full list of contributors.
 
-Copyright (C) 2023-2026 [Brigitte Bigi](https://sppas.org/bigi/), CNRS - <contact@sppas.org>
+Copyright (C) 2021-2026 [Brigitte Bigi](https://sppas.org/bigi/), CNRS - <contact@sppas.org>
 Laboratoire Parole et Langage, Aix-en-Provence, France
 
 This program is free software: you can redistribute it and/or modify
@@ -273,12 +296,16 @@ Use the following reference to cite AutoCuedSpeech:
 Check version for update.
 
 
-### Logo
+### Logos and images
 
-The AutoCuedSpeech logo was designed by Laurent Lopez -see "le Nébleu" at <https://laurentlopez-creations.com/>,
-and is used with full rights granted to the project. 
- 
+The AutoCuedSpeech project logo was designed by Laurent Lopez - see 
+"le Nébleu" at <https://laurentlopez-creations.com/>, and is used with 
+full rights granted to the project. 
 It is not covered by the AGPL license. All rights reserved.
+
+Other logos and images were designed by Brigitte Bigi.
+They are under the terms of CC BY-NC-ND 4.0,
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.
 
 
 ## Versions
@@ -292,4 +319,7 @@ First release.
 Migrated to Whakerexa 2.0.
 
 
+### 2.0 - Attached to SPPAS-4.31
+
+Introduced TextCueS.
 

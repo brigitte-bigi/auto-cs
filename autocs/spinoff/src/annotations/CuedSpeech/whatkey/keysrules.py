@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.whatkey.keysrules.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: Manage a file with cueing rules.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  Manage a file with cueing rules.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -36,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -59,29 +50,6 @@ from .whatkeyexc import sppasCuedRulesMaxValueError
 class CuedSpeechCueingRules:
     """Rules data structure for a system to predict Cued Speech keys.
 
-    Format of the rules:
-
-    NEUTRAL_CLASS i V
-    NEUTRAL_CLASS e V
-    NEUTRAL_CLASS aU W
-    ...
-    NEUTRAL_CLASS p C
-    NEUTRAL_CLASS t C
-    ...
-    PHONKEY i m
-    PHONKEY e t
-    PHONKEY p 1
-    PHONKEY t 5
-    ...
-    NEUTRAL_CLASS cnil N
-    NEUTRAL_CLASS vnil N
-    PHONKEY cnil 5
-    PHONKEY vnil s
-    ...
-    SHAPETARGET 0 5
-    SHAPETARGET 1 8
-    SHAPETARGET 2 12
-
     :Example:
         >>> rules = CuedSpeechCueingRules()
         >>> result = rules.load(FRA_KEYS)
@@ -90,7 +58,12 @@ class CuedSpeechCueingRules:
         "t"
 
     """
-    
+
+    CONSONANT_NIL = "cnil"
+    CONSONANT_NONE = "cnone"
+    VOWEL_NIL = "vnil"
+    VOWEL_NONE = "vnone"
+
     # List of all accepted phoneme class identifiers
     PHON_CLASSES = ["N", "C", "V", "W"]
 
@@ -102,7 +75,7 @@ class CuedSpeechCueingRules:
 
     # -----------------------------------------------------------------------
 
-    def __init__(self, filename:str | None = None):
+    def __init__(self, filename=None):
         """Create a new instance.
 
         :param filename: (str) Name of the file with the rules.
@@ -111,9 +84,14 @@ class CuedSpeechCueingRules:
         # key = phoneme or symbol;
         # value = tuple(class, shape or position code)
         self.__phon = dict()
+
         # key = shape code
         # value = target on the hand
         self.__shptgt = dict()
+
+        # key = tuple(phonemes)
+        # value = class
+        self.__phonmerge = dict()
 
         if filename is not None:
             self.load(filename)
@@ -128,6 +106,7 @@ class CuedSpeechCueingRules:
         """
         self.__phon = dict()
         self.__shptgt = dict()
+        self.__phonmerge = dict()
 
         for phone in symbols.all:
             self.__phon[phone] = (CuedSpeechCueingRules.NEUTRAL_CLASS, None)
@@ -174,7 +153,24 @@ class CuedSpeechCueingRules:
 
             # Regular rules of all made of 3 columns
             columns = line.split()
-            if len(columns) == 3:
+            if len(columns) == 4 and columns[0] == "PHONMERGE":
+                sequence = tuple(columns[1:-1])
+                effective_class = columns[-1]
+
+                if len(sequence) == 0:
+                    raise sppasError(f"Invalid PHONMERGE at line {line_nb}: empty sequence.")
+                if effective_class not in CuedSpeechCueingRules.PHON_CLASSES:
+                    raise sppasError(
+                        "Invalid PHONMERGE class. One of {:s} was expected. Got {:s} instead."
+                        "".format(CuedSpeechCueingRules.PHON_CLASSES, effective_class)
+                    )
+                if sequence in self.__phonmerge:
+                    raise sppasError(f"Duplicated PHONMERGE at line {line_nb}: {sequence} is already defined.")
+
+                self.__phonmerge[sequence] = effective_class
+                added = True
+
+            elif len(columns) == 3:
                 # The string representing the phoneme is the key of the self.__phon dict.
                 p = columns[1]
                 if p not in self.__phon:
@@ -229,9 +225,32 @@ class CuedSpeechCueingRules:
 
         """
         tup = self.__phon.get(phoneme, None)
-        if tup is None:
+
+        if tup is None or (tup is not None and tup[0] is None):
+
+            # Unknown phoneme. Can be a merged one.
+            for seq in self.__phonmerge:
+                _joined_seq = "".join(seq)
+                if phoneme == _joined_seq:
+                    return self.__phonmerge[seq]
+
+            # really unknown
             return CuedSpeechCueingRules.NEUTRAL_CLASS
+
         return tup[0]
+
+    # ------------------------------------------------------------------------
+
+    def get_merged_class(self, sequence: tuple):
+        """Return the effective class for a phoneme sequence.
+
+        :param sequence: (tuple) Sequence of phones to merge.
+        :return: (str or None) The effective class, or None.
+
+        """
+        if isinstance(sequence, tuple) is False:
+            raise TypeError(f"Given sequence must be a tuple. Got {type(sequence)} instead.")
+        return self.__phonmerge.get(sequence)
 
     # ------------------------------------------------------------------------
     # Getters about the keys: shape and position
@@ -273,7 +292,7 @@ class CuedSpeechCueingRules:
 
     # ------------------------------------------------------------------------
 
-    def get_key(self, phoneme: str) -> tuple[str,str] | str | None:
+    def get_key(self, phoneme: str) -> tuple:
         """Return the key identifier of the phoneme.
 
         None is returned if the phoneme is unknown or if it is a break.
@@ -377,6 +396,29 @@ class CuedSpeechCueingRules:
         return self.__shptgt.get(_tup[1], CuedSpeechCueingRules.SHAPE_TARGET)
 
     # ------------------------------------------------------------------------
+    # Getters about merges
+    # ------------------------------------------------------------------------
+
+    def get_merged_phone(self, sequence: tuple):
+        """Return the merged phone for a phoneme sequence.
+
+        :param sequence: (tuple) Sequence of phones to merge.
+        :return: (str or None) The merged phone, or None.
+
+        """
+        if isinstance(sequence, tuple) is False:
+            raise TypeError(f"Given sequence must be a tuple. "
+                            f"Got {type(sequence)} instead.")
+
+        return self.__phonmerge.get(sequence)
+
+    # ------------------------------------------------------------------------
+
+    def has_phonmerge(self) -> bool:
+        """Return True if at least one merge rule is defined."""
+        return len(self.__phonmerge) > 0
+
+    # ------------------------------------------------------------------------
     # Workers
     # ------------------------------------------------------------------------
 
@@ -399,8 +441,10 @@ class CuedSpeechCueingRules:
         ('1', 'c')
         >>> syll_to_key("p-aI")
         (('1', 's'), ('5', 't'))
+        >>> syll_to_key("hw-E")
+        ('4', 'c')
 
-        :param syll: (str) A syllable like "p-a", or "p-" or "-a" or "p-aI".
+        :param syll: (str) A syllable like "p-a", or "p-" or "-a" or "p-aI" or "hw-E".
         :return: (tuple or None) Key codes
         :raises: sppasCuedRulesValueError: malformed syll
         :raises: sppasCuedRulesMinValueError: not enough phonemes in syll
@@ -408,7 +452,10 @@ class CuedSpeechCueingRules:
 
         """
         phons = self.__syll_to_phons(syll)
-        if self.get_class(phons[0]) not in ("N", "C") or self.get_class(phons[1]) not in ("N", "V", "W"):
+        _class_1 = self.get_class(phons[0])
+        _class_2 = self.get_class(phons[1])
+
+        if _class_1 not in ("N", "C") or _class_2 not in ("N", "V", "W"):
             raise sppasCuedRulesValueError(syll)
 
         key_cons = self.get_key(phons[0])
@@ -424,13 +471,13 @@ class CuedSpeechCueingRules:
 
     # ------------------------------------------------------------------------
 
-    def __syll_to_phons(self, syll: str) -> list[str, str]:
+    def __syll_to_phons(self, syll: str) -> list:
         """Return the phonemes matching the given syllable.
 
-        :return: (tuple) Tuple with (consonant, vowel)
         :raises: sppasCuedRulesValueError: malformed syll
         :raises: sppasCuedRulesMinValueError: not enough phonemes in syll
         :raises: sppasCuedRulesMaxValueError: too many phonemes in syll
+        :return: (tuple) Tuple with (consonant, vowel)
 
         """
         # Check entry length
@@ -440,6 +487,7 @@ class CuedSpeechCueingRules:
         phons = syll.split(separators.phonemes)
         if len(phons) == 0:
             raise sppasCuedRulesMinValueError(syll)
+
         elif len(phons) == 1:
             if self.get_class(phons[0]) == "V":
                 phons.insert(0, "cnil")
@@ -447,11 +495,13 @@ class CuedSpeechCueingRules:
                 phons.append("vnil")
             else:
                 phons.insert(0, "unknown")
+
         elif len(phons) == 2:
             if len(phons[0]) == 0:
                 phons[0] = "cnil"
             if len(phons[1]) == 0:
                 phons[1] = "vnil"
+
         else:   # >2
             raise sppasCuedRulesMaxValueError(syll)
 

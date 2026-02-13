@@ -5,20 +5,11 @@
 :contact: contact@sppas.org
 :summary: Generate coordinates of S0 and S9 sights from tiers.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -36,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -48,14 +39,13 @@ from .whowimgtag import sppasHandCoords
 
 # ---------------------------------------------------------------------------
 
-
 MSG_ERROR_MISMATCH = "The given {:d} coordinates in CSV/XRA file doesn't " \
                      "match the number of frames of the video {:d}"
 
 # ---------------------------------------------------------------------------
 
 
-class sppasHandCoordsGenerator:
+class sppasHandCoordsGenerator(object):
     """Create a tier indicating the position of 3 points of the hand.
 
     - point 1: target position

@@ -5,21 +5,11 @@
 :contact: contact@sppas.org
 :summary: CS vowel coordinates predictor. Answer the "Where?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-    ---------------------------------------------------------------------
-
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -37,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -57,19 +47,15 @@ from .positions import WhereVowelPositionsPredictor
 # ---------------------------------------------------------------------------
 
 
-class sppasWherePositionsPredictor:
+class sppasWherePositionsPredictor(object):
     """Predict the position of all the vowels from sights in a file.
 
     Create a tier indicating the position of CS vowels.
 
-    > IMPORTANT: This is a Proof of Concept.
-
     """
 
-    def __init__(self, predictor_version:int = WhereVowelPositionsPredictor.DEFAULT_VERSION):
+    def __init__(self, predictor_version=WhereVowelPositionsPredictor.DEFAULT_VERSION):
         """Create a new instance of vowels predictor.
-
-        :param predictor_version: (int) Version number of the prediction model
 
         """
         # Predictor system. Use the default number of sights.
@@ -96,11 +82,9 @@ class sppasWherePositionsPredictor:
         """Change the predictor version number.
 
         :param version_number: (int) One of the supported versions.
-        :raises: ValueError: Given version is not an integer
-        :raises: sppasKeyError: if given version is invalid
+        :raises: sppasKeyError: if invalid version number
 
         """
-        version_number = int(version_number)
         self.__predictor.set_version_number(version_number)
 
     # -----------------------------------------------------------------------
@@ -143,7 +127,7 @@ class sppasWherePositionsPredictor:
 
     # -----------------------------------------------------------------------
 
-    def vowels_coords(self, vowels: list, smooth_len: int = 20) -> sppasTier:
+    def vowels_coords(self, vowels: list, smooth_len: int = 20):
         """Predict the coordinates of the given vowels.
 
         Notice that the coordinates of the position can have negative values.
@@ -210,7 +194,6 @@ class sppasWherePositionsPredictor:
         """
         # Append the real value into the queue
         deck.append(value)
-        
         # Estimate the smoothed value: average of values in the queue
         if len(deck) > 1:
             return int(fmean(deck))

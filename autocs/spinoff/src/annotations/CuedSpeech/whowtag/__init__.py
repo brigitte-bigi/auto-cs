@@ -1,25 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.videotagger.__init__.py
-:author: Brigitte Bigi
-:contact: contact@sppas.org
-:summary: Tag a hand on a video for Cued Speech automatic annotation.
+:author:   Brigitte Bigi
+:contact:  contact@sppas.org
+:summary:  Tag a hand on a video for Cued Speech automatic annotation.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -37,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 
@@ -68,7 +58,7 @@ if cfg.feature_installed("video") and cfg.feature_installed("cuedspeech"):
     # Import the classes in case the "video" feature is enabled: opencv&numpy
     # are both installed and the automatic detections can work.
     # -----------------------------------------------------------------------
-    if sys.version_info > (3, 8):
+    if sys.version_info > (3, 6):
 
         # -----------------------------------------------------------------------
         # Check if we have at least one hands set in the 'resources/cuedspeech' folder to tag a video.
@@ -87,12 +77,6 @@ if cfg.feature_installed("video") and cfg.feature_installed("cuedspeech"):
             # Define class in case we have no hands set in the 'resources/cuedspeech' folder.
             # -----------------------------------------------------------------------
             class CuedSpeechVideoTagger:
-                OPTIONS = {
-                    "handsset": "drawncue",
-                    "handsfilter": "",
-                    "infotext": False,
-                    "vowelspos": False
-                }
                 def __init__(self, *args, **kwargs):
                     raise sppasError("The 'resources/cuedspeech' folder doesn't contains any hand-set.")
 
@@ -114,18 +98,8 @@ if cfg.feature_installed("video") and cfg.feature_installed("cuedspeech"):
         # -----------------------------------------------------------------------
 
         class CuedSpeechVideoTagger:
-            OPTIONS = {
-                "handsset": "drawncue",
-                "handsfilter": "",
-                "infotext": False,
-                "vowelspos": False
-            }
             def __init__(self, *args, **kwargs):
-                raise sppasPythonFeatureError("cuedspeech", "3.8+")
-
-            @staticmethod
-            def get_hands_filters() -> list:
-                return []
+                raise sppasPythonFeatureError("cuedspeech", "3.6+")
 
 else:
     # -----------------------------------------------------------------------
@@ -133,18 +107,8 @@ else:
     # -----------------------------------------------------------------------
 
     class CuedSpeechVideoTagger:
-        OPTIONS = {
-            "handsset": "drawncue",
-            "handsfilter": "",
-            "infotext": False,
-            "vowelspos": False
-        }
         def __init__(self, *args, **kwargs):
             raise sppasEnableFeatureError("cuedspeech")
-
-        @staticmethod
-        def get_hands_filters() -> list:
-            return []
 
 
 __all__ = (

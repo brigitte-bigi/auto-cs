@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.videotagger.tests.test_sppasImageVowelsTagger.py
-:author: Brigitte Bigi
-:author: Florian Lopitaux
-:contact: contact@sppas.org
-:summary: Unit tests for vowels tag on an image.
+:author:   Florian Lopitaux
+:contact:  contact@sppas.org
+:summary:  Unit tests for vowels tag on an image.
 
-.. _This file is part of SPPAS: https://sppas.org/
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -46,11 +37,11 @@ import unittest
 from sppas.core.config import paths
 from sppas.src.imgdata import sppasImage
 from sppas.src.anndata import sppasFuzzyPoint
+
 from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag.imgpostag import sppasImageVowelPosTagger
 
 # ---------------------------------------------------------------------------
-
 
 FRA_KEYS = os.path.join(paths.resources, "cuedspeech", "cueConfig-fra.txt")
 

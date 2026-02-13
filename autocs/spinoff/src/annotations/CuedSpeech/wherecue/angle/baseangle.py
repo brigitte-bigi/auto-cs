@@ -5,21 +5,11 @@
 :contact: contact@sppas.org
 :summary: Base for hand angle predictors. Answer the "Where?" question.
 
-.. _This file is part of AutoCuedSpeech: <https://auto-cuedspeech.org/>
-.. _Originally developed in SPPAS: <https://sppas.org/>
 ..
-
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######  ########  ########     ###     ######
-    ##    ## ##     ## ##     ##   ## ##   ##    ##     the automatic
-    ##       ##     ## ##     ##  ##   ##  ##            annotation
-     ######  ########  ########  ##     ##  ######        and
-          ## ##        ##        #########       ##        analysis
-    ##    ## ##        ##        ##     ## ##    ##         of speech
-     ######  ##        ##        ##     ##  ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -54,12 +44,12 @@ MSG_DESCRIPTION_BASE = "The hand angles are always predicted the same whatever t
 # ---------------------------------------------------------------------------
 
 
-class BaseWhereAnglePredictor:
+class BaseWhereAnglePredictor(object):
     """Base class to predict the angle of the hand.
 
     Currently, 5 vowel positions are possible, and they are associated to
     only one angle value.
-    For English language, this will have to be changed because some vowels have
+    For English langage, this will have to be changed because some vowels have
     a movement effect: side-forward, side-down.
 
     Angle value is given relatively to the horizontal axis, like in the

@@ -83,7 +83,7 @@ class VideoCuedWebData(swappWebData):
     @staticmethod
     def icon() -> str:
         """Return the path of the icon of the response."""
-        return sppasImagesAccess.get_icon_filename("ACS-autocs")
+        return sppasImagesAccess.get_icon_filename("ACS_video")
 
     # -----------------------------------------------------------------------
 

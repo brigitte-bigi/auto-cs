@@ -5,20 +5,11 @@
 :contact:  contact@sppas.org
 :summary:  Hand transition predictors. Custom decision tree model.
 
-.. _This file is part of SPPAS: <https://sppas.org/>
 ..
-..
-    ---------------------------------------------------------------------
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
 
-     ######  ########  ########     ###     ######
-    ##    ## ##     ## ##     ##   ## ##   ##    ##     the automatic
-    ##       ##     ## ##     ##  ##   ##  ##            annotation
-     ######  ########  ########  ##     ##  ######        and
-          ## ##        ##        #########       ##        analysis
-    ##    ## ##        ##        ##     ## ##    ##         of speech
-     ######  ##        ##        ##     ##  ######
-
-    Copyright (C) 2011-2023  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -36,7 +27,7 @@
 
     This banner notice must not be removed.
 
-    ---------------------------------------------------------------------
+    -------------------------------------------------------------------------
 
 """
 

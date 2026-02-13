@@ -1,24 +1,15 @@
 # -*- coding: UTF-8 -*-
 """
 :filename: sppas.src.annotations.CuedSpeech.videotagger.tests.test_sppasImageHandTagger.py
-:author: Brigitte Bigi
-:uathor: Florian Lopitaux
-:contact: contact@sppas.org
-:summary: Unit tests for tag images with cued speech hand (or badge).
+:author:   Florian Lopitaux
+:contact:  contact@sppas.org
+:summary:  Unit tests for tag images with cued speech hand (or badge).
 
-.. _This file is part of SPPAS: https://sppas.org/
 ..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-     ######   ########   ########      ###      ######
-    ##    ##  ##     ##  ##     ##    ## ##    ##    ##     the automatic
-    ##        ##     ##  ##     ##   ##   ##   ##            annotation
-     ######   ########   ########   ##     ##   ######        and
-          ##  ##         ##         #########        ##        analysis
-    ##    ##  ##         ##         ##     ##  ##    ##         of speech
-     ######   ##         ##         ##     ##   ######
-
-    Copyright (C) 2011-2025  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -52,7 +43,6 @@ from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag.imghandtag import sppasImageHandTagger
 
 # ---------------------------------------------------------------------------
-
 
 FRA_KEYS = os.path.join(paths.resources, "cuedspeech", "cueConfig-fra.txt")
 HANDS_SET_PREFIX = "brigitte"
