@@ -211,6 +211,17 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 }
 
 /* --------------------------------------- */
+/* Apply the same filter in light and dark themes */
+
+.menu-png-button img {
+    filter: brightness(0) invert(1);
+}
+
+.menu-svg-button {
+    color: var(--nav-fg-color);
+}
+
+/* --------------------------------------- */
 /* Header and footer                       */
 /* --------------------------------------- */
 
