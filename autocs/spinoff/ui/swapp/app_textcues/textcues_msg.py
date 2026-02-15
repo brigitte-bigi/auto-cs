@@ -6,7 +6,7 @@
 :summary: This file contains translated message of the views.
 
 ..
-    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    This file is part of AutoCS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
     Copyright (C) 2021-2026  Brigitte Bigi, CNRS
@@ -78,6 +78,8 @@ MSG_REF = _("Bibliographical references")
 MSG_SEE_ALSO = _("See also")
 MSG_DESCR = _("Allows to generate automatically the sequence of keys to be cued from a written text")
 MSG_ACS_PROJECT = _("ACS Project")
+MSG_SUPPORT = _("Supported by FIRAH")
+MSG_TEXTCUES_CONCEPT = _("Text Cues Concept Document")
 
 # ---------------------------------------------------------------------------
 # Step 0: Introduction
@@ -104,9 +106,9 @@ MSG_LANGTEXT_BREADCRUMB = _("Text")
 MSG_LANGTEXT_ANN_BUTTON = _("Go to step 2")
 
 # Fieldset content
-MSG_LANG = _("Select the text language:")
-MSG_TEXT_LABEL = _("Enter or edit the text to code:")
-MSG_TEXT_HERE = _("Enter or paste your text here")
+MSG_LANG = _("I select the text language:")
+MSG_TEXT_LABEL = _("I enter or edit the text to code:")
+MSG_TEXT_HERE = _("Enter or paste a text here")
 
 # ---------------------------------------------------------------------------
 # Step 2

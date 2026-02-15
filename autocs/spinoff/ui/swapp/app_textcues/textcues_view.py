@@ -5,7 +5,7 @@
 :summary: Main view of "TextCueS" app.
 
 ..
-    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    This file is part of AutoCS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
     Copyright (C) 2021-2026  Brigitte Bigi, CNRS
@@ -32,8 +32,10 @@
 
 from whakerpy.htmlmaker import HTMLTree
 from whakerpy.htmlmaker import HTMLNode
+from whakerpy.htmlmaker import EmptyNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 
+from sppas.ui import _
 from sppas.ui.swapp.wappsg import wapp_settings
 from sppas.ui.swapp.apps.swapp_view import swappBaseView
 from sppas.ui.swapp.apps.swapp_view import JS_INIT
@@ -54,6 +56,8 @@ from .views.pathway_sound_view import PathwaySoundView
 from .views.pathway_code_view import PathwayCodeView
 
 # ---------------------------------------------------------------------------
+
+MSG_SKIP = _("Skip to content")
 
 BODY_SCRIPT = f"""
         import {{ TextCueSManager }} from '/{wapp_settings.js}textcues_manager.js';
@@ -118,7 +122,7 @@ class TextCueSView(swappBaseView):
         self._htree.head.link(rel="logo icon", href=wapp_settings.icons + "Refine/textcues.png")
         self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
         self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/dialog.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "page_textcues.css", link_type="text/css")
+        self._htree.head.link("stylesheet", wapp_settings.css + "app_textcues.css", link_type="text/css")
 
         # JS
         # ----
@@ -136,10 +140,42 @@ class TextCueSView(swappBaseView):
 
     # -----------------------------------------------------------------------
 
-    def _populate_body_header(self) -> None:
-        """Override. Populate the header area of the TextCueS coding page.
+    def populate_body_header(self, title, *args, **kwargs):
+        """Override. Populate the `<header>` section of the page.
+
+        Replaces the current header with a :class:`SwappHeader` instance and
+        delegates additional customization to `_populate_body_header()`.
 
         """
+        self._htree.body_header.set_attribute("id", "header-content")
+
+        # Skip button, for accessibility compliance
+        a = HTMLNode(self._htree.body_header.identifier, None, "a", value=MSG_SKIP)
+        a.set_attribute("role", "button")
+        a.set_attribute("class", "skip")
+        a.set_attribute("href", "#main-content")
+        a.set_attribute("aria-label", "skip-to-content")
+        self._htree.body_header.append_child(a)
+
+        _c = TagNode(self._htree.body_header.identifier, None, "section")
+        _c.set_attribute("id", "link-title-header")
+        self._htree.body_header.append_child(_c)
+
+        # Application logo
+        home_link = TagNode(_c.identifier, None, "a")
+        home_link.set_attribute("href", "textcues.html")
+        home_link.set_attribute("role", "button")
+        logo = EmptyNode(home_link.identifier, None, "img")
+        logo.set_attribute("src", wapp_settings.icons + "Refine/textcues.png")
+        logo.set_attribute("id", "home-link-logo")
+        home_link.append_child(logo)
+        _c.append_child(home_link)
+
+        # Application title
+        h1 = HTMLNode(_c.identifier, None, "h1", value=title)
+        _c.append_child(h1)
+
+        # Application page title
         self.append_responsive_menu_button(self._htree.body_header)
         _value = MSG_APP_TITLE1 if self._is_welcome else MSG_APP_TITLE2
         _h2 = HTMLNode(self._htree.body_header.identifier, None, "h2", value=_value)
@@ -156,18 +192,15 @@ class TextCueSView(swappBaseView):
         self._htree.body_nav.add_attribute("class", "collapsible")
 
         _s = TagNode(self._htree.body_nav.identifier, None, "section")
-        self._htree.body_nav.append_child(_s)
-        self.append_accessibility_buttons(_s)
-
-        _s = TagNode(self._htree.body_nav.identifier, None, "section")
-        self._htree.body_nav.append_child(_s)
-        NavUtils.append_home_link_button(_s)
         self.append_pin_button(_s)
+        self.append_accessibility_buttons(_s)
+        self._htree.body_nav.append_child(_s)
 
         _s = TagNode(self._htree.body_nav.identifier, None, "section")
-        self._htree.body_nav.append_child(_s)
+        NavUtils.append_home_link_button(_s)
         NavUtils.append_acs_link_button(_s)
         self.append_sppas_link_button(_s)
+        self._htree.body_nav.append_child(_s)
 
     # -----------------------------------------------------------------------
 
@@ -252,6 +285,7 @@ class TextCueSView(swappBaseView):
         if "error" in record.extras:
             error_dlg = self._htree.body_main.get_child("error_dialog")
             _n = YoyoErrorNode(error_dlg.identifier)
+            _n.add_attribute("class", "width_30")
             error_dlg.append_child(_n)
 
             _p = HTMLNode(error_dlg.identifier, None, "p", value=MSG_ERROR_DETAILS)
@@ -264,6 +298,7 @@ class TextCueSView(swappBaseView):
         elif "info" in record.extras:
             info_dlg = self._htree.body_main.get_child("info_dialog")
             _n = YoyoInfoNode(info_dlg.identifier, record.extras['info'])
+            _n.add_attribute("class", "width_30")
             info_dlg.append_child(_n)
 
     # -----------------------------------------------------------------------

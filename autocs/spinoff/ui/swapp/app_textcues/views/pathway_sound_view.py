@@ -5,7 +5,7 @@
 :summary: View of the "TextCueS" pathway "Pronunciation" page.
 
 ..
-    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    This file is part of AutoCS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
     Copyright (C) 2021-2026  Brigitte Bigi, CNRS
@@ -62,6 +62,7 @@ HTML_REFERENCE = """
                 ISBN: 978-83-232-4176-8, pp. 24-28, Poznań, Poland.
             </p>
         </blockquote>
+        
         <blockquote>
             <p>
                 Núria Gala, Brigitte Bigi, Marie Bauer (2024).

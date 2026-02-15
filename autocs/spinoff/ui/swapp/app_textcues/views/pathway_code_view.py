@@ -5,7 +5,7 @@
 :summary: View of the "TextCueS" pathway "Code" page (result).
 
 ..
-    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    This file is part of AutoCS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
     Copyright (C) 2021-2026  Brigitte Bigi, CNRS
@@ -60,42 +60,44 @@ from .pathway_base_view import PathwayBaseView
 HTML_REFERENCE = """
     <h3>{:s}</h3>
 
-    <blockquote><p>
-        Maroula S. Bratakos, Paul Duchnowski and Louis D. Braida (1998).
-        <span class="reference-italic">Toward the Automatic Generation
-        of Cued Speech.</span> Cued Speech Journal VI 1998 p1-37.
-    </p>
-    <a href="https://cuedspeech.org/wp-content/uploads/2023/10/CS_Journal_Vol6_Toward_Automatic_Generation_of_Cued_Speech.pdf">PDF</a>
-    </blockquote>
     <blockquote>
-    <p>
-        Paul Duchnowski, Louis D. Braida, David S. Lum, Matthew G. Sexton, Jean C. Krause, Smriti Banthia (1998).
-        <span class="reference-italic">AUTOMATIC GENERATION OF CUED SPEECH FOR THE DEAF: STATUS AND OUTLOOK</span>
-    </p>
-    <a href="https://www.isca-archive.org/avsp_1998/duchnowski98_avsp.pdf">PDF</a>
+        <p>
+            Maroula S. Bratakos, Paul Duchnowski and Louis D. Braida (1998).
+            <a class="external-link" href="https://cuedspeech.org/wp-content/uploads/2023/10/CS_Journal_Vol6_Toward_Automatic_Generation_of_Cued_Speech.pdf">
+            Toward the Automatic Generation of Cued Speech.</a>
+            Cued Speech Journal VI 1998 p1-37.
+        </p>
     </blockquote>
+    
     <blockquote>
-    <p>
-        Paul Duchnowski, Louis D. Braida, Maroula Bratakos, David S. Lum, Matthew G. Sexton, Jean C. Krause. (1998)
-        <span class="reference-italic">A SPEECHREADING AID BASED ON PHONETIC ASR</span>
-    </p>
-    <a href="https://www.isca-archive.org/icslp_1998/duchnowski98_icslp.pdf">PDF</a>
+        <p>
+            Paul Duchnowski, Louis D. Braida, David S. Lum, Matthew G. Sexton, Jean C. Krause, Smriti Banthia (1998).
+            <a class="external-link" href="https://www.isca-archive.org/avsp_1998/duchnowski98_avsp.pdf">AUTOMATIC GENERATION OF CUED SPEECH FOR THE DEAF: STATUS AND OUTLOOK</a>
+        </p>    
     </blockquote>
+    
     <blockquote>
-    <p>
-        Paul Duchnowski, David S. Lum, Jean C. Krause, Matthew G. Sexton,
-        Maroula S. Bratakos, and Louis D. Braida (2000).
-        <span class="reference-italic">Development of Speechreading Supplements
-        Based in Automatic Speech Recognition .</span>
-        IEEE Transactions on Biomedical Engineering, vol. 47, no. 4, pp. 487-496. doi: 10.1109/10.828148.
-    </p>
+        <p>
+            Paul Duchnowski, Louis D. Braida, Maroula Bratakos, David S. Lum, Matthew G. Sexton, Jean C. Krause. (1998)
+            <a class="external-link" href="https://www.isca-archive.org/icslp_1998/duchnowski98_icslp.pdf">A SPEECHREADING AID BASED ON PHONETIC ASR</a>
+        </p>
     </blockquote>
-    <blockquote><p>
-        Virginie Attina Dubesset (2005).
-        <span class="reference-italic">La langue française parlée complétée (LPC) : production et perception.</span>
-        PhD Thesis of INPG Grenoble, France.
-    </p>
-    <a href="https://tel.archives-ouvertes.fr/file/index/docid/384080/filename/these_attina.pdf">PDF</a>
+    
+    <blockquote>
+        <p>
+            Paul Duchnowski, David S. Lum, Jean C. Krause, Matthew G. Sexton,
+            Maroula S. Bratakos, and Louis D. Braida (2000).
+            Development of Speechreading Supplements Based in Automatic Speech Recognition.
+            IEEE Transactions on Biomedical Engineering, vol. 47, no. 4, pp. 487-496. doi: 10.1109/10.828148.
+        </p>
+    </blockquote>
+    
+    <blockquote>
+        <p>
+            Virginie Attina Dubesset (2005).
+            <a class="external-link" href="https://tel.archives-ouvertes.fr/file/index/docid/384080/filename/these_attina.pdf">La langue française parlée complétée (LPC) : production et perception.</a>
+            PhD Thesis of INPG Grenoble, France.
+        </p>
     </blockquote>
 """.format(MSG_SEE_ALSO)
 
@@ -182,7 +184,7 @@ class PathwayCodeView(PathwayBaseView):
         # self._fills_in_inputs(_fieldset)
 
         # The coded sequence
-        _h3 = HTMLNode(self._parent.identifier, None, "h3", value=MSG_RESULT)
+        _h3 = HTMLNode(self._parent.identifier, None, "section", value="<h3>" + MSG_RESULT + "</h3>")
         self._parent.append_child(_h3)
 
         # The container, and its content, for the visual display of the coded sequence

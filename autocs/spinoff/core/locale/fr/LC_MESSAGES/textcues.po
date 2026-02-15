@@ -11,6 +11,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
+msgid "Supported by FIRAH"
+msgstr "Ce travail a été rendu possible grâce au soutien financier de la FIRAH – Recherche Appliquée sur le Handicap, au cours du projet APa2022_022 intitulé « Voir les sons avec du Cued Speech automatisé : la réalité augmentée au service des personnes sourdes »."
+
+msgid "Text Cues Concept Document"
+msgstr "Si vous êtes curieux de savoir ce qu'est TextCueS et comment il a été créé, vous pouvez consulter son document conceptuel : "
+
 msgid "INTRO"
 msgstr "<h3>TextCueS</h3><p>TextCueS permet de générer et de pratiquer le codage en Langue française Parlée Complétée (Cued Speech) à partir d’un texte.</p><p>Le parcours est guidé : vous saisissez un texte, vous pouvez ajuster les sons, puis vous obtenez le code correspondant.</p><p>L’outil s’adresse à toute personne souhaitant comprendre ou pratiquer le codage LfPC, pour accompagner, apprendre, ou découvrir.</p><h3>Prêt à essayer ?</h3>"
 
@@ -56,13 +62,13 @@ msgstr "Je choisis la langue et je saisis le texte à coder en Cued Speech / LfP
 msgid "Step 1 of 3 — Language and text"
 msgstr "Étape 1/3 — Langue et texte"
 
-msgid "Text language:"
-msgstr "Langue du texte :"
+msgid "I select the text language:"
+msgstr "Je sélectionne la langue du texte :"
 
-msgid "Enter or edit the text to code:"
+msgid "I enter or edit the text to code:"
 msgstr "Saisissez ou corrigez le texte à coder :"
 
-msgid "Enter or paste your text here"
+msgid "I enter or paste a text here"
 msgstr "Saisissez ou collez votre texte ici"
 
 msgid "I check and adjust the pronunciation of the text"

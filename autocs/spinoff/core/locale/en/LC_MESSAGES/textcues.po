@@ -11,6 +11,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
+msgid "Supported by FIRAH"
+msgstr "This work was supported by FIRAH (Applied Disability Research) through the APa2022_022 project, “Seeing Sounds with Automated Cued Speech: Augmented Reality for Deaf People."
+
+msgid "Text Cues Concept Document"
+msgstr "If you’d like to learn what TextCueS is and how it was developed, you can consult its conceptual document (in French):"
+
 msgid "INTRO"
 msgstr "<h3>TextCueS</h3><p>TextCueS lets you generate and practise Cued Speech coding from a written text.</p><p>The pathway is step by step: you enter a text, you can adjust the sounds, and then obtain the corresponding code.</p><p>TextCueS is intended for anyone who wishes to understand or practise coding, whether to support someone, to learn, or simply to explore.</p> <p></p><h3>Ready to try?</h3>"
 

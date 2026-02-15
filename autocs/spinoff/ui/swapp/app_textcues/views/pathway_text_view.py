@@ -5,7 +5,7 @@
 :summary: View of the "TextCueS" pathway "Input Lang & Text" page.
 
 ..
-    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    This file is part of AutoCS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
     Copyright (C) 2021-2026  Brigitte Bigi, CNRS
@@ -53,20 +53,25 @@ HTML_REFERENCE = """
     <h3>{:s}</h3>
 
     <blockquote>
+        <p>
             Brigitte Bigi (2014).
             <a class="external-link" href="http://link.springer.com/chapter/10.1007/978-3-319-08958-4_42">
                   A Multilingual Text Normalization Approach.
             </a>
             Human Language Technology. Challenges for Computer Science and Linguistics,
             LNAI 8387, pp. 515–526.
+        </p>
     </blockquote>
+    
     <blockquote>
+        <p>
             Brigitte Bigi (2016).
             <a class="external-link" href="http://link.springer.com/chapter/10.1007%2F978-3-319-43808-5_30">
                   A phonetization approach for the forced-alignment task in SPPAS.
             </a>
             Human Language Technology. Challenges for Computer Science and Linguistics, 
             LNAI 9561, pp. 397-410.
+        </p>
     </blockquote>
 """.format(MSG_SEE_ALSO)
 
