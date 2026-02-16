@@ -30,6 +30,7 @@
 
 """
 
+from __future__ import annotations
 from whakerpy.htmlmaker import HTMLNode
 from sppas.ui.swapp.wappsg import wapp_settings
 

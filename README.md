@@ -321,5 +321,7 @@ Migrated to Whakerexa 2.0.
 
 ### 2.0 - Attached to SPPAS-4.31
 
-Introduced TextCueS.
+- Deleted textcued app.
+- Introduced TextCueS app, described here: <https://hal.science/hal-5511364/>
 
+See TextCueS in action at: <https://sppas.org/textcues.html>

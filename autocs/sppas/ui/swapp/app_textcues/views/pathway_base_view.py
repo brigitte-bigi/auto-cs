@@ -30,6 +30,7 @@
 
 """
 
+from __future__ import annotations
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 
@@ -129,7 +130,7 @@ class PathwayBaseView:
                 # Step number -- aria-hidden
                 _span = HTMLNode(_li.identifier, None, "span", value=f"{_i + 1}")
                 _span.add_attribute("class", "tile-step-nb")
-                # _span.add_attribute("aria-hidden", "true")
+                _span.add_attribute("aria-hidden", "true")
                 _li.append_child(_span)
 
                 # Step name

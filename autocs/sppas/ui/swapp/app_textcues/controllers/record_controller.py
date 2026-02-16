@@ -30,6 +30,8 @@
 
 """
 
+from __future__ import annotations
+import logging
 import traceback
 
 from ..textcues_record import TextCueSRecord
@@ -134,9 +136,10 @@ class TextCueSRecordController:
             else:
                 _record.reset_results()
 
-        except:
+        except Exception as e:
             _record.pathway = ''
             _record.reset_results()
-            _record.set_extra('error', traceback.format_exc())
+            logging.error(traceback.format_exc())
+            _record.set_extra('error', str(e))
 
         return _record

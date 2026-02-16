@@ -180,7 +180,7 @@ class CuedCode:
         parent.append_child(_li)
 
         _span = HTMLNode(_li.identifier, None, "span", value=phon)
-        # _span.add_attribute("aria-hidden", "true")
+        _span.add_attribute("aria-hidden", "true")
         _li.append_child(_span)
 
         return _li
@@ -191,7 +191,7 @@ class CuedCode:
     def coded_illus(parent: TagNode) -> TagNode:
         _figure = TagNode(parent.identifier, None, "figure")
         _figure.add_attribute("class", "key-illus")
-        # _figure.add_attribute("aria-hidden", "true")
+        _figure.add_attribute("aria-hidden", "true")
         parent.append_child(_figure)
 
         return _figure

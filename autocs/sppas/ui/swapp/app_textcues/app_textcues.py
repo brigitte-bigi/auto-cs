@@ -35,8 +35,7 @@ import logging
 
 from whakerpy.httpd import BaseResponseRecipe
 from sppas.ui.swapp import sppasImagesAccess
-
-from ..apps.swapp_bakery import swappWebData
+from sppas.ui.swapp.apps.swapp_bakery import swappWebData
 
 from .textcuesmaker import TextCueSResponseRecipe
 from .app_launcher import TextCueSLauncherRecipe

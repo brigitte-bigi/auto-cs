@@ -89,8 +89,6 @@ class TextCueSController:
         :param data: (dict) Data received from the client, expected to match a serialized TextCueSRecord.
 
         """
-        print("* * * *  Controller handle with data: * * * * ")
-        print(data)
         # First access to the app: no previous record.
         if "pathway" not in data:
             self.__record = self.__record_controller.init_record()
@@ -101,7 +99,6 @@ class TextCueSController:
         self.__record_controller.set_record_extras(self.__record)
         self.__model.set_lang(self.__record.lang)
 
-        print(f" => record: {self.__record}")
         if self.__record.pathway == "":
             return
 
@@ -143,9 +140,6 @@ class TextCueSController:
         to the current record.
 
         """
-        print(" Je vais aller populate la vue avec : ")
-        print(self.__record)
-        print(self.__record.extras)
         self.__view.populate_tree_content(self.__record)
 
     # -----------------------------------------------------------------------
@@ -256,8 +250,9 @@ class TextCueSController:
             else:
                 raise Exception(MSG_ERROR_NO_TEXT)
 
-        except:
-            self.__record.extras["error"] = traceback.format_exc()
+        except Exception as e:
+            logging.error(traceback.format_exc())
+            self.__record.extras["error"] = str(e)
 
         # Invalidate the previously estimated results
         if "error" in self.__record.extras:
@@ -290,9 +285,9 @@ class TextCueSController:
                     self.__record.textnorm,
                     self.__record.phonetize
                 )
-        except:
+        except Exception as e:
             logging.error(traceback.format_exc())
-            self.__record.set_extra("error", traceback.format_exc())
+            self.__record.set_extra("error", str(e))
 
     # -----------------------------------------------------------------------
 
@@ -340,9 +335,9 @@ class TextCueSController:
         except NotImplementedError:
             self.__record.set_extra("info", MSG_YOYO_NOT_YET)
 
-        except:
+        except Exception as e:
             logging.error(traceback.format_exc())
-            self.__record.set_extra("error", traceback.format_exc())
+            self.__record.set_extra("error", str(e))
 
         else:
             # Transfer the result to the view via record.extras

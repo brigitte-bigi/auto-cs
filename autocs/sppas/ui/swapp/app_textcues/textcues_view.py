@@ -30,6 +30,7 @@
 
 """
 
+from __future__ import annotations
 from whakerpy.htmlmaker import HTMLTree
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker import EmptyNode
