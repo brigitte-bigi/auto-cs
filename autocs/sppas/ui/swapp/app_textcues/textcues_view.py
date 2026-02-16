@@ -34,7 +34,7 @@ from __future__ import annotations
 from whakerpy.htmlmaker import HTMLTree
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker import EmptyNode
-from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
+from whakerpy.htmlmaker import TagNode
 
 from sppas.ui import _
 from sppas.ui.swapp.wappsg import wapp_settings
@@ -184,14 +184,8 @@ class TextCueSView(swappBaseView):
 
     # -----------------------------------------------------------------------
 
-    def populate_body_nav(self, *args, **kwargs):
+    def _populate_body_nav(self, *args, **kwargs):
         """Override. Populate the `<nav>` body section."""
-        self._htree.body_nav.add_attribute("id", "nav-content")
-        self._htree.body_nav.add_attribute("name", "nav-content")
-        self._htree.body_nav.add_attribute("class", "nav-wexa")
-        self._htree.body_nav.add_attribute("class", "side")
-        self._htree.body_nav.add_attribute("class", "collapsible")
-
         _s = TagNode(self._htree.body_nav.identifier, None, "section")
         self.append_pin_button(_s)
         self.append_accessibility_buttons(_s)

@@ -114,7 +114,6 @@ class TextCueSWebData(swappWebData):
         :return: (BaseResponseRecipe|None) A recipe instance, or None.
 
         """
-        return TextCueSResponseRecipe()
         logging.info(f"Requested page name: {page_name}")
 
         # Create the Pathway ResponseRecipe
