@@ -215,29 +215,6 @@ export default class TextCueSManager extends BaseManager {
     }
 
     // ----------------------------------------------------------------------
-    // Random page generation
-    // ----------------------------------------------------------------------
-
-    /**
-     * Return a random TextCueS page name.
-     *
-     * Format: "textcues_" + 32 hex chars + ".html" (128-bit random).
-     *
-     * @returns {string} A random page name starting with "textcues_".
-     */
-    pageRandom() {
-        const bytes = new Uint8Array(16);
-        crypto.getRandomValues(bytes);
-
-        let hex = '';
-        for (const b of bytes) {
-            hex += b.toString(16).padStart(2, '0');
-        }
-
-        return TextCueSManager.#PATTERN_PAGE + hex + '.html';
-    }
-
-    // ----------------------------------------------------------------------
     // MENU
     // ----------------------------------------------------------------------
 
@@ -312,7 +289,7 @@ export default class TextCueSManager extends BaseManager {
     #onPathwayStartLinkClick(event) {
         event.stopImmediatePropagation();
 
-        const relative = this.pageRandom();
+        const relative = event.currentTarget.getAttribute('href');
         const absolute = new URL(relative, window.location.href).href;
 
         const target = window.Wexa.accessibility.setUrlWithParameters(absolute);
@@ -353,8 +330,7 @@ export default class TextCueSManager extends BaseManager {
             }
         }
 
-        // Change the re-routing URL. Prevent some robots to follow the pathway.
-        form.action = this.pageRandom();
+        //
         form.action = window.Wexa.accessibility.setUrlWithParameters(form.action);
     }
 
@@ -706,8 +682,7 @@ export default class TextCueSManager extends BaseManager {
             }
         }
 
-        // Change the re-routing URL. Prevent some robots to follow the pathway.
-        form.action = this.pageRandom();
+        //
         form.action = window.Wexa.accessibility.setUrlWithParameters(form.action);
     }
 
@@ -727,8 +702,7 @@ export default class TextCueSManager extends BaseManager {
             return;
         }
 
-        // Change the re-routing URL. Prevent some robots to follow the pathway.
-        form.action = this.pageRandom();
+        //
         form.action = window.Wexa.accessibility.setUrlWithParameters(form.action);
     }
 

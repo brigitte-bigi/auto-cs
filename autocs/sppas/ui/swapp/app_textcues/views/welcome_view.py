@@ -43,6 +43,7 @@ from ..textcues_msg import MSG_SEE_ALSO
 
 from .nodes.yoyo_message import YoyoMessageNode
 from .nodes.button_action import ActionLinkNode
+from .nodes.tags import HTMLTag
 
 # ---------------------------------------------------------------------------
 
@@ -75,7 +76,7 @@ class TextCueSWelcomeView:
 
         # section 2
         # ---------
-        _action = ActionLinkNode(parent.identifier,"pathway_welcome_button", "")
+        _action = ActionLinkNode(parent.identifier, "pathway_welcome_button", HTMLTag.page_random())
         _action.set_icon(None, wapp_settings.images + "textcues/yoyo_1.png")
         _action.set_text(MSG_LAUNCH)
         parent.append_child(_action)

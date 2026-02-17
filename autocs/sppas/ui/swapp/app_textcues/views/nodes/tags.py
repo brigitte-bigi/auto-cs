@@ -30,6 +30,7 @@
 
 """
 
+import secrets
 from whakerpy.htmlmaker.emptynodes import EmptyNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 from whakerpy.htmlmaker.htmnodes.htmnode import HTMLNode
@@ -81,11 +82,15 @@ class HTMLTag:
         _form.add_attribute("id", identifier)
         _form.add_attribute("method", "POST")
         if identifier.startswith("pathway"):
-            _form.add_attribute("action", "textcues_guid.html")
+            _form.add_attribute("action", HTMLTag.page_random())
         parent.append_child(_form)
         return _form
 
     # -----------------------------------------------------------------------
+
+    @staticmethod
+    def page_random() -> str:
+        return 'textcues_' + secrets.token_hex(16) + '.html'
 
     # -----------------------------------------------------------------------
 
