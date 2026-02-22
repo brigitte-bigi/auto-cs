@@ -236,8 +236,7 @@ Annotations can be performed thanks to `sppas/bin/autocs.py`.
 
 ### Graphical-User Interface
 
-
-
+TextCues (incoming doc).
 
 Another user interface is under development. It allows the automatic encoding 
 of a video. Its development is less than 30%.
@@ -291,21 +290,21 @@ or products, in accordance with the best practices of the AGPL license.
 Use the following reference to cite AutoCuedSpeech:
 
 > Brigitte Bigi. AutoCuedSpeech, Automatic generation of Cued Speech.
-> Version 1.0. 2025. <https://autocs.sourceforge.net>
+> Version 2.0. 2026. <https://autocs.sourceforge.net>
 
 Check version for update.
 
 
 ### Logos and images
 
-The AutoCuedSpeech project logo was designed by Laurent Lopez - see 
-"le Nébleu" at <https://laurentlopez-creations.com/>, and is used with 
-full rights granted to the project. 
-It is not covered by the AGPL license. All rights reserved.
-
-Other logos and images were designed by Brigitte Bigi.
+Logos and images were designed by Brigitte Bigi.
 They are under the terms of CC BY-NC-ND 4.0,
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.
+
+The AutoCuedSpeech project logo, included in this tool, was designed by 
+Laurent Lopez - see "le Nébleu" at <https://laurentlopez-creations.com/>, 
+and is used with full rights granted to the project. 
+It is not covered by the AGPL license. All rights reserved.
 
 
 ## Versions
@@ -325,3 +324,4 @@ Migrated to Whakerexa 2.0.
 - Introduced TextCueS app, described here: <https://hal.science/hal-5511364/>
 
 See TextCueS in action at: <https://sppas.org/textcues.html>
+and at: <https://auto-cuedspeech.org/textcues.html>
