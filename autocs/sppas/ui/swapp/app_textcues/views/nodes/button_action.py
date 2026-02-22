@@ -78,7 +78,7 @@ class ActionLinkNode(HTMLNode):
         if len(target_page.strip()) > 0:
             self.add_attribute('href', target_page)
         self.add_attribute('role', "button")
-        self.add_attribute('class', "app-button")
+        self.add_attribute('class', "app-textcues-button")
 
     def set_text(self, text):
         if len(text.strip()) > 0:
@@ -104,7 +104,7 @@ class ActionButton(HTMLNode):
         """
         super(ActionButton, self).__init__(parent_id, identifier,"button")
         self.add_attribute('id', identifier )
-        self.add_attribute('class', "app-button")
+        self.add_attribute('class', "app-textcues-button")
 
     def set_text(self, text):
         if len(text.strip()) > 0:

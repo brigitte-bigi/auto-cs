@@ -417,7 +417,7 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 /* Action buttons                          */
 /* --------------------------------------- */
 
-.app-button {
+.app-textcues-button {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -436,16 +436,16 @@ nav#nav-content.nav-wexa.side:not(.dark) {
     transition: background-position 200ms ease-in-out;
 }
 
-.app-button:hover {
+.app-textcues-button:hover {
     background-image: var(--action-buttons-hover-bg-color) !important;
 }
 
-.app-button img {
+.app-textcues-button img {
     max-height: 90%;
     width: 3rem;
 }
 
-.app-button span {
+.app-textcues-button span {
     font-weight: var(--font-weight-semibold);
 }
 
