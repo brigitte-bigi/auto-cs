@@ -35,7 +35,7 @@ from .phonestokeys import CuedSpeechKeys
 # ---------------------------------------------------------------------------
 
 
-class CueingRulesAdapter:
+class _CueingRulesAdapter:
     """Normalize phoneme sequences for stable alignment with Cued Speech output.
 
     This helper applies the same transformations as the Cued Speech pipeline:
@@ -148,7 +148,7 @@ class CueingPronTokenizer:
         """Create a new instance.
 
         """
-        self.__rules = CueingRulesAdapter(key_rules)
+        self.__rules = _CueingRulesAdapter(key_rules)
 
     # -----------------------------------------------------------------------
 

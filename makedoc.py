@@ -54,6 +54,15 @@ logging.getLogger().setLevel(0)
 # List of modules to be documented.
 packages = list()
 packages.append(CuedSpeech)
+packages.append(CuedSpeech.whatkey)
+packages.append(CuedSpeech.whenhand)
+packages.append(CuedSpeech.whenhand.transition)
+packages.append(CuedSpeech.wherecue)
+packages.append(CuedSpeech.wherecue.angle)
+packages.append(CuedSpeech.wherecue.position)
+packages.append(CuedSpeech.whowtag)
+packages.append(CuedSpeech.whowtag.hands)
+packages.append(CuedSpeech.whowtag.whowimgtag)
 
 # Options for HTML exportation
 opts_export = clamming.ExportOptions()

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="WhenTransitionPredictorAttina. Predict hand transition moments with (Attina, 2005) method." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="WhenTransitionPredictorDuchnowski2000.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WhenTransitionPredictorRules.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whenhand.transition">    <h1>Module CuedSpeech.whenhand.transition</h1>
+<section id="#WhenTransitionPredictorAttina">
+<h2>Class WhenTransitionPredictorAttina</h2>
+
+<section>
+<h3 id="#description_WhenTransitionPredictorAttina">Description</h3>
+    <article class="docstring">
+<p><em>Predict hand transition moments with (Attina, 2005) method.</em></p>
+
+<blockquote>
+  <p>Virginie Attina Dubesset (2005)
+  La langue française parlée complétée (LPC) : production et perception.
+  PhD Thesis of INPG Grenoble, France.
+  Page 117, page 136 and page 148
+  https://tel.archives-ouvertes.fr/file/index/docid/384080/filename/these_attina.pdf</p>
+</blockquote>
+
+<p>See page 112 (Experiment 1, no shape change, position changes, CV syllables):</p>
+
+<ul>
+<li>The average key duration is 399.5ms</li>
+<li>M1A1: mean duration is 239 ms (std is 87ms)  =&gt; 60%</li>
+<li>A1M2: mean duration is 37 ms (std is 76ms)   =&gt; 9%</li>
+</ul>
+
+<p>See page 113 (Experiment 1, no shape change, position changes, V syllables):</p>
+
+<ul>
+<li>The average key duration is 383.6ms</li>
+<li>M1A1: mean duration is 183 ms (std is 79ms)  =&gt; 47%</li>
+<li>A1M2: mean duration is 84 ms (std is 64ms)   =&gt; 22%</li>
+</ul>
+
+<p>Both results are summarized in the scheme page 117.</p>
+
+<p>See page 118 (Experiment 2, shape changes, position doesn't), results page 123-124:</p>
+
+<ul>
+<li>The average CV key duration is 275ms</li>
+<li>D1A1: mean duration is 124 ms (std is 34ms)</li>
+<li>A1D2: mean duration is 46 ms (std is 35ms)</li>
+</ul>
+
+<p>See page 119 (Experiment 2, both shape/position change), results page 124-</p>
+
+<ul>
+<li>The average CV key duration is 316.3ms</li>
+<li>D1A1: mean duration is 171 ms (std is 48ms)    =&gt; 54%</li>
+<li>A1D2: mean duration is -3 ms (std is 45ms)     =&gt; 0%</li>
+<li>M1A1: mean duration is 205 ms (std is 54.5ms)  =&gt; 65%</li>
+<li>A1M2: mean duration is 33 ms (std is 50ms)     =&gt; 10%</li>
+</ul>
+
+<p>Both results are summarized in the scheme page 128.</p>
+
+<p>A general synchronization scheme is proposed page 136 with percentages
+instead of durations; and extended to 3 more speakers page 148.</p>
+
+<p>The percentages implemented in this class are related to an average
+key duration of 399.5ms (Experiment 1).</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_WhenTransitionPredictorAttina">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate (Attina, 2005) hand transition moment's predictor.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate (Attina, 2005) hand transition moment&#39;s predictor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">WhenTransitionPredictorAttina</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_ATTINA</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_static_duration</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_WhenTransitionPredictorAttina">Public functions</h3>
+<h4>predict_position</h4>
+
+    <article class="docstring">
+<p><em>Predict [M1,M2] the moments when the hand is moving.</em></p>
+
+<p>To predict M2:
+- if CV key: both page 136 and page 117, M2 is 10% later than A1.
+- if -V key: page 117, M2 is 21% later than A1.
+- if C- key: no information. CV key case is used.</p>
+
+<p>To predict M1:
+- if CV key: page 136 M1 is 62-65% of A1A3, but page 117, M1 is 60% of A1A3
+- if -V key: page 117, M1 is 46% of A1A3
+- if C- key: no information. CV key case is used.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>is<em>nil</em>shape</strong>: (<em>bool</em>) True is the key is of the form "-V", i.e. no consonant</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>tuple(m1</strong>: float, m2: float)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1,M2] the moments when the hand is moving.</span>
+
+<span class="sd">        To predict M2:</span>
+<span class="sd">            - if CV key: both page 136 and page 117, M2 is 10% later than A1.</span>
+<span class="sd">            - if -V key: page 117, M2 is 21% later than A1.</span>
+<span class="sd">            - if C- key: no information. CV key case is used.</span>
+
+<span class="sd">        To predict M1:</span>
+<span class="sd">            - if CV key: page 136 M1 is 62-65% of A1A3, but page 117, M1 is 60% of A1A3</span>
+<span class="sd">            - if -V key: page 117, M1 is 46% of A1A3</span>
+<span class="sd">            - if C- key: no information. CV key case is used.</span>
+
+<span class="sd">        :param is_nil_shape: (bool) True is the key is of the form &quot;-V&quot;, i.e. no consonant</span>
+<span class="sd">        :return: tuple(m1: float, m2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">is_nil_shape</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">a1m2</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.1</span>
+        <span class="n">m1a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.62</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a1m2</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.21</span>
+        <span class="n">m1a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.46</span>
+    <span class="n">m1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="n">m1a1</span><span class="p">)</span>
+    <span class="n">m2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">+</span> <span class="n">a1m2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_shape</h4>
+
+    <article class="docstring">
+<p><em>Predict [D1,D2] the moments when fingers are changing.</em></p>
+
+<p>D1 and D2 are predicted from the key duration only. Following the
+model proposed page 136:</p>
+
+<ul>
+<li>D2 is right before A1 (1%).</li>
+<li>Estimating D1D2 interval, which is 55% of A3A1, gives D1 position
+related to D2.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>(d1</strong>: float, d2: float)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>is<em>nil</em>shape</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1,D2] the moments when fingers are changing.</span>
+
+<span class="sd">        D1 and D2 are predicted from the key duration only. Following the</span>
+<span class="sd">        model proposed page 136:</span>
+
+<span class="sd">        - D2 is right before A1 (1%).</span>
+<span class="sd">        - Estimating D1D2 interval, which is 55% of A3A1, gives D1 position</span>
+<span class="sd">          related to D2.</span>
+
+<span class="sd">        :return: (d1: float, d2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">is_nil_shape</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">d2d1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.54</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d2d1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.36</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="n">d2d1</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

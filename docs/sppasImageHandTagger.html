@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasImageHandTagger. Overlay the picture of a hand or a badge on an image." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.hands.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="sppasImageVowelPosTagger.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whowtag.whowimgtag">    <h1>Module CuedSpeech.whowtag.whowimgtag</h1>
+<section id="#sppasImageHandTagger">
+<h2>Class sppasImageHandTagger</h2>
+
+<section>
+<h3 id="#description_sppasImageHandTagger">Description</h3>
+    <article class="docstring">
+<p><em>Overlay the picture of a hand or a badge on an image.</em></p>
+
+<p>This class loads a hand set</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_sppasImageHandTagger">Constructor</h3>
+    <article class="docstring">
+<p><em>The constructor of the SppasImageHandTagger class.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes Optional parameter, new instance of CuedSpeechKeys class by default</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter are not an instance of CuedSpeechKeys class</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="o">=</span><span class="n">CuedSpeechKeys</span><span class="p">()):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The constructor of the SppasImageHandTagger class.</span>
+
+<span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
+<span class="sd">                      Optional parameter, new instance of CuedSpeechKeys class by default</span>
+<span class="sd">    :raises: sppasTypeError: If the parameter are not an instance of CuedSpeechKeys class</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechKeys</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="s1">&#39;CuedSpeechKeys&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_vowels_codes</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__badge_color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span> <span class="o">=</span> <span class="n">sppasHandsSet</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_sppasImageHandTagger">Public functions</h3>
+<h4>set_cue_rules</h4>
+
+    <article class="docstring">
+<p><em>Set the CuedSpeechKeys used to tag the video.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) The instance of the cuedSpeechKeys to set</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the CuedSpeechKeys used to tag the video.</span>
+
+<span class="sd">        :param cue_rules: (CuedSpeechKeys) The instance of the cuedSpeechKeys to set</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_vowels_codes</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>apply_hands_filter</h4>
+
+    <article class="docstring">
+<p><em>Apply a filter on all hands images loaded.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>filter_name</strong>: (<em>str</em>) The name of the filter to apply</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasError</em>: If no hands are loaded</li>
+<li><em>sppasValueError</em>: If the given name of the filter is unknown</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_hands_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a filter on all hands images loaded.</span>
+
+<span class="sd">        :param filter_name: (str) The name of the filter to apply</span>
+<span class="sd">        :raises: sppasError: If no hands are loaded</span>
+<span class="sd">        :raises: sppasValueError: If the given name of the filter is unknown</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">apply_hands_filter</span><span class="p">(</span><span class="n">filter_name</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_vowel_rank</h4>
+
+    <article class="docstring">
+<p><em>Get the index from the code of a vowel passed as parameter.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowel_code</strong>: (<em>str</em>) The character code of the vowel One of these characters (for French language) : n, b, c, s, m, t</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) The index of the vowel or -1 if the vowel doesn't exist</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the index from the code of a vowel passed as parameter.</span>
+
+<span class="sd">        :param vowel_code: (str) The character code of the vowel</span>
+<span class="sd">                           One of these characters (for French language) : n, b, c, s, m, t</span>
+<span class="sd">        :return: (int) The index of the vowel or -1 if the vowel doesn&#39;t exist</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">vowel_code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">vowel_code</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>load_hands</h4>
+
+    <article class="docstring">
+<p><em>Load the hands sets (hands image and sights annotations).</em></p>
+
+<p>The hand mode is automatically enabled if all hand pictures and sights
+are properly loaded.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>prefix</strong>: (<em>str</em>) Prefix in hand image filenames</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasIOError</em>: If a hands set found has a missing file (image or annotation)</li>
+<li><em>sppasIOError</em>: Or if a file to read is not found</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) True if the hands set has correctly loaded or False else</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_hands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the hands sets (hands image and sights annotations).</span>
+
+<span class="sd">        The hand mode is automatically enabled if all hand pictures and sights</span>
+<span class="sd">        are properly loaded.</span>
+
+<span class="sd">        :param prefix: (str) Prefix in hand image filenames</span>
+<span class="sd">        :raises: sppasIOError: If a hands set found has a missing file (image or annotation)</span>
+<span class="sd">        :raises: sppasIOError: Or if a file to read is not found</span>
+<span class="sd">        :return: (bool) True if the hands set has correctly loaded or False else</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hands_loaded_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span> <span class="o">=</span> <span class="n">hands_loaded_count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>hand_mode</h4>
+
+    <article class="docstring">
+<p><em>Return True if the hand mode is enabled: a handset is defined.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hand_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the hand mode is enabled: a handset is defined.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>enable_hand_mode</h4>
+
+    <article class="docstring">
+<p><em>Allows to add the pictures of a hand.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>value</strong>: (<em>bool</em>) True to add a hand, False to draw a badge</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasError</em>: If we activate the hand mode, but we don't have hands loaded</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">enable_hand_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows to add the pictures of a hand.</span>
+
+<span class="sd">        :param value: (bool) True to add a hand, False to draw a badge</span>
+<span class="sd">        :raises: sppasError: If we activate the hand mode, but we don&#39;t have hands loaded</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s2">&quot;Hand mode can&#39;t be enable: no hand pictures loaded.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span> <span class="o">=</span> <span class="n">value</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>angle_to_s0</h4>
+
+    <article class="docstring">
+<p><em>Return the angle of the given sight compared to S0-S9 axis.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape_code</strong>: (<em>str</em>) Hand shape vowel code</li>
+<li><strong>sight_index</strong>: (<em>int</em>) The index of the sight</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) the computed angle</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>IntervalRangeException</em>: If the index is negative or out of bounds</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">angle_to_s0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the angle of the given sight compared to S0-S9 axis.</span>
+
+<span class="sd">        :param shape_code: (str) Hand shape vowel code</span>
+<span class="sd">        :param sight_index: (int) The index of the sight</span>
+<span class="sd">        :return: (int) the computed angle</span>
+<span class="sd">        :raises: IntervalRangeException: If the index is negative or out of bounds</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">angle_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>distance_to_s0</h4>
+
+    <article class="docstring">
+<p><em>Get the distance between s0 and a sight of the hand.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape_code</strong>: (<em>str</em>) Shape code name</li>
+<li><strong>sight_index</strong>: (<em>int</em>) The index of the sight</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>IntervalRangeException</em>: If the index is negative or out of bounds</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) the computed distance</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">distance_to_s0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the distance between s0 and a sight of the hand.</span>
+
+<span class="sd">        :param shape_code: (str) Shape code name</span>
+<span class="sd">        :param sight_index: (int) The index of the sight</span>
+<span class="sd">        :raises: IntervalRangeException: If the index is negative or out of bounds</span>
+<span class="sd">        :return: (int) the computed distance</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">distance_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>slap_on</h4>
+
+    <article class="docstring">
+<p><em>Overlay a hand to the given image.</em></p>
+
+<p>hand_sights is the list of S0, S9 and target finger coordinates
+where the hand sights have to be put on the image.
+For example:
+[sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)],</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>image</strong>: (sppasImage or numpy.ndarray) The image that we want tag the hand on it</li>
+<li><strong>shapes</strong>: (<em>list</em>[<em>str</em>, <em>float</em>]) One or two consonant names and their probabilities</li>
+<li><strong>hand_sights</strong>: (<em>list</em>|None) The s0, s9 and target coords. Used to compute the scale factor</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The image with the hand applied on it</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameters have the wrong type</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">slap_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shapes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">hand_sights</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overlay a hand to the given image.</span>
+
+<span class="sd">        hand_sights is the list of S0, S9 and target finger coordinates</span>
+<span class="sd">        where the hand sights have to be put on the image.</span>
+<span class="sd">        For example:</span>
+<span class="sd">        [sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)],</span>
+
+<span class="sd">        :param image: (sppasImage or numpy.ndarray) The image that we want tag the hand on it</span>
+<span class="sd">        :param shapes: (list[str, float]) One or two consonant names and their probabilities</span>
+<span class="sd">        :param hand_sights: (list|None) The s0, s9 and target coords. Used to compute the scale factor</span>
+<span class="sd">        :return: (sppasImage) The image with the hand applied on it</span>
+<span class="sd">        :raises: sppasTypeError: If the parameters have the wrong type</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">img</span>
+    <span class="k">if</span> <span class="n">hand_sights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">hand_sights</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shapes</span><span class="p">))):</span>
+        <span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">shape_proba</span><span class="p">)</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hand_mode</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">hand_sights</span><span class="p">,</span> <span class="s1">&#39;sights_00&#39;</span><span class="p">)</span>
+            <span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eval_hand_scale</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">hand_sights</span><span class="p">)</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eval_hand_rotate_angle</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">hand_sights</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tag_image_with_hand</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">shape_proba</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">hand_sights</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tag_image_with_badge</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">shape_proba</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_coordinates</h4>
+
+    <article class="docstring">
+<p><em>Return the coordinates of the given sights for the given label.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>sights</strong>: (<em>list</em>) List of sppasLabel() with sppasFuzzyPoint representing hand sights</li>
+<li><strong>label_key</strong>: (<em>str</em>) The key of the label to search for coordinates</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>|None) The (x,y,radius) coordinates of the given sights</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_coordinates</span><span class="p">(</span><span class="n">sights</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">label_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the coordinates of the given sights for the given label.</span>
+
+<span class="sd">        :param sights: (list) List of sppasLabel() with sppasFuzzyPoint representing hand sights</span>
+<span class="sd">        :param label_key: (str) The key of the label to search for coordinates</span>
+<span class="sd">        :return: (tuple|None) The (x,y,radius) coordinates of the given sights</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">sight_label</span> <span class="ow">in</span> <span class="n">sights</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sight_label</span><span class="o">.</span><span class="n">get_key</span><span class="p">()</span> <span class="o">==</span> <span class="n">label_key</span><span class="p">:</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="n">sight_label</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+            <span class="n">point</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">get_radius</span><span class="p">())</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_sppasImageHandTagger">Protected functions</h3>
+<h4>__eval_hand_scale</h4>
+
+    <article class="docstring">
+<p><em>Estimate the scale factor for the image of the hand.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape_code</strong>: (<em>str</em>) The code of the hand shape</li>
+<li><strong>sights</strong>: (<em>list</em>[sppasFuzzyPo<em>int</em>]) The sights to compute the scale factor</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>float</em>) The scale factor computed</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the scale factor for the image of the hand.</span>
+
+<span class="sd">        :param shape_code: (str) The code of the hand shape</span>
+<span class="sd">        :param sights: (list[sppasFuzzyPoint]) The sights to compute the scale factor</span>
+<span class="sd">        :return: (float) The scale factor computed</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.4</span>
+    <span class="n">hand_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">shape_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">hand_distance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">default_value</span>
+    <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="s1">&#39;sights_00&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="s1">&#39;sights_09&#39;</span><span class="p">)</span>
+    <span class="n">dist_x</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span><span class="p">)</span>
+    <span class="n">dist_y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span><span class="p">)</span>
+    <span class="n">real_distance</span> <span class="o">=</span> <span class="n">sppasHandProperties</span><span class="o">.</span><span class="n">pythagoras</span><span class="p">(</span><span class="n">dist_x</span><span class="p">,</span> <span class="n">dist_y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">real_distance</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">hand_distance</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__eval_hand_rotate_angle</h4>
+
+    <article class="docstring">
+<p><em>Estimate the rotate angle to the hand corresponds with the sights generated.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+<li><strong>sights</strong>: (<em>list</em>[sppasFuzzyPo<em>int</em>]) A list that contains the s0, s5, s8, s9 and s12</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) The hand rotate angle in degree</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_rotate_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the rotate angle to the hand corresponds with the sights generated.</span>
+
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :param sights: (list[sppasFuzzyPoint]) A list that contains the s0, s5, s8, s9 and s12</span>
+<span class="sd">        :return: (int) The hand rotate angle in degree</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="s1">&#39;sights_00&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="s1">&#39;sights_09&#39;</span><span class="p">)</span>
+    <span class="n">opposite</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span><span class="p">)</span>
+    <span class="n">hypotenuse</span> <span class="o">=</span> <span class="n">sppasHandProperties</span><span class="o">.</span><span class="n">pythagoras</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span><span class="p">))</span>
+    <span class="k">if</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">opposite</span> <span class="o">*</span> <span class="n">hypotenuse</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">asin</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">opposite</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">hypotenuse</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="o">-</span><span class="n">angle</span>
+    <span class="k">elif</span> <span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">+=</span> <span class="mi">180</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">-</span> <span class="n">angle</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="o">-</span><span class="n">angle</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_shape_target</span><span class="p">(</span><span class="n">shape_code</span><span class="p">)</span>
+    <span class="n">angle</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">shape_code</span><span class="p">)</span>
+    <span class="n">angle</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">angle_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__tag_image_with_hand</h4>
+
+    <article class="docstring">
+<p><em>Add a cued speech hand shape on an image.</em></p>
+
+<p>The hand with the passed parameters is automatically resized, rotated and cropped.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>img</strong>: (sppasImage) The image that we want to put the hand on it</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The code of the hand shape</li>
+<li><strong>shape_proba</strong>: (<em>float</em>) The probability of the shape to define the transparency</li>
+<li><strong>x</strong>: (<em>int</em>) The X coordinate of the S0, where to place the hand</li>
+<li><strong>y</strong>: (<em>int</em>) The Y coordinate of S0, where to place the hand</li>
+<li><strong>angle</strong>: (<em>int</em>) The degree angle to rotate the hand</li>
+<li><strong>scale_factor</strong>: (<em>float</em>) Optional parameter, 0.20 by default The scale factor of the hand to be proportional with the face (image)</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The image with the hand applied on it</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__tag_image_with_hand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">sppasImage</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">shape_proba</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a cued speech hand shape on an image.</span>
+
+<span class="sd">        The hand with the passed parameters is automatically resized, rotated and cropped.</span>
+
+<span class="sd">        :param img: (sppasImage) The image that we want to put the hand on it</span>
+<span class="sd">        :param shape_code: (str) The code of the hand shape</span>
+<span class="sd">        :param shape_proba: (float) The probability of the shape to define the transparency</span>
+<span class="sd">        :param x: (int) The X coordinate of the S0, where to place the hand</span>
+<span class="sd">        :param y: (int) The Y coordinate of S0, where to place the hand</span>
+<span class="sd">        :param angle: (int) The degree angle to rotate the hand</span>
+<span class="sd">        :param scale_factor: (float) Optional parameter, 0.20 by default</span>
+<span class="sd">                                    The scale factor of the hand to be proportional with the face (image)</span>
+<span class="sd">        :return: (sppasImage) The image with the hand applied on it</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">shape_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">hand_img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_consonants_codes</span><span class="p">(),</span> <span class="n">shape_code</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">original_hand_width</span><span class="p">,</span> <span class="n">original_hand_height</span><span class="p">)</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">iresize</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">original_hand_width</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">original_hand_height</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">))</span>
+    <span class="n">s0_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s0_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">)</span>
+    <span class="n">s0_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s0_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">resize_hand_width</span><span class="p">,</span> <span class="n">resize_hand_height</span><span class="p">)</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="n">shape_proba</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">shape_proba</span> <span class="o">*</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape_proba</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">ialpha</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">shape_proba</span> <span class="o">*</span> <span class="mf">255.0</span><span class="p">),</span> <span class="n">direction</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">icenter</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">s0_x</span> <span class="o">=</span> <span class="n">s0_x</span> <span class="o">+</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">resize_hand_width</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">s0_y</span> <span class="o">=</span> <span class="n">s0_y</span> <span class="o">+</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">resize_hand_height</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">irotate</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">),</span> <span class="n">redimension</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">top_left_corner_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">s0_x</span>
+    <span class="n">top_left_corner_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">s0_y</span>
+    <span class="n">crop_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">crop_y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">top_left_corner_x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">crop_x</span> <span class="o">=</span> <span class="o">-</span><span class="n">top_left_corner_x</span>
+        <span class="n">top_left_corner_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">top_left_corner_y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">crop_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">top_left_corner_y</span>
+        <span class="n">top_left_corner_y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">crop_x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">crop_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">icrop</span><span class="p">(</span><span class="n">sppasCoords</span><span class="p">(</span><span class="n">crop_x</span><span class="p">,</span> <span class="n">crop_y</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">crop_x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">crop_y</span><span class="p">)))</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">ioverlay</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">sppasCoords</span><span class="p">(</span><span class="n">top_left_corner_x</span><span class="p">,</span> <span class="n">top_left_corner_y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__tag_image_with_badge</h4>
+
+    <article class="docstring">
+<p><em>Tag the image with a circle and a text inside.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>img</strong>: (sppasImage) The image that we want to put the circle and text inside on it</li>
+<li><strong>code</strong>: (<em>str</em>) The code of the hand shape</li>
+<li><strong>shape_proba</strong>: (<em>float</em>) The probability of the hand shape to define the transparency</li>
+<li><strong>x</strong>: (<em>int</em>) The X coordinate (abscissa) where we want to add the hand</li>
+<li><strong>y</strong>: (<em>int</em>) The Y coordinate (ordinate) where we want to add the hand</li>
+<li><strong>radius</strong>: (<em>int</em>) The radius of the circle</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The image with the circle and text inside applied on it</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__tag_image_with_badge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">sppasImage</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">shape_proba</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tag the image with a circle and a text inside.</span>
+
+<span class="sd">        :param img: (sppasImage) The image that we want to put the circle and text inside on it</span>
+<span class="sd">        :param code: (str) The code of the hand shape</span>
+<span class="sd">        :param shape_proba: (float) The probability of the hand shape to define the transparency</span>
+<span class="sd">        :param x: (int) The X coordinate (abscissa) where we want to add the hand</span>
+<span class="sd">        :param y: (int) The Y coordinate (ordinate) where we want to add the hand</span>
+<span class="sd">        :param radius: (int) The radius of the circle</span>
+<span class="sd">        :return: (sppasImage) The image with the circle and text inside applied on it</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__badge_color</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">radius</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape_proba</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">250.0</span> <span class="o">*</span> <span class="n">shape_proba</span><span class="p">)</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">put_text</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">radius</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">put_text</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">radius</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__check_image</h4>
+
+    <article class="docstring">
+<p><em>Check the given image and return it as a sppasImage object.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>image</strong>: (numpy.ndarray) The image to check</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The converted image</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If any parameters is of a wrong type</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__check_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the given image and return it as a sppasImage object.</span>
+
+<span class="sd">        :param image: (numpy.ndarray) The image to check</span>
+<span class="sd">        :return: (sppasImage) The converted image</span>
+<span class="sd">        :raises: sppasTypeError: If any parameters is of a wrong type</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sppasImage</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">sppasImage</span><span class="p">(</span><span class="n">input_aray</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="s1">&#39;sppasImage&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

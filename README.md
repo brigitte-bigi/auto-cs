@@ -231,7 +231,8 @@ It produces a video file.
 
 ### Command-line User Interface
 
-Annotations can be performed thanks to `sppas/bin/autocs.py`.
+Annotations of a video or a written text can be both performed thanks 
+to `sppas/bin/cuedspeech.py`.
 
 
 ### Graphical-User Interface

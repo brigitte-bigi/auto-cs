@@ -31,13 +31,24 @@
 
 """
 
-from .faceheight import sppasFaceHeight
-from .position import FaceTwoDim
 from .wherecueexc import sppasWhereCuedSightsValueError
+from .faceheight import sppasFaceHeight
+from .targetprobas import TargetProbabilitiesEstimator
+from .basepredictor import BaseWhereModelPredictor
+from .positions import WhereVowelPositionsPredictor
+from .wherepositions import sppasWherePositionsPredictor
+from .whereangles import sppasWhereAnglesPredictor
 from .wherecue import sppasWhereCuePredictor
 
+from .position import FaceTwoDim
+
 __all__ = (
-    "sppasFaceHeight",
     "sppasWhereCuedSightsValueError",
+    "sppasFaceHeight",
+    "TargetProbabilitiesEstimator",
+    "BaseWhereModelPredictor",
+    "WhereVowelPositionsPredictor",
+    "sppasWherePositionsPredictor",
+    "sppasWhereAnglesPredictor",
     "sppasWhereCuePredictor"
 )

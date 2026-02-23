@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of BaseWherePositionPredictor. Base class to predict vowel positions around the face." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="FaceTwoDim.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WherePositionPredictorCustoms.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue.position">    <h1>Module CuedSpeech.wherecue.position</h1>
+<section id="#BaseWherePositionPredictor">
+<h2>Class BaseWherePositionPredictor</h2>
+
+<section>
+<h3 id="#description_BaseWherePositionPredictor">Description</h3>
+    <article class="docstring">
+<p><em>Base class to predict vowel positions around the face.</em></p>
+
+<p>The vowel positions are considered targets in the hand trajectory.
+Currently, 5 vowel positions are possible and they have only one coordinate.
+For English language, this will have to be changed because some vowels have
+a movement effect: side-forward, side-down.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_BaseWherePositionPredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate a vowel position's predictor.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>nb_sights</strong>: (<em>int</em>) Number of face sights. Must match the one of FaceTwoDim().</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>NotImplementedError</em>: given nb sights is not supported.</li>
+<li><em>sppasTypeError</em>: given nb sights is not of 'int' type.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_sights</span><span class="o">=</span><span class="mi">68</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a vowel position&#39;s predictor.</span>
+
+<span class="sd">    :param nb_sights: (int) Number of face sights. Must match the one of FaceTwoDim().</span>
+<span class="sd">    :raises: NotImplementedError: given nb sights is not supported.</span>
+<span class="sd">    :raises: sppasTypeError: given nb sights is not of &#39;int&#39; type.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_BASE</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span> <span class="o">=</span> <span class="n">FaceTwoDim</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">nb_sights</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb_sights</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nb_sights</span><span class="p">),</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="n">nb_sights</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb_sights</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nb_sights</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">dim</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;The support for vowel prediction with </span><span class="si">{:d}</span><span class="s1"> sights is not implemented yet. Expected </span><span class="si">{:d}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nb_sights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_b</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_c</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_m</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_s</span><span class="p">,</span> <span class="s1">&#39;sf&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_sf</span><span class="p">,</span> <span class="s1">&#39;sd&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_sd</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_t</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_vowel_n</span><span class="p">}</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_BaseWherePositionPredictor">Public functions</h3>
+<h4>vowel_codes</h4>
+
+    <article class="docstring">
+<p><em>Return the list of vowel codes the class can calculate position.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">vowel_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of vowel codes the class can calculate position.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_sights_dim</h4>
+
+    <article class="docstring">
+<p><em>Return the number of sights this predictor was trained for.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_sights_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the number of sights this predictor was trained for.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">dim</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_sights_and_predict_coords</h4>
+
+    <article class="docstring">
+<p><em>Set the sights of a face and predict all vowel positions.</em></p>
+
+<p>If no sights are provided, it uses default sights. It validates the
+input type and the number of sights before setting them and predicting
+vowel coordinates.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>sights</strong>: (sppasSights | None)</li>
+<li><strong>vowels</strong>: (<em>tuple</em> | None) List of vowel position names. Default is all known ones.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: given parameter is not a sppasSights type.</li>
+<li><em>NotImplementedError</em>: not the expected number of sights</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_sights_and_predict_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="n">sppasSights</span> <span class="o">|</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the sights of a face and predict all vowel positions.</span>
+
+<span class="sd">        If no sights are provided, it uses default sights. It validates the</span>
+<span class="sd">        input type and the number of sights before setting them and predicting</span>
+<span class="sd">        vowel coordinates.</span>
+
+<span class="sd">        :param sights: (sppasSights | None)</span>
+<span class="sd">        :param vowels: (tuple | None) List of vowel position names. Default is all known ones.</span>
+<span class="sd">        :raises: sppasTypeError: given parameter is not a sppasSights type.</span>
+<span class="sd">        :raises: NotImplementedError: not the expected number of sights</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">sights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">sights</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="n">sppasSights</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">sights</span><span class="p">),</span> <span class="s1">&#39;sppasSights&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">dim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;The support for vowel prediction with </span><span class="si">{:d}</span><span class="s1"> sights is not implemented yet. Expected </span><span class="si">{:d}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f2</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span> <span class="o">=</span> <span class="n">sights</span>
+    <span class="k">if</span> <span class="n">vowels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vowels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">predict_vowels_coords</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_vowel_coords</h4>
+
+    <article class="docstring">
+<p><em>Return the absolute position of the given vowel.</em></p>
+
+<p>Estimated relatively to the sights of a face. Sights must be set
+before using this method.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowel</strong>: (char) Vowel position name. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(x, y, r) with point coordinates and radius</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the absolute position of the given vowel.</span>
+
+<span class="sd">        Estimated relatively to the sights of a face. Sights must be set</span>
+<span class="sd">        before using this method.</span>
+
+<span class="sd">        :param vowel: (char) Vowel position name. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :return: tuple(x, y, r) with point coordinates and radius</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span>
+    <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Predicted Vowels&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_vowels_coords</h4>
+
+    <article class="docstring">
+<p><em>Estimate the absolute position of all the requested vowels.</em></p>
+
+<p>Estimate the absolute positions of specified vowels relative to the
+sights of a face. It uses predefined coordinates and calculations
+to determine these positions and stores them in a dictionary.
+Sights must be set before using this method.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels</strong>: (<em>tuple</em>) List of vowel position names. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_vowels_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the absolute position of all the requested vowels.</span>
+
+<span class="sd">        Estimate the absolute positions of specified vowels relative to the</span>
+<span class="sd">        sights of a face. It uses predefined coordinates and calculations</span>
+<span class="sd">        to determine these positions and stores them in a dictionary.</span>
+<span class="sd">        Sights must be set before using this method.</span>
+
+<span class="sd">        :param vowels: (tuple) List of vowel position names. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="p">[</span><span class="n">vowel</span><span class="p">]()</span>
+        <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No vowel position calculation for vowel &#39;</span><span class="si">{</span><span class="n">vowel</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">pass</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>check</h4>
+
+    <article class="docstring">
+<p><em>Check if the given vowel codes are valid.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels</strong>: (<em>tuple</em>) The character codes of vowels</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the given vowel codes are valid.</span>
+
+<span class="sd">        :param vowels: (tuple) The character codes of vowels</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Attempting to predict vowel positions but no sights were defined.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_sights_and_predict_coords</span><span class="p">()</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">vowel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Vowel Position Code&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#private_fct_BaseWherePositionPredictor">Private functions</h3>
+<h4>_calculate_vowel_n</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of the neutral position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the neutral position</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_n</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of the neutral position.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the neutral position</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_b</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a cheek bone vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the cheek bone vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a cheek bone vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the cheek bone vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">//</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_c</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a chin vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the chin vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_c</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a chin vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the chin vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))</span> <span class="o">//</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_m</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a mouth vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the mouth vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_m</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a mouth vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the mouth vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="o">//</span> <span class="mi">4</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_s</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a side vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the side vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_s</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a side vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the side vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">//</span> <span class="mi">3</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_sf</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a side-forward vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the side-forward vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_sf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a side-forward vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the side-forward vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_sd</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a side-down vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the side-down vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_sd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a side-down vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the side-down vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_t</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the position of a throat vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the throat vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the position of a throat vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the throat vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.2</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_x</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_y</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">y</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_radius_ratio</h4>
+
+    <article class="docstring">
+<p><em>Return the width/height ratio of the face sights.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_radius_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the width/height ratio of the face sights.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">27</span><span class="p">)))</span> <span class="o">/</span> <span class="mf">1.85</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

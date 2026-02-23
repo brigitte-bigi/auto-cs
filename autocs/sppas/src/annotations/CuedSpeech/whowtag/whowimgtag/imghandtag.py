@@ -43,9 +43,10 @@ from sppas.core.coreutils import sppasKeyError
 from sppas.src.imgdata import sppasImage
 from sppas.src.imgdata import sppasCoords
 
-from sppas.src.annotations.CuedSpeech.whatkey.phonestokeys import CuedSpeechKeys
-from sppas.src.annotations.CuedSpeech.whowtag.handproperties import sppasHandProperties
-from sppas.src.annotations.CuedSpeech.whowtag.handsset import sppasHandsSet
+from ...whatkey.phonestokeys import CuedSpeechKeys
+
+from ..hands import sppasHandProperties
+from ..hands import sppasHandsSet
 
 # -----------------------------------------------------------------------
 

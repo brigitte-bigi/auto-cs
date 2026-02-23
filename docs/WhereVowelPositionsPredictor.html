@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of WhereVowelPositionsPredictor. Predict the coordinates of vowels from 2D sights of a face." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="BaseWhereModelPredictor.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="sppasWherePositionsPredictor.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue">    <h1>Module CuedSpeech.wherecue</h1>
+<section id="#WhereVowelPositionsPredictor">
+<h2>Class WhereVowelPositionsPredictor</h2>
+
+<section>
+<h3 id="#description_WhereVowelPositionsPredictor">Description</h3>
+    <article class="docstring">
+<p><em>Predict the coordinates of vowels from 2D sights of a face.</em></p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_WhereVowelPositionsPredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a hand transitions predictor.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>version_number</strong>: (<em>int</em>) Version of the predictor system ranging (0-3).</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_number</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="n">DEFAULT_VERSION</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a hand transitions predictor.</span>
+
+<span class="sd">    :param version_number: (int) Version of the predictor system ranging (0-3).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">WhereVowelPositionsPredictor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseWherePositionPredictor</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">WherePositionPredictorCustoms</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">WherePositionPredictorObserved</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_models</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">WherePositionPredictorUnified</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_version_number</span><span class="p">(</span><span class="n">version_number</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_WhereVowelPositionsPredictor">Public functions</h3>
+<h4>get_sights_dim</h4>
+
+    <article class="docstring">
+<p><em>Return the number of sights this predictor was trained for.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_sights_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the number of sights this predictor was trained for.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_sights_dim</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_sights_and_predict_coords</h4>
+
+    <article class="docstring">
+<p><em>Set the sights of a face and predict all vowel positions.</em></p>
+
+<p>If no sights are provided, it uses default sights. It validates the
+input type and the number of sights before setting them and predicting
+vowel coordinates.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>sights</strong>: (sppasSights | None)</li>
+<li><strong>vowels</strong>: (<em>tuple</em> | None) List of vowel position names. Default is all known ones.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: given parameter is not a sppasSights type.</li>
+<li><em>NotImplementedError</em>: not the expected number of sights</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_sights_and_predict_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="n">sppasSights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the sights of a face and predict all vowel positions.</span>
+
+<span class="sd">        If no sights are provided, it uses default sights. It validates the</span>
+<span class="sd">        input type and the number of sights before setting them and predicting</span>
+<span class="sd">        vowel coordinates.</span>
+
+<span class="sd">        :param sights: (sppasSights | None)</span>
+<span class="sd">        :param vowels: (tuple | None) List of vowel position names. Default is all known ones.</span>
+<span class="sd">        :raises: sppasTypeError: given parameter is not a sppasSights type.</span>
+<span class="sd">        :raises: NotImplementedError: not the expected number of sights</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasCuedPredictorError</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">set_sights_and_predict_coords</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="n">vowels</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_vowels_coords</h4>
+
+    <article class="docstring">
+<p><em>Estimate the absolute position of all the vowels.</em></p>
+
+<p>Estimate the absolute positions of specified vowels relative to the
+sights of a face. It uses predefined coordinates and calculations
+to determine these positions and stores them in a dictionary.
+Sights must be set before using this method.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels</strong>: (<em>tuple</em>) List of vowel position names. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_vowels_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the absolute position of all the vowels.</span>
+
+<span class="sd">        Estimate the absolute positions of specified vowels relative to the</span>
+<span class="sd">        sights of a face. It uses predefined coordinates and calculations</span>
+<span class="sd">        to determine these positions and stores them in a dictionary.</span>
+<span class="sd">        Sights must be set before using this method.</span>
+
+<span class="sd">        :param vowels: (tuple) List of vowel position names. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_vowels_coords</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_vowel_coords</h4>
+
+    <article class="docstring">
+<p><em>Return the absolute position of the given vowel.</em></p>
+
+<p>Estimated relatively to the sights of a face. Sights must be set
+before using this method.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowel</strong>: (char) Vowel position name. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(x, y, r) with point coordinates and radius</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the absolute position of the given vowel.</span>
+
+<span class="sd">        Estimated relatively to the sights of a face. Sights must be set</span>
+<span class="sd">        before using this method.</span>
+
+<span class="sd">        :param vowel: (char) Vowel position name. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :return: tuple(x, y, r) with point coordinates and radius</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_vowel_coords</span><span class="p">(</span><span class="n">vowel</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="WhenTransitionPredictorDuchnowski1998. Predict hand transition moments with (Duchnowski et al., 1998) method." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="BaseWhenTransitionPredictor.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WhenTransitionPredictorDuchnowski2000.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whenhand.transition">    <h1>Module CuedSpeech.whenhand.transition</h1>
+<section id="#WhenTransitionPredictorDuchnowski1998">
+<h2>Class WhenTransitionPredictorDuchnowski1998</h2>
+
+<section>
+<h3 id="#description_WhenTransitionPredictorDuchnowski1998">Description</h3>
+    <article class="docstring">
+<p><em>Predict hand transition moments with (Duchnowski et al., 1998) method.</em></p>
+
+<blockquote>
+  <p>Paul Duchnowski, Louis D. Braida, David S. Lum, Matthew G. Sexton, Jean C. Krause, Smriti Banthia
+  AUTOMATIC GENERATION OF CUED SPEECH FOR THE DEAF: STATUS AND OUTLOOK
+  https://www.isca-speech.org/archive/pdfs/avsp<em>1998/duchnowski98</em>avsp.pdf</p>
+</blockquote>
+
+<p>In section 2.2 of this paper:
+"We found that cues are often formed before the corresponding sound is
+produced. To approximate this effect we adjusted the start times of cues
+to begin 100 ms before the boundary determined from acoustic data by the
+cue recognizer."</p>
+
+<p>Reference is:</p>
+
+<blockquote>
+  <p>Paul Duchnowski, Louis Braida, Maroula Bratakos, David Lum, Matthew Sexton, Jean Krause
+  A SPEECHREADING AID BASED ON PHONETIC ASR
+  https://isca-speech.org/archive<em>v0/archive</em>papers/icslp<em>1998/i98</em>0589.pdf</p>
+</blockquote>
+
+<p>In section 3.2 of this paper:
+"We observed that human cuers often begin to form a cue before producing
+the corresponding audible sound. To approximate this effect we adjusted
+the start times of the cues to begin 100 ms before the boundary determined
+by the cue recognizer."</p>
+
+<p>In this class, no transition time values are estimated. The returned
+intervals are [A1-0.1,A1-0.1] and [A1-0.1,A1-0.1].</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_WhenTransitionPredictorDuchnowski1998">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate (Duchnowski et al. 1998) hand transition moment's predictor.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate (Duchnowski et al. 1998) hand transition moment&#39;s predictor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">WhenTransitionPredictorDuchnowski1998</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_DUCHNOWSKI</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_WhenTransitionPredictorDuchnowski1998">Public functions</h3>
+<h4>predict_position</h4>
+
+    <article class="docstring">
+<p><em>Predict [M1,M2] the moments when the hand is moving.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>(m1</strong>: float, m2: float)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1,M2] the moments when the hand is moving.</span>
+
+<span class="sd">        :return: (m1: float, m2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">m1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">m2</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_shape</h4>
+
+    <article class="docstring">
+<p><em>Predict [D1,D2] the moments when fingers are changing.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>(d1</strong>: float, d2: float)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1,D2] the moments when fingers are changing.</span>
+
+<span class="sd">        :return: (d1: float, d2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

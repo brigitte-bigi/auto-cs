@@ -37,7 +37,7 @@ from sppas.core.coreutils import sppasTypeError
 from sppas.src.anndata import sppasTag
 from sppas.src.anndata import sppasLabel
 
-from sppas.src.annotations.CuedSpeech.whatkey import CuedSpeechCueingRules
+from ...whatkey import CuedSpeechCueingRules
 
 # ---------------------------------------------------------------------------
 

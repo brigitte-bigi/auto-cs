@@ -31,20 +31,15 @@
 
 """
 
-# Each transition predictor
-from .transition import BaseWhenTransitionPredictor
-from .transition import WhenTransitionPredictorDuchnowski1998
-from .transition import WhenTransitionPredictorAttina
-from .transition import WhenTransitionPredictorRules
+# Exceptions
+from .whenhandexc import sppasCuedPredictorError
 # A manager of predictors
 from .transitions import WhenTransitionPredictor
 # An interface between the predictor manager and the annotated data
 from .whenhandtrans import sppasWhenHandTransitionPredictor
 
 __all__ = (
-    "BaseWhenTransitionPredictor",
-    "WhenTransitionPredictorDuchnowski1998",
-    "WhenTransitionPredictorAttina",
-    "WhenTransitionPredictorRules",
+    "sppasCuedPredictorError",
+    "WhenTransitionPredictor",
     "sppasWhenHandTransitionPredictor"
 )

@@ -45,7 +45,6 @@ from sppas.src.anndata import sppasTranscription
 from sppas.src.imgdata import sppasImage
 from sppas.src.videodata import sppasVideoReaderBuffer
 from sppas.src.videodata import sppasBufferVideoWriter
-from sppas.src.anndata import sppasFuzzyPoint
 from sppas.src.annotations.annotationsexc import AnnotationOptionError
 
 from ..whatkey.phonestokeys import CuedSpeechKeys

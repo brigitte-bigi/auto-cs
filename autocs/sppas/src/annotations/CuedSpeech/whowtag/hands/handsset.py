@@ -44,7 +44,7 @@ from sppas.src.resources import sppasHandResource
 from sppas.src.imgdata import sppasImage
 from sppas.src.imgdata import sppasImageSightsReader
 
-from ..whatkey.phonestokeys import CuedSpeechKeys
+from ...whatkey.phonestokeys import CuedSpeechKeys
 
 from .handproperties import sppasHandProperties
 from .handfilters import sppasHandFilters

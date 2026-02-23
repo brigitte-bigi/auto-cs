@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of WherePositionPredictorUnified. Predict the coordinates of vowels from 2D sights." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.position.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="WherePositionPredictorObserved.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.hands.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whowtag">
+    <h1>CuedSpeech.whowtag module</h1>
+    <section id="readme">
+
+<h2>How?</h2>
+
+<p>This section will be fully documented in a further version.</p>
+
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="n">tagger</span> <span class="o">=</span> <span class="n">CuedSpeechVideoTagger</span><span class="p">(</span><span class="n">cued</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">tagger</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">tagger</span><span class="o">.</span><span class="n">tag_with_keys</span><span class="p">(</span><span class="n">trs_coords</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">tagger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+    </section>
+
+<h2>List of classes</h2>
+
+        <section class="cards-panel">
+        <article class="card">
+            <header><span>1</span></header>
+            <main>
+                <h3>CuedSpeechVideoTagger</h3>
+            </main>
+            <footer>
+                <a role="button" href="CuedSpeechVideoTagger.html">Read me →</a>
+            </footer>
+        </article>
+        </section>
+    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

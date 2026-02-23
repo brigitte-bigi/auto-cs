@@ -59,6 +59,8 @@ from .whatkeyexc import sppasCuedRulesMinValueError
 from .whatkeyexc import sppasCuedRulesMaxValueError
 from .keysrules import CuedSpeechCueingRules
 from .phonestokeys import CuedSpeechKeys
+from .keysbytoken import CueingPronTokenizer
+from .keysbytoken import CueingKeysByToken
 from .whatkey import sppasWhatKeyPredictor
 
 
@@ -68,5 +70,7 @@ __all__ = (
     "sppasCuedRulesMaxValueError",
     "CuedSpeechCueingRules",
     "CuedSpeechKeys",
+    "CueingPronTokenizer",
+    "CueingKeysByToken",
     "sppasWhatKeyPredictor"
 )

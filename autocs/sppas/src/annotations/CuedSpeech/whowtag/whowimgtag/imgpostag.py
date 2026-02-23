@@ -36,9 +36,10 @@ from __future__ import annotations
 import numpy
 
 from sppas.core.coreutils import sppasTypeError
-from sppas.src.imgdata import sppasImage
 from sppas.src.anndata import sppasFuzzyPoint
-from sppas.src.annotations.CuedSpeech.whatkey.phonestokeys import CuedSpeechKeys
+from sppas.src.imgdata import sppasImage
+
+from ...whatkey.phonestokeys import CuedSpeechKeys
 
 # ---------------------------------------------------------------------------
 
@@ -153,7 +154,7 @@ class sppasImageVowelPosTagger:
     # Image tagging
     # -----------------------------------------------------------------------
 
-    def slap_on(self, image: numpy.ndarray, fuzzy_points: list) -> sppasImage:
+    def slap_on(self, image: sppasImage, fuzzy_points: list) -> sppasImage:
         """Tag the given vowels to the image.
 
         :param image: (sppasImage or numpy.ndarray) The image to draw vowel positions on

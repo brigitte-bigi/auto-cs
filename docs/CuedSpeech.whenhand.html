@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasWhatKeyPredictor. Cued Speech keys automatic generator from a sequence of phonemes." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whatkey.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="CueingKeysByToken.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whenhand">
+    <h1>CuedSpeech.whenhand module</h1>
+    <section id="readme">
+
+<h2>When ?</h2>
+
+<h3>Overview</h3>
+
+<p>In Cued Speech, a key corresponds to a specific group of speech sounds 
+(consonant+vowel, consonant alone or vowel alone) and the hand movements are 
+timed to coincide with the relevant speech sound being produced. </p>
+
+<p>The issue to be raised here is a matter of timing: the temporal organization 
+between the movements of the lips and hands in Cued Speech is a crucial aspect
+of the system. This precise coordination is essential to accurately convey the
+nuances of spoken language  and to bridge the gap between visual and auditory
+communication.</p>
+
+<p>It was already found in (Cornett, 1967) that lips and hand movements are 
+asynchronous in CS. The study (Duchnowski et al., 1998) indicates that decoding
+results were better when the hand was proposed 100ms before lip movements.
+Then, (Duchnowski et al., 2000) indicated that a transition time of 150ms
+for both the position and the shape increases decoding results. Studies of 
+such temporal organization were performed on French language (Cathiard et al.,
+2003; Attina, 2005; Aboutabit, 2007) with the proposal of a synchronization
+model in the scope of CS decoding and recognition. They observed that lips 
+movement is more related to the phoneme production and hand movement is
+more related to the speech syllabic cycle, and that the handshape began to be
+formed a long time before the acoustic consonant.</p>
+
+<h3>Implementation</h3>
+
+<p>The "when" question is implemented into the <code>whenhand</code> package. 
+This is a package to predict the key times. It requires key codes, the result 
+of the "what" question. Its result is the following tiers:</p>
+
+<ul>
+<li>CS-HandPositions</li>
+<li>CS-HandShapes</li>
+</ul>
+
+<p>The scope of this package is to implement hand transition predictors.
+They will predict:</p>
+
+<ul>
+<li>the moments [M1, M2] when the hand is moving from a previous position to
+the current one (the vowel);</li>
+<li>the moments [D1, D2] when the hand is changing from a previous shape to
+the current one (the consonant).</li>
+</ul>
+
+<p>There are several solutions to estimate transition intervals. These solutions 
+make use of A1-A3 values, i.e., the 'begin' and 'end' time values of a key 
+interval:</p>
+
+<pre>
+
+    A1             A2             A3
+    | ---- C ----- | ----- V ---- |
+    | ---- C -------------------- |
+    | -------------------- V -----|
+</pre>
+<p>Five solutions are implemented in the form of generator classes predicting the
+transition intervals [M1, M2] for the hand position transition times and 
+[D1, D2] for the handshape transition times:</p>
+
+<ul>
+<li>model 0. No transition time values; returned intervals are [A1,A1] and [A1,A1].</li>
+<li>model 1. (Duchnowski et al., 1998) estimator. No transition times.</li>
+<li>model 2. (Duchnowski et al., 2000) estimator. Fixed 150 ms for all transitions.</li>
+<li>model 3. (Attina, 2005) estimators: p.117 for positions and p.136 for shapes.</li>
+<li>model 4. a newly proposed RBS-system based on the previous system and our expertise.</li>
+</ul>
+
+<h4>Example of use</h4>
+
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="c1"># When? Predict hand shapes and hand positions</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">genhand</span> <span class="o">=</span> <span class="n">sppasWhenHandTransitionPredictor</span><span class="p">(</span><span class="n">predictor_version</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">genhand</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cued</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">cs_pos</span><span class="p">,</span> <span class="n">cs_shapes</span> <span class="o">=</span> <span class="n">genhand</span><span class="o">.</span><span class="n">when_hands</span><span class="p">(</span><span class="n">cs_keys</span><span class="p">,</span> <span class="n">cs_segments</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+    </section>
+
+<h2>List of classes</h2>
+
+        <section class="cards-panel">
+        <article class="card">
+            <header><span>1</span></header>
+            <main>
+                <h3>sppasCuedPredictorError</h3>
+            </main>
+            <footer>
+                <a role="button" href="sppasCuedPredictorError.html">Read me →</a>
+            </footer>
+        </article>
+        <article class="card">
+            <header><span>2</span></header>
+            <main>
+                <h3>WhenTransitionPredictor</h3>
+            </main>
+            <footer>
+                <a role="button" href="WhenTransitionPredictor.html">Read me →</a>
+            </footer>
+        </article>
+        <article class="card">
+            <header><span>3</span></header>
+            <main>
+                <h3>sppasWhenHandTransitionPredictor</h3>
+            </main>
+            <footer>
+                <a role="button" href="sppasWhenHandTransitionPredictor.html">Read me →</a>
+            </footer>
+        </article>
+        </section>
+    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

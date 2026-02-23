@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="BaseWhenTransitionPredictor. Base class to predict hand transition moments [D1,D2] and [M1,M2]." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WhenTransitionPredictorDuchnowski1998.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whenhand.transition">    <h1>Module CuedSpeech.whenhand.transition</h1>
+<section id="#BaseWhenTransitionPredictor">
+<h2>Class BaseWhenTransitionPredictor</h2>
+
+<section>
+<h3 id="#description_BaseWhenTransitionPredictor">Description</h3>
+    <article class="docstring">
+<p><em>Base class to predict hand transition moments [D1,D2] and [M1,M2].</em></p>
+
+<p>A Cued Speech key is defined as follows:</p>
+
+<p>A1             A2             A3
+| ---- C ----- | ----- V ---- |
+| ---- C -------------------- |
+| -------------------- V -----|</p>
+
+<ul>
+<li>A1 is the start time value of the first phoneme of the key;</li>
+<li>A3 is the end time value of the second phoneme of the key.</li>
+</ul>
+
+<p>The system aims to predict both the interval [M1,M2], the moments the hand
+is moving from its previous position to the one of the key, and interval
+[D1,D2], the moments the fingers are changing from the previous shape to
+the one of the key.</p>
+
+<p>In this base class, no transition time values are estimated. The returned
+intervals are [A1,A1] and [A1,A1]. It corresponds to the system presented
+in (Bratakos et al., 1998):
+"Appearance of the cue typically began at the frame corresponding to the
+start of the consonant segment in the acoustic waveform and was maintained
+until the end of the following vowel segment (for CV combinations) or of the
+consonant segment (for consonants occurring alone)."</p>
+
+<p>Reference is:</p>
+
+<blockquote>
+  <p>Maroula S. Bratakos, Paul Duchnowski and Louis D. Braida
+  Toward the Automatic Generation of Cued Speech
+  Cued Speech Journal, vol. VI, pp 1-37, 1998.</p>
+</blockquote>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">BaseWhenTransitionPredictor</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">set_key_interval</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">a1</span>
+ <span class="o">&gt;</span> <span class="mf">2.3</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">a3</span>
+ <span class="o">&gt;</span> <span class="mf">2.8</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_position</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="mf">2.3</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="mf">2.3</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_shape</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="mf">2.3</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="mf">2.3</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">get_static_duration</span><span class="p">()</span>      <span class="c1"># a default key duration</span>
+ <span class="o">&gt;</span> <span class="mf">0.3</span>
+</code></pre></div>
+
+<p>All given intervals [A1;A3] are stored until the reset method is invoked.
+Their average value can be estimated with 'get<em>a1a3</em>avg_duration()' method.</p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">BaseWhenTransitionPredictor</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">set_key_interval</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">)</span>   <span class="c1"># duration is 1.</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">set_key_interval</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">)</span>   <span class="c1"># duration is 2.</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>    <span class="c1"># average is 1.5</span>
+ <span class="o">&gt;</span> <span class="mf">1.5</span>
+</code></pre></div>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_BaseWhenTransitionPredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate a hand transition moment's predictor.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a hand transition moment&#39;s predictor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_BASE</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__a3</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__avg</span> <span class="o">=</span> <span class="n">BaseWhenTransitionPredictor</span><span class="o">.</span><span class="n">DEFAULT_KEY_DURATION</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__dur</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_BaseWhenTransitionPredictor">Public functions</h3>
+<h4>get_key_interval</h4>
+
+    <article class="docstring">
+<p><em>Return [A1;A3] the moments of the sounds of the last key.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(a1,a3) if a1 and a3 are known or (0.,0.) if unknown</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_key_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return [A1;A3] the moments of the sounds of the last key.</span>
+
+<span class="sd">        :return: tuple(a1,a3) if a1 and a3 are known or (0.,0.) if unknown</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__a1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a3</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_key_interval</h4>
+
+    <article class="docstring">
+<p><em>Set [A1;A3] the moments of the sounds of the key.</em></p>
+
+<p>Given a1 value represents when the 1st phoneme of the key starts in
+the audio, and a3 represents when the 2nd phoneme of the key ends in
+the audio.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>a1</strong>: (<em>float</em>) Start time value of a key</li>
+<li><strong>a3</strong>: (<em>float</em>) End time value of a key</li>
+<li><strong>store</strong>: (<em>bool</em>) Store the a1 and a3 values into a list</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: one of a1 or a3 is not a float</li>
+<li><em>RangeBoundsException</em>: if a3 is lesser than a1</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_key_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">a3</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set [A1;A3] the moments of the sounds of the key.</span>
+
+<span class="sd">        Given a1 value represents when the 1st phoneme of the key starts in</span>
+<span class="sd">        the audio, and a3 represents when the 2nd phoneme of the key ends in</span>
+<span class="sd">        the audio.</span>
+
+<span class="sd">        :param a1: (float) Start time value of a key</span>
+<span class="sd">        :param a3: (float) End time value of a key</span>
+<span class="sd">        :param store: (bool) Store the a1 and a3 values into a list</span>
+<span class="sd">        :raises: sppasTypeError: one of a1 or a3 is not a float</span>
+<span class="sd">        :raises: RangeBoundsException: if a3 is lesser than a1</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a1</span><span class="p">),</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">a3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a3</span><span class="p">),</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a3</span> <span class="o">&lt;</span> <span class="n">a1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">RangeBoundsException</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a3</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="o">=</span> <span class="n">a1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__a3</span> <span class="o">=</span> <span class="n">a3</span>
+    <span class="k">if</span> <span class="n">store</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a3</span> <span class="o">-</span> <span class="n">a1</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>reset_key_intervals</h4>
+
+    <article class="docstring">
+<p><em>Forget the stored A1-A3 durations.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset_key_intervals</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forget the stored A1-A3 durations.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__dur</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_a1</h4>
+
+    <article class="docstring">
+<p><em>Return the lastly given A1 time value.</em></p>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>ValueError</em>: Unknown A1 value.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_a1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the lastly given A1 time value.</span>
+
+<span class="sd">        :raises: ValueError: Unknown A1 value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Interval [A1;A3] un-defined. A1 un-defined.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_a3</h4>
+
+    <article class="docstring">
+<p><em>Return the lastly given A3 time value.</em></p>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>ValueError</em>: Unknown A3 value.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_a3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the lastly given A3 time value.</span>
+
+<span class="sd">        :raises: ValueError: Unknown A3 value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Interval [A1;A3] un-defined. A3 un-defined.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a3</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_static_duration</h4>
+
+    <article class="docstring">
+<p><em>Return the duration of a key.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_static_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the duration of a key.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__avg</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_static_duration</h4>
+
+    <article class="docstring">
+<p><em>Set the duration of a key.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>duration</strong>: (<em>float</em>) Fixed duration of a key.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: if given duration can't be a float.</li>
+<li><em>IntervalRangeException</em>: if given duration is &lt; 0.1 or &gt; 1.0.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_static_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the duration of a key.</span>
+
+<span class="sd">        :param duration: (float) Fixed duration of a key.</span>
+<span class="sd">        :raises: sppasTypeError: if given duration can&#39;t be a float.</span>
+<span class="sd">        :raises: IntervalRangeException: if given duration is &lt; 0.1 or &gt; 1.0.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">duration</span><span class="p">),</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mf">0.1</span> <span class="o">&lt;=</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__avg</span> <span class="o">=</span> <span class="n">duration</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">IntervalRangeException</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_a1a3_avg_duration</h4>
+
+    <article class="docstring">
+<p><em>Return the average of stored [A1;A3] durations or the fixed one.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>float</em>) Average value or if there's not enough known [A1;A3] durations, the fixed value is returned.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_a1a3_avg_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the average of stored [A1;A3] durations or the fixed one.</span>
+
+<span class="sd">        :return: (float) Average value or if there&#39;s not enough known [A1;A3] durations, the fixed value is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__avg</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__avg</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dur</span><span class="p">))</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_description</h4>
+
+    <article class="docstring">
+<p><em>Return a brief description of the transition estimation method.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a brief description of the transition estimation method.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_position</h4>
+
+    <article class="docstring">
+<p><em>Predict [M1, M2] the moments when the hand is moving.</em></p>
+
+<p>Predict M1 - when leaving the current position
+Predict M2 - when arrived to the expected position</p>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>tuple(m1</strong>: float, m2: float)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1, M2] the moments when the hand is moving.</span>
+
+<span class="sd">        Predict M1 - when leaving the current position</span>
+<span class="sd">        Predict M2 - when arrived to the expected position</span>
+
+<span class="sd">        :return: tuple(m1: float, m2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Interval [A1;A3] un-defined.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__a1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_shape</h4>
+
+    <article class="docstring">
+<p><em>Predict [D1, D2] the moments when fingers are changing.</em></p>
+
+<p>Predict D1 - when fingers are starting to move
+Predict D2 - when fingers finished representing the expected shape</p>
+
+<h5>Returns</h5>
+
+<ul>
+<li><strong>tuple(d1</strong>: float, d2: float)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1, D2] the moments when fingers are changing.</span>
+
+<span class="sd">        Predict D1 - when fingers are starting to move</span>
+<span class="sd">        Predict D2 - when fingers finished representing the expected shape</span>
+
+<span class="sd">        :return: tuple(d1: float, d2: float)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Interval [A1;A3] un-defined.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__a1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a1</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

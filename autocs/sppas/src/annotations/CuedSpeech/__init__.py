@@ -47,6 +47,7 @@ if sys.version_info > (3, 9):
     from .whatkey import CuedSpeechKeys
     from .whatkey import sppasWhatKeyPredictor
     from .whowtag import CuedSpeechVideoTagger
+    from .annsonframes import sppasAnnsOnFrames
     from .sppascuedspeech import sppasCuedSpeech
 
 else:
@@ -65,17 +66,6 @@ else:
 # ---------------------------------------------------------------------------
 
 __all__ = (
-    # what
-    "sppasCuedRulesValueError",
-    "sppasCuedRulesMinValueError",
-    "sppasCuedRulesMaxValueError",
-    "CuedSpeechCueingRules",
-    "CuedSpeechKeys",
-    "sppasWhatKeyPredictor",
-    # when
-    # where
-    # tag
-    "CuedSpeechVideoTagger",
-    # SPPAS integration
+    "sppasAnnsOnFrames",
     "sppasCuedSpeech"
 )

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="CueingPronTokenizer. Tokenize and normalize word pronunciations for stable Cued Speech alignment." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeechKeys.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="CueingKeysByToken.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whatkey">    <h1>Module CuedSpeech.whatkey</h1>
+<section id="#CueingPronTokenizer">
+<h2>Class CueingPronTokenizer</h2>
+
+<section>
+<h3 id="#description_CueingPronTokenizer">Description</h3>
+    <article class="docstring">
+<p><em>Tokenize and normalize word pronunciations for stable Cued Speech alignment.</em></p>
+
+<p>This helper converts the per-word pronunciation strings (split with '-') into
+normalized strings, using CsNormalizationRules as the single normalization layer.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_CueingPronTokenizer">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>key_rules</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__rules</span> <span class="o">=</span> <span class="n">_CueingRulesAdapter</span><span class="p">(</span><span class="n">key_rules</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_CueingPronTokenizer">Public functions</h3>
+<h4>normalize_word_phonemes</h4>
+
+    <article class="docstring">
+<p><em>Return normalized pronunciations for each word.</em></p>
+
+<p>Input example: ('w-aI-t', '@-dZ-OI-n', 'OI-l')
+Output example: ('w-a-I-t', '@-dZ-O-I-n', 'O-I-l')</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>word_phonemes</strong>: (<em>tuple</em>) Pronunciation of each token, as '-' separated phones.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>ValueError</em>: Invalid type or empty item.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) Normalized pronunciations, same token count as input.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">normalize_word_phonemes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_phonemes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return normalized pronunciations for each word.</span>
+
+<span class="sd">        Input example: (&#39;w-aI-t&#39;, &#39;@-dZ-OI-n&#39;, &#39;OI-l&#39;)</span>
+<span class="sd">        Output example: (&#39;w-a-I-t&#39;, &#39;@-dZ-O-I-n&#39;, &#39;O-I-l&#39;)</span>
+
+<span class="sd">        :param word_phonemes: (tuple) Pronunciation of each token, as &#39;-&#39; separated phones.</span>
+<span class="sd">        :raises: ValueError: Invalid type or empty item.</span>
+<span class="sd">        :return: (tuple) Normalized pronunciations, same token count as input.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">word_phonemes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;word_phonemes must be a tuple or list&#39;</span><span class="p">)</span>
+    <span class="n">normalized_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">word_phonemes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Each item of word_phonemes must be a str&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Empty pronunciation item in word_phonemes&#39;</span><span class="p">)</span>
+        <span class="n">phones</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+        <span class="n">phones</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phones</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Empty phoneme list for a token.&#39;</span><span class="p">)</span>
+        <span class="n">normalized_phones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rules</span><span class="o">.</span><span class="n">normalize_word_phones</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span>
+        <span class="n">normalized_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">normalized_phones</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">normalized_items</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

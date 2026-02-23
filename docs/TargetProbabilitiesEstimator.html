@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of TargetProbabilitiesEstimator. Generate the probabilities of the targets (pos&shape)." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="sppasFaceHeight.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="BaseWhereModelPredictor.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue">    <h1>Module CuedSpeech.wherecue</h1>
+<section id="#TargetProbabilitiesEstimator">
+<h2>Class TargetProbabilitiesEstimator</h2>
+
+<section>
+<h3 id="#description_TargetProbabilitiesEstimator">Description</h3>
+    <article class="docstring">
+<p><em>Generate the probabilities of the targets (pos&amp;shape).</em></p>
+
+<p>For each image of the video (each interval in vowels_coords tier), an
+interval with the probability of the shape, and another one with the
+probability of the position are estimated.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_TargetProbabilitiesEstimator">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="o">=</span><span class="n">CuedSpeechCueingRules</span><span class="p">()):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+
+<span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_TargetProbabilitiesEstimator">Public functions</h3>
+<h4>get_vowel_rank</h4>
+
+    <article class="docstring">
+<p><em>Return an index from the code of a vowel or -1.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowel_code</strong>: (char) One of n, b, c, s, m, t for French.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel_code</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an index from the code of a vowel or -1.</span>
+
+<span class="sd">        :param vowel_code: (char) One of n, b, c, s, m, t for French.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">vowel_code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">vowel_code</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_cue_rules</h4>
+
+    <article class="docstring">
+<p><em>Set new rules.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: given parameter is not CuedSpeechCueingRules</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set new rules.</span>
+
+<span class="sd">        :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
+<span class="sd">        :raises: sppasTypeError: given parameter is not CuedSpeechCueingRules</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">&#39;cue_rules&#39;</span><span class="p">,</span> <span class="s1">&#39;CuedSpeechCueingRules&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_vowels_codes</span><span class="p">())</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>positions_discretization</h4>
+
+    <article class="docstring">
+<p><em>Generate the probabilities of the positions for each annotation in tier_pos_coords.</em></p>
+
+<p>Discretizing the transitions between a position to the next
+one implies to assign a probability to the source and to the
+destination during the whole transition time.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier<em>pos</em>coords</strong>: (sppasTier) Tier with coordinates of the vowel positions and neutral</li>
+<li><strong>tier<em>pos</em>transitions</strong>: (sppasTier) Tier with transition intervals between vowels</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier) Tier "CS-PosProbas" with probabilities for each position</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">positions_discretization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">,</span> <span class="n">tier_pos_transitions</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the probabilities of the positions for each annotation in tier_pos_coords.</span>
+
+<span class="sd">        Discretizing the transitions between a position to the next </span>
+<span class="sd">        one implies to assign a probability to the source and to the </span>
+<span class="sd">        destination during the whole transition time.</span>
+
+<span class="sd">        :param tier_pos_coords: (sppasTier) Tier with coordinates of the vowel positions and neutral</span>
+<span class="sd">        :param tier_pos_transitions: (sppasTier) Tier with transition intervals between vowels</span>
+<span class="sd">        :return: (sppasTier) Tier &quot;CS-PosProbas&quot; with probabilities for each position </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-PosProbas&#39;</span><span class="p">)</span>
+    <span class="n">pos_probas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__discretize_positions</span><span class="p">(</span><span class="n">tier_pos_transitions</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target vowels probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ann</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+        <span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__probas_to_lists</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tags</span><span class="p">)):</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">score</span><span class="o">=</span><span class="n">scores</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">pos_tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="p">[</span><span class="n">label</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">pos_tier</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>shapes_discretization</h4>
+
+    <article class="docstring">
+<p><em>Generate the probabilities of the shapes for each annotation in tier_pos_coords.</em></p>
+
+<p>Discretizing the transitions between a shape to the next
+one implies to assign a probability to the source and to the
+destination during the whole transition time.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier<em>pos</em>coords</strong>: (sppasTier) Tier with coordinates of the vowel positions and neutral</li>
+<li><strong>tier<em>shapes</em>transitions</strong>: (sppasTier) Tier with transition intervals between shapes</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier) Tier "CS-ShapeProbas" with probabilities for each shape</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">shapes_discretization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">,</span> <span class="n">tier_shapes_transitions</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the probabilities of the shapes for each annotation in tier_pos_coords.</span>
+
+<span class="sd">        Discretizing the transitions between a shape to the next </span>
+<span class="sd">        one implies to assign a probability to the source and to the </span>
+<span class="sd">        destination during the whole transition time.</span>
+
+<span class="sd">        :param tier_pos_coords: (sppasTier) Tier with coordinates of the vowel positions and neutral</span>
+<span class="sd">        :param tier_shapes_transitions: (sppasTier) Tier with transition intervals between shapes</span>
+<span class="sd">        :return: (sppasTier) Tier &quot;CS-ShapeProbas&quot; with probabilities for each shape </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">shape_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-ShapeProbas&#39;</span><span class="p">)</span>
+    <span class="n">shape_probas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__discretize_shapes</span><span class="p">(</span><span class="n">tier_shapes_transitions</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target consonants probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ann</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+        <span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__probas_to_lists</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tags</span><span class="p">)):</span>
+            <span class="n">label</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">score</span><span class="o">=</span><span class="n">scores</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">shape_tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="p">[</span><span class="n">label</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">shape_tier</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>hands_to_target_coords</h4>
+
+    <article class="docstring">
+<p><em>Generate the coordinates of the target finger.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand<em>pos</em>probas</strong>: (sppasTier) Tier with hand position probabilities</li>
+<li><strong>vowels_coords</strong>: (sppasTier) Tier with coordinates of the vowels and neutral</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier) CS-TargetCoords</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hands_to_target_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the coordinates of the target finger.</span>
+
+<span class="sd">        :param hand_pos_probas: (sppasTier) Tier with hand position probabilities</span>
+<span class="sd">        :param vowels_coords: (sppasTier) Tier with coordinates of the vowels and neutral</span>
+<span class="sd">        :return: (sppasTier) CS-TargetCoords</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">position_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eval_hand_target_coords_straight</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target vowels coords estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">)))</span>
+    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-TargetCoords&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ann</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">pos1</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tag1</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="n">pos2</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tag2</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">([</span><span class="n">tag1</span><span class="p">,</span> <span class="n">tag2</span><span class="p">],</span> <span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">pos_tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">loc</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="p">[</span><span class="n">label_pos</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">pos_tier</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_TargetProbabilitiesEstimator">Protected functions</h3>
+<h4>__discretize_positions</h4>
+
+    <article class="docstring">
+<p><em>Return proba of the hand position for each ann in given tier.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_pos</strong></li>
+<li><strong>vowels<em>coords</em>tier</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__discretize_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return proba of the hand position for each ann in given tier.</span>
+
+<span class="sd">        :return: (sppasTier)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">cur_pos</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+        <span class="n">new_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_label_contents_at</span><span class="p">(</span><span class="n">hand_pos</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_content</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">cur_pos</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur_pos</span> <span class="o">=</span> <span class="n">new_content</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">cur_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_pos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),))</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c2</span> <span class="o">=</span> <span class="n">cur_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">new_pos</span> <span class="o">=</span> <span class="n">cur_pos</span>
+            <span class="n">nb_img</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">new_pos</span> <span class="o">==</span> <span class="n">cur_pos</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+                    <span class="k">break</span>
+                <span class="n">nb_img</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+                    <span class="k">break</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span><span class="p">]</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+                <span class="n">new_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_label_contents_at</span><span class="p">(</span><span class="n">hand_pos</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">p2</span> <span class="o">=</span> <span class="mf">0.65</span>
+            <span class="k">elif</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">p2</span> <span class="o">=</span> <span class="mf">0.4</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">p_step_straight</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nb_img</span><span class="p">)</span>
+                <span class="n">p2</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">p_step_straight</span><span class="p">)</span>
+            <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p2</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">p2</span><span class="p">)))</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">proba_step</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p2</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nb_img</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nb_img</span><span class="p">):</span>
+                <span class="n">proba_pos2</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">proba_step</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">proba_pos2</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">proba_pos2</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">positions</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__discretize_shapes</h4>
+
+    <article class="docstring">
+<p><em>Return proba of the hand shape for each ann in given tier.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_shapes</strong></li>
+<li><strong>vowels<em>coords</em>tier</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__discretize_shapes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_shapes</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return proba of the hand shape for each ann in given tier.</span>
+
+<span class="sd">        :return: (sppasTier)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">shapes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">cur_shape</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+        <span class="n">new_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_label_contents_at</span><span class="p">(</span><span class="n">hand_shapes</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_content</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">cur_shape</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur_shape</span> <span class="o">=</span> <span class="n">new_content</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">cur_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),))</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c2</span> <span class="o">=</span> <span class="n">cur_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">new_shape</span> <span class="o">=</span> <span class="n">cur_shape</span>
+            <span class="n">nb_img</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="n">new_shape</span> <span class="o">==</span> <span class="n">cur_shape</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+                    <span class="k">break</span>
+                <span class="n">nb_img</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords_tier</span><span class="p">):</span>
+                    <span class="k">break</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">nb_img</span><span class="p">]</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+                <span class="n">new_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_label_contents_at</span><span class="p">(</span><span class="n">hand_shapes</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">)))</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="k">elif</span> <span class="n">nb_img</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)))</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)))</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">3</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="mf">0.35</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">p</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">proba_step</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nb_img</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nb_img</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+                    <span class="n">proba_shape1</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">proba_step</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">proba_shape0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proba_shape1</span>
+                    <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="n">proba_shape0</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">proba_shape1</span><span class="p">)))</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">proba_shape1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proba_step</span> <span class="o">/</span> <span class="mf">2.0</span>
+                <span class="n">proba_shape0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proba_shape1</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="n">proba_shape0</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">proba_shape1</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">proba_shape1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proba_step</span> <span class="o">/</span> <span class="mf">4.0</span>
+                <span class="n">proba_shape0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proba_shape1</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">c1</span><span class="p">,</span> <span class="n">proba_shape0</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">proba_shape1</span><span class="p">)))</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">shapes</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__eval_hand_target_coords_straight</h4>
+
+    <article class="docstring">
+<p><em>Return coords of the hand position for each ann in given tier.</em></p>
+
+<p>Coordinates are following a straight line to go from a position to
+the next one. It is ignoring the fact that keys have a different
+target finger: it is a straight line from a target position to the
+next one.</p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand<em>pos</em>probas</strong></li>
+<li><strong>vowels<em>coords</em>tier</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_target_coords_straight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return coords of the hand position for each ann in given tier.</span>
+
+<span class="sd">        Coordinates are following a straight line to go from a position to</span>
+<span class="sd">        the next one. It is ignoring the fact that keys have a different</span>
+<span class="sd">        target finger: it is a straight line from a target position to the</span>
+<span class="sd">        next one.</span>
+
+<span class="sd">        :return: (list)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">pos_coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">)):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+        <span class="n">vowels_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+        <span class="n">cur_vowels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">cur_probas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">hand_pos_probas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">label</span><span class="p">:</span>
+                <span class="n">cur_vowels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+                <span class="n">cur_probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="n">from_vowel_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">coord1</span> <span class="o">=</span> <span class="n">vowels_coords</span><span class="p">[</span><span class="n">from_vowel_idx</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span> <span class="o">=</span> <span class="n">coord1</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="n">r1</span> <span class="o">=</span> <span class="n">coord1</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)])</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">to_vowel_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Unknown vowel: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="k">continue</span>
+            <span class="n">coord2</span> <span class="o">=</span> <span class="n">vowels_coords</span><span class="p">[</span><span class="n">to_vowel_idx</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">=</span> <span class="n">coord2</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">coord2</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">from_vowel_idx</span> <span class="o">==</span> <span class="n">to_vowel_idx</span> <span class="ow">and</span> <span class="n">r2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">r2</span>
+                    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">r2</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">r2</span>
+                    <span class="n">y1</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">r2</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span> <span class="o">*</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span> <span class="o">*</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">r1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">dr</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">-</span> <span class="n">r1</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dr</span><span class="p">)</span> <span class="o">*</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No vowel at index </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pos_coords</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__eval_hand_target_coords_fixed</h4>
+
+    <article class="docstring">
+<p><em>Return coords of the hand position for each ann in given tier.</em></p>
+
+<p>The hand does not move from a position to the next one.
+Its position is the one of the vowel.</p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand<em>pos</em>probas</strong></li>
+<li><strong>vowels<em>coords</em>tier</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_target_coords_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return coords of the hand position for each ann in given tier.</span>
+
+<span class="sd">        The hand does not move from a position to the next one.</span>
+<span class="sd">        Its position is the one of the vowel.</span>
+
+<span class="sd">        :return: (list)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">pos_coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">)):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+        <span class="n">vowels_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+        <span class="n">cur_vowels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">cur_probas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">hand_pos_probas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">label</span><span class="p">:</span>
+                <span class="n">cur_vowels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+                <span class="n">cur_probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="n">from_vowel_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">coord1</span> <span class="o">=</span> <span class="n">vowels_coords</span><span class="p">[</span><span class="n">from_vowel_idx</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span> <span class="o">=</span> <span class="n">coord1</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="n">r1</span> <span class="o">=</span> <span class="n">coord1</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)])</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">to_vowel_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">coord2</span> <span class="o">=</span> <span class="n">vowels_coords</span><span class="p">[</span><span class="n">to_vowel_idx</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">=</span> <span class="n">coord2</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">coord2</span><span class="o">.</span><span class="n">get_radius</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">from_vowel_idx</span> <span class="o">==</span> <span class="n">to_vowel_idx</span><span class="p">:</span>
+                <span class="n">xm</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">r2</span>
+                <span class="n">ym</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">r2</span>
+                <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">xm</span><span class="p">,</span> <span class="n">ym</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No vowel at index </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pos_coords</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__create_tier</h4>
+
+    <article class="docstring">
+<p><em>Create a tier with a content for each given vowels coords.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>transition_tier</strong></li>
+<li><strong>vowels_coords</strong></li>
+<li><strong>consonant</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__create_tier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_tier</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">,</span> <span class="n">consonant</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a tier with a content for each given vowels coords.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">consonant</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Shapes&#39;</span><span class="p">)</span>
+        <span class="n">cur_content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Positions&#39;</span><span class="p">)</span>
+        <span class="n">cur_content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">vowels_coords</span><span class="p">:</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
+        <span class="n">new_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_label_contents_at</span><span class="p">(</span><span class="n">transition_tier</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_content</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_content</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">cur_content</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cur_content</span><span class="p">]</span>
+        <span class="n">tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tier</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__get_label_contents_at</h4>
+
+    <article class="docstring">
+<p><em>Return the list of label contents of the annotation at the given moment.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier</strong></li>
+<li><strong>point</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__get_label_contents_at</span><span class="p">(</span><span class="n">tier</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of label contents of the annotation at the given moment.&quot;&quot;&quot;</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ann_idx</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">mindex</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ann_idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">tier</span><span class="p">[</span><span class="n">ann_idx</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">c1</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
+            <span class="n">c2</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;One or two labels were expected. Got </span><span class="si">{:d}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">content</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__probas_to_lists</h4>
+
+    <article class="docstring">
+<p><em>Return the tags and scores of the given list of probabilities.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>probas</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__probas_to_lists</span><span class="p">(</span><span class="n">probas</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the tags and scores of the given list of probabilities.&quot;&quot;&quot;</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">probas</span><span class="p">:</span>
+        <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

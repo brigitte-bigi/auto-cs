@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasHandFilters. Apply filters on hand pictures." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="sppasHandProperties.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="sppasHandsSet.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.whowimgtag.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whowtag.hands">    <h1>Module CuedSpeech.whowtag.hands</h1>
+<section id="#sppasHandFilters">
+<h2>Class sppasHandFilters</h2>
+
+<section>
+<h3 id="#description_sppasHandFilters">Description</h3>
+    <article class="docstring">
+<p><em>Apply filters on hand pictures.</em></p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">sppasHandFilters</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">f</span><span class="o">.</span><span class="n">get_filter_names</span><span class="p">()</span>
+ <span class="o">&gt;</span> <span class="p">[</span><span class="s2">&quot;cartoon&quot;</span><span class="p">,</span> <span class="s2">&quot;sights&quot;</span><span class="p">,</span> <span class="s2">&quot;skeleton&quot;</span><span class="p">,</span> <span class="s2">&quot;sticks&quot;</span><span class="p">,</span> <span class="s2">&quot;tgtline&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_sppasHandFilters">Constructor</h3>
+    <article class="docstring">
+<p><em>Create an instance of the sppasHanddFilters class.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>radius</strong>: (<em>int</em>) Radius of the circles.</li>
+<li><strong>circles_color</strong>: (<em>tuple</em>) Color of the circles in (B, G, R)</li>
+<li><strong>line_thickness</strong>: (<em>int</em>) Thickness of the lines.</li>
+<li><strong>lines_color</strong>: (<em>tuple</em>) Color of the lines in (B, G, R)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">circles_color</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">line_thickness</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lines_color</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">40</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an instance of the sppasHanddFilters class.</span>
+
+<span class="sd">    :param radius: (int) Radius of the circles.</span>
+<span class="sd">    :param circles_color: (tuple) Color of the circles in (B, G, R)</span>
+<span class="sd">    :param line_thickness: (int) Thickness of the lines.</span>
+<span class="sd">    :param lines_color: (tuple) Color of the lines in (B, G, R)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__check_init_parameters</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">circles_color</span><span class="p">,</span> <span class="n">line_thickness</span><span class="p">,</span> <span class="n">lines_color</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__circles_color</span> <span class="o">=</span> <span class="n">circles_color</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span> <span class="o">=</span> <span class="n">line_thickness</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span> <span class="o">=</span> <span class="n">lines_color</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__sights_hidden</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__sights_link</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_sppasHandFilters">Public functions</h3>
+<h4>get_filter_names</h4>
+
+    <article class="docstring">
+<p><em>Return the list of available filters.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_filter_names</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of available filters.&quot;&quot;&quot;</span>
+    <span class="n">fcts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">sppasHandFilters</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">inspect</span><span class="o">.</span><span class="n">isroutine</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">sppasHandFilters</span><span class="p">,</span> <span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="ow">and</span> <span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="p">(</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;get_filter_names&#39;</span><span class="p">):</span>
+            <span class="n">fcts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">fcts</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>cartoon</h4>
+
+    <article class="docstring">
+<p><em>Apply a cartoon filter on a hand image.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_properties</strong>: (sppasHandProperties) An hands set</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If the 'shape_code' parameter value is unknown</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The image with the filter applied on it</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">cartoon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_properties</span><span class="p">:</span> <span class="n">sppasHandProperties</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a cartoon filter on a hand image.</span>
+
+<span class="sd">        :param hand_properties: (sppasHandProperties) An hands set</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :raises sppasTypeError: If the parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises sppasValueError: If the &#39;shape_code&#39; parameter value is unknown</span>
+<span class="sd">        :return: (sppasImage) The image with the filter applied on it</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">get_sights</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_fct_parameters</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">icartoon</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>sights</h4>
+
+    <article class="docstring">
+<p><em>Apply a sights filter on a hand image.</em></p>
+
+<p>Put a circle for each sight on the hand linked with line.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_properties</strong>: (sppasHandProperties) An hands set</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If the 'shape_code' parameter value is unknown</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The image with the filter applied on it</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_properties</span><span class="p">:</span> <span class="n">sppasHandProperties</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a sights filter on a hand image.</span>
+
+<span class="sd">        Put a circle for each sight on the hand linked with line.</span>
+
+<span class="sd">        :param hand_properties: (sppasHandProperties) An hands set</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :raises sppasTypeError: If the parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises sppasValueError: If the &#39;shape_code&#39; parameter value is unknown</span>
+<span class="sd">        :return: (sppasImage) The image with the filter applied on it</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">get_sights</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_fct_parameters</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="o">=</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__img_to_data</span><span class="p">(</span><span class="n">hand_img</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__apply_sights</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__data_to_img</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>skeleton</h4>
+
+    <article class="docstring">
+<p><em>Apply a skeleton image filter from a hand image.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_properties</strong>: (sppasHandProperties) An hands set</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If the 'shape_code' parameter value is unknown</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The skeleton image</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">skeleton</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_properties</span><span class="p">:</span> <span class="n">sppasHandProperties</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a skeleton image filter from a hand image.</span>
+
+<span class="sd">        :param hand_properties: (sppasHandProperties) An hands set</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :raises: sppasTypeError: If the parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises: sppasValueError: If the &#39;shape_code&#39; parameter value is unknown</span>
+<span class="sd">        :return: (sppasImage) The skeleton image</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">get_sights</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_fct_parameters</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sppasImage</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">blank_image</span><span class="p">(</span><span class="n">hand_img</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">hand_img</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__apply_sights</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">bgra</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sppasImage</span><span class="p">(</span><span class="n">input_array</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bgra</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>sticks</h4>
+
+    <article class="docstring">
+<p><em>Draw sticks on a specific hand image of a hand set.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_properties</strong>: (sppasHandProperties) An hands set</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If the 'shape_code' parameter value is unknown</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The skeleton image</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sticks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_properties</span><span class="p">:</span> <span class="n">sppasHandProperties</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw sticks on a specific hand image of a hand set.</span>
+
+<span class="sd">        :param hand_properties: (sppasHandProperties) An hands set</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :raises: sppasTypeError: If the parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises: sppasValueError: If the &#39;shape_code&#39; parameter value is unknown</span>
+<span class="sd">        :return: (sppasImage) The skeleton image</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">get_sights</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_fct_parameters</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="o">=</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__img_to_data</span><span class="p">(</span><span class="n">hand_img</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape_code</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">s5_x</span><span class="p">,</span> <span class="n">s5_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s6_x</span><span class="p">,</span> <span class="n">s6_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">s5_x</span><span class="p">,</span> <span class="n">s5_y</span><span class="p">),</span> <span class="p">(</span><span class="n">s6_x</span><span class="p">,</span> <span class="n">s6_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">shape_code</span> <span class="o">==</span> <span class="s1">&#39;8&#39;</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">s5_x</span><span class="p">,</span> <span class="n">s5_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s8_x</span><span class="p">,</span> <span class="n">s8_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">s5_x</span><span class="p">,</span> <span class="n">s5_y</span><span class="p">),</span> <span class="p">(</span><span class="n">s8_x</span><span class="p">,</span> <span class="n">s8_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s12_x</span><span class="p">,</span> <span class="n">s12_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">),</span> <span class="p">(</span><span class="n">s12_x</span><span class="p">,</span> <span class="n">s12_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">target_coords</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__circles_color</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__data_to_img</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>tgtline</h4>
+
+    <article class="docstring">
+<p><em>Draw a circle on the target sight and a line on S0-S9.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_properties</strong>: (sppasHandProperties) An hands set</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If the parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If the 'shape_code' parameter value is unknown</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasImage) The skeleton image</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tgtline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_properties</span><span class="p">:</span> <span class="n">sppasHandProperties</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasImage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a circle on the target sight and a line on S0-S9.</span>
+
+<span class="sd">        :param hand_properties: (sppasHandProperties) An hands set</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :raises: sppasTypeError: If the parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises: sppasValueError: If the &#39;shape_code&#39; parameter value is unknown</span>
+<span class="sd">        :return: (sppasImage) The skeleton image</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">hand_img</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">get_sights</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_fct_parameters</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="o">=</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__img_to_data</span><span class="p">(</span><span class="n">hand_img</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">),</span> <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">hand_properties</span><span class="o">.</span><span class="n">target_coords</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__circles_color</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sppasHandFilters</span><span class="o">.</span><span class="n">__data_to_img</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_sppasHandFilters">Protected functions</h3>
+<h4>__img_to_data</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__img_to_data</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">bgr_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">ibgra_to_bgr</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bgr_img</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">red</span> <span class="o">==</span> <span class="n">r1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">green</span> <span class="o">==</span> <span class="n">g1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">blue</span> <span class="o">==</span> <span class="n">b1</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">r2</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">b2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__data_to_img</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__data_to_img</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sppasImage</span><span class="p">(</span><span class="n">input_array</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2RGBA</span><span class="p">))</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">red</span> <span class="o">==</span> <span class="n">r2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">green</span> <span class="o">==</span> <span class="n">g2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">blue</span> <span class="o">==</span> <span class="n">b2</span><span class="p">)</span>
+    <span class="n">img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">r2</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__check_init_parameters</h4>
+
+    <article class="docstring">
+<p><em>Check filters parameters and raise exception if one of them has a problem.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>radius</strong>: (<em>int</em>) The radius of the circles</li>
+<li><strong>circles_color</strong>: (<em>tuple</em>[<em>int</em>, <em>int</em>, <em>int</em>]) The color of the circles</li>
+<li><strong>line_thickness</strong>: (<em>int</em>) The thickness of the lines</li>
+<li><strong>lines_color</strong>: (<em>tuple</em>[<em>int</em>, <em>int</em>, <em>int</em>]) The color of the lines</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If a parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If a parameter value is not correct</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__check_init_parameters</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">circles_color</span><span class="p">,</span> <span class="n">line_thickness</span><span class="p">,</span> <span class="n">lines_color</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check filters parameters and raise exception if one of them has a problem.</span>
+
+<span class="sd">        :param radius: (int) The radius of the circles</span>
+<span class="sd">        :param circles_color: (tuple[int, int, int]) The color of the circles</span>
+<span class="sd">        :param line_thickness: (int) The thickness of the lines</span>
+<span class="sd">        :param lines_color: (tuple[int, int, int]) The color of the lines</span>
+
+<span class="sd">        :raises: sppasTypeError: If a parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises: sppasValueError: If a parameter value is not correct</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">circles_color</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lines_color</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">circles_color</span><span class="p">,</span> <span class="s1">&#39;tuple&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles_color</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines_color</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasValueError</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles_color</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines_color</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">line_thickness</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">line_thickness</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasValueError</span><span class="p">(</span><span class="s1">&#39;radius&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">line_thickness</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasValueError</span><span class="p">(</span><span class="s1">&#39;line_thickness&#39;</span><span class="p">,</span> <span class="n">line_thickness</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__check_fct_parameters</h4>
+
+    <article class="docstring">
+<p><em>Check filters parameters and raise exception if one of them has a problem.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand_img</strong>: (sppasImage) The hand shape image</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+<li><strong>sights</strong>: (sppasSight) The sights of hand shape</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: If a parameter doesn't have a type expected</li>
+<li><em>sppasValueError</em>: If a parameter value is not correct</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__check_fct_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_img</span><span class="p">:</span> <span class="n">sppasImage</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="n">sppasSights</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check filters parameters and raise exception if one of them has a problem.</span>
+
+<span class="sd">        :param hand_img: (sppasImage) The hand shape image</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :param sights: (sppasSight) The sights of hand shape</span>
+<span class="sd">        :raises: sppasTypeError: If a parameter doesn&#39;t have a type expected</span>
+<span class="sd">        :raises: sppasValueError: If a parameter value is not correct</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="n">sppasImage</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">hand_img</span><span class="p">,</span> <span class="s1">&#39;sppasImage&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="n">sppasSights</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="s1">&#39;sppasSights&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape_code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights_hidden</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasValueError</span><span class="p">(</span><span class="s1">&#39;shape_code&#39;</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__apply_sights</h4>
+
+    <article class="docstring">
+<p><em>Put the sights circles and the connected lines on the given image.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>img</strong>: (numpy.ndarray) The hand shape image</li>
+<li><strong>shape_code</strong>: (<em>str</em>) The hand shape code</li>
+<li><strong>sights</strong>: (sppasSight) The sights of hand shape</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(numpy.ndarray) The image with the sights and connected lines on it</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__apply_sights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sights</span><span class="p">:</span> <span class="n">sppasSights</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Put the sights circles and the connected lines on the given image.</span>
+
+<span class="sd">        :param img: (numpy.ndarray) The hand shape image</span>
+<span class="sd">        :param shape_code: (str) The hand shape code</span>
+<span class="sd">        :param sights: (sppasSight) The sights of hand shape</span>
+<span class="sd">        :return: (numpy.ndarray) The image with the sights and connected lines on it</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">s_arm_x</span> <span class="o">=</span> <span class="n">s0_x</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">s_arm_x</span> <span class="o">=</span> <span class="n">s0_x</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_x</span> <span class="o">-</span> <span class="n">s0_x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">s_arm_y</span> <span class="o">=</span> <span class="n">s0_y</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">s_arm_y</span> <span class="o">=</span> <span class="n">s0_y</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s9_y</span> <span class="o">-</span> <span class="n">s0_y</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">s_arm_x</span><span class="p">,</span> <span class="n">s_arm_y</span><span class="p">),</span> <span class="p">(</span><span class="n">s0_x</span><span class="p">,</span> <span class="n">s0_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">s_arm_x</span><span class="p">,</span> <span class="n">s_arm_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__circles_color</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights_link</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights_hidden</span><span class="p">[</span><span class="n">shape_code</span><span class="p">]</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights_hidden</span><span class="p">[</span><span class="n">shape_code</span><span class="p">]:</span>
+            <span class="p">(</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">),</span> <span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lines_color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__line_thickness</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights_hidden</span><span class="p">[</span><span class="n">shape_code</span><span class="p">]:</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__circles_color</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>
