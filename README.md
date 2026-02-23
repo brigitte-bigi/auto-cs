@@ -23,7 +23,7 @@ by means of the **spin-off** mechanism provided by SPPAS, which allows external 
 bases to remain separate while still being dynamically discovered and used by the main 
 framework.
 
-> Auto-CS requires video feature of SPPAS, for opencv and numpy dependencies.
+> To create a coded video, Auto-CS requires video feature of SPPAS to be enabled.
 
 
 ## Automatic Annotation
