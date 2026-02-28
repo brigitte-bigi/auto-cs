@@ -283,14 +283,14 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-## How to cite AutoCuedSpeech
+## How to cite Auto-CS
 
-By using AutoCuedSpeech, you are encouraged to mention it in your publications 
+By using `Auto-CS`, you are encouraged to mention it in your publications 
 or products, in accordance with the best practices of the AGPL license.
 
-Use the following reference to cite AutoCuedSpeech:
+Use the following reference to cite it:
 
-> Brigitte Bigi. AutoCuedSpeech, Automatic generation of Cued Speech.
+> Brigitte Bigi. Auto-CS, Automatic generation of Cued Speech.
 > Version 2.0. 2026. <https://autocs.sourceforge.net>
 
 Check version for update.
@@ -298,14 +298,13 @@ Check version for update.
 
 ### Logos and images
 
-Logos and images were designed by Brigitte Bigi.
+Logos and images of `Auto-CS` were all designed by Brigitte Bigi.
 They are under the terms of CC BY-NC-ND 4.0,
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.
 
 The AutoCuedSpeech project logo, included in this tool, was designed by 
 Laurent Lopez - see "le Nébleu" at <https://laurentlopez-creations.com/>, 
-and is used with full rights granted to the project. 
-It is not covered by the AGPL license. All rights reserved.
+and is used with full rights granted to the project. All rights reserved.
 
 
 ## Versions
@@ -322,7 +321,8 @@ Migrated to Whakerexa 2.0.
 ### 2.0 - Attached to SPPAS-4.31
 
 - Deleted textcued app.
-- Introduced TextCueS app, described here: <https://hal.science/hal-5511364/>
+- Introduced **TextCueS** app, described here: <https://hal.science/hal-5511364/>
 
-See TextCueS in action at: <https://sppas.org/textcues.html>
-and at: <https://auto-cuedspeech.org/textcues.html>
+See TextCueS in action at: <https://auto-cuedspeech.org/textcues.html>
+
+It will be available asap at: <https://sppas.org/textcues.html>
