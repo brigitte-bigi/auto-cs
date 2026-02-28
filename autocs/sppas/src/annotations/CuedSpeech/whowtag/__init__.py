@@ -38,6 +38,8 @@ from sppas.core.config import paths
 from sppas.core.coreutils import sppasError
 from sppas.core.coreutils import sppasEnableFeatureError
 import sppas.src.videodata
+from .hands import *
+from .whowimgtag import *
 
 # ---------------------------------------------------------------------------
 

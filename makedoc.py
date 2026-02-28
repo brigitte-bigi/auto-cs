@@ -4,10 +4,10 @@
 # Purpose: Generate the Auto-CS documentation using ClammingPy (>= 2.0).
 #
 # Install:
-#   python -m pip install ClammingPy
+#   $SPPAS/.sppaspyenv~/bin/python -m pip install ClammingPy
 #
 # Run:
-#   python makedoc.py
+#   $SPPAS/.sppaspyenv~/bin/python makedoc.py
 #
 # Output:
 #   - HTML documentation is generated into ./docs/

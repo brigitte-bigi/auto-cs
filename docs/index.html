@@ -175,8 +175,7 @@ must be enabled during the SPPAS setup:</p>
 <h3>Version compatibility</h3>
 
 <p>For reproducible experiments, the exact version of Auto-CS is determined by the SPPAS 
-version used.
-The installed version of Auto-CS during the SPPAS Setup corresponds to the version 
+version used. The installed version of Auto-CS during the SPPAS Setup corresponds to the version 
 bundled with the installed SPPAS release (see file <code>sppas/etc/features.ini</code> of SPPAS package). </p>
 
 <p>Version mapping between Auto-CS and SPPAS is indicated in the “Versions” section of this README.</p>
@@ -440,6 +439,47 @@ TextCueS – Dossier conceptuel (2026). HAL Id: hal-05511364.</p>
 A guided web application integrated in SPPAS (SWApp) allowing the automatic encoding of 
 a video is under development.</p>
 
+<h2>Reproducibility / Availability of data and materials</h2>
+
+<p>Because Auto-CS is distributed as a SPPAS spin-off, it is not intended to run standalone.
+The <code>demo/</code> folder (distributed with SPPAS) provides example inputs to reproduce the outputs 
+described below.</p>
+
+<h3>1) Generate Cued Speech keys from text (TextCueS)</h3>
+
+<p>Launch:</p>
+
+<div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span> <span class="n">sppas</span>\<span class="n">ui</span>\<span class="n">swapp</span>
+</code></pre></div>
+
+<p>This opens a browser tab. 
+Click the “TextCueS” application, then follow the guided interface.</p>
+
+<p>Example: 
+text <code>An example.</code> with language = American English produces: 
+<code>5-t 4-m.7-s.2-t.5-s.1-sd.6-s</code></p>
+
+<h3>2) Generate a cued video from command line</h3>
+
+<p>Get help:</p>
+
+<div class="highlight"><pre><span></span><code><span class="o">.</span>\<span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="o">.</span>\<span class="n">sppas</span>\<span class="nb">bin</span>\<span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> 
+</code></pre></div>
+
+<p>Re-generate the demo video (<code>demo/demo-cuedsp.mp4</code>):</p>
+
+<div class="highlight"><pre><span></span><code><span class="o">.</span>\<span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="o">.</span>\<span class="n">sppas</span>\<span class="nb">bin</span>\<span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">I</span> <span class="n">demo</span> <span class="o">-</span><span class="n">l</span> <span class="n">fra</span> <span class="o">--</span><span class="n">createvideo</span><span class="o">=</span><span class="n">true</span> <span class="o">--</span><span class="n">handsset</span><span class="o">=</span><span class="n">yoyo</span> <span class="o">--</span><span class="n">vowelspos</span><span class="o">=</span><span class="n">true</span>
+</code></pre></div>
+
+<h3>3) Generate a cued video from the wx GUI</h3>
+
+<p>Launch <code>sppas.bat</code>.
+1. Add the files from the <code>demo/</code> folder to the file list and select any one of them.
+2. Go to the “Annotate” tab and select language “fra”.
+3. Click “Standalone annotations”, then check “Cued Speech coding”.
+4. Set options in “Configure”: check video generation and enter "yoyo" in the hand set field.
+5. Go back, then click “Let’s go”.</p>
+
 <h2>Legal issues</h2>
 
 <h3>Help / How to contribute</h3>
@@ -463,7 +503,7 @@ Signed-off-by: Random J Developer <random@developer.example.org>
 
 <p>See the accompanying <code>LICENSE</code> and <code>AUTHORS.md</code> files for the full list of contributors.</p>
 
-<p>Copyright (C) 2021-2026 <a href="https://sppas.org/bigi/">Brigitte Bigi</a>, CNRS - <a href="&#109;a&#105;&#x6c;&#x74;&#x6f;&#58;&#x63;&#111;&#x6e;&#116;&#97;&#x63;&#116;&#x40;&#x73;&#x70;&#x70;&#97;s&#x2e;&#x6f;&#x72;&#x67;">&#x63;&#111;&#x6e;&#116;&#97;&#x63;&#116;&#x40;&#x73;&#x70;&#x70;&#97;s&#x2e;&#x6f;&#x72;&#x67;</a>
+<p>Copyright (C) 2021-2026 <a href="https://sppas.org/bigi/">Brigitte Bigi</a>, CNRS - <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;:&#99;o&#110;&#116;&#x61;&#99;&#x74;&#64;s&#112;&#x70;&#97;&#x73;&#x2e;&#x6f;r&#x67;">&#99;o&#110;&#116;&#x61;&#99;&#x74;&#64;s&#112;&#x70;&#97;&#x73;&#x2e;&#x6f;r&#x67;</a>
 Laboratoire Parole et Langage, Aix-en-Provence, France</p>
 
 <p>This program is free software: you can redistribute it and/or modify
@@ -508,48 +548,6 @@ and is used with full rights granted to the project. All rights reserved.</p>
 repository as it is recommended for Research Software. 
 See <a href="https://codemeta.github.io/">https://codemeta.github.io/</a> for details.</p>
 
-<h2>Reproducibility / Availability of data and materials</h2>
-
-<p>Because Auto-CS is distributed as a SPPAS spin-off, it is not intended to run standalone.
-The <code>demo/</code> folder (distributed with SPPAS) provides example inputs to reproduce the outputs 
-described below.</p>
-
-<h3>1) Generate Cued Speech keys from text (TextCueS)</h3>
-
-<p>Launch:</p>
-
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">sppaspyenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="n">sppas</span><span class="o">/</span><span class="n">ui</span><span class="o">/</span><span class="n">swapp</span>
-</code></pre></div>
-
-<p>This opens a browser tab. 
-Click the “TextCueS” application, then follow the guided interface.</p>
-
-<p>Example: 
-text <code>An example.</code> with language = American English produces: 
-<code>5-t 4-m.7-s.2-t.5-s.1-sd.6-s</code></p>
-
-<h3>2) Generate a cued video from command line</h3>
-
-<p>Get help:</p>
-
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">sppaspyenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">./</span><span class="n">sppas</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">help</span>
-</code></pre></div>
-
-<p>Re-generate the demo video (<code>demo/demo-cuedsp.mp4</code>):</p>
-
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">sppaspyenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">./</span><span class="n">sppas</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">I</span> <span class="n">demo</span> <span class="o">-</span><span class="n">l</span> <span class="n">fra</span> 
- <span class="o">--</span><span class="n">createvideo</span><span class="o">=</span><span class="n">true</span> <span class="o">--</span><span class="n">handsset</span><span class="o">=</span><span class="n">yoyo</span> <span class="o">--</span><span class="n">vowelspos</span><span class="o">=</span><span class="n">true</span>
-</code></pre></div>
-
-<h3>3) Generate a cued video from the wx GUI</h3>
-
-<p>Launch <code>sppas.bat</code>.
-1. Add the files from the <code>demo/</code> folder to the file list and select any one of them.
-2. Go to the “Annotate” tab and select language “eng”.
-3. Click “Standalone annotations”, then check “Cued Speech coding”.
-4. Set options in “Configure” (same options as in the CLI above).
-5. Go back, then click “Let’s go”.</p>
-
 <h2>Conflict of Interest</h2>
 
 <p>The author declares no conflict of interest.</p>
@@ -591,6 +589,19 @@ Open Source Research Software Competition.</p>
 <p>See TextCueS -with UI in French- in action at: <a href="https://auto-cuedspeech.org/textcues.html">https://auto-cuedspeech.org/textcues.html</a></p>
 
 <p>It will be available -with UI in English- asap at: <a href="https://sppas.org/textcues.html">https://sppas.org/textcues.html</a></p>
+
+<h1>Help</h1>
+
+<h2>Installation error</h2>
+
+<blockquote>
+  <p>Failed to establish a connection to the url https://sourceforge.net/projects/autocs/files/autocs-2.0.zip/download: 
+  [SSL: CERTIFICATE<em>VERIFY</em>FAILED] certificate verify failed: unable to get local issuer 
+  certificate (_ssl.c:1147).</p>
+</blockquote>
+
+<p>Your Python installation cannot validate HTTPS connections (missing or outdated SSL certificates).
+Install a recent version of Python, then reinstall and retry.</p>
     </section>
 <h1>List of packages:</h1>
       <h2>CuedSpeech</h2>

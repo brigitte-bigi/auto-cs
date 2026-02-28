@@ -2,6 +2,21 @@
 
 ## List of classes
 
+## Class `sppasHandFilters`
+
+### Constructor
+
+#### __init__
+
+```python
+def __init__(self, *args, **kwargs):
+    raise sppasError("The hand filters can't be used.")
+```
+
+
+
+
+
 ## Class `CuedSpeechVideoTagger`
 
 ### Constructor
@@ -10,7 +25,7 @@
 
 ```python
 def __init__(self, *args, **kwargs):
-    raise sppasEnableFeatureError('video')
+    raise sppasEnableFeatureError('autocs')
 ```
 
 
