@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasWhereAnglesPredictor. Predict the angle of the wrist at all vowel positions." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="sppasWherePositionsPredictor.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="sppasWhereCuePredictor.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue">    <h1>Module CuedSpeech.wherecue</h1>
+<section id="#sppasWhereAnglesPredictor">
+<h2>Class sppasWhereAnglesPredictor</h2>
+
+<section>
+<h3 id="#description_sppasWhereAnglesPredictor">Description</h3>
+    <article class="docstring">
+<p><em>Predict the angle of the wrist at all vowel positions.</em></p>
+
+<p>Create a tier indicating the angles.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_sppasWhereAnglesPredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a new instance of angles predictor.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>predictor_version</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictor_version</span><span class="o">=</span><span class="n">WhereAnglesPredictor</span><span class="o">.</span><span class="n">DEFAULT_VERSION</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance of angles predictor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="o">=</span> <span class="n">WhereAnglesPredictor</span><span class="p">(</span><span class="n">predictor_version</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_sppasWhereAnglesPredictor">Public functions</h3>
+<h4>version_numbers</h4>
+
+    <article class="docstring">
+<p><em>Return the whole list of supported version numbers.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">version_numbers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the whole list of supported version numbers.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">version_numbers</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_version_number</h4>
+
+    <article class="docstring">
+<p><em>Return the version number of the selected predictor (int).</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_version_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the version number of the selected predictor (int).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_version_number</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_version_number</h4>
+
+    <article class="docstring">
+<p><em>Change the predictor version number.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>version_number</strong>: (<em>int</em>) One of the supported versions.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: if invalid version number</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_version_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the predictor version number.</span>
+
+<span class="sd">        :param version_number: (int) One of the supported versions.</span>
+<span class="sd">        :raises: sppasKeyError: if invalid version number</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">set_version_number</span><span class="p">(</span><span class="n">version_number</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_use_face</h4>
+
+    <article class="docstring">
+<p><em>Return True if the hand angle must be corrected by the one of the face.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_use_face</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the hand angle must be corrected by the one of the face.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">use_face</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_use_face</h4>
+
+    <article class="docstring">
+<p><em>The angle of the hand is corrected by the one of the face or not.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>value</strong>: (<em>bool</em>) True if the angle of the hand has to be corrected.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_use_face</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The angle of the hand is corrected by the one of the face or not.</span>
+
+<span class="sd">        :param value: (bool) True if the angle of the hand has to be corrected.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">use_face</span> <span class="o">=</span> <span class="n">value</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>hand_angles</h4>
+
+    <article class="docstring">
+<p><em>Predict the angles for the given vowels.</em></p>
+
+<p>Notice that the coordinates of the position can have negative values.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier_pos</strong>: (sppasTier) Coordinates of the vowel positions.</li>
+<li><strong>face_sights</strong>: (sppasTier) Sights of the face corresponding to each vowel.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier) tier with name 'CS-HandAngle'</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hand_angles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_pos</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">face_sights</span><span class="p">:</span> <span class="n">sppasTier</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict the angles for the given vowels.</span>
+
+<span class="sd">        Notice that the coordinates of the position can have negative values.</span>
+
+<span class="sd">        :param tier_pos: (sppasTier) Coordinates of the vowel positions.</span>
+<span class="sd">        :param face_sights: (sppasTier) Sights of the face corresponding to each vowel.</span>
+<span class="sd">        :return: (sppasTier) tier with name &#39;CS-HandAngle&#39;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eval_hand_angle</span><span class="p">(</span><span class="n">tier_pos</span><span class="p">,</span> <span class="n">face_sights</span><span class="p">)</span>
+    <span class="n">angles_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-HandAngle&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ann</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tier_pos</span><span class="p">,</span> <span class="n">angles</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+        <span class="n">angles_tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">angles_tier</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_sppasWhereAnglesPredictor">Protected functions</h3>
+<h4>__eval_hand_angle</h4>
+
+    <article class="docstring">
+<p><em>Return angle of the hand for each ann in given tier.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>hand<em>pos</em>probas</strong>: (sppasTier) Coordinates of the vowel positions.</li>
+<li><strong>face_sights</strong>: (sppasTier) Sights of the face corresponding to each vowel.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>) Angle values -- one for each ann in given tier.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">face_sights</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return angle of the hand for each ann in given tier.</span>
+
+<span class="sd">        :param hand_pos_probas: (sppasTier) Coordinates of the vowel positions.</span>
+<span class="sd">        :param face_sights: (sppasTier) Sights of the face corresponding to each vowel.</span>
+<span class="sd">        :return: (list) Angle values -- one for each ann in given tier.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">)):</span>
+        <span class="n">cur_vowels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">cur_probas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">hand_pos_probas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">label</span><span class="p">:</span>
+                <span class="n">cur_vowels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+                <span class="n">cur_probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="n">face_angle</span> <span class="o">=</span> <span class="mi">90</span>
+        <span class="k">if</span> <span class="n">face_sights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span> <span class="o">=</span> <span class="n">face_sights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">face_angle</span> <span class="o">=</span> <span class="n">observed_angle</span><span class="p">((</span><span class="n">sights</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">sights</span><span class="o">.</span><span class="n">y</span><span class="p">(</span><span class="mi">8</span><span class="p">)),</span> <span class="p">(</span><span class="n">sights</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="n">sights</span><span class="o">.</span><span class="n">y</span><span class="p">(</span><span class="mi">27</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">predict_angle_values</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_angle</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">face_angle</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">angle1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_angle</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">face_angle</span><span class="p">)</span>
+            <span class="n">angle2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_angle</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">face_angle</span><span class="p">)</span>
+            <span class="n">da</span> <span class="o">=</span> <span class="n">angle2</span> <span class="o">-</span> <span class="n">angle1</span>
+            <span class="n">na</span> <span class="o">=</span> <span class="n">angle1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">da</span><span class="p">)</span> <span class="o">*</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">na</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">angles</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

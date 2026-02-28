@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of CuedSpeechCueingRules. Rules data structure for a system to predict Cued Speech keys." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="sppasCuedRulesMaxValueError.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeechKeys.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whatkey">    <h1>Module CuedSpeech.whatkey</h1>
+<section id="#CuedSpeechCueingRules">
+<h2>Class CuedSpeechCueingRules</h2>
+
+<section>
+<h3 id="#description_CuedSpeechCueingRules">Description</h3>
+    <article class="docstring">
+<p><em>Rules data structure for a system to predict Cued Speech keys.</em></p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">rules</span> <span class="o">=</span> <span class="n">CuedSpeechCueingRules</span><span class="p">()</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">rules</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">FRA_KEYS</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="k">assert</span><span class="p">(</span><span class="n">result</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">rules</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="s2">&quot;t&quot;</span>
+</code></pre></div>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_CuedSpeechCueingRules">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>filename</strong>: (<em>str</em>) Name of the file with the rules.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+
+<span class="sd">    :param filename: (str) Name of the file with the rules.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_CuedSpeechCueingRules">Public functions</h3>
+<h4>reset</h4>
+
+    <article class="docstring">
+<p><em>Reset the set of rules.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the set of rules.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">phone</span> <span class="ow">in</span> <span class="n">symbols</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="n">phone</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;vnone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;cnone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;vnil&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;cnil&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>load</h4>
+
+    <article class="docstring">
+<p><em>Load the rules from a file.</em></p>
+
+<p>Invalidate the already defined set of rules.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>filename</strong>: (<em>str</em>) Name of the file with the rules.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasIOError</em>: If the file cannot be opened.</li>
+<li><em>sppasError</em>: File is not a regular Cued Speech file.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) Rules were appended or not</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the rules from a file.</span>
+
+<span class="sd">        Invalidate the already defined set of rules.</span>
+
+<span class="sd">        :param filename: (str) Name of the file with the rules.</span>
+<span class="sd">        :raises: sppasIOError: If the file cannot be opened.</span>
+<span class="sd">        :raises: sppasError: File is not a regular Cued Speech file.</span>
+<span class="sd">        :return: (bool) Rules were appended or not</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasIOError</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">added</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">line_nb</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">sp</span> <span class="o">=</span> <span class="n">sppasUnicode</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">to_strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;PHONMERGE&#39;</span><span class="p">:</span>
+            <span class="n">sequence</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">effective_class</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid PHONMERGE at line </span><span class="si">{</span><span class="n">line_nb</span><span class="si">}</span><span class="s1">: empty sequence.&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">effective_class</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">PHON_CLASSES</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s1">&#39;Invalid PHONMERGE class. One of </span><span class="si">{:s}</span><span class="s1"> was expected. Got </span><span class="si">{:s}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">PHON_CLASSES</span><span class="p">,</span> <span class="n">effective_class</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Duplicated PHONMERGE at line </span><span class="si">{</span><span class="n">line_nb</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s1"> is already defined.&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="p">[</span><span class="n">sequence</span><span class="p">]</span> <span class="o">=</span> <span class="n">effective_class</span>
+            <span class="n">added</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;PHONCLASS&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">PHON_CLASSES</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s1">&#39;Invalid PHONCLASS. One of </span><span class="si">{:s}</span><span class="s1"> was expected. Got </span><span class="si">{:s}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">PHON_CLASSES</span><span class="p">,</span> <span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+                <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;cnone&#39;</span><span class="p">,</span> <span class="s1">&#39;vnone&#39;</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">added</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;PHONKEY&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;cnone&#39;</span><span class="p">,</span> <span class="s1">&#39;vnone&#39;</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="n">added</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;SHAPETARGET&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">target</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span><span class="p">[</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">target</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid SHAPETARGET value </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SHAPETARGET &#39;</span><span class="si">{</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; is not an integer for shape </span><span class="si">{</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;shape </span><span class="si">{</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> is already defined.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">added</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_class</h4>
+
+    <article class="docstring">
+<p><em>Return the class identifier of the phoneme.</em></p>
+
+<p>If the phoneme is unknown, the neutral class is returned.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phoneme</strong>: (<em>str</em>) A phoneme</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>class of the phoneme or neutral class</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phoneme</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the class identifier of the phoneme.</span>
+
+<span class="sd">        If the phoneme is unknown, the neutral class is returned.</span>
+
+<span class="sd">        :param phoneme: (str) A phoneme</span>
+<span class="sd">        :return: class of the phoneme or neutral class</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phoneme</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tup</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">tup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="p">:</span>
+            <span class="n">_joined_seq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">phoneme</span> <span class="o">==</span> <span class="n">_joined_seq</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="p">[</span><span class="n">seq</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span>
+    <span class="k">return</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_merged_class</h4>
+
+    <article class="docstring">
+<p><em>Return the effective class for a phoneme sequence.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>sequence</strong>: (<em>tuple</em>) Sequence of phones to merge.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em> or None) The effective class, or None.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_merged_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the effective class for a phoneme sequence.</span>
+
+<span class="sd">        :param sequence: (tuple) Sequence of phones to merge.</span>
+<span class="sd">        :return: (str or None) The effective class, or None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Given sequence must be a tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_vowels_codes</h4>
+
+    <article class="docstring">
+<p><em>Return the list of key codes of all the positions (vowels).</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowels_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of key codes of all the positions (vowels).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">vowels_codes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">phon</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">:</span>
+        <span class="n">phon_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">phon</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">phon_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phon</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+                <span class="n">vowels_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phon_key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phon</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key_code</span> <span class="ow">in</span> <span class="n">phon_key</span><span class="p">:</span>
+                    <span class="n">vowels_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key_code</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">vowels_codes</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_consonants_codes</h4>
+
+    <article class="docstring">
+<p><em>Return the list of key codes of all the shapes (consonants).</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_consonants_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of key codes of all the shapes (consonants).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">cons_codes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">phon</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">:</span>
+        <span class="n">phon_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">phon</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phon</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span> <span class="ow">and</span> <span class="n">phon_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cons_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phon_key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cons_codes</span><span class="p">)))</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_key</h4>
+
+    <article class="docstring">
+<p><em>Return the key identifier of the phoneme.</em></p>
+
+<p>None is returned if the phoneme is unknown or if it is a break.
+If the phoneme is known but no key was defined for this phoneme,
+the "nil" key is returned.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phoneme</strong>: (<em>str</em>) A phoneme or a diphthong</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>key or tuple(key,key) if diphtong or None if unknown</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phoneme</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key identifier of the phoneme.</span>
+
+<span class="sd">        None is returned if the phoneme is unknown or if it is a break.</span>
+<span class="sd">        If the phoneme is known but no key was defined for this phoneme,</span>
+<span class="sd">        the &quot;nil&quot; key is returned.</span>
+
+<span class="sd">        :param phoneme: (str) A phoneme or a diphthong</span>
+<span class="sd">        :return: key or tuple(key,key) if diphtong or None if unknown</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phoneme</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_diphthong_key</span><span class="p">(</span><span class="n">phoneme</span><span class="p">)</span>
+    <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phoneme</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;vnil&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;cnil&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">key</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_diphthong_key</h4>
+
+    <article class="docstring">
+<p><em>Return the key identifiers of the given diphthong.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>diphthong</strong>: (<em>str</em>) A diphthong made of 2 phonemes</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(key,key) or None if unknown</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_diphthong_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diphthong</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key identifiers of the given diphthong.</span>
+
+<span class="sd">        :param diphthong: (str) A diphthong made of 2 phonemes</span>
+<span class="sd">        :return: tuple(key,key) or None if unknown</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">diphthong</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">diphthong</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">key1</span> <span class="o">=</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">diphthong</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">key2</span> <span class="o">=</span> <span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="n">key2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_nil_consonant</h4>
+
+    <article class="docstring">
+<p><em>Return the key code for a missing consonant.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_nil_consonant</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key code for a missing consonant.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;cnil&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_nil_vowel</h4>
+
+    <article class="docstring">
+<p><em>Return the key code for a missing vowel.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_nil_vowel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key code for a missing vowel.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;vnil&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_neutral_vowel</h4>
+
+    <article class="docstring">
+<p><em>Return the key code of the neutral position (vowel).</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_neutral_vowel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key code of the neutral position (vowel).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;vnone&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_neutral_consonant</h4>
+
+    <article class="docstring">
+<p><em>Return the key code of the neutral shape (consonant).</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_neutral_consonant</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key code of the neutral shape (consonant).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="p">[</span><span class="s1">&#39;cnone&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_shape_target</h4>
+
+    <article class="docstring">
+<p><em>Return the target index of the given shape.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape</strong>: (<em>str</em>) Shape code</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) target index of the given shape or the default target index</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_shape_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the target index of the given shape.</span>
+
+<span class="sd">        :param shape: (str) Shape code</span>
+<span class="sd">        :return: (int) target index of the given shape or the default target index</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">SHAPE_TARGET</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_phon_target</h4>
+
+    <article class="docstring">
+<p><em>Return the target index of the given phoneme.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phoneme</strong>: (<em>str</em>) Shape code</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) target index of the given phoneme or the default target index</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_phon_target</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phoneme</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the target index of the given phoneme.</span>
+
+<span class="sd">        :param phoneme: (str) Shape code</span>
+<span class="sd">        :return: (int) target index of the given phoneme or the default target index</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">_tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phon</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phoneme</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_tup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">SHAPE_TARGET</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__shptgt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">_tup</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">CuedSpeechCueingRules</span><span class="o">.</span><span class="n">SHAPE_TARGET</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_merged_phone</h4>
+
+    <article class="docstring">
+<p><em>Return the merged phone for a phoneme sequence.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>sequence</strong>: (<em>tuple</em>) Sequence of phones to merge.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em> or None) The merged phone, or None.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_merged_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the merged phone for a phoneme sequence.</span>
+
+<span class="sd">        :param sequence: (tuple) Sequence of phones to merge.</span>
+<span class="sd">        :return: (str or None) The merged phone, or None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Given sequence must be a tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>has_phonmerge</h4>
+
+    <article class="docstring">
+<p><em>Return True if at least one merge rule is defined.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_phonmerge</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if at least one merge rule is defined.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phonmerge</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>syll_to_key</h4>
+
+    <article class="docstring">
+<p><em>Return the key codes matching the given syllable.</em></p>
+
+<p>The given entry can be either of the form:
+C-V or C- or C or -V or V.</p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;-E&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;p-&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;p-E&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;p-aI&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">((</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">))</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syll_to_key</span><span class="p">(</span><span class="s2">&quot;hw-E&quot;</span><span class="p">)</span>
+ <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>syll</strong>: (<em>str</em>) A syllable like "p-a", or "p-" or "-a" or "p-aI" or "hw-E".</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em> or None) Key codes</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasCuedRulesValueError</em>: malformed syll</li>
+<li><em>sppasCuedRulesMinValueError</em>: not enough phonemes in syll</li>
+<li><em>sppasCuedRulesMaxValueError</em>: too many phonemes in syll</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">syll_to_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syll</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key codes matching the given syllable.</span>
+
+<span class="sd">        The given entry can be either of the form:</span>
+<span class="sd">        C-V or C- or C or -V or V.</span>
+
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;-E&quot;)</span>
+<span class="sd">        (&#39;5&#39;, &#39;c&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;E&quot;)</span>
+<span class="sd">        (&#39;5&#39;, &#39;c&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;p-&quot;)</span>
+<span class="sd">        (&#39;1&#39;, &#39;s&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;p&quot;)</span>
+<span class="sd">        (&#39;1&#39;, &#39;s&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;p-E&quot;)</span>
+<span class="sd">        (&#39;1&#39;, &#39;c&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;p-aI&quot;)</span>
+<span class="sd">        ((&#39;1&#39;, &#39;s&#39;), (&#39;5&#39;, &#39;t&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; syll_to_key(&quot;hw-E&quot;)</span>
+<span class="sd">        (&#39;4&#39;, &#39;c&#39;)</span>
+
+<span class="sd">        :param syll: (str) A syllable like &quot;p-a&quot;, or &quot;p-&quot; or &quot;-a&quot; or &quot;p-aI&quot; or &quot;hw-E&quot;.</span>
+<span class="sd">        :return: (tuple or None) Key codes</span>
+<span class="sd">        :raises: sppasCuedRulesValueError: malformed syll</span>
+<span class="sd">        :raises: sppasCuedRulesMinValueError: not enough phonemes in syll</span>
+<span class="sd">        :raises: sppasCuedRulesMaxValueError: too many phonemes in syll</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__syll_to_phons</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="n">_class_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">_class_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">_class_1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">_class_2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">sppasCuedRulesValueError</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="n">key_cons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">key_vowel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">key_cons</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">key_vowel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasCuedRulesValueError</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">key_cons</span><span class="p">,</span> <span class="n">key_vowel</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_nil_consonant</span><span class="p">(),</span> <span class="n">key_vowel</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">key_cons</span><span class="p">,</span> <span class="n">key_vowel</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_CuedSpeechCueingRules">Protected functions</h3>
+<h4>__syll_to_phons</h4>
+
+    <article class="docstring">
+<p><em>Return the phonemes matching the given syllable.</em></p>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasCuedRulesValueError</em>: malformed syll</li>
+<li><em>sppasCuedRulesMinValueError</em>: not enough phonemes in syll</li>
+<li><em>sppasCuedRulesMaxValueError</em>: too many phonemes in syll</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) Tuple with (consonant, vowel)</li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>syll</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__syll_to_phons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syll</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the phonemes matching the given syllable.</span>
+
+<span class="sd">        :raises: sppasCuedRulesValueError: malformed syll</span>
+<span class="sd">        :raises: sppasCuedRulesMinValueError: not enough phonemes in syll</span>
+<span class="sd">        :raises: sppasCuedRulesMaxValueError: too many phonemes in syll</span>
+<span class="sd">        :return: (tuple) Tuple with (consonant, vowel)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">syll</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">syll</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasCuedRulesValueError</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="n">phons</span> <span class="o">=</span> <span class="n">syll</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasCuedRulesMinValueError</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+            <span class="n">phons</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;cnil&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+            <span class="n">phons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;vnil&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">phons</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cnil&#39;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;vnil&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasCuedRulesMaxValueError</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">phons</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

@@ -1,0 +1,248 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "Supported by FIRAH"
+msgstr "Ce travail a été rendu possible grâce au soutien financier de la FIRAH – Recherche Appliquée sur le Handicap, au cours du projet APa2022_022 intitulé « Voir les sons avec du Cued Speech automatisé : la réalité augmentée au service des personnes sourdes »."
+
+msgid "Text Cues Concept Document"
+msgstr "Si vous êtes curieux de savoir ce qu'est TextCueS et comment il a été créé, vous pouvez consulter son document conceptuel : "
+
+msgid "INTRO"
+msgstr "<h3>TextCueS</h3><p>TextCueS permet de générer et de pratiquer le codage en Langue française Parlée Complétée (Cued Speech) à partir d’un texte.</p><p>Le parcours est guidé : vous saisissez un texte, vous pouvez ajuster les sons, puis vous obtenez le code correspondant.</p><p>L’outil s’adresse à toute personne souhaitant comprendre ou pratiquer le codage LfPC, pour accompagner, apprendre, ou découvrir.</p><h3>Prêt à essayer ?</h3>"
+
+msgid "ACS Project"
+msgstr "Projet ACS"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "See also"
+msgstr "En savoir plus"
+
+msgid "Start coding"
+msgstr "Commencer à coder"
+
+msgid "Text-to-Cued Speech code generation"
+msgstr "Générer le code LfPC/Cued Speech à partir d'un texte"
+
+msgid "Text-to-Cued Speech code conversion"
+msgstr "Coder un texte en LfPC/Cued Speech"
+
+msgid "Hello, I'm here to help you to code in Cued Speech."
+msgstr "Bonjour, je vais t'apprendre à coder en LfPC."
+
+msgid "Sequence of phonemes to be cued"
+msgstr "Séquence de phonèmes à coder"
+
+msgid "Convert phonemes into CS keys"
+msgstr "Coder les phonèmes en LfPC"
+
+msgid "Choose or enter the pronunciation for each word to code:"
+msgstr "Pour chaque mot, choisissez ou saisissez la prononciation à utiliser pour le code :"
+
+msgid "Sounds are represented with SAMPA"
+msgstr "Les sons sont écrits en <a href='https://fr.wikipedia.org/wiki/X-SAMPA' class='external-link'>X-SAMPA</a>. Utilisez uniquement des sons de la langue choisie. Séparez les sons avec un tiret (-)."
+
+msgid "Hit text to be normalized and phonetized"
+msgstr "Saisie du texte à normaliser et à phonétiser"
+
+msgid "I choose the language and enter the text to code in Cued Speech"
+msgstr "Je choisis la langue et je saisis le texte à coder en Cued Speech / LfPC"
+
+msgid "Step 1 of 3 — Language and text"
+msgstr "Étape 1/3 — Langue et texte"
+
+msgid "I select the text language:"
+msgstr "Je sélectionne la langue du texte :"
+
+msgid "I enter or edit the text to code:"
+msgstr "Saisissez ou corrigez le texte à coder :"
+
+msgid "I enter or paste a text here"
+msgstr "Saisissez ou collez votre texte ici"
+
+msgid "I check and adjust the pronunciation of the text"
+msgstr "Je vérifie et je corrige la prononciation du texte"
+
+msgid "Step 2 of 3 — Pronunciation"
+msgstr "Étape 2/3 — Prononciation"
+
+msgid "Words"
+msgstr "Mots"
+
+msgid "Choice n°1"
+msgstr "Choix n°1"
+
+msgid "Choice n°2"
+msgstr "Choix n°2"
+
+msgid "Choice n°3"
+msgstr "Choix n°3"
+
+msgid "Choice n°4"
+msgstr "Choix n°4"
+
+msgid "Personalized"
+msgstr "Personnalisé"
+
+msgid "I see the corresponding Cued Speech code in text and images"
+msgstr "Je vois le code LfPC correspondant en texte et en images"
+
+msgid "Step 3 of 3 — Cued Speech Code"
+msgstr "Étape 3/3 — Code LfPC/Cued Speech"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Sounds"
+msgstr "Sons"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Go to step 2"
+msgstr "Aller à l'étape 2"
+
+msgid "Go to step 3"
+msgstr "Aller à l'étape 3"
+
+msgid "Bibliographical references"
+msgstr "Références bibliographiques"
+
+msgid "Cued text:"
+msgstr "Codage du texte :"
+
+msgid "Cued text"
+msgstr "Texte codé"
+
+msgid "It wasn't possible to create the code from the given sounds."
+msgstr "Aucun codage n'a pu être obtenu à partir des prononciations données."
+
+msgid "Start over"
+msgstr "Coder un autre texte"
+
+msgid "Change position, angle, or timing models:"
+msgstr "Changer les modèles de position, d'angle ou de synchronisation :"
+
+msgid "Choose models and level:"
+msgstr "Choisissez les modèles et le niveau :"
+
+msgid "Update"
+msgstr "Mettre à jour"
+
+msgid "Choose angle model:"
+msgstr "Choisissez le modèle d'angle :"
+
+msgid "The server is not responding."
+msgstr "Le serveur ne répond pas."
+
+msgid "Choose a display mode:"
+msgstr "Choisissez un mode d'affichage :"
+
+msgid "Beginner: Hand and face separately"
+msgstr "Débutant : Main et visage séparés"
+
+msgid "Intermediate: Hand on face"
+msgstr "Intermédiaire : Main sur le visage"
+
+msgid "Advanced: Video"
+msgstr "Avancé : Vidéo"
+
+msgid "Choose how positions are computed:"
+msgstr "Choisissez comment les positions sont calculées :"
+
+msgid "Theoretical positions"
+msgstr "Positions théoriques"
+
+msgid "Low variation"
+msgstr "Faible variation"
+
+msgid "Estimated from a few examples"
+msgstr "Estimées à partir d’exemples"
+
+msgid "Learned from many examples"
+msgstr "Apprises à partir de nombreux exemples"
+
+msgid "Choose how the hand angle is computed:"
+msgstr "Choisissez comment l’angle de la main est calculé :"
+
+msgid "Fixed angle"
+msgstr "Angle fixe"
+
+msgid "Small variation by position"
+msgstr "Légère variation selon la position"
+
+msgid "Medium variation by position"
+msgstr "Variation moyenne selon la position"
+
+msgid "Large variation by position"
+msgstr "Forte variation selon la position"
+
+msgid "Choose the timing (video mode only):"
+msgstr "Choisissez la synchronisation (mode vidéo uniquement) :"
+
+msgid "No transition timing: Duchnowski (1998)"
+msgstr "Sans transition — Duchnowski (1998)"
+
+msgid "Fixed transition timing: Duchnowski (2000)"
+msgstr "Transition fixe — Duchnowski (2000)"
+
+msgid "Variable transition timing: Attina (2005)"
+msgstr "Transition variable — Attina (2005)"
+
+msgid "Variable transition timing: SPPAS solution 1"
+msgstr "Transition variable — SPPAS solution 1"
+
+msgid "Variable transition timing: SPPAS solution 2"
+msgstr "Transition variable — SPPAS solution 2"
+
+# Errors
+msgid "Error details: "
+msgstr "Détails de l'erreur : "
+
+msgid "Text is required to proceed to the next step."
+msgstr "Un texte doit être saisi afin de passer à l'étape suivante."
+
+msgid "No word was extracted from the given text."
+msgstr "Aucun mot n'a été extrait du texte fourni."
+
+msgid "Got {:d} tokens and {:d} pronunciations."
+msgstr "Le nombre de tokens doit correspondre au nombre de prononciations. Reçu {:d} tokens et {:d} prononciations."
+
+msgid "No pronunciation of words was found in the given data."
+msgstr "Aucune prononciation de mots n'a été trouvée dans les données fournies."
+
+msgid "The pronunciation of word {:s} is not valid. Got {:s}."
+msgstr "La prononciation du mot {:s} n'est pas valide. Reçu {:s}."
+
+msgid "No pronunciation found for token {:s}."
+msgstr "Aucune prononciation trouvée pour le token {:s}."
+
+msgid "Invalid data format: {:s}."
+msgstr "Format de données invalide : {:s}."
+
+msgid "No result was found in the received data or the format is invalid."
+msgstr "Aucun résultat n'a été trouvé dans les données reçues ou le format est invalide."
+
+msgid "Sound {:s} is unknown."
+msgstr "Le son {:s} n'est pas dans la liste des sons de la langue choisie. Il ne peut pas être codé."
+
+# Yoyo
+msgid "Hello"
+msgstr "Bonjour, je suis là pour vous aider à coder en Cued Speech."
+
+msgid "An error occurred"
+msgstr "Ah zut ! J'ai essayé mais ça s'est pas bien passé... Une erreur est survenue."
+
+msgid "Not yet implemented"
+msgstr "Cette option n'est pas encore disponible... C'est prévu, mais c'est pas encore fait !"

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of BaseWhereAnglePredictor. Base class to predict the angle of the hand." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WhereAnglePredictorCustoms.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.position.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue.angle">    <h1>Module CuedSpeech.wherecue.angle</h1>
+<section id="#BaseWhereAnglePredictor">
+<h2>Class BaseWhereAnglePredictor</h2>
+
+<section>
+<h3 id="#description_BaseWhereAnglePredictor">Description</h3>
+    <article class="docstring">
+<p><em>Base class to predict the angle of the hand.</em></p>
+
+<p>Currently, 5 vowel positions are possible, and they are associated to
+only one angle value.
+For English langage, this will have to be changed because some vowels have
+a movement effect: side-forward, side-down.</p>
+
+<p>Angle value is given relatively to the horizontal axis, like in the
+following unit circle:</p>
+
+<p>90°
+|
+|
+180° ------- + ------- 0°
+|
+|
+270°
+-90°</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_BaseWhereAnglePredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate a hand angle's predictor.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a hand angle&#39;s predictor.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_BASE</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_b</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_c</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_m</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_s</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_t</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_n</span><span class="p">}</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_BaseWhereAnglePredictor">Public functions</h3>
+<h4>vowel_codes</h4>
+
+    <article class="docstring">
+<p><em>Return the list of vowel codes the class can calculate hand angles for.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">vowel_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of vowel codes the class can calculate hand angles for.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_radius</h4>
+
+    <article class="docstring">
+<p><em>Vagueness of angle value.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vagueness of angle value.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_radius</h4>
+
+    <article class="docstring">
+<p><em>Fix a new radius value.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>r</strong>: (<em>int</em>) The new radius value between 0 and MAX_RADIUS.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>ValueError</em>: Invalid given radius value.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix a new radius value.</span>
+
+<span class="sd">        :param r: (int) The new radius value between 0 and MAX_RADIUS.</span>
+<span class="sd">        :raises: ValueError: Invalid given radius value.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_RADIUS</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">IntervalRangeException</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BaseWhereAnglePredictor</span><span class="o">.</span><span class="n">MAX_RADIUS</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span> <span class="o">=</span> <span class="n">r</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_angle</h4>
+
+    <article class="docstring">
+<p><em>Return the angle at a given position.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowel</strong>: (char) Vowel position name. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>)</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the angle at a given position.</span>
+
+<span class="sd">        :param vowel: (char) Vowel position name. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :return: (int)</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span>
+    <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Predicted Angles&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_angle_values</h4>
+
+    <article class="docstring">
+<p><em>Estimate the angle of the hand for all the given positions.</em></p>
+
+<p>It uses predefined angles and stores them in a dictionary.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels</strong>: (<em>tuple</em>) List of vowel position names. If unknown, 'n' is used instead.</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_angle_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the angle of the hand for all the given positions.</span>
+
+<span class="sd">        It uses predefined angles and stores them in a dictionary.</span>
+
+<span class="sd">        :param vowels: (tuple) List of vowel position names. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">vowel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Position Code&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="p">[</span><span class="n">vowel</span><span class="p">]()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>check</h4>
+
+    <article class="docstring">
+<p><em>Check if the given vowel codes are valid.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels</strong>: (<em>list</em> of characters)</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em>: Invalid given vowel code.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the given vowel codes are valid.</span>
+
+<span class="sd">        :param vowels: (list of characters)</span>
+<span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">vowel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Position Code&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#private_fct_BaseWhereAnglePredictor">Private functions</h3>
+<h4>_calculate_angle_n</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the neutral position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_n</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the neutral position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_angle_b</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the cheek bone position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the cheek bone position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_angle_c</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the chin position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_c</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the chin position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_angle_m</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the mouse position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_m</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the mouse position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_angle_s</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the side position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_s</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the side position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_angle_t</h4>
+
+    <article class="docstring">
+<p><em>To be overridden. Calculate the angle at the throat position.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) angle in degrees</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the throat position.</span>
+
+<span class="sd">        :return: (int) angle in degrees</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">60</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

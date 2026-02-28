@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of WherePositionPredictorCustoms. Predict the coordinates of vowels from 2D sights." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="BaseWherePositionPredictor.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="WherePositionPredictorObserved.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.wherecue.position">    <h1>Module CuedSpeech.wherecue.position</h1>
+<section id="#WherePositionPredictorCustoms">
+<h2>Class WherePositionPredictorCustoms</h2>
+
+<section>
+<h3 id="#description_WherePositionPredictorCustoms">Description</h3>
+    <article class="docstring">
+<p><em>Predict the coordinates of vowels from 2D sights.</em></p>
+
+<p>Extend the base class to predict the coordinates of vowels from 2D sights.
+It overrides methods to provide specific calculations for different vowel
+positions based on facial landmarks.</p>
+
+<p>It adds the calculation of a radius for each vowel: it allows to define
+an area in which the target is acceptable.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_WherePositionPredictorCustoms">Constructor</h3>
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_sights</span><span class="o">=</span><span class="mi">68</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">WherePositionPredictorCustoms</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nb_sights</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_CUSTOMS</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#private_fct_WherePositionPredictorCustoms">Private functions</h3>
+<h4>_calculate_vowel_n</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the neutral vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the neutral vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_n</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the neutral vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the neutral vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="o">//</span> <span class="mi">4</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_b</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the cheek bone vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the cheek bone vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the cheek bone vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the cheek bone vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">//</span> <span class="mi">6</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.114</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_c</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the chin vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the chin vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_c</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the chin vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the chin vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))</span> <span class="o">//</span> <span class="mi">5</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.062</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_m</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the mouth vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the mouth vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_m</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the mouth vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the mouth vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="o">//</span> <span class="mi">4</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.094</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_s</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the side vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the side vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_s</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the side vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the side vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">//</span> <span class="mi">3</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.18</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_calculate_vowel_t</h4>
+
+    <article class="docstring">
+<p><em>Override. Calculate the position of the throat vowel.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>tuple</em>) coordinates and radius of the throat vowel</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_vowel_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override. Calculate the position of the throat vowel.</span>
+
+<span class="sd">        :return: (tuple) coordinates and radius of the throat vowel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.2</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">(</span><span class="mi">57</span><span class="p">))))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius_ratio</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

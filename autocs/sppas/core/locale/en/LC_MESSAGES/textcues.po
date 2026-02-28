@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+msgid "Supported by FIRAH"
+msgstr "This work was supported by FIRAH (Applied Disability Research) through the APa2022_022 project, “Seeing Sounds with Automated Cued Speech: Augmented Reality for Deaf People."
+
+msgid "Text Cues Concept Document"
+msgstr "If you’d like to learn what TextCueS is and how it was developed, you can consult its conceptual document (in French):"
+
+msgid "INTRO"
+msgstr "<h3>TextCueS</h3><p>TextCueS lets you generate and practise Cued Speech coding from a written text.</p><p>The pathway is step by step: you enter a text, you can adjust the sounds, and then obtain the corresponding code.</p><p>TextCueS is intended for anyone who wishes to understand or practise coding, whether to support someone, to learn, or simply to explore.</p> <p></p><h3>Ready to try?</h3>"
+
+msgid "Sounds are represented with SAMPA"
+msgstr "Sounds are represented with <a href='https://fr.wikipedia.org/wiki/X-SAMPA' class='external-link'>X-SAMPA</a> encoding system.  They must be in the given language set and separated with '-'."
+
+msgid "Got {:d} tokens and {:d} pronunciations."
+msgstr "The number of tokens must match the number of pronunciations. Got {:d} tokens and {:d} pronunciations."
+
+msgid "Sound {:s} is unknown."
+msgstr "Sound {:s} is not in the list of sounds of the selected language. It cannot be coded."
+
+# Yoyo
+msgid "Hello"
+msgstr "Hello, I'm here to help you to code in Cued Speech."
+
+msgid "An error occurred"
+msgstr "Ah shoot! I tried but it didn't go well... An error occurred."
+
+msgid "Not yet implemented"
+msgstr "This option is not available... It's planned, but not implemented yet!"

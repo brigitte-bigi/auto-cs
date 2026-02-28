@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of CuedSpeechKeys. Cued Speech keys generation from a sequence of phonemes." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeechCueingRules.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" href="CueingPronTokenizer.html"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whatkey">    <h1>Module CuedSpeech.whatkey</h1>
+<section id="#CuedSpeechKeys">
+<h2>Class CuedSpeechKeys</h2>
+
+<section>
+<h3 id="#description_CuedSpeechKeys">Description</h3>
+    <article class="docstring">
+<p><em>Cued Speech keys generation from a sequence of phonemes.</em></p>
+
+<h5>Example</h5>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="c1"># Define the input: a list of phonemes</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">phonemes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="c1"># Create the instance</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">lfpc</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="n">FRA_KEYS</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="c1"># Apply the rules to get result in various formats</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">sgmts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lfpc</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lfpc</span><span class="o">.</span><span class="n">phonetize_syllables</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">sgmts</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;s-vnil.p-a.s-vnil&quot;</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lfpc</span><span class="o">.</span><span class="n">keys_phonetized</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;3-s.1-s.3-s&quot;</span>
+</code></pre></div>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_CuedSpeechKeys">Constructor</h3>
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+
+<p>Load keys from a text file, depending on the language and phonemes
+encoding. See documentation for details about this file.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>keyrules_filename</strong>: (<em>str</em>) Name of the file with the list of keys.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyrules_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+
+<span class="sd">    Load keys from a text file, depending on the language and phonemes</span>
+<span class="sd">    encoding. See documentation for details about this file.</span>
+
+<span class="sd">    :param keyrules_filename: (str) Name of the file with the list of keys.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CuedSpeechKeys</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">keyrules_filename</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_CuedSpeechKeys">Public functions</h3>
+<h4>syllabify</h4>
+
+    <article class="docstring">
+<p><em>Return the key boundaries of a sequence of phonemes.</em></p>
+
+<p>Perform the segmentation of the sequence of phonemes into the
+syllables-structure of the Cued Speech coding scheme.
+A syllable structure is CV, or V or C.</p>
+
+<ul>
+<li><strong>exemple</strong></li>
+</ul>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonemes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;O~&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;fra-config-file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div>
+
+<ul>
+<li><strong>exemple</strong></li>
+</ul>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonemes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;i:&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;r</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;eng-config-file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phonemes</strong>: (<em>list</em> of <em>str</em>) List of phonemes</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>list of tuples(begin index, end index)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">syllabify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phonemes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the key boundaries of a sequence of phonemes.</span>
+
+<span class="sd">        Perform the segmentation of the sequence of phonemes into the</span>
+<span class="sd">        syllables-structure of the Cued Speech coding scheme.</span>
+<span class="sd">        A syllable structure is CV, or V or C.</span>
+
+<span class="sd">        :exemple:</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = [&#39;b&#39;, &#39;O~&#39;, &#39;Z&#39;, &#39;u&#39;, &#39;R&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; CuedSpeechKeys(&quot;fra-config-file&quot;).syllabify(phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; [ (0, 1), (2, 3), (4, 4) ]</span>
+
+<span class="sd">        :exemple:</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = [&#39;E&#39;, &#39;n&#39;, &#39;i:&#39;, &#39;h&#39;, &#39;w&#39;, &#39;E&#39;, &#39;r\\\\&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; CuedSpeechKeys(&quot;eng-config-file&quot;).syllabify(phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; [ (0, 0), (1, 2), (3, 5), (6, 6) ]</span>
+
+<span class="sd">        :param phonemes: (list of str) List of phonemes</span>
+<span class="sd">        :returns: list of tuples (begin index, end index)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phonemes</span><span class="p">]</span>
+    <span class="n">syll</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">spans</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="o">.</span><span class="n">compute_phonmerge_spans</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_effective_class_and_len</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="n">span</span> <span class="o">=</span> <span class="n">spans</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">classes</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">span</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">):</span>
+        <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">span_len</span><span class="p">)</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">):</span>
+                <span class="n">syll</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">i_next</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span>
+                <span class="p">(</span><span class="n">c_next</span><span class="p">,</span> <span class="n">span_len_next</span><span class="p">)</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i_next</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c_next</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">):</span>
+                    <span class="n">syll</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">i_next</span> <span class="o">+</span> <span class="n">span_len_next</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="n">span_len</span> <span class="o">+</span> <span class="n">span_len_next</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">syll</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="n">span_len</span>
+    <span class="k">return</span> <span class="n">syll</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>phonetize_syllables</h4>
+
+    <article class="docstring">
+<p><em>Return the phonetized sequence of syllables.</em></p>
+
+<p>The output string is using the X-SAMPA standard to indicate the
+phonemes and syllables segmentation.</p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonemes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;O~&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;fra-config-file&quot;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syllables</span> <span class="o">=</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">phonetize_syllables</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">syllables</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;b-O~.Z-u.R-vnil&quot;</span>
+</code></pre></div>
+
+<p>Notice that a diphtong implies 2 keys to be created!</p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonemes</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;dZ&#39;</span><span class="p">,</span> <span class="s1">&#39;OI&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span> <span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;eng-config-file&quot;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">syllables</span> <span class="o">=</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">]</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">phonetize_syllables</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">syllables</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;cnil-@.dZ-O.cnil-I.n-vnil&quot;</span>
+</code></pre></div>
+
+<p>The challenging word: nonwhite: n A n h w aI t
+because
+- 'aI' is a diphtong (2 positions, 2 keys then), and
+- 'h-w' sequence is only one shape (one key then)!</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phonemes</strong>: (<em>list</em>) List of phonemes</li>
+<li><strong>syllables</strong>: list of tuples(begin index, end index)</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em>) String representing the syllables segmentation</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phonetize_syllables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phonemes</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">syllables</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the phonetized sequence of syllables.</span>
+
+<span class="sd">        The output string is using the X-SAMPA standard to indicate the</span>
+<span class="sd">        phonemes and syllables segmentation.</span>
+
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = [&#39;b&#39;, &#39;O~&#39;, &#39;Z&#39;, &#39;u&#39;, &#39;R&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys = CuedSpeechKeys(&quot;fra-config-file&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; syllables = lpc_keys.syllabify(phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; [ (0, 1), (2, 3), (4, 4) ]</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys.phonetize_syllables(phonemes, syllables)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;b-O~.Z-u.R-vnil&quot;</span>
+
+<span class="sd">        Notice that a diphtong implies 2 keys to be created!</span>
+
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; phonemes = [ &#39;@&#39;, &#39;dZ&#39;, &#39;OI&#39;, &#39;n&#39; ]</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys = CuedSpeechKeys(&quot;eng-config-file&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; syllables = lpc_keys.syllabify(phonemes)</span>
+<span class="sd">        &gt;&gt;&gt; [ (0, 0), (1, 2), (3, 3) ]</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys.phonetize_syllables(phonemes, syllables)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;cnil-@.dZ-O.cnil-I.n-vnil&quot;</span>
+
+<span class="sd">        The challenging word: nonwhite: n A n h w aI t</span>
+<span class="sd">        because</span>
+<span class="sd">         - &#39;aI&#39; is a diphtong (2 positions, 2 keys then), and</span>
+<span class="sd">         - &#39;h-w&#39; sequence is only one shape (one key then)!</span>
+
+<span class="sd">        :param phonemes: (list) List of phonemes</span>
+<span class="sd">        :param syllables: list of tuples (begin index, end index)</span>
+<span class="sd">        :return: (str) String representing the syllables segmentation</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">str_syll</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">syllables</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">begin</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">phonemes</span><span class="p">[</span><span class="n">begin</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hum... the vowel </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> is declared in class &#39;W&#39; but it can be split!&quot;</span><span class="p">)</span>
+                    <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+                <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="s1">&#39;vnil&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">span_phones</span> <span class="o">=</span> <span class="n">phonemes</span><span class="p">[</span><span class="n">begin</span><span class="p">:</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_phone</span> <span class="o">=</span> <span class="n">span_phones</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">last_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">last_phone</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">last_class</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">):</span>
+                <span class="n">consonant_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_consonant_cluster</span><span class="p">(</span><span class="n">span_phones</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">consonant_cluster</span> <span class="o">=</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">consonant_items</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">last_class</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_phone</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant_cluster</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">last_phone</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                        <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">last_phone</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hum... the vowel </span><span class="si">{</span><span class="n">last_phone</span><span class="si">}</span><span class="s2"> is declared in class &#39;W&#39; but it can be split!&quot;</span><span class="p">)</span>
+                        <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant_cluster</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">last_phone</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant_cluster</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">last_phone</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">consonant_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_consonant_cluster</span><span class="p">(</span><span class="n">span_phones</span><span class="p">)</span>
+                <span class="n">consonant_cluster</span> <span class="o">=</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">consonant_items</span><span class="p">)</span>
+                <span class="n">str_syll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant_cluster</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="s1">&#39;vnil&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">separators</span><span class="o">.</span><span class="n">syllables</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">str_syll</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>keys_phonetized</h4>
+
+    <article class="docstring">
+<p><em>Return the keys of a phonetized syllable as C-V sequences.</em></p>
+
+<p>The input string is using the X-SAMPA standard to indicate the
+phonemes and syllables segmentation.</p>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonetized_syllable</span> <span class="o">=</span> <span class="s2">&quot;cnil-e.p-a.R-vnil&quot;</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;fra-config-file&quot;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">keys_phonetized</span><span class="p">(</span><span class="n">phonetized_syllable</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;0-t.1-s.3-s&quot;</span>
+</code></pre></div>
+
+<h5>Example</h5>
+
+<div class="highlight"><pre><span></span><code> <span class="o">&gt;&gt;&gt;</span> <span class="n">phonetized_syllable</span> <span class="o">=</span> <span class="s2">&quot;cnil-E.n-i:.hw-E.r\-vnil&quot;</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">&quot;eng-config-file&quot;</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">lpc_keys</span><span class="o">.</span><span class="n">keys_phonetized</span><span class="p">(</span><span class="n">phonetized_syllable</span><span class="p">)</span>
+ <span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;5-c.4-m.4-c.3-s&quot;</span>
+</code></pre></div>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phonetized_syllables</strong>: (<em>str</em>) String representing the keys segments</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em>)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">keys_phonetized</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phonetized_syllables</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the keys of a phonetized syllable as C-V sequences.</span>
+
+<span class="sd">        The input string is using the X-SAMPA standard to indicate the</span>
+<span class="sd">        phonemes and syllables segmentation.</span>
+
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; phonetized_syllable = &quot;cnil-e.p-a.R-vnil&quot;</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys = CuedSpeechKeys(&quot;fra-config-file&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys.keys_phonetized(phonetized_syllable)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;0-t.1-s.3-s&quot;</span>
+
+<span class="sd">        :example:</span>
+<span class="sd">        &gt;&gt;&gt; phonetized_syllable = &quot;cnil-E.n-i:.hw-E.r\\-vnil&quot;</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys = CuedSpeechKeys(&quot;eng-config-file&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; lpc_keys.keys_phonetized(phonetized_syllable)</span>
+<span class="sd">        &gt;&gt;&gt; &quot;5-c.4-m.4-c.3-s&quot;</span>
+
+<span class="sd">        :param phonetized_syllables: (str) String representing the keys segments</span>
+<span class="sd">        :return: (str)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">key_codes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">syll</span> <span class="ow">in</span> <span class="n">phonetized_syllables</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separators</span><span class="o">.</span><span class="n">syllables</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">phones</span> <span class="o">=</span> <span class="n">syll</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phones</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+                    <span class="p">((</span><span class="n">c1</span><span class="p">,</span> <span class="n">v1</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+                    <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">v1</span><span class="p">)</span>
+                    <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c2</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="p">(</span><span class="n">consonant</span><span class="p">,</span> <span class="n">vowel</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+                    <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">vowel</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Syllables must have two phonemes. Ignored: </span><span class="si">{</span><span class="n">syll</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">separators</span><span class="o">.</span><span class="n">syllables</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key_codes</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>compute_phonmerge_spans</h4>
+
+    <article class="docstring">
+<p><em>Return the best merge span starting at each index.</em></p>
+
+<p>The input phonemes list is NEVER modified.
+A span is defined only if the rules contain a PHONMERGE entry.
+The "best" span is the longest matching sequence starting at index i.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phonemes</strong>: (<em>list</em>) Sequence of phonemes (strings).</li>
+<li><strong>rules</strong>: (CuedSpeechCueingRules) Rules containing PHONMERGE entries.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>dict</em>) Mapping start<em>index -> (length, effective</em>class).</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_phonmerge_spans</span><span class="p">(</span><span class="n">phonemes</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the best merge span starting at each index.</span>
+
+<span class="sd">        The input phonemes list is NEVER modified.</span>
+<span class="sd">        A span is defined only if the rules contain a PHONMERGE entry.</span>
+<span class="sd">        The &quot;best&quot; span is the longest matching sequence starting at index i.</span>
+
+<span class="sd">        :param phonemes: (list) Sequence of phonemes (strings).</span>
+<span class="sd">        :param rules: (CuedSpeechCueingRules) Rules containing PHONMERGE entries.</span>
+<span class="sd">        :return: (dict) Mapping start_index -&gt; (length, effective_class).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">spans</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)):</span>
+        <span class="n">best_len</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">best_class</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">phonemes</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">length</span><span class="p">])</span>
+            <span class="bp">cls</span> <span class="o">=</span> <span class="n">rules</span><span class="o">.</span><span class="n">get_merged_class</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="n">best_len</span><span class="p">:</span>
+                <span class="n">best_len</span> <span class="o">=</span> <span class="n">length</span>
+                <span class="n">best_class</span> <span class="o">=</span> <span class="bp">cls</span>
+        <span class="k">if</span> <span class="n">best_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">spans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_len</span><span class="p">,</span> <span class="n">best_class</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spans</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#private_fct_CuedSpeechKeys">Private functions</h3>
+<h4>_merge_consonant_cluster</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_merge_consonant_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phones</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">):</span>
+            <span class="n">eff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_merged_class</span><span class="p">((</span><span class="n">phones</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">phones</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">eff</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+                <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phones</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">phones</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+                <span class="k">continue</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phones</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">merged</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>_effective_class_and_len</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_effective_class_and_len</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="n">spans</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">span</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">classes</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">span</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasWhenHandTransitionPredictor. Create the CS coding scheme from time-aligned phonemes." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
+            <script>
+            (function () {
+              const usingFile = (window.location.protocol === 'file:');
+              const s = document.createElement('script');
+            
+              if (usingFile) {
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
+              } else {
+                s.type = 'module';
+                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
+              }
+            
+              s.onload = function () {
+                window.Wexa.onload.addLoadFunction(function () {
+                  const book = new window.Wexa.Book("main-content");
+                  book.fill_table(false);
+                });
+              };
+            
+              document.head.appendChild(s);
+            })();
+            </script>
+
+       </head>
+       
+       <body class="light">
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
+                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        
+    <h1>Auto-CS 2.0</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <nav id="nav-book" class="side-nav">
+    <h1>Auto-CS 2.0</h1>
+    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <ul>
+<li><a role="button" tabindex="0" href="CuedSpeech.whatkey.html"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" href="WhenTransitionPredictor.html"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &rdsh; Next Module</a></li>
+    </ul>
+    <h2>Table of Contents</h2>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
+</nav>
+    <main id="main-content">
+    <section id="#CuedSpeech.whenhand">    <h1>Module CuedSpeech.whenhand</h1>
+<section id="#sppasWhenHandTransitionPredictor">
+<h2>Class sppasWhenHandTransitionPredictor</h2>
+
+<section>
+<h3 id="#description_sppasWhenHandTransitionPredictor">Description</h3>
+    <article class="docstring">
+<p><em>Create the CS coding scheme from time-aligned phonemes.</em></p>
+
+<p>From the time-aligned keys, this class can estimate the moments of the
+hand shape transitions (consonants) and the moments of the hand position
+transitions (vowels).</p>
+
+<p>It aims to predict when the hand changes both its position and its shape.
+It results in two tiers indicating intervals with transitions:</p>
+
+<ul>
+<li>CS-HandPositions predicting [M1,M2] intervals when position is changing;</li>
+<li>CS-HandShapes predicting [D1,D2] intervals when shape is changing.</li>
+</ul>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_sppasWhenHandTransitionPredictor">Constructor</h3>
+    <article class="docstring">
+<p><em>Instantiate a CS generator.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules to convert phonemes =&gt; keys</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predictor_version</span><span class="o">=</span><span class="n">WhenTransitionPredictor</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span> <span class="n">cue_rules</span><span class="o">=</span><span class="n">CuedSpeechCueingRules</span><span class="p">()):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a CS generator.</span>
+
+<span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules to convert phonemes =&gt; keys</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span> <span class="o">=</span> <span class="n">WhenTransitionPredictor</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_whenpredictor_version</span><span class="p">(</span><span class="n">predictor_version</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_sppasWhenHandTransitionPredictor">Public functions</h3>
+<h4>set_cue_rules</h4>
+
+    <article class="docstring">
+<p><em>Set new rules.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasTypeError</em>: given parameter is not CuedSpeechCueingRules</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set new rules.</span>
+
+<span class="sd">        :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
+<span class="sd">        :raises: sppasTypeError: given parameter is not CuedSpeechCueingRules</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">&#39;cue_rules&#39;</span><span class="p">,</span> <span class="s1">&#39;CuedSpeechCueingRules&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_whenpredictor_version</h4>
+
+    <article class="docstring">
+<p><em>Return the version number of the generation system.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_whenpredictor_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the version number of the generation system.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">get_version_number</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_whenpredictor_versions</h4>
+
+    <article class="docstring">
+<p><em>Return the list of version numbers of the generation system.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_whenpredictor_versions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of version numbers of the generation system.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">WhenTransitionPredictor</span><span class="o">.</span><span class="n">version_numbers</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_whenpredictor_version</h4>
+
+    <article class="docstring">
+<p><em>Set the prediction system version.</em></p>
+
+<ul>
+<li>0: no time estimation.</li>
+<li>1: system based on P. Duchnowski et al. (1998)</li>
+<li>2: system based on P. Duchnowski et al. (2000)</li>
+<li>3: system based on V. Attina (2005) synchronization model</li>
+<li>4: empirical rules from B. Bigi &amp; Datha</li>
+<li>5: revised rules by B. Bigi</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasKeyError</em></li>
+<li><em>TypeError</em></li>
+</ul>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>value</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_whenpredictor_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the prediction system version.</span>
+
+<span class="sd">        - 0: no time estimation.</span>
+<span class="sd">        - 1: system based on P. Duchnowski et al. (1998)</span>
+<span class="sd">        - 2: system based on P. Duchnowski et al. (2000)</span>
+<span class="sd">        - 3: system based on V. Attina (2005) synchronization model</span>
+<span class="sd">        - 4: empirical rules from B. Bigi &amp; Datha</span>
+<span class="sd">        - 5: revised rules by B. Bigi</span>
+
+<span class="sd">        :raises: sppasKeyError:</span>
+<span class="sd">        :raises: TypeError:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span> <span class="o">=</span> <span class="n">WhenTransitionPredictor</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>shape_is_neutral</h4>
+
+    <article class="docstring">
+<p><em>Return True if the given character is the neutral shape.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>s</strong>: (<em>str</em>) Character representing a shape</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) The shape is neutral</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">shape_is_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the given character is the neutral shape.</span>
+
+<span class="sd">        :param s: (str) Character representing a shape</span>
+<span class="sd">        :return: (bool) The shape is neutral</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>position_is_neutral</h4>
+
+    <article class="docstring">
+<p><em>Return True if the given character is the neutral position.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>p</strong>: (<em>str</em>) Character representing a position</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) The position is neutral</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">position_is_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the given character is the neutral position.</span>
+
+<span class="sd">        :param p: (str) Character representing a position</span>
+<span class="sd">        :return: (bool) The position is neutral</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">p</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_a1a3_avg_duration</h4>
+
+    <article class="docstring">
+<p><em>Return the average of stored [A1;A3] durations or the fixed one.</em></p>
+
+<p>If there's not enough known [A1;A3] durations, the fixed value is
+returned.</p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_a1a3_avg_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the average of stored [A1;A3] durations or the fixed one.</span>
+
+<span class="sd">        If there&#39;s not enough known [A1;A3] durations, the fixed value is</span>
+<span class="sd">        returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>has_nil_pos</h4>
+
+    <article class="docstring">
+<p><em>Return True if the given string does not contain a vowel.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phns</strong>: (<em>str</em>) Phonemes of a key in the form "C-V" or "V" or "C"</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) True if the phns are of "C" structure</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_nil_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phns</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the given string does not contain a vowel.</span>
+
+<span class="sd">        :param phns: (str) Phonemes of a key in the form &quot;C-V&quot; or &quot;V&quot; or &quot;C&quot;</span>
+<span class="sd">        :return: (bool) True if the phns are of &quot;C&quot; structure</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phns</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span> <span class="k">if</span> <span class="s1">&#39;-&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">phns</span> <span class="k">else</span> <span class="kc">False</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>has_nil_shape</h4>
+
+    <article class="docstring">
+<p><em>Return True if the given string does not contain a consonant.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>phns</strong>: (<em>str</em>) Phonemes of a key in the form "C-V" or "V" or "C"</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) True if the phns are of "V" structure</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_nil_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phns</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the given string does not contain a consonant.</span>
+
+<span class="sd">        :param phns: (str) Phonemes of a key in the form &quot;C-V&quot; or &quot;V&quot; or &quot;C&quot;</span>
+<span class="sd">        :return: (bool) True if the phns are of &quot;V&quot; structure</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phns</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span> <span class="k">if</span> <span class="s1">&#39;-&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">phns</span> <span class="k">else</span> <span class="kc">False</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>asset_a1a3</h4>
+
+    <article class="docstring">
+<p><em>Reset then store all [a1;a3] values in the transitions model.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier_keys</strong>: (sppasTier)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">asset_a1a3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_keys</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset then store all [a1;a3] values in the transitions model.</span>
+
+<span class="sd">        :param tier_keys: (sppasTier)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">reset_key_intervals</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">)):</span>
+        <span class="n">ann</span> <span class="o">=</span> <span class="n">tier_keys</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Expected 2 labels of annotation: </span><span class="si">{:s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ann</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="n">sppasCuedRulesValueError</span><span class="p">(</span><span class="n">serialize_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="n">a3</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">()</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="n">cur_pos</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">is_neutral</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_is_neutral</span><span class="p">(</span><span class="n">cur_pos</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">set_a</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="ow">not</span> <span class="n">is_neutral</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>when_hands</h4>
+
+    <article class="docstring">
+<p><em>Create two tiers with the transition periods of the hand.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier_keys</strong>: (sppasTier)</li>
+<li><strong>tier_segments</strong>: (sppasTier) Tier with name 'CS-PhonSegments', phonemes of each key</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier, sppasTier) Position transitions and Shape transitions</li>
+</ul>
+
+<h5>Raises</h5>
+
+<p>sppasCuedRulesValueError</p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">when_hands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_keys</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">tier_segments</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create two tiers with the transition periods of the hand.</span>
+
+<span class="sd">        :param tier_keys: (sppasTier)</span>
+<span class="sd">        :param tier_segments: (sppasTier) Tier with name &#39;CS-PhonSegments&#39;, phonemes of each key</span>
+<span class="sd">        :return: (sppasTier, sppasTier) Position transitions and Shape transitions</span>
+<span class="sd">        :raises: sppasCuedRulesValueError</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_segments</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cs_pos</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-HandPositions&#39;</span><span class="p">)</span>
+        <span class="n">cs_shapes</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-HandShapes&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">positions_moves</span><span class="p">,</span> <span class="n">shapes_moves</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_transitions</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">,</span> <span class="n">tier_segments</span><span class="p">)</span>
+        <span class="n">cs_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predicted_to_tier</span><span class="p">(</span><span class="n">positions_moves</span><span class="p">)</span>
+        <span class="n">cs_pos</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;CS-HandPositions&#39;</span><span class="p">)</span>
+        <span class="n">cs_shapes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predicted_to_tier</span><span class="p">(</span><span class="n">shapes_moves</span><span class="p">)</span>
+        <span class="n">cs_shapes</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;CS-HandShapes&#39;</span><span class="p">)</span>
+    <span class="n">cs_pos</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_position_of_keys_tier&#39;</span><span class="p">,</span> <span class="n">tier_keys</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="n">cs_shapes</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_shape_of_keys_tier&#39;</span><span class="p">,</span> <span class="n">tier_keys</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="n">cs_pos</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_position_of_phns_tier&#39;</span><span class="p">,</span> <span class="n">tier_segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="n">cs_shapes</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_shape_of_phns_tier&#39;</span><span class="p">,</span> <span class="n">tier_segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">cs_pos</span><span class="p">,</span> <span class="n">cs_shapes</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predict_transitions</h4>
+
+    <article class="docstring">
+<p><em>Return the predicted position transitions and shape transitions.</em></p>
+
+<p>The two returned lists contain:</p>
+
+<ul>
+<li>the estimated m1 and m2 values (in seconds), or d1 and d2;</li>
+<li>the transition position in a tuple with origin and target; and</li>
+<li>the origin/target annotation identifiers.</li>
+</ul>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier_keys</strong>: (sppasTier)</li>
+<li><strong>tier_segments</strong>: (sppasTier) Tier with name 'CS-PhonSegments', phonemes of each key</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(Pre<em>dict</em>edWhenHand, Pre<em>dict</em>edWhenHand)</li>
+</ul>
+
+<h5>Raises</h5>
+
+<p>sppasCuedRulesValueError</p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_transitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_keys</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">tier_segments</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the predicted position transitions and shape transitions.</span>
+
+<span class="sd">        The two returned lists contain:</span>
+
+<span class="sd">        - the estimated m1 and m2 values (in seconds), or d1 and d2;</span>
+<span class="sd">        - the transition position in a tuple with origin and target; and</span>
+<span class="sd">        - the origin/target annotation identifiers.</span>
+
+<span class="sd">        :param tier_keys: (sppasTier)</span>
+<span class="sd">        :param tier_segments: (sppasTier) Tier with name &#39;CS-PhonSegments&#39;, phonemes of each key</span>
+<span class="sd">        :return: tuple(PredictedWhenHand, PredictedWhenHand)</span>
+<span class="sd">        :raises: sppasCuedRulesValueError</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">pos_moves</span> <span class="o">=</span> <span class="n">PredictedWhenHand</span><span class="p">()</span>
+    <span class="n">shp_moves</span> <span class="o">=</span> <span class="n">PredictedWhenHand</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">asset_a1a3</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">)</span>
+    <span class="n">ann</span> <span class="o">=</span> <span class="n">tier_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+    <span class="n">prev_shape</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">prev_pos</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+    <span class="n">key_rank_ipu</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">prev_phns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_phones</span><span class="p">(</span><span class="n">tier_segments</span><span class="p">,</span> <span class="n">interval</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">)):</span>
+        <span class="n">ann</span> <span class="o">=</span> <span class="n">tier_keys</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+        <span class="n">cur_shape</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">cur_pos</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">cur_phns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_phones</span><span class="p">(</span><span class="n">tier_segments</span><span class="p">,</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">())</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="n">a3</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">()</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_is_neutral</span><span class="p">(</span><span class="n">cur_pos</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">key_rank_ipu</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">set_a</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prev_pos</span> <span class="o">!=</span> <span class="n">cur_pos</span> <span class="ow">or</span> <span class="p">(</span><span class="n">prev_pos</span> <span class="o">==</span> <span class="n">cur_pos</span> <span class="ow">and</span> <span class="n">prev_pos</span> <span class="o">!=</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">prev_pos</span> <span class="o">==</span> <span class="n">cur_pos</span> <span class="ow">and</span> <span class="n">prev_pos</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span> <span class="ow">and</span> <span class="p">(</span><span class="n">prev_shape</span> <span class="o">==</span> <span class="n">cur_shape</span><span class="p">)):</span>
+            <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">predict_m</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">key_rank_ipu</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_nil_shape</span><span class="p">(</span><span class="n">cur_phns</span><span class="p">),</span> <span class="n">is_nil_pos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_nil_pos</span><span class="p">(</span><span class="n">cur_phns</span><span class="p">))</span>
+            <span class="n">prev_pos</span><span class="o">.</span><span class="n">set_key</span><span class="p">(</span><span class="n">prev_phns</span><span class="p">)</span>
+            <span class="n">cur_pos</span><span class="o">.</span><span class="n">set_key</span><span class="p">(</span><span class="n">cur_phns</span><span class="p">)</span>
+            <span class="n">pos_moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="p">(</span><span class="n">prev_pos</span><span class="p">,</span> <span class="n">cur_pos</span><span class="p">),</span> <span class="n">tier_keys</span><span class="p">[</span><span class="n">ii</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">cur_shape</span> <span class="o">!=</span> <span class="n">prev_shape</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transitions</span><span class="o">.</span><span class="n">predict_d</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">key_rank_ipu</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_nil_shape</span><span class="p">(</span><span class="n">cur_phns</span><span class="p">),</span> <span class="n">is_nil_pos</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">has_nil_pos</span><span class="p">(</span><span class="n">cur_phns</span><span class="p">))</span>
+            <span class="n">shp_moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="p">(</span><span class="n">prev_shape</span><span class="p">,</span> <span class="n">cur_shape</span><span class="p">),</span> <span class="n">tier_keys</span><span class="p">[</span><span class="n">ii</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_id</span><span class="p">(),</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+        <span class="n">prev_shape</span> <span class="o">=</span> <span class="n">cur_shape</span>
+        <span class="n">prev_pos</span> <span class="o">=</span> <span class="n">cur_pos</span>
+        <span class="n">prev_phns</span> <span class="o">=</span> <span class="n">cur_phns</span>
+        <span class="n">key_rank_ipu</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">pos_moves</span><span class="p">,</span> <span class="n">shp_moves</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>predicted_to_tier</h4>
+
+    <article class="docstring">
+<p><em>Turn the given values into sppasPoint.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>predicted</strong>: (Pre<em>dict</em>edWhenHand) Result of the prediction model.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(sppasTier) Predicted values turned into a sppasTier</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">predicted_to_tier</span><span class="p">(</span><span class="n">predicted</span><span class="p">:</span> <span class="n">PredictedWhenHand</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasTier</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turn the given values into sppasPoint.</span>
+
+<span class="sd">        :param predicted: (PredictedWhenHand) Result of the prediction model.</span>
+<span class="sd">        :return: (sppasTier) Predicted values turned into a sppasTier</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Predicted&#39;</span><span class="p">)</span>
+    <span class="n">prev_end</span> <span class="o">=</span> <span class="n">sppasPoint</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">predicted</span><span class="p">)):</span>
+        <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">source_id</span><span class="p">,</span> <span class="n">target_id</span><span class="p">)</span> <span class="o">=</span> <span class="n">predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">prev_end</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">:</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">prev_end</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">sppasPoint</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">next_start</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span> <span class="k">else</span> <span class="n">predicted</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">next_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="n">next_start</span><span class="p">:</span>
+            <span class="n">radius</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">next_start</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+            <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">radius</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">:</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">radius</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">radius</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">sppasPoint</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p2</span> <span class="o">&gt;</span> <span class="n">p1</span><span class="p">:</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">sppasPoint</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p2</span> <span class="o">&gt;</span> <span class="n">p1</span><span class="p">:</span>
+            <span class="n">tier</span><span class="o">.</span><span class="n">create_annotation</span><span class="p">(</span><span class="n">sppasLocation</span><span class="p">(</span><span class="n">sppasInterval</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
+            <span class="n">tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;from_id&#39;</span><span class="p">,</span> <span class="n">source_id</span><span class="p">)</span>
+            <span class="n">tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;to_id&#39;</span><span class="p">,</span> <span class="n">target_id</span><span class="p">)</span>
+            <span class="n">prev_end</span> <span class="o">=</span> <span class="n">p2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prev_end</span> <span class="o">=</span> <span class="n">p1</span>
+    <span class="k">return</span> <span class="n">tier</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_sppasWhenHandTransitionPredictor">Protected functions</h3>
+<h4>__get_phones</h4>
+
+    <article class="docstring">
+<p><em>Return the serialized best label of the tier in the given interval.</em></p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier</strong></li>
+<li><strong>interval</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__get_phones</span><span class="p">(</span><span class="n">tier</span><span class="p">,</span> <span class="n">interval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the serialized best label of the tier in the given interval.&quot;&quot;&quot;</span>
+    <span class="n">begin</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">()</span>
+    <span class="n">anns</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">anns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">serialize_labels</span><span class="p">(</span><span class="n">anns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">(),</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+            </footer>
+        
+</body>
+</html>
