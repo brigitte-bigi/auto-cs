@@ -1,7 +1,25 @@
 # -*- coding: UTF-8 -*-
-# makedoc.py
-# Summary: Create the documentation of Auto-CS, using ClammingPy 2.0+ library.
-# Usage: python makedoc.py
+# File: makedoc.py
+# Author: Brigitte Bigi
+# Purpose: Generate the Auto-CS documentation using ClammingPy (>= 2.0).
+#
+# Install:
+#   python -m pip install ClammingPy
+#
+# Run:
+#   python makedoc.py
+#
+# Output:
+#   - HTML documentation is generated into ./docs/
+#   - The generated site includes the root README.md and all README.md files
+#     found inside the exported packages.
+#   - Open: ./docs/index.html
+#
+# Accessibility / UI:
+#   - Semantic HTML5 output (better support with screen readers).
+#   - Themes supported by the statics: light, dark, and (if provided) contrast.
+#   - Contrast mode targets WCAG-friendly readability (spacing) and can use a
+#     dyslexia-friendly font (if provided by the statics).
 #
 # This file is part of Auto-CS tool.
 # Copyright (C) 2022-2026 Brigitte Bigi, CNRS
@@ -43,9 +61,9 @@ import CuedSpeech
 try:
     import clamming
 except ImportError:
-    print("This program requires `ClammingPy` documentation generator.")
-    print("It can be installed with: pip install ClammingPy.")
-    print("See <https://clamming.sourceforge.io/> for details.")
+    print("This program requires ClammingPy (documentation generator).")
+    print("Install it with: python -m pip install ClammingPy")
+    print("Then run: python makedoc.py")
     sys.exit(-1)
 
 # ---------------------------------------------------------------------------
@@ -89,7 +107,10 @@ clams_modules = clamming.ClamsModules(packages)
 # Export documentation into HTML files.
 # One .html file = one documented class.
 clams_modules.html_export_packages("docs", opts_export, "README.md")
+print("HTML Documentation generated. Open: docs/index.html")
 
 # Export documentation into a Markdown file.
 # One .md file = one documented module.
 clams_modules.markdown_export_packages("docs", opts_export)
+print("Markdown Documentation generated. Open: docs/*.md files.")
+

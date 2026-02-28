@@ -15,21 +15,115 @@
 
 # Auto-CS
 
+## Motivations
+
+Access to spoken language remains a challenge for deaf and hard-of-hearing individuals
+due to the limitations of lipreading. Cued Speech (CS) addresses this by combining lip 
+movements with hand cues—specific handshapes and placements near the face—making each 
+syllable visually distinct. This system complements cochlear implants and supports oral 
+language development, phonological awareness, and literacy.
+
+
+## Scope and Scientific Purpose
+
+`SPPAS+Auto-CS` is the first open-source system for automatically generating CS in video 
+format. It takes as input a video recording, the corresponding audio signal, and an
+orthographic transcript. These inputs are processed through a modular pipeline that 
+includes phonetic mapping, temporal alignment, spatial placement, and real-time rendering
+of a virtual coding hand. The output is a new version of the video in which a synchronized 
+virtual hand encodes the CS transcription.
+
+The architecture was built from scratch, with each stage formally defined, from segmentation 
+to cue rendering. It is designed for multilingual use, and it has been implemented and tested 
+for French. An evaluation under varied conditions reported decoding rates up to 92% for 
+manually coded stimuli, and average scores above 80% for automatically generated cues.
+
+`Auto-CS` addresses the scientific need to formalize and operationalize automatic Cued Speech
+generation in a reproducible and fully documented way, in a context where no open-source 
+operational system previously existed.
+
 `Auto-CS` is a Python program developed within the project AutoCuedSpeech: 
-<https://auto-cuedspeech.org>. 
-It contains all the components dedicated to the automatic annotation of Cued Speech. 
-This source code is not a standalone tool: it only runs inside SPPAS. It is integrated 
-by means of the **spin-off** mechanism provided by SPPAS, which allows external code 
+<https://auto-cuedspeech.org>.
+
+See also: <https://sppas.org/>
+
+
+## Examples and Media
+
+This repository includes illustrative material to facilitate understanding of the software.
+
+The `media/` directory contains:
+
+- A demo video generated with Auto-CS (identical to the demo distributed with SPPAS), 
+  illustrating the automatic generation of Cued Speech from annotated data.
+- Screenshots of TextCueS showing a complete guided pathway (text → sounds → code), including 
+  intermediate representations and final output.
+
+These materials are provided for demonstration and documentation purposes and do not affect 
+the reproducibility instructions described above.
+
+
+## Requirements and Installation
+
+`Auto-CS` contains all the components dedicated to the automatic annotation of Cued Speech. 
+This source code is not a standalone tool: it runs exclusively within SPPAS. It is integrated 
+through the **spin-off** mechanism provided by SPPAS, which allows external code 
 bases to remain separate while still being dynamically discovered and used by the main 
-framework.
+framework. Download and install SPPAS: <https://sppas.org/>
 
-> To create a coded video, Auto-CS requires video feature of SPPAS to be enabled.
+To generate coded videos only with `Auto-CS` (assuming prior preprocessing, as in the 
+`demo` folder distributed with SPPAS), or to generate cues from written text, 
+the following components must be enabled during SPPAS setup: video and autocs.
+
+To run the full processing pipeline (using `SPPAS + Auto-CS`), the following components 
+must be enabled during the SPPAS setup:
+
+* Third-party programs: julius, wxpython, video, mediapipe
+* Language resources: none (French and American English are included by default)
+* Annotation resources: facedetect, facemark
+* Spin-off programs: autocs
 
 
-## Automatic Annotation
+### Version compatibility
+
+For reproducible experiments, the exact version of Auto-CS is determined by the SPPAS 
+version used.
+The installed version of Auto-CS during the SPPAS Setup corresponds to the version 
+bundled with the installed SPPAS release (see file `sppas/etc/features.ini` of SPPAS package). 
+
+Version mapping between Auto-CS and SPPAS is indicated in the “Versions” section of this README.
 
 
-### Overview
+### Release structure
+
+For each version, two distributions are available:
+
+1. Full distribution: complete source code, documentation, and project files (available 
+   on both SourceForge and GitHub), with name "Auto-CS-version-dist.zip".
+2. Spin-off distribution: code only, retrieved automatically by SPPAS from SourceForge and 
+   installed as a spin-off, with name "autocs-version.zip".
+
+SPPAS fetches the spin-off package directly from SourceForge during installation.
+
+
+## Architecture
+
+Auto-CS follows the modular pipeline architecture of SPPAS.
+At repository level, the code base is organized as follows:
+- `src/`: API (core implementation of Auto-CS modules).
+- `ui/`: UI integration (TextCueS web app).
+- `core/`: localization resources (gettext locale files).
+- `bin/`: command-line entry points (e.g., `cuedspeech.py`).
+- `etc/`: JSON configuration file used by SPPAS to integrate Auto-CS in its graphical interface.
+
+The project also provides `makedoc.py` to generate the API documentation. It relies on 
+the external documentation generator `ClammingPy`. With this generator, the API documentation 
+is produced as accessible HTML5, including modes designed for visual impairments.
+The generated documentation is located in the `Docs/` directory, provided both as accessible HTML 
+and Markdown files.
+
+The Cued Speech generation itself is implemented in `src/`, under `annotations/CuedSpeech/`. 
+The remainder of this section describes this module-level architecture.
 
 `Auto-CS` divides the problem of automatically cueing speech into four sequential tasks:
 
@@ -50,6 +144,12 @@ And the 1st stable version of this system is described in the following referenc
 > Bridging the Gap: Design and Evaluation of an Automated System for French Cued Speech
 > International Conference on Natural Language and Speech Processing, Odense, Danemark.
 > <https://hal.science/hal-05242638>
+
+
+![Auto-CS processing pipeline](../media/workflow_sppas_autocs.png)
+
+Figure: Global processing architecture of SPPAS + Auto-CS, from text/audio input to coded 
+video output.
 
 
 ### What?
@@ -237,14 +337,19 @@ to `sppas/bin/cuedspeech.py`.
 
 ### Graphical-User Interface
 
-TextCues (incoming doc).
+TextCueS is the graphical user interface of Auto-CS. It is a guided web application integrated 
+in SPPAS (SWApp) to generate Cued Speech keys from text, optionally allowing the user to review
+intermediate representations before producing the final Cued Speech code.
+A detailed conceptual description of TextCueS (needs analysis, architecture, UI design, 
+accessibility principles) is available in the dedicated HAL dossier:
+TextCueS – Dossier conceptuel (2026). HAL Id: hal-05511364.
 
-Another user interface is under development. It allows the automatic encoding 
-of a video. Its development is less than 30%.
+Currently, the automatic generation of videos has to be performed with SPPAS wxPython GUI.
+A guided web application integrated in SPPAS (SWApp) allowing the automatic encoding of 
+a video is under development.
 
 
 ## Legal issues
-
 
 ### Help / How to contribute
 
@@ -291,9 +396,8 @@ or products, in accordance with the best practices of the AGPL license.
 Use the following reference to cite it:
 
 > Brigitte Bigi. Auto-CS, Automatic generation of Cued Speech.
-> Version 2.0. 2026. <https://autocs.sourceforge.net>
-
-Check version for update.
+> ⟨hal-05462773v2⟩. Version 2.0. 2026. 
+> <https://autocs.sourceforge.net>
 
 
 ### Logos and images
@@ -307,11 +411,87 @@ Laurent Lopez - see "le Nébleu" at <https://laurentlopez-creations.com/>,
 and is used with full rights granted to the project. All rights reserved.
 
 
+## Software Metadata
+
+Metadata of Auto-CS is provided in the standard `codemeta.json` file included in this 
+repository as it is recommended for Research Software. 
+See <https://codemeta.github.io/> for details.
+
+
+## Reproducibility / Availability of data and materials
+
+Because Auto-CS is distributed as a SPPAS spin-off, it is not intended to run standalone.
+The `demo/` folder (distributed with SPPAS) provides example inputs to reproduce the outputs 
+described below.
+
+### 1) Generate Cued Speech keys from text (TextCueS)
+
+Launch:
+```bash
+~sppaspyenv/bin/python sppas/ui/swapp
+```
+
+This opens a browser tab. 
+Click the “TextCueS” application, then follow the guided interface.
+
+Example: 
+text `An example.` with language = American English produces: 
+`5-t 4-m.7-s.2-t.5-s.1-sd.6-s`
+
+### 2) Generate a cued video from command line
+
+Get help:
+```bash 
+~sppaspyenv/bin/python ./sppas/bin/cuedspeech.py --help
+```
+
+Re-generate the demo video (`demo/demo-cuedsp.mp4`):
+```bash
+~sppaspyenv/bin/python ./sppas/bin/cuedspeech.py -I demo -l fra 
+ --createvideo=true --handsset=yoyo --vowelspos=true
+```
+
+### 3) Generate a cued video from the wx GUI
+
+Launch `sppas.bat`.
+1. Add the files from the `demo/` folder to the file list and select any one of them.
+2. Go to the “Annotate” tab and select language “eng”.
+3. Click “Standalone annotations”, then check “Cued Speech coding”.
+4. Set options in “Configure” (same options as in the CLI above).
+5. Go back, then click “Let’s go”.
+
+
+## Conflict of Interest
+
+The author declares no conflict of interest.
+
+
+## Funding / Acknowledgements
+
+This research was funded by the FIRAH (Recherche Appliquée sur le Handicap, Applied Disability 
+Research), project APa2022_022.
+
+
 ## Versions
+
+
+### Pre spin-off version
+
+Before becoming an independent spin-off, the initial Auto-CS proof-of-concept was distributed 
+within SPPAS (versions >= 3.5).
+SPPAS 4.22, which included the Auto-CS PoC, is registered with APP (Agence pour la Protection 
+des Programmes, French software copyright agency) under IDDN.FR.001.500008.000.S.C.2024.000.31235.
+
+<https://secure2.iddn.org/app.server/certificate/?sn=2024500008000&key=65723c3f60e753c66d72f5b621abc89301514489e6f88e4b5e4682ed4e2d4020&lang=fr>
+
+It was awarded by the French Ministry of Higher Education, Research and Innovation at the 2022 
+Open Source Research Software Competition.
+
 
 ### 1.0 - Attached to SPPAS-4.29
 
 First release.
+
 
 ### 1.1 - Attached to SPPAS-4.30
 
@@ -323,6 +503,21 @@ Migrated to Whakerexa 2.0.
 - Deleted textcued app.
 - Introduced **TextCueS** app, described here: <https://hal.science/hal-5511364/>
 
-See TextCueS in action at: <https://auto-cuedspeech.org/textcues.html>
+See TextCueS -with UI in French- in action at: <https://auto-cuedspeech.org/textcues.html>
 
-It will be available asap at: <https://sppas.org/textcues.html>
+It will be available -with UI in English- asap at: <https://sppas.org/textcues.html>
+
+
+
+
+# Help
+
+## Installation error
+
+> Failed to establish a connection to the url https://sourceforge.net/projects/autocs/files/autocs-2.0.zip/download: 
+> [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer 
+> certificate (_ssl.c:1147).
+
+Your Python installation cannot validate HTTPS connections (missing or outdated SSL certificates).
+Install a recent version of Python, then reinstall and retry.
+
