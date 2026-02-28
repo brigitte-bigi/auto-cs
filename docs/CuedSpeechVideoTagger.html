@@ -96,10 +96,7 @@
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasPackageUpdateFeatureError</span><span class="p">(</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span> <span class="s1">&#39;video&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasPackageFeatureError</span><span class="p">(</span><span class="s1">&#39;cv2&#39;</span><span class="p">,</span> <span class="s1">&#39;video&#39;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">sppasEnableFeatureError</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">)</span>
 </code></pre></div>
 
     </details>

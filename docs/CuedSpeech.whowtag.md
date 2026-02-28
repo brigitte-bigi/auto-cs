@@ -10,10 +10,7 @@
 
 ```python
 def __init__(self, *args, **kwargs):
-    if v != '4':
-        raise sppasPackageUpdateFeatureError('cv2', 'video')
-    else:
-        raise sppasPackageFeatureError('cv2', 'video')
+    raise sppasEnableFeatureError('video')
 ```
 
 
