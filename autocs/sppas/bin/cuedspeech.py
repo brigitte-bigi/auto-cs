@@ -39,10 +39,7 @@ from argparse import ArgumentParser
 
 # Add SPPAS to the python path
 PROGRAM = os.path.abspath(__file__)
-SPPAS = "C:\\Storage\\Projects\\sppas-code\\" # os.getenv('SPPAS')
-if SPPAS is None or (SPPAS is not None and os.path.exists(SPPAS) is False):
-    # This program is probably already installed into SPPAS package
-    SPPAS = os.path.dirname(os.path.dirname(os.path.dirname(PROGRAM)))
+SPPAS = os.path.dirname(os.path.dirname(os.path.dirname(PROGRAM)))
 sys.path.append(SPPAS)
 
 try:

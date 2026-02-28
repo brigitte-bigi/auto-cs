@@ -36,33 +36,26 @@ import os.path
 from sppas.core.config import cfg
 from sppas.core.config import paths
 from sppas.core.coreutils import sppasError
-from sppas.src.imgdata import sppasImageDataError
-
-from .hands import sppasHandFilters
-from .whowimgtag import sppasHandCoords
+from sppas.core.coreutils import sppasEnableFeatureError
+import sppas.src.videodata
 
 # ---------------------------------------------------------------------------
 
+class sppasHandFilters:
+    def __init__(self, *args, **kwargs):
+        raise sppasError("The hand filters can't be used.")
 
-class CuedSpeechVideoTagger(sppasImageDataError):
-    @staticmethod
-    def get_hands_filters() -> list:
-        return []
-
-# ---------------------------------------------------------------------------
-# Check resources: hands should be there
-# ---------------------------------------------------------------------------
 
 if os.path.exists(os.path.join(paths.resources, "cuedspeech")) is False:
     # The feature is enabled but the corresponding resources are missing.
     cfg.set_feature("autocs", False)
 
-
-# ---------------------------------------------------------------------------
-# Check features: video should be enabled
-# ---------------------------------------------------------------------------
-
 if cfg.feature_installed("video") and cfg.feature_installed("autocs"):
+
+    # -----------------------------------------------------------------------
+    # Import the classes in case the "video" feature is enabled: opencv&numpy
+    # are both installed and the automatic detections can work.
+    # -----------------------------------------------------------------------
 
     # -----------------------------------------------------------------------
     # Check if we have at least one hands set in the 'resources/cuedspeech' folder to tag a video.
@@ -74,13 +67,19 @@ if cfg.feature_installed("video") and cfg.feature_installed("autocs"):
 
     if len(hands_manager) > 0:
         from .whowtagvideo import CuedSpeechVideoTagger
-        from .gencoordstier import sppasHandCoordsGenerator
+        from .hands import sppasHandFilters
 
     else:
         # -----------------------------------------------------------------------
         # Define class in case we have no hands set in the 'resources/cuedspeech' folder.
         # -----------------------------------------------------------------------
         class CuedSpeechVideoTagger:
+            OPTIONS = {
+                "handsset": "drawncue",
+                "handsfilter": "",
+                "infotext": False,
+                "vowelspos": False
+            }
             def __init__(self, *args, **kwargs):
                 raise sppasError("The 'resources/cuedspeech' folder doesn't contains any hand-set.")
 
@@ -88,10 +87,31 @@ if cfg.feature_installed("video") and cfg.feature_installed("autocs"):
             def get_hands_filters() -> list:
                 return []
 
-        class sppasHandCoordsGenerator(sppasImageDataError):
-            pass
+        class sppasHandFilters:
+            def __init__(self, *args, **kwargs):
+                raise sppasError("The hand filters can't be used. No hands available.")
+
+            @staticmethod
+            def get_filter_names() -> list:
+                return []
+
+else:
+    # -----------------------------------------------------------------------
+    # Define class in case opencv&numpy are not installed.
+    # -----------------------------------------------------------------------
+
+    class CuedSpeechVideoTagger:
+        OPTIONS = {
+            "handsset": "drawncue",
+            "handsfilter": "",
+            "infotext": False,
+            "vowelspos": False
+        }
+        def __init__(self, *args, **kwargs):
+            raise sppasEnableFeatureError("autocs")
+
 
 __all__ = (
-    "sppasHandCoordsGenerator",
+    "sppasHandFilters",
     "CuedSpeechVideoTagger"
 )

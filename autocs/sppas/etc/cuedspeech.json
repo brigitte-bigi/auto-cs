@@ -69,7 +69,7 @@
       "id": "handsset",
       "type": "str",
       "value": "",
-      "text": "A hands set to tag the video (default: none). One of: drawcue, drawccue, brigitte, fred, laurent, axel, lise, fidelia."
+      "text": "A hands set to tag the video (default: none). One of: yoyo, drawcue, drawccue, brigitte, fred, laurent, axel, lise, fidelia."
     },
     {
       "id": "handsfilter",

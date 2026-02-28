@@ -87,8 +87,7 @@ must be enabled during the SPPAS setup:
 ### Version compatibility
 
 For reproducible experiments, the exact version of Auto-CS is determined by the SPPAS 
-version used.
-The installed version of Auto-CS during the SPPAS Setup corresponds to the version 
+version used. The installed version of Auto-CS during the SPPAS Setup corresponds to the version 
 bundled with the installed SPPAS release (see file `sppas/etc/features.ini` of SPPAS package). 
 
 Version mapping between Auto-CS and SPPAS is indicated in the “Versions” section of this README.
@@ -349,6 +348,48 @@ A guided web application integrated in SPPAS (SWApp) allowing the automatic enco
 a video is under development.
 
 
+## Reproducibility / Availability of data and materials
+
+Because Auto-CS is distributed as a SPPAS spin-off, it is not intended to run standalone.
+The `demo/` folder (distributed with SPPAS) provides example inputs to reproduce the outputs 
+described below.
+
+### 1) Generate Cued Speech keys from text (TextCueS)
+
+Launch:
+```bash
+.sppaspyenv~\Scripts\python sppas\ui\swapp
+```
+
+This opens a browser tab. 
+Click the “TextCueS” application, then follow the guided interface.
+
+Example: 
+text `An example.` with language = American English produces: 
+`5-t 4-m.7-s.2-t.5-s.1-sd.6-s`
+
+### 2) Generate a cued video from command line
+
+Get help:
+```bash 
+.\.sppaspyenv~\Scripts\python.exe .\sppas\bin\cuedspeech.py 
+```
+
+Re-generate the demo video (`demo/demo-cuedsp.mp4`):
+```bash
+.\.sppaspyenv~\Scripts\python.exe .\sppas\bin\cuedspeech.py -I demo -l fra --createvideo=true --handsset=yoyo --vowelspos=true
+```
+
+### 3) Generate a cued video from the wx GUI
+
+Launch `sppas.bat`.
+1. Add the files from the `demo/` folder to the file list and select any one of them.
+2. Go to the “Annotate” tab and select language “fra”.
+3. Click “Standalone annotations”, then check “Cued Speech coding”.
+4. Set options in “Configure”: check video generation and enter "yoyo" in the hand set field.
+5. Go back, then click “Let’s go”.
+
+
 ## Legal issues
 
 ### Help / How to contribute
@@ -416,49 +457,6 @@ and is used with full rights granted to the project. All rights reserved.
 Metadata of Auto-CS is provided in the standard `codemeta.json` file included in this 
 repository as it is recommended for Research Software. 
 See <https://codemeta.github.io/> for details.
-
-
-## Reproducibility / Availability of data and materials
-
-Because Auto-CS is distributed as a SPPAS spin-off, it is not intended to run standalone.
-The `demo/` folder (distributed with SPPAS) provides example inputs to reproduce the outputs 
-described below.
-
-### 1) Generate Cued Speech keys from text (TextCueS)
-
-Launch:
-```bash
-~sppaspyenv/bin/python sppas/ui/swapp
-```
-
-This opens a browser tab. 
-Click the “TextCueS” application, then follow the guided interface.
-
-Example: 
-text `An example.` with language = American English produces: 
-`5-t 4-m.7-s.2-t.5-s.1-sd.6-s`
-
-### 2) Generate a cued video from command line
-
-Get help:
-```bash 
-~sppaspyenv/bin/python ./sppas/bin/cuedspeech.py --help
-```
-
-Re-generate the demo video (`demo/demo-cuedsp.mp4`):
-```bash
-~sppaspyenv/bin/python ./sppas/bin/cuedspeech.py -I demo -l fra 
- --createvideo=true --handsset=yoyo --vowelspos=true
-```
-
-### 3) Generate a cued video from the wx GUI
-
-Launch `sppas.bat`.
-1. Add the files from the `demo/` folder to the file list and select any one of them.
-2. Go to the “Annotate” tab and select language “eng”.
-3. Click “Standalone annotations”, then check “Cued Speech coding”.
-4. Set options in “Configure” (same options as in the CLI above).
-5. Go back, then click “Let’s go”.
 
 
 ## Conflict of Interest
