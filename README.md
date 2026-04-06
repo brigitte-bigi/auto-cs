@@ -356,12 +356,14 @@ described below.
 
 ### 1) Generate Cued Speech keys from text (TextCueS)
 
-Launch:
+SPPAS-4, launch:
 ```bash
 .sppaspyenv~\Scripts\python sppas\ui\swapp
 ```
 
-This opens a browser tab. 
+SPPAS-5, launch either sppas.bat, sppas.sh or sppas.app depending on the OS.
+
+This opens a browser tab with The SPPAS Dashboard. 
 Click the “TextCueS” application, then follow the guided interface.
 
 Example: 
@@ -370,19 +372,24 @@ text `An example.` with language = American English produces:
 
 ### 2) Generate a cued video from command line
 
+This is performed by the python program "cuedspeech.py", located in:
+
+- SPPAS-4 path is "sppas/bin"
+- SPPAS-5 path is for example "sppas-code/sppas-venv/lib/python3.12/site-packages/sppas/bin/"
+
 Get help:
 ```bash 
-.\.sppaspyenv~\Scripts\python.exe .\sppas\bin\cuedspeech.py 
+python path/cuedspeech.py 
 ```
 
 Re-generate the demo video (`demo/demo-cuedsp.mp4`):
 ```bash
-.\.sppaspyenv~\Scripts\python.exe .\sppas\bin\cuedspeech.py -I demo -l fra --createvideo=true --handsset=yoyo --vowelspos=true
+python path/cuedspeech.py -I demo -l fra --createvideo=true --handsset=yoyo --vowelspos=true
 ```
 
 ### 3) Generate a cued video from the wx GUI
 
-Launch `sppas.bat`.
+Launch SPPAS annotation application. Then, when the wx-based User Interface is opened:
 1. Add the files from the `demo/` folder to the file list and select any one of them.
 2. Go to the “Annotate” tab and select language “fra”.
 3. Click “Standalone annotations”, then check “Cued Speech coding”.
@@ -496,7 +503,7 @@ First release.
 Migrated to Whakerexa 2.0.
 
 
-### 2.0 - Attached to SPPAS-4.31
+### 2.0 - Attached to SPPAS-4.31 and SPPAS-5.0
 
 - Deleted textcued app.
 - Introduced **TextCueS** app, described here: <https://hal.science/hal-5511364/>
