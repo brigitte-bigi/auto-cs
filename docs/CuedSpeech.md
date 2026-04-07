@@ -397,8 +397,8 @@ def convert(self, phonemes, media):
 
         """
     cs_segments = self.__genkey.phons_to_segments(phonemes)
-    (cs_keys, cs_class, cs_struct) = self.__genkey.segments_to_keys(cs_segments, phonemes.get_first_point(), phonemes.get_last_point())
-    (cs_pos, cs_shapes) = self.__genhand.when_hands(cs_keys, cs_segments)
+    cs_keys, cs_class, cs_struct = self.__genkey.segments_to_keys(cs_segments, phonemes.get_first_point(), phonemes.get_last_point())
+    cs_pos, cs_shapes = self.__genhand.when_hands(cs_keys, cs_segments)
     return (cs_segments, cs_keys, cs_class, cs_struct, cs_shapes, cs_pos)
 ```
 
@@ -431,7 +431,7 @@ def make_video(self, video_file, trs, output):
         self.__tagger.tag_with_keys(trs, output)
         self.__tagger.close()
     else:
-        self.logfile.print_message(f"To tag a video, the video support feature must be enabled ({cfg.feature_installed('video')}) and a video tagger must be instantiated ({self.__tagger is not None}).", status=annots.error)
+        self.logfile.print_message(f'To tag a video, the video support feature must be enabled ({cfg.feature_installed('video')}) and a video tagger must be instantiated ({self.__tagger is not None}).', status=annots.error)
 ```
 
 *Create a video with the tagged keys.*
@@ -465,7 +465,7 @@ def get_inputs(self, input_files):
     for filename in input_files:
         if filename is None:
             continue
-        (fn, fe) = os.path.splitext(filename)
+        fn, fe = os.path.splitext(filename)
         if media is None and fe in media_ext:
             media = filename
         elif annot_phons is None and fe.lower() in phons_ext and fn.endswith(pphones):
@@ -534,14 +534,14 @@ def run(self, input_files, output=None):
         """
     try:
         do_vid = False
-        (file_video, file_phons, file_sights) = self.get_inputs(input_files)
+        file_video, file_phons, file_sights = self.get_inputs(input_files)
         video_media = self.create_media(file_video)
         parser = sppasTrsRW(file_phons)
         trs_input = parser.read()
         tier_phon = sppasFindTier.aligned_phones(trs_input)
         trs_output = sppasTranscription(self.name)
         self._set_trs_metadata(trs_output, file_phons)
-        (tier_cs, tier_key, tier_class, tier_struct, tier_shapes_transitions, tier_pos_transitions) = self.convert(tier_phon, video_media)
+        tier_cs, tier_key, tier_class, tier_struct, tier_shapes_transitions, tier_pos_transitions = self.convert(tier_phon, video_media)
         trs_output.append(tier_cs)
         trs_output.append(tier_struct)
         trs_output.append(tier_key)

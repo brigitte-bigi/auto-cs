@@ -241,7 +241,7 @@ def load(self, filename: str) -> bool:
     else:
         raise sppasIOError(filename)
     added = False
-    for (line_nb, line) in enumerate(lines, 1):
+    for line_nb, line in enumerate(lines, 1):
         sp = sppasUnicode(line)
         line = sp.to_strip()
         if line.startswith('#') is True:
@@ -842,13 +842,13 @@ def syllabify(self, phonemes: list) -> list:
         return (span[1], span[0])
     i = 0
     while i < len(phonemes):
-        (c, span_len) = _effective_class_and_len(i)
+        c, span_len = _effective_class_and_len(i)
         if c in ('W', 'V', 'C'):
             if c in ('V', 'W') or i + span_len >= len(phonemes):
                 syll.append((i, i + span_len - 1))
             else:
                 i_next = i + span_len
-                (c_next, span_len_next) = _effective_class_and_len(i_next)
+                c_next, span_len_next = _effective_class_and_len(i_next)
                 if c_next in ('V', 'W'):
                     syll.append((i, i_next + span_len_next - 1))
                     i += span_len + span_len_next
@@ -930,7 +930,7 @@ def phonetize_syllables(self, phonemes: list, syllables: list) -> str:
 
         """
     str_syll = list()
-    for (begin, end) in syllables:
+    for begin, end in syllables:
         if begin == end:
             p = phonemes[begin]
             c = self.get_class(p)
@@ -1039,11 +1039,11 @@ def keys_phonetized(self, phonetized_syllables: str) -> str:
             phones = syll.split(separators.phonemes)
             if len(phones) == 2:
                 if self.get_class(phones[1]) == 'W':
-                    ((c1, v1), (c2, v2)) = self.syll_to_key(syll)
+                    (c1, v1), (c2, v2) = self.syll_to_key(syll)
                     key_codes.append(c1 + separators.phonemes + v1)
                     key_codes.append(c2 + separators.phonemes + v2)
                 else:
-                    (consonant, vowel) = self.syll_to_key(syll)
+                    consonant, vowel = self.syll_to_key(syll)
                     key_codes.append(consonant + separators.phonemes + vowel)
             else:
                 logging.error(f'Syllables must have two phonemes. Ignored: {syll}')
@@ -1291,7 +1291,7 @@ def segment(self, word_phonemes: tuple, key_items: list) -> tuple:
 
         """
     words_phones = self.__parse_words(word_phonemes)
-    (flat_codes, flat_phons) = self.__flatten_key_items(key_items)
+    flat_codes, flat_phons = self.__flatten_key_items(key_items)
     token_codes = [[] for _ in range(len(words_phones))]
     token_phons = [[] for _ in range(len(words_phones))]
     token_consumed = [False for _ in range(len(words_phones))]
@@ -1299,7 +1299,7 @@ def segment(self, word_phonemes: tuple, key_items: list) -> tuple:
     for i in range(len(flat_codes)):
         code_item = flat_codes[i]
         phon_item = flat_phons[i]
-        (consonants, vowels) = self.__parse_key_pair(phon_item)
+        consonants, vowels = self.__parse_key_pair(phon_item)
         token_index = None
         if len(consonants) > 0:
             token_index = cursor.consume(consonants, 'consonants')
@@ -1369,7 +1369,7 @@ def __flatten_key_items(self, key_items: list) -> tuple:
     for item in key_items:
         if isinstance(item, (list, tuple)) is False or len(item) != 2:
             raise ValueError('Each item of key_items must be a (codes_str, phon_str) pair.')
-        (codes_str, phon_str) = item
+        codes_str, phon_str = item
         if isinstance(codes_str, str) is False:
             raise ValueError('codes_str must be a str')
         if isinstance(phon_str, str) is False:
@@ -1398,7 +1398,7 @@ def __parse_key_pair(self, pair_str: str) -> tuple:
         raise ValueError('Invalid key-phoneme pair: ' + str(pair_str))
     if pair_str.count('-') == 0:
         raise ValueError('Invalid key-phoneme pair: ' + pair_str)
-    (left, right) = pair_str.split('-', 1)
+    left, right = pair_str.split('-', 1)
     left = left.strip()
     right = right.strip()
     consonants = list()
@@ -1666,8 +1666,8 @@ def __gen_key_segments(self, tier_palign, from_p, to_p, tier_key_segs):
         tag = ann.get_best_tag()
         phons.append(tag.get_typed_content())
     syll_keys = self.__cued.syllabify(phons)
-    for (i, syll) in enumerate(syll_keys):
-        (start_idx, end_idx) = syll
+    for i, syll in enumerate(syll_keys):
+        start_idx, end_idx = syll
         a1 = tier_palign[start_idx + from_p].get_lowest_localization().copy()
         a3 = tier_palign[end_idx + from_p].get_highest_localization().copy()
         location = sppasLocation(sppasInterval(a1, a3))
@@ -1723,7 +1723,7 @@ def __fill_key_segments(self, tier_keys, tier_class, start_point, end_point):
         tier_class.add(annotation)
         prev_shape_class = self.__cued.NEUTRAL_CLASS
         prev_pos_class = self.__cued.NEUTRAL_CLASS
-    for (a, ac) in zip(tier_keys, tier_class):
+    for a, ac in zip(tier_keys, tier_class):
         fill_hole = False
         if prev is not None and prev.get_highest_localization() < a.get_lowest_localization():
             interval = sppasInterval(prev.get_highest_localization(), a.get_lowest_localization())

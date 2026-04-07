@@ -753,7 +753,7 @@ def predict_position(self, rank: int=4, **kwargs) -> tuple:
         """
     if rank == 0:
         return self._predict_pos_to_neutral()
-    (m1, m2) = self._predict_pos_generic(rank)
+    m1, m2 = self._predict_pos_generic(rank)
     m2 = min(m2, self.a3)
     m1 = min(m1, m2)
     return (m1, m2)
@@ -1012,7 +1012,7 @@ def predict_position(self, rank: int=4, **kwargs) -> tuple:
         return self._predict_pos_to_neutral()
     if rank == 1:
         return self._predict_pos_from_neutral()
-    (m1, m2) = self._predict_pos_generic(rank, **kwargs)
+    m1, m2 = self._predict_pos_generic(rank, **kwargs)
     m2 = min(m2, self.a3)
     m1 = min(m1, m2)
     return (m1, m2)

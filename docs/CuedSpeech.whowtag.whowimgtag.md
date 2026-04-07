@@ -162,7 +162,7 @@ def eval_hand_points(self, target, shapes, vowel_angle, face_height):
             _pts1 = self.target_to_hand_sights(shapes[0][0], target, vowel_angle, face_height)
             _pts2 = self.target_to_hand_sights(shapes[1][0], target, vowel_angle, face_height)
             if None not in _pts1 and None not in _pts2:
-                for (i, pt1) in enumerate(_pts1):
+                for i, pt1 in enumerate(_pts1):
                     pt2 = _pts2[i]
                     proba1 = shapes[0][1]
                     proba2 = shapes[1][1]
@@ -630,10 +630,10 @@ def draw_pos_circles(self, img: sppasImage, fuzzy_points: list) -> None:
         raise sppasTypeError(fuzzy_points, 'list')
     if isinstance(img, sppasImage) is False:
         raise sppasTypeError(img, 'sppasImage')
-    for (index, current_fuzzy_point) in enumerate(fuzzy_points):
+    for index, current_fuzzy_point in enumerate(fuzzy_points):
         if current_fuzzy_point is None or isinstance(current_fuzzy_point, sppasFuzzyPoint) is False:
             continue
-        (x, y) = current_fuzzy_point.get_midpoint()
+        x, y = current_fuzzy_point.get_midpoint()
         radius = max(5, current_fuzzy_point.get_radius())
         bgr = self.get_vowel_color(index)
         for _r in range(1, radius, 4):
@@ -670,10 +670,10 @@ def draw_pos_names(self, img: sppasImage, fuzzy_points: list) -> None:
         raise sppasTypeError(fuzzy_points, 'list')
     if isinstance(img, sppasImage) is False:
         raise sppasTypeError(img, 'sppasImage')
-    for (index, current_fuzzy_point) in enumerate(fuzzy_points):
+    for index, current_fuzzy_point in enumerate(fuzzy_points):
         if current_fuzzy_point is None or isinstance(current_fuzzy_point, sppasFuzzyPoint) is False:
             continue
-        (x, y) = current_fuzzy_point.get_midpoint()
+        x, y = current_fuzzy_point.get_midpoint()
         radius = max(6, current_fuzzy_point.get_radius())
         if self.__vowel_name_option:
             text = self.get_vowel_text(index)
@@ -1018,14 +1018,14 @@ def slap_on(self, image: numpy.ndarray, shapes: tuple, hand_sights: list | None)
     if hand_sights is None:
         hand_sights = list()
     for i in reversed(range(len(shapes))):
-        (shape_code, shape_proba) = shapes[i]
+        shape_code, shape_proba = shapes[i]
         if self.__hand_mode is True:
-            (x, y, _) = self.get_coordinates(hand_sights, 'sights_00')
+            x, y, _ = self.get_coordinates(hand_sights, 'sights_00')
             scale_factor = self.__eval_hand_scale(shape_code, hand_sights)
             angle = self.__eval_hand_rotate_angle(shape_code, hand_sights)
             img = self.__tag_image_with_hand(img, shape_code, shape_proba, x, y, angle, scale_factor)
         else:
-            (x, y, r) = self.get_coordinates(hand_sights, 'target')
+            x, y, r = self.get_coordinates(hand_sights, 'target')
             img = self.__tag_image_with_badge(img, shape_code, shape_proba, x, y, r)
     return img
 ```
@@ -1069,7 +1069,7 @@ def get_coordinates(sights: list, label_key: str) -> tuple | None:
         if sight_label.get_key() == label_key:
             tag = sight_label.get_best()
             point = tag.get_typed_content()
-            (x, y) = point.get_midpoint()
+            x, y = point.get_midpoint()
             return (x, y, point.get_radius())
     return None
 ```
@@ -1105,8 +1105,8 @@ def __eval_hand_scale(self, shape_code: str, sights: list) -> float:
     hand_distance = self.__hands.distance(shape_code)
     if hand_distance == 0:
         return default_value
-    (s0_x, s0_y, _) = self.get_coordinates(sights, 'sights_00')
-    (s9_x, s9_y, _) = self.get_coordinates(sights, 'sights_09')
+    s0_x, s0_y, _ = self.get_coordinates(sights, 'sights_00')
+    s9_x, s9_y, _ = self.get_coordinates(sights, 'sights_09')
     dist_x = abs(s9_x - s0_x)
     dist_y = abs(s9_y - s0_y)
     real_distance = sppasHandProperties.pythagoras(dist_x, dist_y)
@@ -1136,8 +1136,8 @@ def __eval_hand_rotate_angle(self, shape_code: str, sights: list) -> int:
         :return: (int) The hand rotate angle in degree
 
         """
-    (s0_x, s0_y, _) = self.get_coordinates(sights, 'sights_00')
-    (s9_x, s9_y, _) = self.get_coordinates(sights, 'sights_09')
+    s0_x, s0_y, _ = self.get_coordinates(sights, 'sights_00')
+    s9_x, s9_y, _ = self.get_coordinates(sights, 'sights_09')
     opposite = abs(s9_y - s0_y)
     hypotenuse = sppasHandProperties.pythagoras(abs(s9_x - s0_x), abs(s9_y - s0_y))
     if 0.0 <= opposite * hypotenuse <= 1.0:
@@ -1191,12 +1191,12 @@ def __tag_image_with_hand(self, img: sppasImage, shape_code: str, shape_proba: f
     hand_img = self.__hands.image(shape_code)
     if hand_img is None:
         raise sppasKeyError(self.__cued.get_consonants_codes(), shape_code)
-    (original_hand_width, original_hand_height) = hand_img.size()
-    (s0_x, s0_y) = self.__hands.get_sight(shape_code, 0)
+    original_hand_width, original_hand_height = hand_img.size()
+    s0_x, s0_y = self.__hands.get_sight(shape_code, 0)
     hand_img = hand_img.iresize(int(float(original_hand_width) * scale_factor), int(float(original_hand_height) * scale_factor))
     s0_x = int(float(s0_x) * scale_factor)
     s0_y = int(float(s0_y) * scale_factor)
-    (resize_hand_width, resize_hand_height) = hand_img.size()
+    resize_hand_width, resize_hand_height = hand_img.size()
     shape_proba = min(shape_proba * 1.25, 1)
     if shape_proba < 1:
         hand_img = hand_img.ialpha(int(shape_proba * 255.0), direction=-1)

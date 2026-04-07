@@ -224,9 +224,9 @@ def positions_discretization(self, tier_pos_coords, tier_pos_transitions):
     pos_probas = self.__discretize_positions(tier_pos_transitions, tier_pos_coords)
     if len(pos_probas) != len(tier_pos_coords):
         raise Exception('Target vowels probas estimation: {:d} != {:d}'.format(len(pos_probas), len(tier_pos_coords)))
-    for (i, ann) in enumerate(tier_pos_coords):
+    for i, ann in enumerate(tier_pos_coords):
         loc = ann.get_location()
-        (tags, scores) = self.__probas_to_lists(pos_probas[i])
+        tags, scores = self.__probas_to_lists(pos_probas[i])
         label = sppasLabel(None)
         for t in range(len(tags)):
             label.append(tags[t], score=scores[t], add=False)
@@ -269,9 +269,9 @@ def shapes_discretization(self, tier_pos_coords, tier_shapes_transitions):
     shape_probas = self.__discretize_shapes(tier_shapes_transitions, tier_pos_coords)
     if len(shape_probas) != len(tier_pos_coords):
         raise Exception('Target consonants probas estimation: {:d} != {:d}'.format(len(shape_probas), len(tier_pos_coords)))
-    for (i, ann) in enumerate(tier_pos_coords):
+    for i, ann in enumerate(tier_pos_coords):
         loc = ann.get_location()
-        (tags, scores) = self.__probas_to_lists(shape_probas[i])
+        tags, scores = self.__probas_to_lists(shape_probas[i])
         label = sppasLabel(None)
         for t in range(len(tags)):
             label.append(tags[t], score=scores[t], add=False)
@@ -310,17 +310,17 @@ def hands_to_target_coords(self, hand_pos_probas, vowels_coords):
     if len(position_coords) != len(vowels_coords):
         raise Exception('Target vowels coords estimation: {:d} != {:d}'.format(len(position_coords), len(vowels_coords)))
     pos_tier = sppasTier('CS-TargetCoords')
-    for (i, ann) in enumerate(vowels_coords):
+    for i, ann in enumerate(vowels_coords):
         loc = ann.get_location()
         if len(position_coords[i]) == 1:
-            (x, y, r) = position_coords[i][0][0]
+            x, y, r = position_coords[i][0][0]
             label_pos = sppasLabel(sppasTag((x, y, r), tag_type='point'))
         elif len(position_coords[i]) == 2:
             pos1 = position_coords[i][0]
-            (x1, y1, r1) = pos1[0]
+            x1, y1, r1 = pos1[0]
             tag1 = sppasTag((x1, y1, r1), tag_type='point')
             pos2 = position_coords[i][1]
-            (x2, y2, r2) = pos2[0]
+            x2, y2, r2 = pos2[0]
             tag2 = sppasTag((x2, y2, r2), tag_type='point')
             label_pos = sppasLabel([tag1, tag2], [pos1[1], pos2[1]])
         else:
@@ -500,12 +500,12 @@ def __eval_hand_target_coords_straight(self, hand_pos_probas, vowels_coords_tier
         cur_vowels = list()
         cur_probas = list()
         for label in hand_pos_probas[i].get_labels():
-            for (tag, score) in label:
+            for tag, score in label:
                 cur_vowels.append(tag.get_content())
                 cur_probas.append(score)
         from_vowel_idx = self._vrank.index(cur_vowels[0])
         coord1 = vowels_coords[from_vowel_idx]
-        (x1, y1) = coord1.get_midpoint()
+        x1, y1 = coord1.get_midpoint()
         r1 = coord1.get_radius()
         if len(cur_vowels) == 1:
             pos_coords.append([((x1, y1, r1), 1.0)])
@@ -516,7 +516,7 @@ def __eval_hand_target_coords_straight(self, hand_pos_probas, vowels_coords_tier
                 logging.error('Unknown vowel: {}'.format(cur_vowels[1]))
                 continue
             coord2 = vowels_coords[to_vowel_idx]
-            (x2, y2) = coord2.get_midpoint()
+            x2, y2 = coord2.get_midpoint()
             r2 = coord2.get_radius()
             if from_vowel_idx == to_vowel_idx and r2 is not None:
                 if cur_probas[0] > cur_probas[1]:
@@ -570,19 +570,19 @@ def __eval_hand_target_coords_fixed(self, hand_pos_probas, vowels_coords_tier):
         cur_vowels = list()
         cur_probas = list()
         for label in hand_pos_probas[i].get_labels():
-            for (tag, score) in label:
+            for tag, score in label:
                 cur_vowels.append(tag.get_content())
                 cur_probas.append(score)
         from_vowel_idx = self._vrank.index(cur_vowels[0])
         coord1 = vowels_coords[from_vowel_idx]
-        (x1, y1) = coord1.get_midpoint()
+        x1, y1 = coord1.get_midpoint()
         r1 = coord1.get_radius()
         if len(cur_vowels) == 1:
             pos_coords.append([((x1, y1, r1), 1.0)])
         elif len(cur_vowels) == 2:
             to_vowel_idx = self._vrank.index(cur_vowels[1])
             coord2 = vowels_coords[to_vowel_idx]
-            (x2, y2) = coord2.get_midpoint()
+            x2, y2 = coord2.get_midpoint()
             r2 = coord2.get_radius()
             if from_vowel_idx == to_vowel_idx:
                 xm = x2 - r2
@@ -1101,12 +1101,12 @@ def vowels_coords(self, vowels: list, smooth_len: int=20):
         points_x[vowel] = deque(maxlen=smooth_len)
         points_y[vowel] = deque(maxlen=smooth_len)
         points_r[vowel] = deque(maxlen=smooth_len)
-    for (midpoint, radius, sights) in self.__data_sights:
+    for midpoint, radius, sights in self.__data_sights:
         self.__predictor.set_sights_and_predict_coords(sights, vowels)
         labels = list()
         for vowel in vowels:
             if vowel in self.__predictor.vowel_codes():
-                (x, y, r) = self.__predictor.get_vowel_coords(vowel)
+                x, y, r = self.__predictor.get_vowel_coords(vowel)
                 x = self.__append_and_smooth(points_x[vowel], x)
                 y = self.__append_and_smooth(points_y[vowel], y)
                 r = self.__append_and_smooth(points_r[vowel], r)
@@ -1277,7 +1277,7 @@ def hand_angles(self, tier_pos: sppasTier, face_sights: sppasTier=None):
         """
     angles = self.__eval_hand_angle(tier_pos, face_sights)
     angles_tier = sppasTier('CS-HandAngle')
-    for (ann, angle) in zip(tier_pos, angles):
+    for ann, angle in zip(tier_pos, angles):
         loc = ann.get_location().copy()
         tag = sppasTag(angle, tag_type='int')
         angles_tier.create_annotation(loc, sppasLabel(tag))
@@ -1318,12 +1318,12 @@ def __eval_hand_angle(self, hand_pos_probas, face_sights):
         cur_vowels = list()
         cur_probas = list()
         for label in hand_pos_probas[i].get_labels():
-            for (tag, score) in label:
+            for tag, score in label:
                 cur_vowels.append(tag.get_content())
                 cur_probas.append(score)
         face_angle = 90
         if face_sights is not None:
-            (_, _, sights) = face_sights[i]
+            _, _, sights = face_sights[i]
             face_angle = observed_angle((sights.x(8), sights.y(8)), (sights.x(27), sights.y(27)))
         self.__predictor.predict_angle_values(cur_vowels)
         if len(cur_vowels) == 1:
@@ -1605,7 +1605,7 @@ def _load_sights(self, filename: str, kid_index: int=0) -> list:
     data = sppasSightsVideoReader(filename)
     cur_sights = self.__get_current_sights(data, kid_index)
     data_sights = list()
-    for (i, kids_sights) in enumerate(data.sights):
+    for i, kids_sights in enumerate(data.sights):
         midpoint = data.midpoints[i]
         if midpoint is None:
             raise Exception('No time point value at index {:d}.'.format(i))
@@ -1677,7 +1677,7 @@ def __get_current_sights(self, data: sppasSightsVideoReader, kid_index: int) -> 
 
         """
     cur_sights = sppasSights()
-    for (i, kids_sights) in enumerate(data.sights):
+    for i, kids_sights in enumerate(data.sights):
         if 0 < len(kids_sights) <= kid_index + 1:
             cur_sights = kids_sights[kid_index]
             if cur_sights is not None:

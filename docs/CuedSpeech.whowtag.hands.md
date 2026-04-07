@@ -69,9 +69,9 @@ def __init__(self, image: sppasImage, sights: sppasSights, target_index: int):
     self.__sights = sights
     if 0 <= target_index < len(sights):
         try:
-            (x, y, _, _) = sights.get_sight(target_index)
+            x, y, _, _ = sights.get_sight(target_index)
         except IntervalRangeException:
-            (x, y) = (None, None)
+            x, y = (None, None)
         self.__target = (x, y)
     else:
         raise IntervalRangeException(target_index, 0, len(sights))
@@ -218,7 +218,7 @@ def get_sight(self, index: int) -> tuple:
 
         """
     if 0 <= index < len(self.__sights):
-        (x, y, _, _) = self.__sights.get_sight(index)
+        x, y, _, _ = self.__sights.get_sight(index)
         return (x, y)
     else:
         raise IntervalRangeException(index, 0, len(self.__sights))
@@ -394,11 +394,11 @@ def __estimation(self) -> None:
         :raises: sppasError: If the number sights is different of 21 or 4
 
         """
-    (x0, y0, _, _) = self.__sights.get_sight(0)
+    x0, y0, _, _ = self.__sights.get_sight(0)
     if len(self.__sights) == 21:
-        (s9_x, s9_y, _, _) = self.__sights.get_sight(9)
+        s9_x, s9_y, _, _ = self.__sights.get_sight(9)
     elif len(self.__sights) == 4:
-        (s9_x, s9_y, _, _) = self.__sights.get_sight(2)
+        s9_x, s9_y, _, _ = self.__sights.get_sight(2)
     else:
         raise sppasError(f'21 or 4 sights were expected. Got {len(self.__sights)} instead.')
     s0s9_x = s9_x - x0
@@ -410,7 +410,7 @@ def __estimation(self) -> None:
         angle = -angle
     self.__dist = int(round(s0s9_dist, 0))
     self.__beta = int(round(angle, 0))
-    for (i, current_sight) in enumerate(self.__sights):
+    for i, current_sight in enumerate(self.__sights):
         if i > 0:
             sight_dist_x = current_sight[0] - x0
             sight_dist_y = current_sight[1] - y0
@@ -555,7 +555,7 @@ def sights(self, hand_properties: sppasHandProperties, shape_code: str) -> sppas
     hand_img = hand_properties.image()
     sights = hand_properties.get_sights()
     self.__check_fct_parameters(hand_img, shape_code, sights)
-    (data, red, green, blue) = sppasHandFilters.__img_to_data(hand_img)
+    data, red, green, blue = sppasHandFilters.__img_to_data(hand_img)
     data = self.__apply_sights(data, shape_code, sights)
     return sppasHandFilters.__data_to_img(data, red, green, blue)
 ```
@@ -599,8 +599,8 @@ def skeleton(self, hand_properties: sppasHandProperties, shape_code: str) -> spp
     img = sppasImage(0).blank_image(hand_img.width, hand_img.height)
     self.__apply_sights(img, shape_code, sights)
     temp = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    (_, alpha) = cv2.threshold(temp, 0, 255, cv2.THRESH_BINARY)
-    (b, g, r) = cv2.split(img)
+    _, alpha = cv2.threshold(temp, 0, 255, cv2.THRESH_BINARY)
+    b, g, r = cv2.split(img)
     bgra = [b, g, r, alpha]
     img = sppasImage(input_array=cv2.merge(bgra, 4))
     return img
@@ -640,17 +640,17 @@ def sticks(self, hand_properties: sppasHandProperties, shape_code: str) -> sppas
     hand_img = hand_properties.image()
     sights = hand_properties.get_sights()
     self.__check_fct_parameters(hand_img, shape_code, sights)
-    (data, red, green, blue) = sppasHandFilters.__img_to_data(hand_img)
+    data, red, green, blue = sppasHandFilters.__img_to_data(hand_img)
     if shape_code == '3':
-        (s5_x, s5_y, _, _) = sights.get_sight(5)
-        (s6_x, s6_y, _, _) = sights.get_sight(6)
+        s5_x, s5_y, _, _ = sights.get_sight(5)
+        s6_x, s6_y, _, _ = sights.get_sight(6)
         data = cv2.line(data, (s5_x, s5_y), (s6_x, s6_y), self.__lines_color, self.__line_thickness)
     elif shape_code == '8':
-        (s5_x, s5_y, _, _) = sights.get_sight(5)
-        (s8_x, s8_y, _, _) = sights.get_sight(8)
+        s5_x, s5_y, _, _ = sights.get_sight(5)
+        s8_x, s8_y, _, _ = sights.get_sight(8)
         data = cv2.line(data, (s5_x, s5_y), (s8_x, s8_y), self.__lines_color, self.__line_thickness)
-        (s9_x, s9_y, _, _) = sights.get_sight(9)
-        (s12_x, s12_y, _, _) = sights.get_sight(12)
+        s9_x, s9_y, _, _ = sights.get_sight(9)
+        s12_x, s12_y, _, _ = sights.get_sight(12)
         data = cv2.line(data, (s9_x, s9_y), (s12_x, s12_y), self.__lines_color, self.__line_thickness)
     data = cv2.circle(data, hand_properties.target_coords(), self.__radius, self.__circles_color, -1)
     return sppasHandFilters.__data_to_img(data, red, green, blue)
@@ -690,9 +690,9 @@ def tgtline(self, hand_properties: sppasHandProperties, shape_code: str) -> sppa
     hand_img = hand_properties.image()
     sights = hand_properties.get_sights()
     self.__check_fct_parameters(hand_img, shape_code, sights)
-    (data, red, green, blue) = sppasHandFilters.__img_to_data(hand_img)
-    (s0_x, s0_y, _, _) = sights.get_sight(0)
-    (s9_x, s9_y, _, _) = sights.get_sight(9)
+    data, red, green, blue = sppasHandFilters.__img_to_data(hand_img)
+    s0_x, s0_y, _, _ = sights.get_sight(0)
+    s9_x, s9_y, _, _ = sights.get_sight(9)
     data = cv2.line(data, (s9_x, s9_y), (s0_x, s0_y), self.__lines_color, self.__line_thickness)
     data = cv2.circle(data, hand_properties.target_coords(), self.__radius, self.__circles_color, -1)
     return sppasHandFilters.__data_to_img(data, red, green, blue)
@@ -727,9 +727,9 @@ def tgtline(self, hand_properties: sppasHandProperties, shape_code: str) -> sppa
 def __img_to_data(img):
     bgr_img = img.ibgra_to_bgr()
     data = np.array(bgr_img)
-    (r1, g1, b1) = (0, 0, 0)
-    (r2, g2, b2) = (255, 255, 255)
-    (red, green, blue) = (data[:, :, 0], data[:, :, 1], data[:, :, 2])
+    r1, g1, b1 = (0, 0, 0)
+    r2, g2, b2 = (255, 255, 255)
+    red, green, blue = (data[:, :, 0], data[:, :, 1], data[:, :, 2])
     mask = (red == r1) & (green == g1) & (blue == b1)
     data[:, :, :3][mask] = [r2, g2, b2]
     return (data, red, green, blue)
@@ -742,7 +742,7 @@ def __img_to_data(img):
 ```python
 @staticmethod
 def __data_to_img(data, red, green, blue):
-    (r2, g2, b2) = (255, 255, 255)
+    r2, g2, b2 = (255, 255, 255)
     img = sppasImage(input_array=cv2.cvtColor(data, cv2.COLOR_RGB2RGBA))
     mask = (red == r2) & (green == g2) & (blue == b2)
     img[:, :, :4][mask] = [r2, g2, b2, 0]
@@ -842,8 +842,8 @@ def __apply_sights(self, img: np.ndarray, shape_code: str, sights: sppasSights) 
         :return: (numpy.ndarray) The image with the sights and connected lines on it
 
         """
-    (s0_x, s0_y, _, _) = sights.get_sight(0)
-    (s9_x, s9_y, _, _) = sights.get_sight(9)
+    s0_x, s0_y, _, _ = sights.get_sight(0)
+    s9_x, s9_y, _, _ = sights.get_sight(9)
     if s9_x - s0_x > 0:
         s_arm_x = s0_x - abs(s9_x - s0_x)
     else:
@@ -856,12 +856,12 @@ def __apply_sights(self, img: np.ndarray, shape_code: str, sights: sppasSights) 
     img = cv2.circle(img, (s_arm_x, s_arm_y), self.__radius, self.__circles_color, -1)
     for item in self.__sights_link:
         if item[0] not in self.__sights_hidden[shape_code] and item[1] not in self.__sights_hidden[shape_code]:
-            (start_x, start_y, _, _) = sights.get_sight(item[0])
-            (end_x, end_y, _, _) = sights.get_sight(item[1])
+            start_x, start_y, _, _ = sights.get_sight(item[0])
+            end_x, end_y, _, _ = sights.get_sight(item[1])
             img = cv2.line(img, (start_x, start_y), (end_x, end_y), self.__lines_color, self.__line_thickness)
     for i in range(len(sights)):
         if i not in self.__sights_hidden[shape_code]:
-            (x, y, _, _) = sights.get_sight(i)
+            x, y, _, _ = sights.get_sight(i)
             img = cv2.circle(img, (x, y), self.__radius, self.__circles_color, -1)
     return img
 ```
@@ -1216,7 +1216,7 @@ def apply_hands_filter(self, filter_name: str) -> None:
 
         """
     if hasattr(self.__hands_filter, filter_name):
-        for (key, item) in self.__hands_properties.items():
+        for key, item in self.__hands_properties.items():
             item.set_image(getattr(self.__hands_filter, filter_name)(item, key))
     else:
         raise sppasValueError('filter_name', filter_name)
@@ -1264,7 +1264,7 @@ def __load_hand_pictures(self, hands_images: list, hands_sights: list) -> None:
         raise sppasError(f'Invalid number of hand images. Expected {len(_shapes)}. Got {len(hands_images)} instead.')
     if len(_shapes) != len(hands_sights):
         raise sppasError(f'Invalid number of hand sights. Expected {len(_shapes)}. Got {len(hands_sights)} instead.')
-    for (i, paths) in enumerate(zip(hands_images, hands_sights)):
+    for i, paths in enumerate(zip(hands_images, hands_sights)):
         if os.path.exists(paths[0]) is False:
             logging.warning(f"Can't find hand picture file {paths[0]}.")
             break

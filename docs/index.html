@@ -447,12 +447,14 @@ described below.</p>
 
 <h3>1) Generate Cued Speech keys from text (TextCueS)</h3>
 
-<p>Launch:</p>
+<p>SPPAS-4, launch:</p>
 
 <div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span> <span class="n">sppas</span>\<span class="n">ui</span>\<span class="n">swapp</span>
 </code></pre></div>
 
-<p>This opens a browser tab. 
+<p>SPPAS-5, launch either sppas.bat, sppas.sh or sppas.app depending on the OS.</p>
+
+<p>This opens a browser tab with The SPPAS Dashboard. 
 Click the “TextCueS” application, then follow the guided interface.</p>
 
 <p>Example: 
@@ -461,19 +463,26 @@ text <code>An example.</code> with language = American English produces:
 
 <h3>2) Generate a cued video from command line</h3>
 
+<p>This is performed by the python program "cuedspeech.py", located in:</p>
+
+<ul>
+<li>SPPAS-4 path is "sppas/bin"</li>
+<li>SPPAS-5 path is for example "sppas-code/sppas-venv/lib/python3.12/site-packages/sppas/bin/"</li>
+</ul>
+
 <p>Get help:</p>
 
-<div class="highlight"><pre><span></span><code><span class="o">.</span>\<span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="o">.</span>\<span class="n">sppas</span>\<span class="nb">bin</span>\<span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> 
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">path</span><span class="o">/</span><span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> 
 </code></pre></div>
 
 <p>Re-generate the demo video (<code>demo/demo-cuedsp.mp4</code>):</p>
 
-<div class="highlight"><pre><span></span><code><span class="o">.</span>\<span class="o">.</span><span class="n">sppaspyenv</span><span class="o">~</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="o">.</span>\<span class="n">sppas</span>\<span class="nb">bin</span>\<span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">I</span> <span class="n">demo</span> <span class="o">-</span><span class="n">l</span> <span class="n">fra</span> <span class="o">--</span><span class="n">createvideo</span><span class="o">=</span><span class="n">true</span> <span class="o">--</span><span class="n">handsset</span><span class="o">=</span><span class="n">yoyo</span> <span class="o">--</span><span class="n">vowelspos</span><span class="o">=</span><span class="n">true</span>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">path</span><span class="o">/</span><span class="n">cuedspeech</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">I</span> <span class="n">demo</span> <span class="o">-</span><span class="n">l</span> <span class="n">fra</span> <span class="o">--</span><span class="n">createvideo</span><span class="o">=</span><span class="n">true</span> <span class="o">--</span><span class="n">handsset</span><span class="o">=</span><span class="n">yoyo</span> <span class="o">--</span><span class="n">vowelspos</span><span class="o">=</span><span class="n">true</span>
 </code></pre></div>
 
 <h3>3) Generate a cued video from the wx GUI</h3>
 
-<p>Launch <code>sppas.bat</code>.
+<p>Launch SPPAS annotation application. Then, when the wx-based User Interface is opened:
 1. Add the files from the <code>demo/</code> folder to the file list and select any one of them.
 2. Go to the “Annotate” tab and select language “fra”.
 3. Click “Standalone annotations”, then check “Cued Speech coding”.
@@ -503,7 +512,7 @@ Signed-off-by: Random J Developer <random@developer.example.org>
 
 <p>See the accompanying <code>LICENSE</code> and <code>AUTHORS.md</code> files for the full list of contributors.</p>
 
-<p>Copyright (C) 2021-2026 <a href="https://sppas.org/bigi/">Brigitte Bigi</a>, CNRS - <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;:&#99;o&#110;&#116;&#x61;&#99;&#x74;&#64;s&#112;&#x70;&#97;&#x73;&#x2e;&#x6f;r&#x67;">&#99;o&#110;&#116;&#x61;&#99;&#x74;&#64;s&#112;&#x70;&#97;&#x73;&#x2e;&#x6f;r&#x67;</a>
+<p>Copyright (C) 2021-2026 <a href="https://sppas.org/bigi/">Brigitte Bigi</a>, CNRS - <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;c&#111;&#x6e;&#x74;&#97;&#99;&#116;&#64;&#x73;&#112;&#x70;&#97;&#115;&#x2e;&#x6f;&#x72;&#103;">c&#111;&#x6e;&#x74;&#97;&#99;&#116;&#64;&#x73;&#112;&#x70;&#97;&#115;&#x2e;&#x6f;&#x72;&#103;</a>
 Laboratoire Parole et Langage, Aix-en-Provence, France</p>
 
 <p>This program is free software: you can redistribute it and/or modify
@@ -579,7 +588,7 @@ Open Source Research Software Competition.</p>
 
 <p>Migrated to Whakerexa 2.0.</p>
 
-<h3>2.0 - Attached to SPPAS-4.31</h3>
+<h3>2.0 - Attached to SPPAS-4.31 and SPPAS-5.0</h3>
 
 <ul>
 <li>Deleted textcued app.</li>

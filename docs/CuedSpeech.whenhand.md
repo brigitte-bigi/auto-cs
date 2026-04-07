@@ -630,7 +630,7 @@ def when_hands(self, tier_keys: sppasTier, tier_segments: sppasTier) -> tuple:
         cs_pos = sppasTier('CS-HandPositions')
         cs_shapes = sppasTier('CS-HandShapes')
     else:
-        (positions_moves, shapes_moves) = self.predict_transitions(tier_keys, tier_segments)
+        positions_moves, shapes_moves = self.predict_transitions(tier_keys, tier_segments)
         cs_pos = self.predicted_to_tier(positions_moves)
         cs_pos.set_name('CS-HandPositions')
         cs_shapes = self.predicted_to_tier(shapes_moves)
@@ -700,12 +700,12 @@ def predict_transitions(self, tier_keys: sppasTier, tier_segments: sppasTier) ->
             key_rank_ipu = 0
         self.__transitions.set_a(a1, a3, store=False)
         if prev_pos != cur_pos or (prev_pos == cur_pos and prev_pos != 's') or (prev_pos == cur_pos and prev_pos == 's' and (prev_shape == cur_shape)):
-            (m1, m2) = self.__transitions.predict_m(rank=key_rank_ipu, is_nil_shape=self.has_nil_shape(cur_phns), is_nil_pos=self.has_nil_pos(cur_phns))
+            m1, m2 = self.__transitions.predict_m(rank=key_rank_ipu, is_nil_shape=self.has_nil_shape(cur_phns), is_nil_pos=self.has_nil_pos(cur_phns))
             prev_pos.set_key(prev_phns)
             cur_pos.set_key(cur_phns)
             pos_moves.append(m1, m2, (prev_pos, cur_pos), tier_keys[ii - 1].get_id(), ann.get_id())
         if cur_shape != prev_shape:
-            (d1, d2) = self.__transitions.predict_d(rank=key_rank_ipu, is_nil_shape=self.has_nil_shape(cur_phns), is_nil_pos=self.has_nil_pos(cur_phns))
+            d1, d2 = self.__transitions.predict_d(rank=key_rank_ipu, is_nil_shape=self.has_nil_shape(cur_phns), is_nil_pos=self.has_nil_pos(cur_phns))
             shp_moves.append(d1, d2, (prev_shape, cur_shape), tier_keys[ii - 1].get_id(), ann.get_id())
         prev_shape = cur_shape
         prev_pos = cur_pos
@@ -751,7 +751,7 @@ def predicted_to_tier(predicted: PredictedWhenHand) -> sppasTier:
     tier = sppasTier('CS-Predicted')
     prev_end = sppasPoint(0.0)
     for i in range(len(predicted)):
-        (start, end, tags, source_id, target_id) = predicted[i]
+        start, end, tags, source_id, target_id = predicted[i]
         if prev_end >= start:
             p1 = prev_end.copy()
         else:
