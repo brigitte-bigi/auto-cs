@@ -33,6 +33,7 @@
 
 from __future__ import annotations
 import os
+import logging
 
 from sppas.core.config import symbols
 from sppas.core.config import separators
@@ -379,7 +380,10 @@ class CuedSpeechCueingRules:
         :return: (int) target index of the given shape or the default target index
 
         """
-        return self.__shptgt.get(shape, CuedSpeechCueingRules.SHAPE_TARGET)
+        if shape not in self.__shptgt:
+            logging.warning(f"Shape '{shape}' not found in shape targets. Using default: {CuedSpeechCueingRules.SHAPE_TARGET}")
+            return CuedSpeechCueingRules.SHAPE_TARGET
+        return self.__shptgt[shape]
 
     # ------------------------------------------------------------------------
 
