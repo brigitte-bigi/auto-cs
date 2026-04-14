@@ -31,6 +31,8 @@
 
 """
 
+import logging
+
 from sppas.src.anndata import sppasPoint
 from sppas.src.anndata import sppasInterval
 
@@ -88,7 +90,10 @@ class sppasAnnsOnFrames(object):
             end_point = ann.get_highest_localization()
             new_begin = self.adjust_point_boundary(begin_point)
             new_end = self.adjust_point_boundary(end_point)
-            ann.set_best_localization(sppasInterval(new_begin, new_end))
+            try:
+                ann.set_best_localization(sppasInterval(new_begin, new_end))
+            except Exception as e:
+                logging.error(f"{ann} not appended: {str(e)}")
 
     # -----------------------------------------------------------------------
 
