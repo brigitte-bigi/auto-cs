@@ -44,6 +44,7 @@ from ..textcues_record import TextCueSRecord
 from .nodes.tags import HTMLTag
 from .pathway_base_view import PathwayBaseView
 from .nodes.table_sounds import SoundsTableNode
+from .nodes.sound_piano_dialog import SoundPianoDialogNode
 
 # ---------------------------------------------------------------------------
 
@@ -172,6 +173,12 @@ class PathwaySoundView(PathwayBaseView):
             _sounds = self.extract_sounds_from_data()
             _table = SoundsTableNode(self._form.identifier, _sounds)
             self._form.append_child(_table)
+
+            # A single dialog, shared by every row's "Phoneme keyboard" toggle.
+            _consonants = self._record.extras.get("consonants", tuple())
+            _vowels = self._record.extras.get("vowels", tuple())
+            _dialog = SoundPianoDialogNode(self._parent.identifier, _consonants, _vowels)
+            self._parent.append_child(_dialog)
 
         # Submit button
         HTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_PHON_ANN_BUTTON)

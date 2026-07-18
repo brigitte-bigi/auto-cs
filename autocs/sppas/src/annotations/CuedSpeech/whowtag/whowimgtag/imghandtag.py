@@ -196,8 +196,6 @@ class sppasImageHandTagger:
 
         hand_sights is the list of S0, S9 and target finger coordinates
         where the hand sights have to be put on the image.
-        For example:
-        [sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)],
 
         :param image: (sppasImage or numpy.ndarray) The image that we want tag the hand on it
         :param shapes: (list[str, float]) One or two consonant names and their probabilities

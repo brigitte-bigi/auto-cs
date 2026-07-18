@@ -32,12 +32,12 @@
 """
 
 from __future__ import annotations
-import os
+
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
-from whakerpy.htmlmaker import EmptyNode
 from sppas.core.config import separators
-from sppas.ui.swapp.wappsg import wapp_settings
+
+from sppas.ui.swapp.app_cues_utils.nodes.illustration import CuedIllustration
 
 from ...textcues_msg import MSG_KEY_PHONES
 from ...textcues_msg import MSG_KEY_CODE
@@ -91,19 +91,19 @@ class CuedCode:
                     _phon = _phon.replace("vnil", "&empty;")
 
                 _li = CuedCode.coded_phon(_ol, _phon, _key)
-                _figure = CuedCode.coded_illus(_li)
+                _figure = CuedIllustration.coded_illus(_li)
 
                 if "cuedresult" in self._record.extras:
                     if len(self._record.extras["cuedresult"]) > _tok_idx:
                         _r = self._record.extras["cuedresult"][_tok_idx][_i]
-                        if len(_r) == 1:
+                        if isinstance(_r, tuple) and len(_r) >= 2:
+                            # shape and position in 2 different static images
+                            CuedIllustration.yoyo_hand_image(_figure, _r[0])
+                            CuedIllustration.yoyo_face_image(_figure, _r[1])
+                        else:
                             # the shape overlays the face and the target finger indicates the
                             # position on an estimated image
-                            CuedCode.yoyo_face_image(_figure, _r[0])
-                        elif len(_r) == 2:
-                            # shape and position in 2 different static images
-                            CuedCode.yoyo_hand_image(_figure, _r[0])
-                            CuedCode.yoyo_face_image(_figure, _r[1])
+                            CuedIllustration.yoyo_face_image(_figure, _r)
 
                 _caption = HTMLNode(_figure.identifier, None, "figcaption", value=_key)
                 _figure.append_child(_caption)
@@ -130,17 +130,23 @@ class CuedCode:
     def video_mode_content_nodes(self, parent: TagNode):
         """Fills-in the node with a video of the cued keys.
 
-        :return: (TagNode) The container HTML node with links to images of the cued keys
+        :return: (TagNode) The container HTML node 
 
         """
         if "cuedresult" not in self._record.extras:
             self.images_mode_content_nodes(parent)
         else:
-            if len(self._record.extras["cuedresult"]) != 1:
-                self.__no_content_nodes(parent)
-            else:
-                _figure = TagNode(parent.identifier, None, "figure")
-                parent.append_child(_figure)
+            _figure = TagNode(parent.identifier, None, "figure")
+            _figure.set_attribute("class", "width_70")
+            parent.append_child(_figure)
+            _video = TagNode(_figure.identifier, None, "video")
+            _figure.append_child(_video)
+            _video.set_attribute("class", "flex-item width-almost-half")
+            _video.set_attribute("controls", None)
+            _source = TagNode(_video.identifier, None, "source")
+            _video.append_child(_source)
+            _source.set_attribute("src", self._record.extras["cuedresult"])
+            _source.set_attribute("type", "video/mp4")
 
     # -----------------------------------------------------------------------
 
@@ -184,50 +190,5 @@ class CuedCode:
         _li.append_child(_span)
 
         return _li
-
-    # -----------------------------------------------------------------------
-
-    @staticmethod
-    def coded_illus(parent: TagNode) -> TagNode:
-        _figure = TagNode(parent.identifier, None, "figure")
-        _figure.add_attribute("class", "key-illus")
-        _figure.add_attribute("aria-hidden", "true")
-        parent.append_child(_figure)
-
-        return _figure
-
-    # -----------------------------------------------------------------------
-
-    @staticmethod
-    def yoyo_face_image(parent, img_path: str) -> EmptyNode:
-        _img = EmptyNode(parent.identifier, None, "img")
-        if os.path.exists(img_path):
-            _img.add_attribute("src", img_path)
-        else:
-            # Fall back to a default selfie in black&white
-            dest = os.path.join(wapp_settings.images + "textcues/yoyo_selfie_bw.jpg")
-            _img.add_attribute("src", dest)
-        _img.add_attribute("alt", "")
-        _img.add_attribute("class", "face-img")
-        parent.append_child(_img)
-
-        return _img
-
-    # -----------------------------------------------------------------------
-
-    @staticmethod
-    def yoyo_hand_image(parent, img_path: str) -> EmptyNode:
-        _img = EmptyNode(parent.identifier, None, "img")
-        if os.path.exists(img_path):
-            _img.add_attribute("src", img_path)
-        else:
-            # Fall back to a default hand in black&white
-            dest = os.path.join(wapp_settings.images + "textcues/yoyo_0_bw.png")
-            _img.add_attribute("src", dest)
-        _img.add_attribute("alt", "")
-        _img.add_attribute("class", "hand-img")
-        parent.append_child(_img)
-
-        return _img
 
 

@@ -1,0 +1,35 @@
+"""
+:filename: sppas.ui.swapp.app_cues_utils.__init__.py
+:author: Brigitte Bigi
+:contact: contact@sppas.org
+:summary: UI elements shared by the Cued Speech spin-off applications.
+
+..
+    This file is part of Auto-CS: <https://autocs.sourceforge.io>
+    -------------------------------------------------------------------------
+
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
+    Laboratoire Parole et Langage, Aix-en-Provence, France
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    This banner notice must not be removed.
+
+    -------------------------------------------------------------------------
+
+This package contains the HTML building blocks shared by the "Auto-CS"
+spin-off web applications (TextCueS, TwinCueS, ...): generic HTML tag
+helpers, action buttons, the footer, and the Yoyo mascot message nodes.
+
+"""

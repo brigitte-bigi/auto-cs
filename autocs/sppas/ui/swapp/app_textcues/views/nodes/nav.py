@@ -31,10 +31,11 @@
 """
 
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
-from sppas.ui.swapp.wappsg import wapp_settings
+from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.wappcore.wapputils import sppasImagesAccess
 
-from ...textcues_msg import MSG_APP_TITLE
 from ...textcues_msg import MSG_ACS_PROJECT
+from ...textcues_msg import MSG_HOME
 
 from .button_action import MenuLinkButtonNode
 
@@ -66,17 +67,19 @@ class NavUtils:
 
     @staticmethod
     def append_home_link_button(parent: TagNode) -> None:
-        """Create and append a link button redirecting to welcome page.
+        """Create and append a link button redirecting to the portal home page.
 
         :param parent: (TagNode) Parent node
 
         """
-        _acs = MenuLinkButtonNode(
+        _home = MenuLinkButtonNode(
             parent.identifier,
-        "link-welcome_button",
-            "textcues.html"
+            "link-welcome_button",
+            "index.html"
         )
-        _acs.set_icon(None, wapp_settings.icons + "Refine/textcues.png")
-        _acs.set_text(MSG_APP_TITLE)
-        parent.append_child(_acs)
+        # Handled by whakerexa's LinkController (see links.js): "_self"
+        # navigates in the current tab, unlike the default "_blank".
+        _home.add_attribute("data-target", "_self")
+        _home.set_svg_icon(sppasImagesAccess.get_wexa_svg_icon("house"), MSG_HOME)
+        parent.append_child(_home)
 

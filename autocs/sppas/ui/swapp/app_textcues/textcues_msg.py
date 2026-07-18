@@ -47,7 +47,6 @@ def _(message):
 
 
 MSG_ERROR_DETAILS = _("Error details: ")
-MSG_ERROR_NO_TEXT = _("Text is required to proceed to the next step.")
 MSG_ERROR_NO_TOKENS = _("No word was extracted from the given text.")
 MSG_ERROR_LEN_MISMATCH = _("Got {:d} tokens and {:d} pronunciations.")
 MSG_ERROR_NO_PRON = _("No pronunciation of words was found in the given data.")
@@ -56,6 +55,13 @@ MSG_ERROR_EMPTY_PRON = _("No pronunciation found for token {:s}.")
 MSG_ERROR_INVALID_FORMAT = _("Invalid data format: {:s}.")
 MSG_ERROR_NO_RESULT = _("No result was found in the received data or the format is invalid.")
 MSG_ERROR_UNKNOWN_PHON = _("Sound {:s} is unknown.")
+
+# ---------------------------------------------------------------------------
+# Info
+# ---------------------------------------------------------------------------
+
+
+MSG_INFO_NO_TEXT = _("Text is required to proceed to the next step.")
 
 # ---------------------------------------------------------------------------
 # Yoyo
@@ -72,12 +78,12 @@ MSG_YOYO_NOT_YET = _("Not yet implemented")
 
 
 MSG_APP_TITLE = _("TextCueS")
-MSG_APP_TITLE1 = _("Text-to-Cued Speech code generation")
 MSG_APP_TITLE2 = _("Text-to-Cued Speech code conversion")
 MSG_REF = _("Bibliographical references")
 MSG_SEE_ALSO = _("See also")
 MSG_DESCR = _("Allows to generate automatically the sequence of keys to be cued from a written text")
 MSG_ACS_PROJECT = _("ACS Project")
+MSG_HOME = _("Home")
 MSG_SUPPORT = _("Supported by FIRAH")
 MSG_TEXTCUES_CONCEPT = _("Text Cues Concept Document")
 
@@ -94,10 +100,10 @@ MSG_LAUNCH = _("Start coding")
 # ---------------------------------------------------------------------------
 
 # Title of the view (H1)
-MSG_LANGTEXT_TITLE = _("I choose the language and enter the text to code in Cued Speech")
+MSG_LANGTEXT_TITLE = _("I enter the text to code in Cued Speech")
 
 # Title of the fieldset -- H2 element
-MSG_LANGTEXT_FIELD_LEGEND = _("Step 1 of 3 — Language and text")
+MSG_LANGTEXT_FIELD_LEGEND = _("Step 1 of 3 — Text")
 
 # Text for the breadcrumb
 MSG_LANGTEXT_BREADCRUMB = _("Text")
@@ -132,6 +138,14 @@ MSG_CHOICE_3 = _("Choice n°3")
 MSG_CHOICE_4 = _("Choice n°4")
 MSG_PERSONALIZED = _("Personalized")
 
+MSG_SOUND_PIANO_TOGGLE = _("Phoneme keyboard")
+MSG_SOUND_PIANO_TITLE = _("Phoneme keyboard for:")
+MSG_SOUND_PIANO_PREVIEW = _("Composed pronunciation:")
+MSG_SOUND_PIANO_VALIDATE = _("Apply")
+MSG_SOUND_PIANO_CANCEL = _("Cancel")
+MSG_PIANO_CONSONANTS_GROUP = _("Consonants")
+MSG_PIANO_VOWELS_GROUP = _("Vowels")
+
 # ---------------------------------------------------------------------------
 # Step 3
 # ---------------------------------------------------------------------------
@@ -157,6 +171,13 @@ MSG_RESULT = _("Cued text:")
 MSG_BUTTON_APPLY = _("Apply")
 
 # ---------------------------------------------------------------------------
+
+MSG_SIMPLIFIED_MODE_NOT_INSTALLED = _(
+    "This version doesn't allow to enable the intermediate and advanced "
+    "levels. To do so, install SPPAS and enable the 'video' feature.")
+MSG_SIMPLIFIED_MODE_NOT_IMPLEMENTED = _(
+    "This version doesn't allow to enable the intermediate and advanced "
+    "levels: they are not implemented yet for the current language.")
 
 # message for the displayed mode in the form
 MSG_MODE_DISPLAY = _("Choose a display mode:")

@@ -30,9 +30,9 @@
     --footer-height: max(calc(10rem / var(--size-divisor)), 7rem);
     --border-width: 6px;
 
-    --coded-key-border-color: #b3bfb8;
-    --coded-key-fg-color: #183302;
-    --coded-key-caption-bg-color: #023306;
+    --coded-key-border-color: rgb(179, 191, 184);
+    --coded-key-fg-color: rgb(24, 51, 2);
+    --coded-key-caption-bg-color: rgb(2, 51, 6);
     --coded-key-caption-fg-color: rgb(245, 248, 246);
 }
 
@@ -49,20 +49,21 @@
 /* --------------------------------------- */
 /* Variables for light mode                */
 /* --------------------------------------- */
-:root:not([data-theme=dark]), [data-theme=light], .light {
+/* was: :root:not([data-theme=dark]), [data-theme=light], .light */
+:root:not(.dark), .light {
 
     --bg-color: rgb(245, 250, 245);
-    --bg-color-alt: rgb(237, 250, 235); /*#CFF5C6;*/
-    --fg-color: #023306;
-    --fg-color-alt: #183302;
-    --h1-color: #102616;
-    --h2-color: #102616;
-    --h3-color: #102616;
-    --h4-color: #102616;
-    --buttons-fg-color: #023306;
+    --bg-color-alt: rgb(237, 250, 235); /*rgb(207, 245, 198);*/
+    --fg-color: rgb(2, 51, 6);
+    --fg-color-alt: rgb(24, 51, 2);
+    --h1-color: rgb(16, 38, 22);
+    --h2-color: rgb(16, 38, 22);
+    --h3-color: rgb(16, 38, 22);
+    --h4-color: rgb(16, 38, 22);
+    --buttons-fg-color: rgb(2, 51, 6);
     --buttons-bg-color: rgb(211, 237, 209);
     --border-color: rgb(128, 160, 128);
-    --blockquote-border-color: #204730;
+    --blockquote-border-color: rgb(32, 71, 48);
     --table-row-stripped-bg-color: rgb(235, 250, 239);
     --table-head-bg-color: rgb(215, 225, 215);
     --table-head-fg-color: rgb(30, 30, 40);
@@ -96,40 +97,40 @@
         --fg-color: rgb(245, 248, 246);
         --fg-color-alt: rgb(240, 245, 215);
 
-        --h1-color: #e6f3ea;
-        --h2-color: #e6f3ea;
-        --h3-color: #e6f3ea;
-        --h4-color: #e6f3ea;
+        --h1-color: rgb(230, 243, 234);
+        --h2-color: rgb(230, 243, 234);
+        --h3-color: rgb(230, 243, 234);
+        --h4-color: rgb(230, 243, 234);
 
-        --buttons-fg-color: #e6f3ea;
-        --buttons-bg-color: #1f3326;
+        --buttons-fg-color: rgb(230, 243, 234);
+        --buttons-bg-color: rgb(31, 51, 38);
 
         --border-color: rgb(200, 220, 200);
-        --blockquote-border-color: #3e5f4b;
+        --blockquote-border-color: rgb(62, 95, 75);
 
-        --table-row-stripped-bg-color: #13231a;
-        --table-head-bg-color: #1a2e22;
-        --table-head-fg-color: #e6f3ea;
-        --table-caption-bg-color: #15271d;
-        --table-caption-fg-color: #e6f3ea;
+        --table-row-stripped-bg-color: rgb(19, 35, 26);
+        --table-head-bg-color: rgb(26, 46, 34);
+        --table-head-fg-color: rgb(230, 243, 234);
+        --table-caption-bg-color: rgb(21, 39, 29);
+        --table-caption-fg-color: rgb(230, 243, 234);
 
-        --li-color: #9ad7a8;
-        --a-color: #7fbbe0;
+        --li-color: rgb(154, 215, 168);
+        --a-color: rgb(127, 187, 224);
 
-        --header-fg-color: #e6f3ea;
+        --header-fg-color: rgb(230, 243, 234);
         --header-bg-color: linear-gradient(
             170deg,
-            #0f1b14 0%,
-            #14241a 42%,
-            #173022 68%,
-            #1f5a3a 100%
+            rgb(15, 27, 20) 0%,
+            rgb(20, 36, 26) 42%,
+            rgb(23, 48, 34) 68%,
+            rgb(31, 90, 58) 100%
         );
 
-        --footer-fg-color: #e6f3ea;
+        --footer-fg-color: rgb(230, 243, 234);
         --footer-bg-color: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color-alt) 30%, rgb(20, 25, 20) 70%, rgb(30, 38, 31) 100%);
 
-        --action-buttons-bg-color: linear-gradient(to right, #1f5a3a, #3a8a60);
-        --action-buttons-hover-bg-color: linear-gradient(to left, #0f4a2a, #3a8a60);
+        --action-buttons-bg-color: linear-gradient(to right, rgb(31, 90, 58), rgb(58, 138, 96));
+        --action-buttons-hover-bg-color: linear-gradient(to left, rgb(15, 74, 42), rgb(58, 138, 96));
 
         --fieldset-bg-color: linear-gradient(170deg, var(--bg-color) 0%, rgb(20, 25, 20) 50%, var(--bg-color-alt) 100%);
 
@@ -158,6 +159,14 @@ dialog {
     max-width: 60%;
 }
 
+/* The info dialog is used for short messages (missing input, no twin
+   found...): it should not stretch as wide as the error dialog, which
+   also has to display a longer error-details block. */
+#info_dialog {
+    width: fit-content;
+    max-width: min(90%, 32rem);
+}
+
 dialog button[name="popup-close-btn"] {
     position: absolute;
     top: 1vh;
@@ -175,16 +184,16 @@ select {
     padding-left: 0.6rem;
     height: 2.6rem;
     font: var(--font-family-sans);
-    background-image: var(--background-gradient);
+    /*background-image: var(--background-gradient);*/
     background-color: var(--bg-color);
     box-shadow: -0.2rem 0.2rem 0.6rem 0.2rem var(--shadow-color);
 }
 
 option {
     font: var(--font-family-sans);
-    font-size: calc(var(--font-size * 0.5));
+    font-size: calc(var(--font-size) * 0.5);
     color: var(--fg-color);
-    background-image: var(--background-gradient);
+    /*background-image: var(--background-gradient);*/
     background-color: var(--bg-color);
 }
 
@@ -192,7 +201,8 @@ nav#nav-content {
     justify-content: space-around;
 }
 
-nav#nav-content.nav-wexa.side:not(.dark) {
+/* was: nav#nav-content.nav-wexa.side:not(.dark) */
+:root:not(.dark) nav#nav-content.nav-wexa.side {
     background: linear-gradient(180deg,
     rgb(0, 50, 0) 0%,
     rgb(10, 60, 10) 20%,
@@ -203,12 +213,12 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 
 .dark nav#nav-content.nav-wexa.side {
     background: linear-gradient(180deg,
-    #0f1b14 0%,
-    #0f1b14 10%,
-    #173022 30%,
+    rgb(15, 27, 20) 0%,
+    rgb(15, 27, 20) 10%,
+    rgb(23, 48, 34) 30%,
     rgb(10, 60, 10) 50%,
     rgb(10, 45, 5) 70%,
-    #0f1b14 100%);
+    rgb(15, 27, 20) 100%);
 }
 
 .skip {
@@ -233,6 +243,9 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 #home-link-logo {
     width: calc(3 * var(--font-size));
     height: auto;
+    /* The cues headers are light in light mode: cancel the white filter
+       main_swapp.css applies for the dark headers of SPPAS. */
+    filter: none;
 }
 
 #link-title-header {
@@ -275,10 +288,11 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 }
 
 .dark .wizard-fieldset {
-    scrollbar-color: #666 #2a223a;
+    scrollbar-color: rgb(102, 102, 102) rgb(42, 34, 58);
 }
 
-.wizard-fieldset:not([data-theme=dark]), [data-theme=light] {
+/* was: .wizard-fieldset:not([data-theme=dark]), [data-theme=light] */
+.wizard-fieldset {
     background: var(--fieldset-bg-color);
 }
 
@@ -287,7 +301,7 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 }
 
 .wizard-fieldset legend {
-    background-color: #204730;
+    background-color: rgb(32, 71, 48);
     color: rgb(240, 255, 245);
     vertical-align: center;
     font-size: calc(var(--font-size) * 1.10);
@@ -303,7 +317,7 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 
 .dark .wizard-fieldset legend {
     background-color: rgb(240, 255, 245);
-    color: #204730;
+    color: rgb(32, 71, 48);
 }
 
 /* --------------------------------------- */
@@ -417,7 +431,7 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 /* Action buttons                          */
 /* --------------------------------------- */
 
-.app-textcues-button {
+.app-cues-button {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -436,17 +450,23 @@ nav#nav-content.nav-wexa.side:not(.dark) {
     transition: background-position 200ms ease-in-out;
 }
 
-.app-textcues-button:hover {
+.app-cues-button:hover {
     background-image: var(--action-buttons-hover-bg-color) !important;
 }
 
-.app-textcues-button img {
+.app-cues-button img {
     max-height: 90%;
     width: 3rem;
 }
 
-.app-textcues-button span {
+.app-cues-button span {
     font-weight: var(--font-weight-semibold);
+}
+
+.app-cues-button.is-loading,
+button.is-loading {
+    cursor: wait;
+    opacity: 0.6;
 }
 
 /* --------------------------------------- */
@@ -481,6 +501,63 @@ nav#nav-content.nav-wexa.side:not(.dark) {
 
 .sounds-table td, .sounds-table th {
     border-bottom: var(--table-border-width) solid var(--border-color-alt);
+}
+
+/* --------------------------------------- */
+/* Personalized pronunciation: input + the */
+/* "open phoneme piano" toggle button,     */
+/* side by side, same height.              */
+/* --------------------------------------- */
+
+.sound-personalized-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+}
+
+.sound-personalized-cell input.sound_input {
+    flex: 1 1 auto;
+    /* Flex items default to "min-width: auto", which for an <input> is its
+       intrinsic content size, not 0: without this, "flex-shrink: 1" is
+       ignored and the field refuses to shrink to fit the column, spilling
+       out of its container (and the toggle button along with it). */
+    min-width: 0;
+    align-self: center;
+    width: auto;
+    height: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* Same idiom as the piano's own injected controls
+   (.wexa-key-piano-control, keypiano.css): a small, square icon button.
+   Selector is "button.sound-piano-toggle", not ".sound-piano-toggle": the
+   generic "button:not(.menuitem)" rule (main_swapp.css) has specificity
+   (0,0,1,1) -- one class from ":not(.menuitem)" plus the element -- which
+   otherwise beats a lone class selector and overrides this padding/height. */
+button.sound-piano-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex: 0 0 auto;
+    height: 2.2rem;
+    width: 2.2rem;
+    margin: 0;
+    padding: 0.2rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    background-color: var(--buttons-bg-color);
+    color: var(--buttons-fg-color);
+    box-sizing: border-box;
+}
+
+button.sound-piano-toggle svg {
+    height: 1.4rem;
+    width: 1.4rem;
 }
 
 /* --------------------------------------- */
@@ -528,7 +605,7 @@ button.pron[aria-pressed="true"]  {
     margin: 0;
     padding: 1rem;
     position: relative;
-    color: #023306;
+    color: rgb(2, 51, 6);
 
     border: var(--border-width) solid var(--border-color);
     border-radius: 2rem;
@@ -554,7 +631,7 @@ p.error-details-title {
     padding: 0.25rem 0.7rem;
     color: var(--fg-color-alt);
     font-weight: var(--font-weight-semibold);
-    font-size: calc(var(--font-size * 1.2));
+    font-size: calc(var(--font-size) * 1.2);
     position: relative;
     padding-left: 2rem;
 }
@@ -595,7 +672,7 @@ p.coded-token {
     padding: 0.25rem 0.7rem;
     color: var(--fg-color-alt);
     font-weight: var(--font-weight-semibold);
-    font-size: calc(var(--font-size * 1.2));
+    font-size: calc(var(--font-size) * 1.2);
     position: relative;
     padding-left: 2rem;
 }
@@ -650,7 +727,7 @@ p.coded-token::before {
 .coded-text > li::before {
     content: counter(key);
     position: absolute;
-    top: 0.5rem;
+    top: 0.2rem;
     left: 0.5rem;
     font-size: calc(1.15 * var(--font-size));
     font-weight: var(--font-weight-semibold);
@@ -678,7 +755,7 @@ p.coded-token::before {
 
 .coded-key > span {
     position: absolute;
-    top: 0.5rem;
+    top: 0.2rem;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
@@ -687,6 +764,8 @@ p.coded-token::before {
     letter-spacing: var(--letter-spacing);
     color: var(--coded-key-fg-color);
     font-weight: var(--font-weight-semibold);
+    width: 80%;
+    text-align: center;
 }
 
 .key-illus {
@@ -704,7 +783,6 @@ p.coded-token::before {
     margin-right: 1rem;
     margin-bottom: var(--border-width);
     height: 1.8rem;
-    padding-top: 0.2rem;
     min-width: 8rem;
 }
 
@@ -722,6 +800,41 @@ img.face-img {
     width: 10rem;
     max-width: 100%;
     height: auto;
+}
+
+/* --------------------------------------- */
+/* ListCueS piano keys reuse the ".coded-key" illustration above, but as a  */
+/* repeated, clickable control rather than a one-off result: smaller.      */
+/* Every dimension below is the TextCueS value scaled by the same 0.65.    */
+/* --------------------------------------- */
+
+.wexa-key-piano-key.coded-key {
+    min-width: 6.5rem;    /* 10rem */
+    min-height: 3.25rem;  /* 5rem */
+}
+
+.wexa-key-piano-key > span {
+    font-size: calc(0.78 * var(--font-size));  /* 1.2 * var(--font-size) */
+}
+
+.wexa-key-piano-key .key-illus {
+    margin-top: 0.65rem;  /* 1rem */
+}
+
+.wexa-key-piano-key .key-illus figcaption {
+    font-size: calc(0.78 * var(--font-size));  /* 1.2 * var(--font-size) */
+    margin-left: 0.65rem;   /* 1rem */
+    margin-right: 0.65rem;  /* 1rem */
+    height: 1.15rem;        /* 1.8rem */
+    min-width: 5.2rem;      /* 8rem */
+}
+
+.wexa-key-piano-key img.hand-img {
+    width: 5.2rem;   /* 8rem */
+}
+
+.wexa-key-piano-key img.face-img {
+    width: 6.5rem;   /* 10rem */
 }
 
 /* --------------------------------------- */
@@ -959,4 +1072,20 @@ summary {
     height: 2rem;
     vertical-align: middle;
     margin: 0.5rem;
+}
+
+/* --------------------------------------- */
+/* The textarea or input of a piano entry  */
+/* --------------------------------------- */
+
+.cue-textarea {
+    width: 100%;
+    height: 4rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: calc(var(--font-size) * 2);
+    font-weight: var(--font-weight-semibold);
+    border: none;
+    background: var(--bg-color-alt);
+    color: var(--fg-color-alt);
 }

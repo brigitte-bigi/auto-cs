@@ -11,6 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
+msgid "Home"
+msgstr "Accueil"
+
 msgid "Supported by FIRAH"
 msgstr "Ce travail a été rendu possible grâce au soutien financier de la FIRAH – Recherche Appliquée sur le Handicap, au cours du projet APa2022_022 intitulé « Voir les sons avec du Cued Speech automatisé : la réalité augmentée au service des personnes sourdes »."
 
@@ -146,6 +149,9 @@ msgstr "Choisissez le modèle d'angle :"
 msgid "The server is not responding."
 msgstr "Le serveur ne répond pas."
 
+msgid "This version doesn't allow to enable the intermediate and advanced levels. To do so, install SPPAS and enable the 'video' feature."
+msgstr "Cette version ne permet pas d'activer les niveaux intermédiaire et avancé. Pour cela, il faut installer SPPAS et activer la fonctionnalité « video »."
+
 msgid "Choose a display mode:"
 msgstr "Choisissez un mode d'affichage :"
 
@@ -246,3 +252,103 @@ msgstr "Ah zut ! J'ai essayé mais ça s'est pas bien passé... Une erreur est s
 
 msgid "Not yet implemented"
 msgstr "Cette option n'est pas encore disponible... C'est prévu, mais c'est pas encore fait !"
+
+# TwinCueS
+msgid "TwinCueS"
+msgstr "TwinCueS"
+
+msgid "Word / Cue conversion"
+msgstr "Conversion mot / clé"
+
+msgid "Allows to get twin words from its matching cues."
+msgstr "Permet de trouver les mots qui partagent la même clé Cued Speech qu'un mot donné."
+
+msgid "TWINCUES_INTRO"
+msgstr "<h3>TwinCueS</h3><p>TwinCueS révèle les « mots jumeaux » du Cued Speech : des mots codés exactement de la même façon, bien qu'ils s'écrivent ou se prononcent différemment.</p><p>Saisissez un mot pour découvrir ses jumeaux, ou saisissez directement une clé pour voir quels mots la partagent.</p><p>TwinCueS s'adresse à toute personne curieuse des ambiguïtés du code Cued Speech, pour enseigner, apprendre, ou simplement explorer.</p><p></p><h3>Prêt à essayer ?</h3>"
+
+msgid "Start"
+msgstr "Commencer"
+
+msgid "TWINCUES_YOYO_HELLO"
+msgstr "Bonjour, je suis là pour vous aider à trouver des mots jumeaux en Cued Speech."
+
+msgid "I get twin words or twin cues"
+msgstr "Je trouve les mots jumeaux ou la clé jumelle"
+
+msgid "I select the language:"
+msgstr "Je sélectionne la langue :"
+
+msgid "I enter a word:"
+msgstr "Je saisis un mot :"
+
+msgid "Enter a word here"
+msgstr "Saisissez un mot ici"
+
+msgid "Or I enter a cue:"
+msgstr "Ou je saisis une clé :"
+
+msgid "Enter a cue here"
+msgstr "Saisissez une clé ici"
+
+msgid "Validate"
+msgstr "Valider"
+
+msgid "Corresponding cue:"
+msgstr "Clé correspondante :"
+
+msgid "Corresponding word(s):"
+msgstr "Mot(s) correspondant(s) :"
+
+msgid "Enter a word or a cue to get a conversion."
+msgstr "Saisissez un mot ou une clé pour obtenir une conversion."
+
+msgid "Invalid cue: '{:s}'. Expected one or more '<shape>-<position>' segments separated by '.', with codes known by the language."
+msgstr "La clé « {:s} » n'est pas valide. Elle doit être composée de segments « <forme>-<position> », séparés par « . », avec des codes connus de la langue sélectionnée."
+
+msgid "'{:s}' is not recognized as a single word. Enter only one word."
+msgstr "« {:s} » n'est pas reconnu comme un seul mot. Saisissez un seul mot."
+
+msgid "This word has no twin. Pronunciations tried: {:s}."
+msgstr "Ce mot n'a pas de jumeau. Prononciations testées : {:s}."
+
+msgid "No word shares this cue."
+msgstr "Aucun mot ne partage cette clé."
+
+msgid "LISTCUES_INTRO"
+msgstr "<h3>ListCueS</h3><p>ListCueS explore les prononciations possibles d'une séquence de 1 à 7 clés du Cued Speech.</p><p>Saisissez une séquence de clés pour obtenir la liste de leurs prononciations possibles, avec les mots qui se prononcent ainsi lorsqu'il en existe.</p><p>ListCueS s'adresse à toute personne curieuse des ambiguïtés du code Cued Speech, pour enseigner, apprendre, ou simplement explorer.</p><p></p><h3>Prêt à essayer ?</h3>"
+
+msgid "LISTCUES_YOYO_HELLO"
+msgstr "Bonjour, je suis là pour vous aider à explorer les prononciations d'une séquence de clés en Cued Speech."
+
+msgid "Invalid cue: '{:s}'. Expected 1 to 7 '<shape>-<position>' segments separated by '.', with codes known by the language."
+msgstr "La clé « {:s} » n'est pas valide. Elle doit être composée de 1 à 7 segments « <forme>-<position> », séparés par « . », avec des codes connus de la langue sélectionnée."
+
+msgid "Enter a sequence of 1 to 7 keys to get its matching pronunciations."
+msgstr "Saisissez une séquence de 1 à 7 clés pour obtenir ses prononciations possibles."
+
+msgid "No pronounceable sequence matches this cue."
+msgstr "Aucune séquence prononçable ne correspond à cette clé."
+
+msgid "Key sequence conversion"
+msgstr "Conversion d'une séquence de clés"
+
+msgid "Allows to get the words matching a sequence of Cued Speech keys."
+msgstr "Permet d'obtenir les mots correspondant à une séquence de clés du Cued Speech."
+
+msgid "I get words from a sequence of keys"
+msgstr "J'obtiens des mots à partir d'une séquence de clés"
+
+msgid "I enter a sequence of keys:"
+msgstr "Je saisis une séquence de clés :"
+
+msgid "Enter a sequence of keys here (e.g. 1-s.3-t)"
+msgstr "Saisissez une séquence de clés ici (ex. 1-s.3-t)"
+
+msgid "Pronunciation"
+msgstr "Prononciation"
+
+msgid "Shape"
+msgstr "Forme"
+
+msgid "Position"
+msgstr "Position"

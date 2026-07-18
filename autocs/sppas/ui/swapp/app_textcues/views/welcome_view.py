@@ -32,17 +32,17 @@
 
 from __future__ import annotations
 from whakerpy.htmlmaker import HTMLNode
-from sppas.ui.swapp.wappsg import wapp_settings
 
 from ..textcues_msg import MSG_YOYO_WELCOME
 from ..textcues_msg import MSG_INTRO
 from ..textcues_msg import MSG_LAUNCH
+from ..textcues_msg import MSG_LANG
 from ..textcues_msg import MSG_TEXTCUES_CONCEPT
 from ..textcues_msg import MSG_SUPPORT
 from ..textcues_msg import MSG_SEE_ALSO
+from ..textcues_record import TextCueSRecord
 
 from .nodes.yoyo_message import YoyoMessageNode
-from .nodes.button_action import ActionLinkNode
 from .nodes.tags import HTMLTag
 
 # ---------------------------------------------------------------------------
@@ -50,11 +50,16 @@ from .nodes.tags import HTMLTag
 
 class TextCueSWelcomeView:
 
-    def __init__(self, parent: HTMLNode, btn_target_page: str):
+    def __init__(self, parent: HTMLNode, record: TextCueSRecord):
         """Create the HTML node for the welcome page of "TextCueS".
 
+        The language is chosen here, not on the "Text" pathway page: it is
+        needed by the model, and the application is stateless, so it must
+        travel with the navigation to the pathway content (a plain GET,
+        exactly like the accessibility parameters already do).
+
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param btn_target_page: (str) The target page for the "launch" button
+        :param record: (TextCueSRecord) The data to fill-in the language choices
 
         """
         # section 1
@@ -74,12 +79,32 @@ class TextCueSWelcomeView:
         yoyo.add_attribute("class", "width_20")
         _part_1.append_child(yoyo)
 
-        # section 2
-        # ---------
-        _action = ActionLinkNode(parent.identifier, "pathway_welcome_button", HTMLTag.page_random())
-        _action.set_icon(None, wapp_settings.images + "textcues/yoyo_1.png")
-        _action.set_text(MSG_LAUNCH)
-        parent.append_child(_action)
+        # section 2: language choice, then launch
+        # -----------------------------------------
+        # The form's identifier starts with "pathway": create_form() already
+        # gives it a random action (see HTMLTag.page_random()) -- a bot can
+        # reach the welcome page but can't guess this URL, so it never
+        # triggers the expensive per-language processing directly.
+        _form = HTMLTag.create_form(parent, "pathway_welcome_form")
+        _form.set_attribute("method", "get")
+
+        _label = HTMLNode(_form.identifier, None, "label",
+                          attributes={"for": "lang"},
+                          value=MSG_LANG)
+        _form.append_child(_label)
+
+        _select = HTMLNode(_form.identifier, None, "select",
+                          attributes={"id": "lang", "name": "lang", "class": "width-half"})
+        _form.append_child(_select)
+
+        _lang_choices = record.extras.get("lang_choices", dict())
+        for iso in _lang_choices:
+            _description = _lang_choices[iso]
+            _option = HTMLNode(_select.identifier, None, "option", value=_description)
+            _option.set_attribute("value", iso)
+            _select.append_child(_option)
+
+        HTMLTag.append_submit_in_form(_form, "pathway_welcome", MSG_LAUNCH)
 
         # section 3
         # ---------
@@ -91,7 +116,7 @@ class TextCueSWelcomeView:
 
         _p = HTMLNode(_s.identifier, None, "p", value=MSG_TEXTCUES_CONCEPT)
         _a = HTMLNode(_p.identifier, None, "a", value="PDF")
-        _a.add_attribute("href", "https://hal.science/hal-5511364/")
+        _a.add_attribute("href", "https://hal.science/hal-05511364/")
         _a.add_attribute("class", "external-link")
         _p.append_child(_a)
         _s.append_child(_p)

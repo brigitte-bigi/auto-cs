@@ -38,7 +38,6 @@ from ..textcues_msg import MSG_LANGTEXT_BREADCRUMB
 from ..textcues_msg import MSG_LANGTEXT_ANN_BUTTON
 from ..textcues_msg import MSG_LANGTEXT_FIELD_LEGEND
 from ..textcues_msg import MSG_SEE_ALSO
-from ..textcues_msg import MSG_LANG
 from ..textcues_msg import MSG_TEXT_LABEL
 from ..textcues_msg import MSG_TEXT_HERE
 from ..textcues_record import TextCueSRecord
@@ -151,48 +150,22 @@ class PathwayTextView(PathwayBaseView):
     def _fill_form(self) -> None:
         """Fill-in the inputs form.
 
+        The language has no selector of its own here: it is carried along
+        as a hidden field by the generic loop below, fixed once and for all
+        on the welcome page.
+
         """
         # Hidden fields
         dictionarized = self._record.serialize()
         for item in dictionarized:
-            if item not in ("lang", "text", "textnorm", "phonetize", "cuedspeech"):
+            if item not in ("text", "textnorm", "phonetize", "cuedspeech"):
                 HTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
-
-        # Choose language if more than one is available
-        if len(self._record.extras["lang_choices"]) > 1:
-            self._append_lang_choices()
-        else:
-            _p = HTMLNode(self._form.identifier, None, "p",
-                          value=MSG_LANG + " " + self._record.extras["lang_choices"][0])
 
         # Input text
         self._append_input_textarea()
 
         # Submit button
         HTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_LANGTEXT_ANN_BUTTON)
-
-    # -----------------------------------------------------------------------
-
-    def _append_lang_choices(self) -> None:
-        """Append a select/options to the form.
-
-        """
-        label = HTMLNode(self._form.identifier, None, "label",
-                         attributes={"for": "lang"},
-                         value=MSG_LANG)
-        self._form.append_child(label)
-
-        select = HTMLNode(self._form.identifier, None, "select",
-                          attributes={"id": "lang", "name": "lang", "class": "width-half"})
-        self._form.append_child(select)
-
-        for iso in self._record.extras["lang_choices"]:
-            description = self._record.extras["lang_choices"][iso]
-            option = HTMLNode(select.identifier, None, "option", value=description)
-            option.set_attribute("value", iso)
-            if iso == self._record.lang:
-                option.set_attribute("selected", "")
-            select.append_child(option)
 
     # -----------------------------------------------------------------------
 
@@ -208,7 +181,6 @@ class PathwayTextView(PathwayBaseView):
         att = dict()
         att["id"] = "text"
         att["name"] = "text"
-        att["required"] = None
         att["class"] = "text-input width-full"
         att["placeholder"] = MSG_TEXT_HERE
         att["maxlength"] = "160"  # max nb of chars

@@ -11,6 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
+msgid "Home"
+msgstr "Home"
+
 msgid "Supported by FIRAH"
 msgstr "This work was supported by FIRAH (Applied Disability Research) through the APa2022_022 project, “Seeing Sounds with Automated Cued Speech: Augmented Reality for Deaf People."
 
@@ -29,6 +32,9 @@ msgstr "The number of tokens must match the number of pronunciations. Got {:d} t
 msgid "Sound {:s} is unknown."
 msgstr "Sound {:s} is not in the list of sounds of the selected language. It cannot be coded."
 
+msgid "This version doesn't allow to enable the intermediate and advanced levels. To do so, install SPPAS and enable the 'video' feature."
+msgstr "This version doesn't allow to enable the intermediate and advanced levels. To do so, install SPPAS and enable the 'video' feature."
+
 # Yoyo
 msgid "Hello"
 msgstr "Hello, I'm here to help you to code in Cued Speech."
@@ -38,3 +44,103 @@ msgstr "Ah shoot! I tried but it didn't go well... An error occurred."
 
 msgid "Not yet implemented"
 msgstr "This option is not available... It's planned, but not implemented yet!"
+
+# TwinCueS
+msgid "TwinCueS"
+msgstr "TwinCueS"
+
+msgid "Word / Cue conversion"
+msgstr "Word / Cue conversion"
+
+msgid "Allows to get twin words from its matching cues."
+msgstr "Allows to find the words that share the same Cued Speech cue as a given word."
+
+msgid "TWINCUES_INTRO"
+msgstr "<h3>TwinCueS</h3><p>TwinCueS reveals the “twin words” of Cued Speech: words that are coded exactly the same way, even though they are spelled or pronounced differently.</p><p>Enter a word to discover its twins, or enter a cue directly to see which words share it.</p><p>TwinCueS is intended for anyone curious about the ambiguities of the Cued Speech code, whether to teach, to learn, or simply to explore.</p><p></p><h3>Ready to try?</h3>"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "TWINCUES_YOYO_HELLO"
+msgstr "Hello, I'm here to help you find twin words in Cued Speech."
+
+msgid "I get twin words or twin cues"
+msgstr "I get the twin words or the twin cue"
+
+msgid "I select the language:"
+msgstr "I select the language:"
+
+msgid "I enter a word:"
+msgstr "I enter a word:"
+
+msgid "Enter a word here"
+msgstr "Enter a word here"
+
+msgid "Or I enter a cue:"
+msgstr "Or I enter a cue:"
+
+msgid "Enter a cue here"
+msgstr "Enter a cue here"
+
+msgid "Validate"
+msgstr "Validate"
+
+msgid "Corresponding cue:"
+msgstr "Corresponding cue:"
+
+msgid "Corresponding word(s):"
+msgstr "Corresponding word(s):"
+
+msgid "Enter a word or a cue to get a conversion."
+msgstr "Please enter a word or a cue to get a conversion."
+
+msgid "Invalid cue: '{:s}'. Expected one or more '<shape>-<position>' segments separated by '.', with codes known by the language."
+msgstr "The cue '{:s}' is not valid. It must be made of '<shape>-<position>' segments, separated by '.', using codes known by the selected language."
+
+msgid "'{:s}' is not recognized as a single word. Enter only one word."
+msgstr "'{:s}' was not recognized as a single word. Please enter only one word."
+
+msgid "This word has no twin. Pronunciations tried: {:s}."
+msgstr "This word has no twin. Pronunciations that were tried: {:s}."
+
+msgid "No word shares this cue."
+msgstr "No word shares this cue."
+
+msgid "LISTCUES_INTRO"
+msgstr "<h3>ListCueS</h3><p>ListCueS explores the possible pronunciations of a sequence of 1 to 7 Cued Speech keys.</p><p>Enter a sequence of keys to get the list of their possible pronunciations, along with the words pronounced that way when any exist.</p><p>ListCueS is intended for anyone curious about the ambiguities of the Cued Speech code, whether to teach, to learn, or simply to explore.</p><p></p><h3>Ready to try?</h3>"
+
+msgid "LISTCUES_YOYO_HELLO"
+msgstr "Hello, I'm here to help you explore the pronunciations of a sequence of keys in Cued Speech."
+
+msgid "Invalid cue: '{:s}'. Expected 1 to 7 '<shape>-<position>' segments separated by '.', with codes known by the language."
+msgstr "The cue '{:s}' is not valid. It must be made of 1 to 7 '<shape>-<position>' segments, separated by '.', using codes known by the selected language."
+
+msgid "Enter a sequence of 1 to 7 keys to get its matching pronunciations."
+msgstr "Please enter a sequence of 1 to 7 keys to get its matching pronunciations."
+
+msgid "No pronounceable sequence matches this cue."
+msgstr "No pronounceable sequence matches this cue."
+
+msgid "Key sequence conversion"
+msgstr "Key sequence conversion"
+
+msgid "Allows to get the words matching a sequence of Cued Speech keys."
+msgstr "Allows to get the words matching a sequence of Cued Speech keys."
+
+msgid "I get words from a sequence of keys"
+msgstr "I get words from a sequence of keys"
+
+msgid "I enter a sequence of keys:"
+msgstr "I enter a sequence of keys:"
+
+msgid "Enter a sequence of keys here (e.g. 1-s.3-t)"
+msgstr "Enter a sequence of keys here (e.g. 1-s.3-t)"
+
+msgid "Pronunciation"
+msgstr "Pronunciation"
+
+msgid "Shape"
+msgstr "Shape"
+
+msgid "Position"
+msgstr "Position"

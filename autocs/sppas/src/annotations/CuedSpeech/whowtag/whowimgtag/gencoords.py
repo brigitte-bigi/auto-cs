@@ -144,7 +144,7 @@ class sppasHandCoords:
     # Workers
     # -----------------------------------------------------------------------
 
-    def eval_hand_points(self, target, shapes, vowel_angle, face_height):
+    def eval_hand_points(self, target, shapes, vowel_angle, face_height) -> list:
         """A solution to return hand coords from target, angle and face height.
 
         It allows to fix where to place the hand, i.e., S0 and S9 coordinates,
@@ -156,10 +156,12 @@ class sppasHandCoords:
         :param face_height: (int) Size of the face, in pixels
         :return: (list) [target, S0, S9] with coordinates of hand points
 
-        The returned list contains sppasLabel() instances with:
-
-        - sppasFuzzyPoint() to store the coordinates of hand points
-        - label key to indicate its definition ('target' or 'sights_00' or 'sights_09')
+        Example of returned result:
+            [
+                sppasTag(b'(452,570)' (point), score=None),
+                sppasTag(b'(300,733)' (point), score=None),
+                sppasTag(b'(372,647)' (point), score=None)
+            ]
 
         """
         names = ['sights_00', 'sights_09']
@@ -283,15 +285,14 @@ class sppasHandCoords:
 
         # Estimate (x,y) coords of S0, regarding the target
         # ----------------------------------------------------
+        target_index = self.__cued.get_shape_target(shape_code)
+        dist = self.distance_to_s0(shape_code, target_index)
+        hypotenuse = dist * ratio
+
         # Get the expected distance between S0 and the target and the
         # adjusted alpha regarding the given hand
         alpha = angle - 90
-
-        target_index = self.__cued.get_shape_target(shape_code)
         alpha = alpha - self.angle_to_s0(shape_code, target_index)
-        dist = self.distance_to_s0(shape_code, target_index)
-
-        hypotenuse = dist * ratio
         sigma = 90 - alpha
 
         # Eval S0 coords
@@ -302,9 +303,6 @@ class sppasHandCoords:
         # --------------------------------------------
         # Get the expected distance(S0, S9), ie the hypotenuse
         hypotenuse = ref_dist * ratio
-        # Define the angles
-        alpha = angle - 90
-        sigma = 90 - alpha
         # Eval S9 coords
         x_s9 = x_s0 - int(self.sinus(alpha) * hypotenuse)
         y_s9 = y_s0 - int(self.sinus(sigma) * hypotenuse)

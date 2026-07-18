@@ -46,6 +46,7 @@ if sys.version_info > (3, 9):
     from .whatkey import CuedSpeechCueingRules
     from .whatkey import CuedSpeechKeys
     from .whatkey import sppasWhatKeyPredictor
+    from .whatkey import CueingWordKeys
     from .whowtag import CuedSpeechVideoTagger
     from .annsonframes import sppasAnnsOnFrames
     from .sppascuedspeech import sppasCuedSpeech

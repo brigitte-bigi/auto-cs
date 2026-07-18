@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Document author="SPPAS 4.25 (C) Brigitte Bigi" date="2025-04-22T19:43:08+02:00" format="1.5" name="ImageSights">
+	<Metadata>
+		<Entry key="id">50258e2f-f455-4384-a5c9-6b0f3e8d80e5</Entry>
+		<Entry key="software_name">SPPAS</Entry>
+		<Entry key="software_version">4.25</Entry>
+		<Entry key="software_url">https://sppas.org/</Entry>
+		<Entry key="software_author">Brigitte Bigi</Entry>
+		<Entry key="software_contact">contact@sppas.org</Entry>
+		<Entry key="software_copyright">Copyright (C) 2011-2025 Brigitte Bigi, CNRS</Entry>
+		<Entry key="language_iso">iso639-3</Entry>
+		<Entry key="language_code_0">und</Entry>
+		<Entry key="language_name_0">Undetermined</Entry>
+		<Entry key="language_url_0">https://iso639-3.sil.org/code/und</Entry>
+		<Entry key="file_license_text_0">GNU AGPL V3</Entry>
+		<Entry key="file_license_url_0">https://www.gnu.org/licenses/gpl-3.0.en.html</Entry>
+		<Entry key="file_created_date">2025-04-22T16:01:40+02:00</Entry>
+		<Entry key="file_created_author">SPPAS 4.25 (C) Brigitte Bigi</Entry>
+		<Entry key="annotator">Brigitte Bigi</Entry>
+	</Metadata>
+
+	<Tier id="fa5688d8-6fa7-4e44-879b-8a499e764084" tiername="ImgSights">
+		<Annotation id="6a108b1b-8075-43f8-96ad-8be67bf32066">
+			<Metadata>
+				<Entry key="image_name">D:\AMUBox\VizemCuedSpeech\Images\Mascotte\yoyo-sights.jpg</Entry>
+			</Metadata>
+			<Location>
+				<Point midpoint="1" />
+			</Location>
+			<Label key="yoyo_sight00">
+				<Tag type="point">(313,300)</Tag>
+			</Label>
+			<Label key="yoyo_sight01">
+				<Tag type="point">(314,330)</Tag>
+			</Label>
+			<Label key="yoyo_sight02">
+				<Tag type="point">(315,360)</Tag>
+			</Label>
+			<Label key="yoyo_sight03">
+				<Tag type="point">(320,395)</Tag>
+			</Label>
+			<Label key="yoyo_sight04">
+				<Tag type="point">(330,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight05">
+				<Tag type="point">(355,455)</Tag>
+			</Label>
+			<Label key="yoyo_sight06">
+				<Tag type="point">(390,475)</Tag>
+			</Label>
+			<Label key="yoyo_sight07">
+				<Tag type="point">(430,485)</Tag>
+			</Label>
+			<Label key="yoyo_sight08">
+				<Tag type="point">(475,490)</Tag>
+			</Label>
+			<Label key="yoyo_sight09">
+				<Tag type="point">(520,485)</Tag>
+			</Label>
+			<Label key="yoyo_sight10">
+				<Tag type="point">(560,475)</Tag>
+			</Label>
+			<Label key="yoyo_sight11">
+				<Tag type="point">(595,455)</Tag>
+			</Label>
+			<Label key="yoyo_sight12">
+				<Tag type="point">(615,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight13">
+				<Tag type="point">(630,395)</Tag>
+			</Label>
+			<Label key="yoyo_sight14">
+				<Tag type="point">(635,360)</Tag>
+			</Label>
+			<Label key="yoyo_sight15">
+				<Tag type="point">(636,330)</Tag>
+			</Label>
+			<Label key="yoyo_sight16">
+				<Tag type="point">(637,300)</Tag>
+			</Label>
+			<Label key="yoyo_sight17">
+				<Tag type="point">(365,255)</Tag>
+			</Label>
+			<Label key="yoyo_sight18">
+				<Tag type="point">(380,245)</Tag>
+			</Label>
+			<Label key="yoyo_sight19">
+				<Tag type="point">(395,240)</Tag>
+			</Label>
+			<Label key="yoyo_sight20">
+				<Tag type="point">(415,242)</Tag>
+			</Label>
+			<Label key="yoyo_sight21">
+				<Tag type="point">(430,250)</Tag>
+			</Label>
+			<Label key="yoyo_sight22">
+				<Tag type="point">(520,250)</Tag>
+			</Label>
+			<Label key="yoyo_sight23">
+				<Tag type="point">(535,242)</Tag>
+			</Label>
+			<Label key="yoyo_sight24">
+				<Tag type="point">(550,240)</Tag>
+			</Label>
+			<Label key="yoyo_sight25">
+				<Tag type="point">(570,245)</Tag>
+			</Label>
+			<Label key="yoyo_sight26">
+				<Tag type="point">(580,255)</Tag>
+			</Label>
+			<Label key="yoyo_sight27">
+				<Tag type="point">(475,298)</Tag>
+			</Label>
+			<Label key="yoyo_sight28">
+				<Tag type="point">(475,320)</Tag>
+			</Label>
+			<Label key="yoyo_sight29">
+				<Tag type="point">(475,342)</Tag>
+			</Label>
+			<Label key="yoyo_sight30">
+				<Tag type="point">(475,365)</Tag>
+			</Label>
+			<Label key="yoyo_sight31">
+				<Tag type="point">(445,385)</Tag>
+			</Label>
+			<Label key="yoyo_sight32">
+				<Tag type="point">(455,390)</Tag>
+			</Label>
+			<Label key="yoyo_sight33">
+				<Tag type="point">(475,395)</Tag>
+			</Label>
+			<Label key="yoyo_sight34">
+				<Tag type="point">(495,390)</Tag>
+			</Label>
+			<Label key="yoyo_sight35">
+				<Tag type="point">(505,385)</Tag>
+			</Label>
+			<Label key="yoyo_sight36">
+				<Tag type="point">(380,315)</Tag>
+			</Label>
+			<Label key="yoyo_sight37">
+				<Tag type="point">(385,290)</Tag>
+			</Label>
+			<Label key="yoyo_sight38">
+				<Tag type="point">(420,290)</Tag>
+			</Label>
+			<Label key="yoyo_sight39">
+				<Tag type="point">(425,315)</Tag>
+			</Label>
+			<Label key="yoyo_sight40">
+				<Tag type="point">(420,335)</Tag>
+			</Label>
+			<Label key="yoyo_sight41">
+				<Tag type="point">(385,335)</Tag>
+			</Label>
+			<Label key="yoyo_sight42">
+				<Tag type="point">(515,315)</Tag>
+			</Label>
+			<Label key="yoyo_sight43">
+				<Tag type="point">(520,290)</Tag>
+			</Label>
+			<Label key="yoyo_sight44">
+				<Tag type="point">(560,290)</Tag>
+			</Label>
+			<Label key="yoyo_sight45">
+				<Tag type="point">(565,315)</Tag>
+			</Label>
+			<Label key="yoyo_sight46">
+				<Tag type="point">(560,335)</Tag>
+			</Label>
+			<Label key="yoyo_sight47">
+				<Tag type="point">(520,335)</Tag>
+			</Label>
+			<Label key="yoyo_sight48">
+				<Tag type="point">(425,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight49">
+				<Tag type="point">(440,420)</Tag>
+			</Label>
+			<Label key="yoyo_sight50">
+				<Tag type="point">(455,420)</Tag>
+			</Label>
+			<Label key="yoyo_sight51">
+				<Tag type="point">(475,420)</Tag>
+			</Label>
+			<Label key="yoyo_sight52">
+				<Tag type="point">(495,420)</Tag>
+			</Label>
+			<Label key="yoyo_sight53">
+				<Tag type="point">(510,420)</Tag>
+			</Label>
+			<Label key="yoyo_sight54">
+				<Tag type="point">(525,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight55">
+				<Tag type="point">(510,435)</Tag>
+			</Label>
+			<Label key="yoyo_sight56">
+				<Tag type="point">(495,435)</Tag>
+			</Label>
+			<Label key="yoyo_sight57">
+				<Tag type="point">(475,435)</Tag>
+			</Label>
+			<Label key="yoyo_sight58">
+				<Tag type="point">(455,435)</Tag>
+			</Label>
+			<Label key="yoyo_sight59">
+				<Tag type="point">(440,435)</Tag>
+			</Label>
+			<Label key="yoyo_sight60">
+				<Tag type="point">(430,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight61">
+				<Tag type="point">(455,430)</Tag>
+			</Label>
+			<Label key="yoyo_sight62">
+				<Tag type="point">(495,430)</Tag>
+			</Label>
+			<Label key="yoyo_sight63">
+				<Tag type="point">(495,430)</Tag>
+			</Label>
+			<Label key="yoyo_sight64">
+				<Tag type="point">(520,425)</Tag>
+			</Label>
+			<Label key="yoyo_sight65">
+				<Tag type="point">(495,430)</Tag>
+			</Label>
+			<Label key="yoyo_sight66">
+				<Tag type="point">(475,430)</Tag>
+			</Label>
+			<Label key="yoyo_sight67">
+				<Tag type="point">(455,430)</Tag>
+			</Label>
+		</Annotation>
+	</Tier>
+
+	<Media id="4450d39a-1caf-4200-b8e4-4b616f8cc72e" url="D:\AMUBox\VizemCuedSpeech\Images\Mascotte\yoyo-sights.jpg" mimetype="image/jpeg">
+		<Tier id="fa5688d8-6fa7-4e44-879b-8a499e764084" />
+	</Media>
+
+	<Hierarchy />
+</Document>
+

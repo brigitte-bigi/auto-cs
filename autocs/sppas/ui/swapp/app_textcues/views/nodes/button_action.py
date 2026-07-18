@@ -1,6 +1,5 @@
-# -*- coding: UTF-8 -*-
 """
-:filename: sppas.ui.swpapp.textcues.views.nodes.button_action.py
+:filename: sppas.ui.swapp.app_textcues.views.nodes.button_action.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
 :summary: A button node to perform an action
@@ -29,101 +28,19 @@
 
     -------------------------------------------------------------------------
 
+Shared with the other Auto-CS spin-off applications: the implementation
+lives in `sppas.ui.swapp.app_cues_utils.nodes.button_action`.
+
 """
 
-from whakerpy.htmlmaker import HTMLNode
-from whakerpy.htmlmaker import EmptyNode
+from sppas.ui.swapp.app_cues_utils.nodes.button_action import MenuLinkButtonNode
+from sppas.ui.swapp.app_cues_utils.nodes.button_action import ActionLinkNode
+from sppas.ui.swapp.app_cues_utils.nodes.button_action import ActionButton
+from sppas.ui.swapp.app_cues_utils.nodes.button_action import ActionSubmitButton
 
-# ---------------------------------------------------------------------------
-
-class MenuLinkButtonNode(HTMLNode):
-
-    def __init__(self, parent_id, identifier: str, target_page: str):
-        """Create a menu button to redirect to target page.
-
-        """
-        super(MenuLinkButtonNode, self).__init__(parent_id, identifier, "button")
-        self.add_attribute("id", identifier)
-        self.add_attribute("name", identifier)
-        self.add_attribute("type", "button")
-        if len(target_page.strip()) > 0:
-            self.add_attribute("data-href", target_page)
-        self.add_attribute("role", "menuitem")
-        self.add_attribute("class", "menu-png-button")
-
-    def set_text(self, text):
-        if len(text.strip()) > 0:
-            _text = HTMLNode(self.identifier, None, "span", value=text)
-            self.append_child(_text)
-
-    def set_icon(self, identifier, full_path):
-        _img = EmptyNode(self.identifier, identifier, "img")
-        _img.set_attribute('src', full_path)
-        _img.set_attribute('alt', "")
-        self.append_child(_img)
-        return _img
-
-# ---------------------------------------------------------------------------
-
-
-class ActionLinkNode(HTMLNode):
-    """Represent a link element to perform an action."""
-
-    def __init__(self, parent_id, identifier: str, target_page: str):
-        """Create a button to redirect to target page.
-
-        """
-        super(ActionLinkNode, self).__init__(parent_id, identifier,"a")
-        self.add_attribute('id', identifier)
-        if len(target_page.strip()) > 0:
-            self.add_attribute('href', target_page)
-        self.add_attribute('role', "button")
-        self.add_attribute('class', "app-textcues-button")
-
-    def set_text(self, text):
-        if len(text.strip()) > 0:
-            _text = HTMLNode(self.identifier, None, "span", value=text)
-            self.append_child(_text)
-
-    def set_icon(self, identifier, full_path):
-        _img = EmptyNode(self.identifier, identifier, "img")
-        _img.set_attribute('src', full_path)
-        _img.set_attribute('alt', "")
-        self.append_child(_img)
-        return _img
-
-# ---------------------------------------------------------------------------
-
-
-class ActionButton(HTMLNode):
-    """Represent a button element to perform an action."""
-
-    def __init__(self, parent_id: str, identifier: str):
-        """Create a button to redirect to target page.
-
-        """
-        super(ActionButton, self).__init__(parent_id, identifier,"button")
-        self.add_attribute('id', identifier )
-        self.add_attribute('class', "app-textcues-button")
-
-    def set_text(self, text):
-        if len(text.strip()) > 0:
-            _text = HTMLNode(self.identifier, None, "span", value=text)
-            self.append_child(_text)
-
-    def set_icon(self, identifier, full_path):
-        _img = EmptyNode(self.identifier, identifier, "img")
-        _img.set_attribute('src', full_path)
-        _img.set_attribute('alt', "")
-        self.append_child(_img)
-        return _img
-
-# ---------------------------------------------------------------------------
-
-
-class ActionSubmitButton(ActionButton):
-    """Represent a submit element to submit a form."""
-    def __init__(self, parent_id: str, identifier: str):
-        super(ActionSubmitButton, self).__init__(parent_id, identifier)
-        self.add_attribute('type', "submit")
-
+__all__ = (
+    "MenuLinkButtonNode",
+    "ActionLinkNode",
+    "ActionButton",
+    "ActionSubmitButton"
+)

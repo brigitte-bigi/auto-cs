@@ -35,10 +35,9 @@ import logging
 
 from whakerpy.httpd import BaseResponseRecipe
 from sppas.ui.swapp import sppasImagesAccess
-from sppas.ui.swapp.apps.swapp_bakery import swappWebData
+from sppas.ui.swapp.components.swapp_bakery import swappWebData
 
 from .textcuesmaker import TextCueSResponseRecipe
-from .app_launcher import TextCueSLauncherRecipe
 from .textcues_msg import MSG_DESCR
 
 # ---------------------------------------------------------------------------
@@ -58,7 +57,7 @@ class TextCueSWebData(swappWebData):
         """
         super(TextCueSWebData, self).__init__(json_filename)
         # Filename of the default page.
-        self._default = TextCueSLauncherRecipe.page()
+        self._default = TextCueSResponseRecipe.page()
 
     # -----------------------------------------------------------------------
 
@@ -94,12 +93,13 @@ class TextCueSWebData(swappWebData):
         if page_name in self._pages:
             return True
 
-        # If it's one of the pages for the pathway
+        # The pathway pages, reached with a random name once a language has
+        # been chosen on welcome (see HTMLTag.page_random()).
         if page_name.startswith("textcues_") is True and page_name.endswith(".html") is True:
             return True
 
-        # If it's the welcome of the application
-        if page_name == "textcues.html":
+        # The welcome page of the application.
+        if page_name == TextCueSResponseRecipe.page():
             return True
 
         return False
@@ -116,13 +116,17 @@ class TextCueSWebData(swappWebData):
         """
         logging.info(f"Requested page name: {page_name}")
 
-        # Create the Pathway ResponseRecipe
-        if page_name.startswith("textcues_") is True and page_name.endswith(".html") is True:
-            return TextCueSResponseRecipe()
+        # The pathway pages (a random name), or the fixed welcome page.
+        is_pathway = page_name.startswith("textcues_") is True and page_name.endswith(".html") is True
+        is_welcome = page_name == TextCueSResponseRecipe.page()
 
-        # Create the welcome ResponseRecipe
-        if page_name == TextCueSLauncherRecipe.page():
-            return TextCueSLauncherRecipe()
+        if is_pathway is True or is_welcome is True:
+            recipe = TextCueSResponseRecipe()
+            # Tells the recipe which of the two it actually is, so it can
+            # refuse to process a "lang" query received on the fixed,
+            # guessable welcome URL (see set_requested_page()).
+            recipe.set_requested_page(page_name)
+            return recipe
 
         # Any other page name
         return None

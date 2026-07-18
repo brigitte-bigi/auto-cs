@@ -33,7 +33,6 @@
 
 from __future__ import annotations
 import os
-import logging
 
 from sppas.core.config import symbols
 from sppas.core.config import separators
@@ -325,6 +324,34 @@ class CuedSpeechCueingRules:
 
     # ------------------------------------------------------------------------
 
+    def get_phonemes(self, code: str) -> tuple:
+        """Return the phonemes (or diphthongs) matching the given shape or position code.
+
+        This is the reverse of get_key(): a key is necessarily made of both
+        a shape and a position, but a single phoneme is either a consonant
+        (shape code) or a vowel (position code). Several phonemes can share
+        the same code, since Cued Speech intentionally groups phonemes that
+        look alike on the lips under a single shape or position.
+
+        :param code: (str) A shape code or a position code (not a full key).
+        :return: (tuple) Phonemes and/or diphthongs matching the given code.
+
+        """
+        result = list()
+        for phoneme in self.__phon:
+            phon_code = self.get_key(phoneme)
+            if phon_code is None:
+                continue
+            if self.get_class(phoneme) == "W":
+                if code in phon_code:
+                    result.append(phoneme)
+            elif phon_code == code:
+                result.append(phoneme)
+
+        return tuple(result)
+
+    # ------------------------------------------------------------------------
+
     def get_diphthong_key(self, diphthong: str) -> tuple[str,str] | None:
         """Return the key identifiers of the given diphthong.
 
@@ -380,10 +407,7 @@ class CuedSpeechCueingRules:
         :return: (int) target index of the given shape or the default target index
 
         """
-        if shape not in self.__shptgt:
-            logging.warning(f"Shape '{shape}' not found in shape targets. Using default: {CuedSpeechCueingRules.SHAPE_TARGET}")
-            return CuedSpeechCueingRules.SHAPE_TARGET
-        return self.__shptgt[shape]
+        return self.__shptgt.get(shape, CuedSpeechCueingRules.SHAPE_TARGET)
 
     # ------------------------------------------------------------------------
 

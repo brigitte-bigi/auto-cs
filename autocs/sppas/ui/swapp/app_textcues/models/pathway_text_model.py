@@ -33,14 +33,11 @@
 from __future__ import annotations
 import os
 
-from sppas.core.config import symbols
 from sppas.core.config import paths
-from sppas.src.resources import sppasDictRepl
-from sppas.src.resources import sppasVocabulary
 from sppas.src.resources import sppasDictPron
-from sppas.src.resources import sppasMapping
-from sppas.src.annotations.TextNorm.normalize import TextNormalizer
-from sppas.src.annotations.Phon.phonetize import sppasDictPhonetizer
+
+from sppas.ui.swapp.app_cues_utils.models.text_normalizer import CueingTextNormalizer
+from sppas.ui.swapp.app_cues_utils.models.phonetizer import CueingPhonetizer
 
 # ---------------------------------------------------------------------------
 
@@ -53,6 +50,7 @@ class PathwayTextModel:
     def __init__(self):
         """Create a new instance."""
         self.__lang = "und"
+        self.__normalizer = CueingTextNormalizer()
 
     # ---------------------------------------------------------------------------
 
@@ -81,52 +79,24 @@ class PathwayTextModel:
     def _normalizer(self, text: str) -> list:
         """Return the result of "Text Normalization" on the given text.
 
+        The implementation lives in
+        :class:`sppas.ui.swapp.app_cues_utils.models.text_normalizer.CueingTextNormalizer`.
+
         :param text: (str) Input text to be normalized
         :return: (list) List of tokens
 
         """
-        # Vocabulary of the given language
-        vocab_file = os.path.join(paths.resources, 'vocab', self.__lang + '.vocab')
-        vocab = sppasVocabulary(vocab_file)
-        # The normalizer
-        normalizer = TextNormalizer(vocab, self.__lang)
-
-        # List of systematic replacements
-        replace_file = os.path.join(paths.resources, "repl", self.__lang + ".repl")
-        if os.path.exists(replace_file) is True:
-            repl = sppasDictRepl(replace_file, nodump=True)
-            normalizer.set_repl(repl)
-
-        # List of punctuations -- for removing
-        punct_file = os.path.join(paths.resources, "vocab", "Punctuations.txt")
-        if os.path.exists(punct_file):
-            punct = sppasVocabulary(punct_file, nodump=True)
-            normalizer.set_punct(punct)
-
-        # Numbers to letters conversion
-        number_filename = os.path.join(paths.resources, 'num', self.__lang + '_num.repl')
-        if os.path.exists(number_filename) is True:
-            numbers = sppasDictRepl(number_filename, nodump=True)
-            normalizer.set_num(numbers)
-
-        # Custom options
-        normalizer.set_delim("_")   # default is '_'
-
-        # Text Normalization of the input text. The result is a list.
-        _toks = normalizer.normalize(text)
-
-        # The text is not en Enriched Ortho. Transcription.
-        # IMPORTANT: Remove EOT symbols.
-        _tokens = list()
-        for _t in _toks:
-            if _t not in ('@', '+', '#', '*'):
-                _tokens.append(_t)
-        return _tokens
+        return self.__normalizer.normalize(self.__lang, text)
 
     # ---------------------------------------------------------------------------
 
     def _phonetizer(self, text: str) -> list:
         """Return the result of "Phonetization" on the given normalized text.
+
+        The phonetizer implementation lives in
+        :class:`sppas.ui.swapp.app_cues_utils.models.phonetizer.CueingPhonetizer`.
+        Known tokens get their dictionary pronunciation(s); unknown tokens
+        get up to 4 generated variants.
 
         :param text: (str) Normalized text to be phonetized
         :return: (list) List of pronunciations
@@ -138,18 +108,11 @@ class PathwayTextModel:
         pdict_file = os.path.join(paths.resources, 'dict', lang + '.dict')
         pdict = sppasDictPron(pdict_file, nodump=False)
 
-        # A mapping table: sampa -> IPA for example: map_table = sppasMapping(file)
-        mapping = sppasMapping()
-        # The phonetizer
-        phonetizer = sppasDictPhonetizer(pdict, mapping)
-        # Custom options: number of phonetization variants
-        phonetizer.set_unk_variants(4)
+        phonetizer = CueingPhonetizer(pdict)
+
         # Phonetization of the given input normalized text
         results = list()
         for line in text.split("#"):
-            # the result is a list of tuple(token, phones, status)
-            # status (int): annots.ok or annots.warning or annots.error
-            results.extend(phonetizer.get_phon_tokens(line.split(' '), phonunk=True))
+            results.extend(phonetizer.phonetize(line.split(' ')))
 
-        # The result of phonetization is a list of tuple(token, phones, status)
-        return [p[1] for p in results]
+        return results

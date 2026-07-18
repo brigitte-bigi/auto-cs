@@ -37,14 +37,13 @@ from whakerpy.htmlmaker import EmptyNode
 from whakerpy.htmlmaker import TagNode
 
 from sppas.ui import _
-from sppas.ui.swapp.wappsg import wapp_settings
-from sppas.ui.swapp.apps.swapp_view import swappBaseView
-from sppas.ui.swapp.apps.swapp_view import JS_INIT
-from sppas.ui.swapp.apps.swapp_view import JS_WEXA_ONLOAD
+from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.components.swapp_view import swappBaseView
+from sppas.ui.swapp.components.swapp_view import JS_INIT
+from sppas.ui.swapp.components.swapp_view import JS_WEXA_ONLOAD
 
 from .textcues_record import TextCueSRecord
 from .textcues_msg import MSG_APP_TITLE
-from .textcues_msg import MSG_APP_TITLE1
 from .textcues_msg import MSG_APP_TITLE2
 from .textcues_msg import MSG_ERROR_DETAILS
 from .views.nodes.footer import FooterNode
@@ -63,7 +62,7 @@ MSG_SKIP = _("Skip to content")
 BODY_SCRIPT = f"""
         import {{ TextCueSManager }} from '/{wapp_settings.js}textcues_manager.js';
         const textcuesManager = new TextCueSManager();
-        textcuesManager.handleTextCueSManagerOnLoad();
+        textcuesManager.handleCuesManagerOnLoad();
 """
 
 # ---------------------------------------------------------------------------
@@ -89,19 +88,17 @@ class TextCueSView(swappBaseView):
 
     """
 
-    def __init__(self, tree: HTMLTree, is_welcome: bool = False):
+    def __init__(self, tree: HTMLTree):
         """Initialize and populate the TextCueS view structure.
 
         :param tree: (HTMLTree) An existing HTML tree to populate with
                      the setup-specific content.
-        :param is_welcome: (bool) Whether to display the welcome content of the coding one.
         :raises: TypeError: tree is not an instance of HTMLTree
 
         """
         if isinstance(tree, HTMLTree) is False:
             raise TypeError("TextCueSView: tree must be an instance of HTMLTree. "
                             "Got {} instead.".format(type(tree)))
-        self._is_welcome = bool(is_welcome)
         super().__init__(tree, MSG_APP_TITLE)
 
     # -----------------------------------------------------------------------
@@ -123,7 +120,8 @@ class TextCueSView(swappBaseView):
         self._htree.head.link(rel="logo icon", href=wapp_settings.icons + "Refine/textcues.png")
         self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
         self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/dialog.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "app_textcues.css", link_type="text/css")
+        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
+        self._htree.head.link("stylesheet", wapp_settings.css + "app_cues.css", link_type="text/css")
 
         # JS
         # ----
@@ -178,8 +176,7 @@ class TextCueSView(swappBaseView):
 
         # Application page title
         self.append_responsive_menu_button(self._htree.body_header)
-        _value = MSG_APP_TITLE1 if self._is_welcome else MSG_APP_TITLE2
-        _h2 = HTMLNode(self._htree.body_header.identifier, None, "h2", value=_value)
+        _h2 = HTMLNode(self._htree.body_header.identifier, None, "h2", value=MSG_APP_TITLE2)
         self._htree.body_header.append_child(_h2)
 
     # -----------------------------------------------------------------------
@@ -217,12 +214,16 @@ class TextCueSView(swappBaseView):
     def populate_tree_content(self, record: TextCueSRecord) -> None:
         """Populate the tree content.
 
+        No language chosen yet (record.lang is None) shows the welcome
+        content (intro and language choice form); a language having reached
+        the controller shows the pathway content (Text, Sound or Code).
+
         :param record: (TextCueSRecord) The data to choose and fill-in the view content.
         :raises: KeyError: invalid or missing entry in given data.
 
         """
-        if record is None:
-            TextCueSWelcomeView(self._htree.body_main, f"textcues_guid.html")
+        if record.lang is None:
+            TextCueSWelcomeView(self._htree.body_main, record)
         else:
             self._populate_pathway_tree(record)
             self._populate_dialogs(record)
@@ -238,7 +239,7 @@ class TextCueSView(swappBaseView):
 
         """
         p = None
-        if "error" in record.extras:
+        if "error" in record.extras or "info" in record.extras:
             # Stay on the same page
             # ---------------------
 

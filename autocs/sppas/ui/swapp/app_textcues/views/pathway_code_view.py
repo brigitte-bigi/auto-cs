@@ -37,10 +37,13 @@ from whakerpy.htmlmaker import EmptyNode
 
 from ..textcues_msg import MSG_CUES_TITLE
 from ..textcues_msg import MSG_CUES_BREADCRUMB
+from ..textcues_msg import MSG_CUES_FIELD_LEGEND 
 from ..textcues_msg import MSG_BUTTON_BACK
 from ..textcues_msg import MSG_SEE_ALSO
 from ..textcues_msg import MSG_MODES
 from ..textcues_msg import MSG_MODE_DISPLAY
+from ..textcues_msg import MSG_SIMPLIFIED_MODE_NOT_INSTALLED
+from ..textcues_msg import MSG_SIMPLIFIED_MODE_NOT_IMPLEMENTED
 from ..textcues_msg import MSG_POSITIONS
 from ..textcues_msg import MSG_POSITION_MODEL
 from ..textcues_msg import MSG_ANGLES
@@ -199,8 +202,8 @@ class PathwayCodeView(PathwayBaseView):
         self._create_tiles(_container, _paths, [self._record.textnorm, self._record.phonetize, self._record.cuedkeys])
 
         # Create and fills-in the fieldset with user inputs
-        # _fieldset = self._append_fieldset(_container, MSG_CUES_FIELD_LEGEND)
-        # self._fills_in_inputs(_fieldset)
+        _fieldset = self._append_fieldset(_container, MSG_CUES_FIELD_LEGEND)
+        self._fills_in_inputs(_fieldset)
 
         # The coded sequence
         _h3 = HTMLNode(self._parent.identifier, None, "section", value="<h3>" + MSG_RESULT + "</h3>")
@@ -226,6 +229,22 @@ class PathwayCodeView(PathwayBaseView):
         :param parent: (HTMLNode) The parent id of the HTML node
 
         """
+        # Neither overlay nor video can be generated: only the "Images" level
+        # is usable, so the options form would be pointless. The reason can
+        # differ between the two (environment: a dependency/resource is
+        # missing, or content: the current language is not covered yet) --
+        # shown as two distinct messages, one per reason actually in play.
+        if self._record.overlay_status != TextCueSRecord.REASON_AVAILABLE \
+                and self._record.video_status != TextCueSRecord.REASON_AVAILABLE:
+            _reasons = {self._record.overlay_status, self._record.video_status}
+            if TextCueSRecord.REASON_NOT_INSTALLED in _reasons:
+                _p = HTMLNode(parent.identifier, None, "p", value=MSG_SIMPLIFIED_MODE_NOT_INSTALLED)
+                parent.append_child(_p)
+            if TextCueSRecord.REASON_NOT_IMPLEMENTED in _reasons:
+                _p = HTMLNode(parent.identifier, None, "p", value=MSG_SIMPLIFIED_MODE_NOT_IMPLEMENTED)
+                parent.append_child(_p)
+            return
+
         _f = HTMLTag.create_form(parent, "options_form")
 
         # Hidden fields
@@ -242,6 +261,11 @@ class PathwayCodeView(PathwayBaseView):
         _container.add_attribute("class", "wexa-toggle-group")
         _f.append_child(_container)
         for _i, _msg in enumerate(MSG_MODES):
+            if _i == 1 and self._record.overlay_status != TextCueSRecord.REASON_AVAILABLE:
+                continue
+            if _i == 2 and self._record.video_status != TextCueSRecord.REASON_AVAILABLE:
+                continue
+
             _label = HTMLNode(_container.identifier, None, "label")
             _label.add_attribute("class", "wexa-toggle")
             _container.append_child(_label)
@@ -260,10 +284,12 @@ class PathwayCodeView(PathwayBaseView):
 
         # Form: Models
         # --------------
-        # The models to display the code
-        self.__create_options(_f, "position", MSG_POSITION_MODEL, MSG_POSITIONS)
-        self.__create_options(_f, "angle", MSG_ANGLE_MODEL, MSG_ANGLES)
-        self.__create_options(_f, "timing", MSG_TIMING_MODEL, MSG_TIMINGS)
+        # The models to display the code -- pre-select whatever is already
+        # in the record (either the user's previous choice, or the default
+        # backfilled by the controller).
+        self.__create_options(_f, "position", MSG_POSITION_MODEL, MSG_POSITIONS, self._record.model_pos)
+        self.__create_options(_f, "angle", MSG_ANGLE_MODEL, MSG_ANGLES, self._record.model_angle)
+        self.__create_options(_f, "timing", MSG_TIMING_MODEL, MSG_TIMINGS, self._record.model_timing)
 
         HTMLTag.append_submit_in_form(_f, "options_code", MSG_BUTTON_APPLY)
 
@@ -274,9 +300,20 @@ class PathwayCodeView(PathwayBaseView):
 
         """
         # Hidden fields
+        # "mode" is not carried forward: a new round should land on the
+        # cheap Images display, not silently re-trigger a slow Overlay/Video
+        # generation. The model choices themselves (position/angle/timing)
+        # are kept, since remembering them costs nothing until a mode needing
+        # them is chosen again.
+        # "overlay_status"/"video_status" are not carried forward either:
+        # they depend on the language, which can change on a new round, so
+        # they must be re-tested rather than kept from a possibly different
+        # language.
+        excluded = ("text", "textnorm", "textprons", "phonetize", "cuedkeys", "cuedphons",
+                    "mode", "overlay_status", "video_status")
         dictionarized = self._record.serialize()
         for item in dictionarized:
-            if item not in ("text", "textnorm", "textprons", "phonetize", "cuedkeys", "cuedphons"):
+            if item not in excluded:
                 HTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
 
         # Submit button
@@ -300,7 +337,7 @@ class PathwayCodeView(PathwayBaseView):
 
     @staticmethod
     def __create_options(parent: TagNode, model_key: str, msg_label:str, msg_options: str, selected: int = 0) -> None:
-        """Create the options to choose the model of position for the face.
+        """Create the options to choose the model among those available.
 
         :param parent: (TagNode) Parent node
         :param model_key: (str) The key of the model to choose (position, angle or timing).

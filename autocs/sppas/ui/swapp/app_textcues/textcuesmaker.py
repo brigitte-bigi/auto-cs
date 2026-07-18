@@ -33,8 +33,8 @@
 from __future__ import annotations
 import logging
 
-from ..htmltags.hstatusnode import HTMLTreeError410
-from ..apps.swapp_response import swappBaseResponse
+from ..components.hstatusnode import HTMLTreeError410
+from ..components.swapp_response import swappBaseResponse
 
 from .textcues_model import TextCueSModel
 from .textcues_view import TextCueSView
@@ -44,7 +44,14 @@ from .textcues_controller import TextCueSController
 
 
 class TextCueSResponseRecipe(swappBaseResponse):
-    """The textcues_*.html HTTPD response baker.
+    """The textcues.html HTTPD response baker: welcome and pathway in one page.
+
+    No language is chosen yet -> the welcome content is shown (an intro and a
+    language choice form). Once a language has reached the controller -- via
+    the welcome form's GET navigation, or via a pathway POST -- the pathway
+    content (Text, Sound or Code) is shown instead. Both cases are handled by
+    the very same :meth:`TextCueSController.handle`, so there is only one code
+    path to keep in sync.
 
     """
 
@@ -52,6 +59,9 @@ class TextCueSResponseRecipe(swappBaseResponse):
         self.__model = TextCueSModel()
         self.__view = None
         self.__controller = None
+        # Default: the fixed welcome page, until bake_response() records the
+        # actual requested page name (see set_requested_page()).
+        self.__requested_page = self.page()
         super(TextCueSResponseRecipe, self).__init__(name, tree)
 
     # -----------------------------------------------------------------------
@@ -60,8 +70,24 @@ class TextCueSResponseRecipe(swappBaseResponse):
 
     @classmethod
     def page(cls) -> str:
-        """Return a short description of the application."""
-        return "textcues_code.html"
+        """Return the name of the page."""
+        return "textcues.html"
+
+    # -----------------------------------------------------------------------
+
+    def set_requested_page(self, page_name: str) -> None:
+        """Record which actual URL this instance is serving.
+
+        The fixed, guessable welcome page ("textcues.html") must never
+        process a "lang" query directly: only a random page name (see
+        HTMLTag.page_random(), used by the welcome form's own action) is
+        allowed to trigger the expensive per-language processing, so a bot
+        that only knows the fixed URL can never reach it directly.
+
+        :param page_name: (str) The page name actually requested.
+
+        """
+        self.__requested_page = page_name
 
     # -----------------------------------------------------------------------
 
@@ -117,6 +143,17 @@ class TextCueSResponseRecipe(swappBaseResponse):
             return False
 
         else:
+            # The welcome form navigates here with only "lang" (a plain GET,
+            # parsed into "events" the very same way a POST body is). Except
+            # on the fixed "textcues.html" itself: a bot only knows that
+            # guessable URL, never the random one the welcome form actually
+            # submits to (see set_requested_page()), so a "lang" query
+            # received there with no "pathway" yet is never legitimate and
+            # is silently ignored -- welcome shows regardless, and the
+            # expensive per-language processing never runs.
+            if "pathway" not in events and "lang" in events and self.__requested_page == self.page():
+                events = dict()
+
             # Events are propagated to the controller.
             # The controller returns the status code and the data to be posted (if any)
             self.__controller.handle(events)

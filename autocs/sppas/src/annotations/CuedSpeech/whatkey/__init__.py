@@ -62,6 +62,7 @@ from .phonestokeys import CuedSpeechKeys
 from .keysbytoken import CueingPronTokenizer
 from .keysbytoken import CueingKeysByToken
 from .whatkey import sppasWhatKeyPredictor
+from .wordkeys import CueingWordKeys
 
 
 __all__ = (
@@ -72,5 +73,6 @@ __all__ = (
     "CuedSpeechKeys",
     "CueingPronTokenizer",
     "CueingKeysByToken",
-    "sppasWhatKeyPredictor"
+    "sppasWhatKeyPredictor",
+    "CueingWordKeys"
 )

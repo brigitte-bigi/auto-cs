@@ -31,10 +31,13 @@
 """
 
 from __future__ import annotations
+import os
+import shutil
+import time
 
 from sppas.core.config import separators
 from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
-from sppas.ui.swapp.wappsg import wapp_settings
+from sppas.ui.swapp.wappcore.wappsg import wapp_settings
 
 # ---------------------------------------------------------------------------
 
@@ -42,9 +45,12 @@ from sppas.ui.swapp.wappsg import wapp_settings
 class PathwayCodeImagesModel:
     """Generates image results for a given cued sequence.
 
+    Also used as a base class for any PathwayCode Model.
+
     """
 
     IMAGES_PATH = wapp_settings.images + "/textcues/"
+    TMP_PATH = wapp_settings.images + "/textcues/tmp/"
 
     # -----------------------------------------------------------------------
 
@@ -58,12 +64,42 @@ class PathwayCodeImagesModel:
         if isinstance(cued_rules, CuedSpeechKeys) is False:
             raise TypeError(f"Given cued_rules must be a CuedSpeechKeys object. "
                             f"Got {type(cued_rules)} instead.")
-        self.__cs = cued_rules
-        self.__prefix = prefix
+        self._cs = cued_rules
+        self._prefix = prefix
 
     # -----------------------------------------------------------------------
 
-    def generate(self, cuedkeys: tuple) -> tuple:
+    @staticmethod
+    def cleanup_tmp(max_age_seconds: int = 3600) -> None:
+        """Remove tmp entries (files or directories) older than a given age.
+
+        Called at each overlay/video generation, so tmp files created for a
+        past request eventually get removed without needing a separate
+        scheduled job.
+
+        :param max_age_seconds: (int) Age threshold, in seconds.
+
+        """
+        if os.path.exists(PathwayCodeImagesModel.TMP_PATH) is False:
+            return
+
+        now = time.time()
+        for name in os.listdir(PathwayCodeImagesModel.TMP_PATH):
+            path = os.path.join(PathwayCodeImagesModel.TMP_PATH, name)
+            try:
+                age = now - os.path.getmtime(path)
+            except OSError:
+                continue
+            if age <= max_age_seconds:
+                continue
+            if os.path.isdir(path):
+                shutil.rmtree(path, ignore_errors=True)
+            else:
+                os.remove(path)
+
+    # -----------------------------------------------------------------------
+
+    def generate(self, cuedkeys: tuple, *args, **kwargs) -> tuple:
         """Generate the images filepath matching the given cued keys.
 
         Example:
@@ -95,8 +131,8 @@ class PathwayCodeImagesModel:
                     raise ValueError(f"Given coded_key is invalid at index {_i} of "
                                      f"cued keys: {cuedkeys}. Got '{_cv}' instead.")
                 consonant, vowel = _cv
-                consonant_path = self.IMAGES_PATH + f"{self.__prefix}_{consonant}.png"
-                vowel_path = self.IMAGES_PATH + f"{self.__prefix}_{vowel}.jpg"
+                consonant_path = self.IMAGES_PATH + f"{self._prefix}_{consonant}.png"
+                vowel_path = self.IMAGES_PATH + f"{self._prefix}_{vowel}.jpg"
                 images_seq.append( (consonant_path, vowel_path) )
 
             result.append(images_seq)

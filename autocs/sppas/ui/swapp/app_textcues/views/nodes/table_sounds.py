@@ -35,12 +35,15 @@ from sppas.core.config import separators
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker import EmptyNode
 
+from sppas.ui.swapp.wappcore.wapputils import sppasImagesAccess
+
 from ...textcues_msg import MSG_TOKENS
 from ...textcues_msg import MSG_CHOICE_1
 from ...textcues_msg import MSG_CHOICE_2
 from ...textcues_msg import MSG_CHOICE_3
 from ...textcues_msg import MSG_CHOICE_4
 from ...textcues_msg import MSG_PERSONALIZED
+from ...textcues_msg import MSG_SOUND_PIANO_TOGGLE
 
 # ---------------------------------------------------------------------------
 
@@ -77,12 +80,12 @@ class SoundsTableNode(HTMLNode):
         _head_tr = HTMLNode(_thead.identifier, None, "tr")
         _thead.append_child(_head_tr)
 
-        self.__append_head_th(_head_tr, MSG_TOKENS, 15)
+        self.__append_head_th(_head_tr, MSG_TOKENS, 12)
         self.__append_head_th(_head_tr, MSG_CHOICE_1, 10)
         self.__append_head_th(_head_tr, MSG_CHOICE_2, 10)
         self.__append_head_th(_head_tr, MSG_CHOICE_3, 10)
         self.__append_head_th(_head_tr, MSG_CHOICE_4, 10)
-        self.__append_head_th(_head_tr, MSG_PERSONALIZED, 10)
+        self.__append_head_th(_head_tr, MSG_PERSONALIZED, 12)
 
     # -----------------------------------------------------------------------
 
@@ -127,13 +130,39 @@ class SoundsTableNode(HTMLNode):
 
             # Create phon input
             _td = HTMLNode(current_row.identifier, None, "td")
-            _input = EmptyNode(_td.identifier, None, "input")
+            current_row.append_child(_td)
+
+            # The input and the toggle button are laid out side by side by
+            # an inner div, not the <td> itself: overriding a table cell's
+            # own "display" (e.g. to "flex") breaks the table's column-width
+            # computation in some browsers -- the cell shrinks to its
+            # content instead of the column's intended width.
+            _cell = HTMLNode(_td.identifier, None, "div")
+            _cell.add_attribute('class', "sound-personalized-cell")
+            _td.append_child(_cell)
+
+            _input = EmptyNode(_cell.identifier, None, "input")
             _input.add_attribute('id', f"{index}-sound_input")
             _input.add_attribute('name', f"{index}-sound_input")
             _input.add_attribute('class', "sound_input")
+            _cell.append_child(_input)
 
-            current_row.append_child(_td)
-            _td.append_child(_input)
+            # A toggle button to open the shared phoneme piano dialog for
+            # this row: opening on a mere focus of the input would violate
+            # WCAG 3.2.2 (no unexpected change of context) -- it must be an
+            # explicit, separate control (aria-haspopup="dialog"). Icon-only
+            # (inline SVG, same mechanism as the other Whakerexa icon
+            # buttons): the accessible name carries the text instead of a
+            # visible label.
+            _piano_btn = HTMLNode(_cell.identifier, None, "button",
+                                  value=sppasImagesAccess.get_wexa_svg_icon("content"))
+            _piano_btn.add_attribute('type', "button")
+            _piano_btn.add_attribute('class', "sound-piano-toggle")
+            _piano_btn.add_attribute('data-target-input', f"{index}-sound_input")
+            _piano_btn.add_attribute('data-token', token)
+            _piano_btn.add_attribute('aria-haspopup', "dialog")
+            _piano_btn.add_attribute('aria-label', MSG_SOUND_PIANO_TOGGLE)
+            _cell.append_child(_piano_btn)
 
     # ---------------------------------------------------------------------------
 

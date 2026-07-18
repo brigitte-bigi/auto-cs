@@ -67,6 +67,14 @@ class TextCueSRecord:
         'cuedkeys'
     }
 
+    # Possible values of overlay_status/video_status -- must match
+    # TextCueSModel.REASON_AVAILABLE/REASON_NOT_INSTALLED/REASON_NOT_IMPLEMENTED.
+    # Duplicated here, not imported: the record must not depend on the
+    # model (strict MVC), it only transports what the model decided.
+    REASON_AVAILABLE = "available"
+    REASON_NOT_INSTALLED = "not_installed"
+    REASON_NOT_IMPLEMENTED = "not_implemented"
+
     # -----------------------------------------------------------------------
 
     def __init__(self, pathway_id: str = "", lang: str = None, alphabet: str = None):
@@ -98,6 +106,14 @@ class TextCueSRecord:
         self.__model_angle = None
         self.__model_timing = None
 
+        # Whether -- and why not otherwise -- the overlay/video results can
+        # actually be generated: missing dependency/resource (environment),
+        # or current language not covered by the prediction models (content).
+        # Tested once by the controller and carried forward, not re-tested
+        # at each step. See TextCueSModel.REASON_*.
+        self.__overlay_status = TextCueSRecord.REASON_NOT_INSTALLED
+        self.__video_status = TextCueSRecord.REASON_NOT_INSTALLED
+
         # Any extra data
         self.__extras = dict()
 
@@ -116,6 +132,9 @@ class TextCueSRecord:
         self.__model_pos = None
         self.__model_angle = None
         self.__model_timing = None
+
+        self.__overlay_status = TextCueSRecord.REASON_NOT_INSTALLED
+        self.__video_status = TextCueSRecord.REASON_NOT_INSTALLED
 
         # Any extra data
         self.__extras = dict()
@@ -250,6 +269,9 @@ class TextCueSRecord:
         if self.__model_timing is not None:
             d["model_timing"] = str(self.__model_timing)
 
+        d["overlay_status"] = self.__overlay_status
+        d["video_status"] = self.__video_status
+
         return d
 
     # -----------------------------------------------------------------------
@@ -271,7 +293,9 @@ class TextCueSRecord:
             self.set_mode(int(data["mode"]))
 
         if "text" in data:
-            self.set_text(TextCueSRecord.parse_string(data["text"]))
+            _text = TextCueSRecord.parse_string(data["text"])
+            if len(_text.strip()) > 0:
+                self.set_text(_text)
 
         if "textnorm" in data:
             self.set_textnorm(TextCueSRecord.parse_entry(data["textnorm"]))
@@ -285,11 +309,40 @@ class TextCueSRecord:
             self.set_cuedkeys(TextCueSRecord.parse_entry(data["cuedkeys"]))
 
         if "model_pos" in data:
-            self.set_model_pos(int(data["model_pos"]))
+            self.set_model_pos(TextCueSRecord._parse_model_value(data["model_pos"]))
         if "model_angle" in data:
-            self.set_model_angle(int(data["model_angle"]))
+            self.set_model_angle(TextCueSRecord._parse_model_value(data["model_angle"]))
         if "model_timing" in data:
-            self.set_model_timing(int(data["model_timing"]))
+            self.set_model_timing(TextCueSRecord._parse_model_value(data["model_timing"]))
+
+        if "overlay_status" in data:
+            self.set_overlay_status(data["overlay_status"])
+        if "video_status" in data:
+            self.set_video_status(data["video_status"])
+
+    # -----------------------------------------------------------------------
+
+    @staticmethod
+    def _parse_model_value(value) -> int | None:
+        """Return the given client-sent model value as a valid int, or None.
+
+        The client (JS) sends -1 when no selection was made (e.g. the
+        corresponding <select> is absent from a simplified interface). Each
+        model has its own default value, decided by the model itself, not by
+        this record: any value outside the accepted range is treated the
+        same as "no selection", i.e. None, instead of raising.
+
+        :param value: (str|int) The value received from the client.
+        :return: (int|None) The value if in [0, 4], None otherwise.
+
+        """
+        try:
+            _v = int(value)
+        except (TypeError, ValueError):
+            return None
+        if _v not in (0, 1, 2, 3, 4):
+            return None
+        return _v
 
     # -----------------------------------------------------------------------
     # pathway
@@ -325,16 +378,20 @@ class TextCueSRecord:
     def set_lang(self, value: str) -> None:
         """Set the stored 'lang' after validating it.
 
-        :param value: (str|None) Stored value among the allowed ones.
+        No default is applied: a language must be explicitly chosen on the
+        welcome form. This is how the controller distinguishes the welcome
+        state (lang is None) from the pathway state (lang is set) -- the
+        application is stateless, nothing is remembered between requests.
+
+        :param value: (str|None) Stored value, or None if no language was chosen yet.
         :raises: TypeError: Invalid value type.
 
         """
         if value is not None and type(value) is not str:
             raise TypeError(f"Given value must be a string or None. "
                             f"Got '{type(value)}' instead.")
-        if value is None:
-            with TextCueSSettings() as st:
-                value = st.lang
+        if value is not None and len(value.strip()) == 0:
+            value = None
 
         self.__lang = value
 
@@ -659,6 +716,60 @@ class TextCueSRecord:
         self.__model_timing = value
 
     model_timing = property(get_model_timing, set_model_timing)
+
+    # -----------------------------------------------------------------------
+    # overlay_status
+    # -----------------------------------------------------------------------
+
+    def get_overlay_status(self) -> str:
+        """Return whether the server can generate overlay results, and why not otherwise."""
+        return self.__overlay_status
+
+    def set_overlay_status(self, value: str) -> None:
+        """Set whether the server can generate overlay results, and why not otherwise.
+
+        :param value: (str) One of REASON_AVAILABLE, REASON_NOT_INSTALLED, REASON_NOT_IMPLEMENTED.
+        :raises: ValueError: Invalid value.
+
+        """
+        accepted = (
+            TextCueSRecord.REASON_AVAILABLE,
+            TextCueSRecord.REASON_NOT_INSTALLED,
+            TextCueSRecord.REASON_NOT_IMPLEMENTED
+        )
+        if value not in accepted:
+            raise ValueError(f"Invalid given value: '{value}'.")
+
+        self.__overlay_status = value
+
+    overlay_status = property(get_overlay_status, set_overlay_status)
+
+    # -----------------------------------------------------------------------
+    # video_status
+    # -----------------------------------------------------------------------
+
+    def get_video_status(self) -> str:
+        """Return whether the server can generate video results, and why not otherwise."""
+        return self.__video_status
+
+    def set_video_status(self, value: str) -> None:
+        """Set whether the server can generate video results, and why not otherwise.
+
+        :param value: (str) One of REASON_AVAILABLE, REASON_NOT_INSTALLED, REASON_NOT_IMPLEMENTED.
+        :raises: ValueError: Invalid value.
+
+        """
+        accepted = (
+            TextCueSRecord.REASON_AVAILABLE,
+            TextCueSRecord.REASON_NOT_INSTALLED,
+            TextCueSRecord.REASON_NOT_IMPLEMENTED
+        )
+        if value not in accepted:
+            raise ValueError(f"Invalid given value: '{value}'.")
+
+        self.__video_status = value
+
+    video_status = property(get_video_status, set_video_status)
 
     # -----------------------------------------------------------------
     # Extras

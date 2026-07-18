@@ -75,6 +75,11 @@ class TextCueSRecordController:
     def set_record_extras(self, record: TextCueSRecord) -> None:
         """Populate the record with view-required extra fields.
 
+        The consonant/vowel phoneme inventories (for the Sound page's
+        personalized-entry piano) are only added once a language is known:
+        the model can't provide them before that, and the welcome state
+        (record.lang is None) has no use for them anyway.
+
         :param record: (TextCueSRecord) The record to update.
 
         """
@@ -95,6 +100,10 @@ class TextCueSRecordController:
             )
         )
         record.set_extra('lang_choices', self.__model.get_lang_choices())
+
+        if record.lang is not None:
+            record.set_extra('consonants', self.__model.get_consonants())
+            record.set_extra('vowels', self.__model.get_vowels())
 
     # -----------------------------------------------------------------------
 

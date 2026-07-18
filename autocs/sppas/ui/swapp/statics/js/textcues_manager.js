@@ -4,7 +4,7 @@ const wexa_log_level = window.WEXA_LOG_LEVEL;
 const { WexaLogger } = await import(`${wexa_statics_js}/logger.js`);
 WexaLogger.setLogLevel(wexa_log_level);
 
-const { BaseManager } = await import(`${wexa_statics_js}/transport/base_manager.js`);
+const { BaseCuesManager } = await import('./base_cues_manager.js');
 
 /**
  * :filename: sppas.ui.swapp.statics.js.textcues_manager.js
@@ -47,33 +47,29 @@ const { BaseManager } = await import(`${wexa_statics_js}/transport/base_manager.
  * This class orchestrates user interactions within *textcues_guid.html*. It
  * attaches event listeners to the buttons of the main container, sends
  * corresponding asynchronous requests to the server, and updates the DOM in
- * response. It relies on BaseManager for communication logic and form
- * submission, and on WexaLogger for debug output.
+ * response. It relies on BaseCuesManager for communication logic, form
+ * submission, and shared "cues" app behavior, and on WexaLogger for debug
+ * output.
  *
- * handleTextCueSManagerOnLoad() has to be invoked **after** the DOM is loaded.
+ * handleCuesManagerOnLoad() (inherited from BaseCuesManager) has to be
+ * invoked **after** the DOM is loaded.
  *
  */
-export default class TextCueSManager extends BaseManager {
+export default class TextCueSManager extends BaseCuesManager {
 
     // ----------------------------------------------------------------------
     // CONSTANTS (DOM ids/names + reused selectors only)
     // ----------------------------------------------------------------------
 
     // IDs & NAMES
-    static #ID_MAIN_CONTENT = 'main-content';
-    static #ID_NAV_CONTENT = 'nav-content';
-    static #ID_ERROR_DIALOG = 'error_dialog';
-    static #ID_INFO_DIALOG = 'info_dialog';
-
     static #ID_PATHWAY_FORM = 'pathway_form';
     static #ID_OPTIONS_FORM = 'options_form';
 
-    static #ID_PATHWAY_WELCOME_BUTTON = 'pathway_welcome_button';
+    static #ID_WELCOME_FORM = 'pathway_welcome_form';
     static #ID_PATHWAY_TEXT_ACTION_BTN = 'pathway_text_action_btn';
     static #ID_PATHWAY_SOUND_ACTION_BTN = 'pathway_sound_action_btn';
     static #ID_PATHWAY_CODE_ACTION_BTN = 'pathway_code_action_btn';
 
-    static #ID_TEXTAREA_TEXT = 'text';
     static #ID_SELECT_POSITION_MODEL = 'select_position_model';
     static #ID_SELECT_ANGLE_MODEL = 'select_angle_model';
     static #ID_SELECT_TIMING_MODEL = 'select_timing_model';
@@ -92,8 +88,25 @@ export default class TextCueSManager extends BaseManager {
     // EVENTS
     static #EVENT_NAME_DISPLAYMODE = 'displaymode';
 
-    // MESSAGES
-    static #MSG_ENTER_TEXT = "Vous devez saisir ou copier-coller un texte dans le bloc pour pouvoir passer à l'étape suivante.";
+    // Sound page: personalized-entry phoneme piano, shared by every row.
+    // The toggle repeats once per row (a class, queried via closest() for
+    // event delegation); validate/cancel are single, unique controls of the
+    // one shared dialog, found by id, not by a styling class.
+    static #ID_SOUND_PIANO_DIALOG = 'sound-piano-dialog';
+    static #ID_SOUND_PIANO_TOKEN = 'sound-piano-dialog-token';
+    static #ID_SOUND_PIANO_STAGING = 'sound-piano-staging';
+    static #SEL_SOUND_PIANO_TOGGLE = '.sound-piano-toggle';
+    static #ID_SOUND_PIANO_VALIDATE = 'sound-piano-validate';
+    static #ID_SOUND_PIANO_CANCEL = 'sound-piano-cancel';
+
+    // Piano instance, constructed once, eagerly, when the Sound page loads
+    // (not lazily on first use): the dialog must never be shown before its
+    // icons have finished loading.
+    #soundPiano = null;
+    // The toggle button that opened the dialog, to restore focus on close.
+    #soundPianoOpener = null;
+    // Id of the row's real field "Apply" must write the staging value into.
+    #soundPianoRealTargetId = null;
 
     // ----------------------------------------------------------------------
     // Constructor
@@ -108,67 +121,27 @@ export default class TextCueSManager extends BaseManager {
     // ----------------------------------------------------------------------
 
     /**
-     * Register event listeners once the DOM content is loaded.
-     *
-     * This method must be called after the page structure is available.
-     * It attaches listeners to all buttons within the main container.
-     *
-     * @returns {void}
-     */
-    handleTextCueSManagerOnLoad() {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.attachTextCueSListeners());
-        } else {
-            this.attachTextCueSListeners();
-        }
-    }
-
-    // ----------------------------------------------------------------------
-
-    /**
      * Attach click listeners to every button in the main container.
      *
-     * Also attaches the submit/invalid handlers of the pathway form when present.
+     * Also attaches the submit/invalid handlers of the pathway form when
+     * present. Overrides BaseCuesManager's abstract "attachCuesListeners()",
+     * called by the inherited "handleCuesManagerOnLoad()" once the DOM is ready.
      *
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    attachTextCueSListeners() {
+    async attachCuesListeners() {
 
-        // Menu
-        const menu = document.getElementById(TextCueSManager.#ID_NAV_CONTENT);
-        if (menu === null) {
-            return;
-        }
-        // Redirections in any button
-        const redirectButtons = menu.querySelectorAll('button[data-href]');
-        for (const redirectButton of redirectButtons) {
-            if (!(redirectButton instanceof HTMLButtonElement)) {
-                continue;
-            }
-            redirectButton.addEventListener('click', (event) => this.#onRedirectButtonClick(event));
-            redirectButton.addEventListener('keydown', (event) => this.#onRedirectButtonKeydown(event));
-        }
-
-        // Main
-        const container = document.getElementById(TextCueSManager.#ID_MAIN_CONTENT);
+        const container = this._attachSharedListeners();
         if (container === null) {
             return;
         }
 
-        const errorDlg = container.querySelector('#' + TextCueSManager.#ID_ERROR_DIALOG);
-        if (errorDlg instanceof HTMLDialogElement && errorDlg.textContent.trim().length > 0) {
-            window.Wexa.dialog.open(TextCueSManager.#ID_ERROR_DIALOG, true);
-        }
-
-        const infoDlg = container.querySelector('#' + TextCueSManager.#ID_INFO_DIALOG);
-        if (infoDlg instanceof HTMLDialogElement && infoDlg.textContent.trim().length > 0) {
-            window.Wexa.dialog.open(TextCueSManager.#ID_INFO_DIALOG, true);
-        }
-
-        // The welcome page
-        const startLink = document.getElementById(TextCueSManager.#ID_PATHWAY_WELCOME_BUTTON);
-        if (startLink instanceof HTMLAnchorElement) {
-            startLink.addEventListener('click', (e) => this.#onPathwayStartLinkClick(e));
+        // The welcome page: a plain GET form, only intercepted to preserve
+        // accessibility parameters across the navigation (same mechanism as
+        // the menu links above).
+        const welcomeForm = document.getElementById(TextCueSManager.#ID_WELCOME_FORM);
+        if (welcomeForm instanceof HTMLFormElement) {
+            welcomeForm.addEventListener('submit', (e) => this.#onWelcomeFormSubmit(e));
             return;
         }
 
@@ -194,7 +167,7 @@ export default class TextCueSManager extends BaseManager {
         }
 
         if (isSoundPage === true) {
-            this.#attachSoundFormListeners(form);
+            await this.#attachSoundFormListeners(form);
             WexaLogger.debug(`"Sound page: ": ${form instanceof HTMLFormElement}`);
             form.addEventListener('submit', (e) => this.#onPathwaySoundFormSubmit(e));
             return;
@@ -215,85 +188,41 @@ export default class TextCueSManager extends BaseManager {
     }
 
     // ----------------------------------------------------------------------
-    // MENU
-    // ----------------------------------------------------------------------
-
-    /**
-     * Open data-href in a new tab (Enter/Space support) while preserving
-     * accessibility parameters.
-     *
-     * @param {KeyboardEvent} event
-     * @returns {void}
-     */
-    #onRedirectButtonKeydown(event) {
-        if (event.key !== 'Enter' && event.key !== ' ') {
-            return;
-        }
-        event.preventDefault();
-        this.#openRedirectFromEventTarget(event);
-    }
-
-    // ----------------------------------------------------------------------
-
-    /**
-     * Open data-href in a new tab while preserving accessibility parameters.
-     *
-     * @param {MouseEvent} event
-     * @returns {void}
-     */
-    #onRedirectButtonClick(event) {
-        event.preventDefault();
-        this.#openRedirectFromEventTarget(event);
-    }
-
-    // ----------------------------------------------------------------------
-
-    /**
-     * Extract data-href from the event target and open it in a new tab.
-     *
-     * @param {Event} event
-     * @returns {void}
-     */
-    #openRedirectFromEventTarget(event) {
-        const button = event.currentTarget;
-        if (!(button instanceof HTMLButtonElement)) {
-            return;
-        }
-
-        const href = button.getAttribute('data-href');
-        if (typeof href !== 'string' || href.trim().length === 0) {
-            return;
-        }
-
-        const absolute = new URL(href, window.location.href).href;
-        const target = window.Wexa.accessibility.setUrlWithParameters(absolute);
-        window.open(target, '_blank', 'noopener');
-    }
-
-
-    // ----------------------------------------------------------------------
     // PATHWAY: Welcome
     // ----------------------------------------------------------------------
 
     /**
-     * Handle click on the welcome "start" link.
+     * Handle submit of the welcome form (language choice).
      *
-     * This handler generates a random TextCueS page, preserves accessibility
-     * parameters (theme/contrast/etc.), then redirects in the current tab.
-     * It also stops other link listeners (Whakerexa accessibility link handler)
-     * to avoid being redirected back to the current page.
+     * The form itself already navigates to a random "textcues_<hex>.html"
+     * page with "?lang=..." (a plain GET, see HTMLTag.page_random()): this
+     * only adds the accessibility parameters (theme, contrast...) to that
+     * navigation, exactly as the menu links do.
      *
-     * @param {MouseEvent} event
+     * @param {SubmitEvent} event
      * @returns {void}
      */
-    #onPathwayStartLinkClick(event) {
-        event.stopImmediatePropagation();
+    #onWelcomeFormSubmit(event) {
+        event.preventDefault();
 
-        const relative = event.currentTarget.getAttribute('href');
-        const absolute = new URL(relative, window.location.href).href;
+        const form = event.currentTarget;
+        const langSelect = form.querySelector('#lang');
+        const action = form.getAttribute('action');
+        const url = new URL(action, window.location.href);
 
-        const target = window.Wexa.accessibility.setUrlWithParameters(absolute);
-        window.location.href = target;
+        const submitButton = form.querySelector('button[type="submit"]');
+        this._setButtonBusy(submitButton, true);
+
+        // Accessibility parameters first, chosen language after:
+        // setUrlWithParameters() forwards every parameter of the current URL
+        // and overwrites those of the target URL, so a residual "lang" left
+        // by a previous navigation would silently cancel the user's choice.
+        const finalUrl = new URL(window.Wexa.accessibility.setUrlWithParameters(url.href));
+        if (langSelect instanceof HTMLSelectElement) {
+            finalUrl.searchParams.set('lang', langSelect.value);
+        }
+
+        window.location.href = finalUrl.href;
     }
 
     // ----------------------------------------------------------------------
@@ -319,18 +248,9 @@ export default class TextCueSManager extends BaseManager {
             return;
         }
 
-        const textArea = form.querySelector('#' + TextCueSManager.#ID_TEXTAREA_TEXT);
-        if (textArea instanceof HTMLTextAreaElement) {
-            const trimmedValue = textArea.value.trim();
-            if (trimmedValue.length === 0) {
-                event.preventDefault();
-                this._showDialog(TextCueSManager.#ID_ERROR_DIALOG, TextCueSManager.#MSG_ENTER_TEXT);
-                textArea.focus();
-                return;
-            }
-        }
-
-        //
+        // An empty submission is not blocked here: the server reports it
+        // through the (translated, Yoyo) info dialog, exactly like any
+        // other pathway step.
         form.action = window.Wexa.accessibility.setUrlWithParameters(form.action);
     }
 
@@ -344,9 +264,9 @@ export default class TextCueSManager extends BaseManager {
      * It creates listeners to implement a toggle group per row.
      *
      * @param {HTMLFormElement} form
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    #attachSoundFormListeners(form) {
+    async #attachSoundFormListeners(form) {
         const soundsTable = form.querySelector(TextCueSManager.#SEL_SOUNDS_TABLE);
         if (soundsTable === null) {
             return;
@@ -374,6 +294,58 @@ export default class TextCueSManager extends BaseManager {
 
         soundsTable.addEventListener('click', (event) => this.#onPronunciationTableClick(event));
         soundsTable.addEventListener('input', (event) => this.#onPronunciationTableInput(event));
+
+        await this.#setupSoundPianoDialog();
+    }
+
+    // ----------------------------------------------------------------------
+
+    /**
+     * Construct the shared phoneme piano and wire the dialog's own controls.
+     *
+     * The piano is built once here, eagerly, while the dialog is still
+     * hidden: its icons (fetched asynchronously) have every chance to be
+     * ready well before the user ever opens the dialog, unlike a
+     * construct-on-first-click approach that would race the reveal.
+     *
+     * @returns {Promise<void>}
+     */
+    async #setupSoundPianoDialog() {
+        const dialog = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_DIALOG);
+        if (!(dialog instanceof HTMLDialogElement)) {
+            return;
+        }
+
+        const pianoContainer = dialog.querySelector('.wexa-key-piano');
+        if (pianoContainer instanceof HTMLElement) {
+            // Resolved from window.WEXA_JS_PATH (see wexa_statics_js at the
+            // top of this file), itself server-injected from
+            // wapp_settings.wexa_statics: never a path hardcoded relative to
+            // this file's own location, which would silently break if
+            // Whakerexa's install location changes.
+            const { KeyPiano } = await import(`${wexa_statics_js}/extras/keypiano/keypiano.js`);
+            this.#soundPiano = new KeyPiano(pianoContainer);
+        }
+
+        const validateButton = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_VALIDATE);
+        if (validateButton instanceof HTMLButtonElement) {
+            validateButton.addEventListener('click', () => this.#onSoundPianoValidate(dialog));
+        }
+
+        const cancelButton = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_CANCEL);
+        if (cancelButton instanceof HTMLButtonElement) {
+            cancelButton.addEventListener('click', () => window.Wexa.dialog.close(dialog.id));
+        }
+
+        // Restores focus on the button that opened the dialog: neither the
+        // native <dialog> close (Escape) nor DialogManager's injected close
+        // button do this on their own, and a screen reader user closing the
+        // dialog must land back where they were, not at the top of the page.
+        dialog.addEventListener('close', () => {
+            if (this.#soundPianoOpener instanceof HTMLElement) {
+                this.#soundPianoOpener.focus();
+            }
+        });
     }
 
     // ----------------------------------------------------------------------
@@ -385,8 +357,20 @@ export default class TextCueSManager extends BaseManager {
      * @returns {void}
      */
     #onPronunciationTableClick(event) {
-        const target = event.target;
+        // event.target is whatever element was actually under the pointer:
+        // for the icon-only piano toggle, that can be its inline <svg> or
+        // one of its <circle> children, neither an HTMLButtonElement --
+        // closest("button") walks back up to the real button regardless of
+        // which of its descendants was hit.
+        const target = event.target.closest('button');
         if (!(target instanceof HTMLButtonElement)) {
+            return;
+        }
+
+        if (target.matches(TextCueSManager.#SEL_SOUND_PIANO_TOGGLE) === true) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.#openSoundPiano(target);
             return;
         }
 
@@ -399,6 +383,73 @@ export default class TextCueSManager extends BaseManager {
         event.stopPropagation();
 
         this.#selectPronunciationChoiceButton(target);
+    }
+
+    // ----------------------------------------------------------------------
+
+    /**
+     * Open the shared phoneme-piano dialog for the clicked row.
+     *
+     * The staging field is preloaded with the row's current value (so
+     * re-opening resumes an earlier entry rather than always starting
+     * blank), and the piano's own undo history is reset (KeyPiano.setTarget()
+     * on its own, unchanged, target field) so a partial entry from a
+     * previous row never leaks into this one.
+     *
+     * @param {HTMLButtonElement} toggle - The row's "Phoneme keyboard" button.
+     * @returns {void}
+     */
+    #openSoundPiano(toggle) {
+        const dialog = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_DIALOG);
+        if (!(dialog instanceof HTMLDialogElement)) {
+            WexaLogger.error('TextCueSManager: sound piano dialog not found.');
+            return;
+        }
+
+        this.#soundPianoOpener = toggle;
+        this.#soundPianoRealTargetId = toggle.dataset.targetInput;
+
+        const tokenElt = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_TOKEN);
+        if (tokenElt instanceof HTMLElement) {
+            tokenElt.textContent = toggle.dataset.token ?? '';
+        }
+
+        const realField = document.getElementById(this.#soundPianoRealTargetId);
+        const stagingField = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_STAGING);
+        if (realField instanceof HTMLInputElement && stagingField instanceof HTMLInputElement) {
+            stagingField.value = realField.value;
+        }
+
+        if (this.#soundPiano !== null) {
+            this.#soundPiano.setTarget(TextCueSManager.#ID_SOUND_PIANO_STAGING);
+        }
+
+        window.Wexa.dialog.open(dialog.id, true);
+    }
+
+    // ----------------------------------------------------------------------
+
+    /**
+     * Apply the staging field's value to the row that opened the dialog, and close it.
+     *
+     * A real "input" event is dispatched on the row's field, exactly as a
+     * keystroke would: the pronunciation table's own "input" listener
+     * (#onPronunciationTableInput) reacts to it the same way either way
+     * (e.g. deselecting the row's choice buttons).
+     *
+     * @param {HTMLDialogElement} dialog
+     * @returns {void}
+     */
+    #onSoundPianoValidate(dialog) {
+        const stagingField = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_STAGING);
+        const realField = document.getElementById(this.#soundPianoRealTargetId);
+
+        if (stagingField instanceof HTMLInputElement && realField instanceof HTMLInputElement) {
+            realField.value = stagingField.value;
+            realField.dispatchEvent(new Event('input', {bubbles: true}));
+        }
+
+        window.Wexa.dialog.close(dialog.id);
     }
 
     // ----------------------------------------------------------------------
@@ -764,30 +815,23 @@ export default class TextCueSManager extends BaseManager {
     /**
      * Return the 3 model selects of the code options form.
      *
-     * It validates the presence and types of the selects. If one is missing or not a select, null is returned.
+     * Each field is independently null when the corresponding <select> is
+     * absent or not a select (e.g. a simplified interface without model
+     * choices): unlike an all-or-nothing null, callers can still act on
+     * whichever selects are actually present.
      *
      * @param {HTMLFormElement} form
-     * @returns {{positionSelect: HTMLSelectElement, angleSelect: HTMLSelectElement, timingSelect: HTMLSelectElement}|null}
+     * @returns {{positionSelect: HTMLSelectElement|null, angleSelect: HTMLSelectElement|null, timingSelect: HTMLSelectElement|null}}
      */
     #getModelSelects(form) {
         const positionSelect = form.querySelector('#' + TextCueSManager.#ID_SELECT_POSITION_MODEL);
         const angleSelect = form.querySelector('#' + TextCueSManager.#ID_SELECT_ANGLE_MODEL);
         const timingSelect = form.querySelector('#' + TextCueSManager.#ID_SELECT_TIMING_MODEL);
 
-        if (!(positionSelect instanceof HTMLSelectElement)) {
-            return null;
-        }
-        if (!(angleSelect instanceof HTMLSelectElement)) {
-            return null;
-        }
-        if (!(timingSelect instanceof HTMLSelectElement)) {
-            return null;
-        }
-
         return {
-            positionSelect: positionSelect,
-            angleSelect: angleSelect,
-            timingSelect: timingSelect
+            positionSelect: positionSelect instanceof HTMLSelectElement ? positionSelect : null,
+            angleSelect: angleSelect instanceof HTMLSelectElement ? angleSelect : null,
+            timingSelect: timingSelect instanceof HTMLSelectElement ? timingSelect : null
         };
     }
 
@@ -796,32 +840,28 @@ export default class TextCueSManager extends BaseManager {
     /**
      * Enable/disable selects according to display mode.
      *
+     * Silently skips any select that is not present in the form.
+     *
      * @param {HTMLFormElement} form
      * @param {number} mode 0, 1 or 2.
      * @returns {void}
      */
     #applyDisplayModeToSelects(form, mode) {
-        const selects = this.#getModelSelects(form);
-        if (selects === null) {
-            return;
-        }
-        const positionSelect = selects.positionSelect;
-        const angleSelect = selects.angleSelect;
-        const timingSelect = selects.timingSelect;
+        const { positionSelect, angleSelect, timingSelect } = this.#getModelSelects(form);
 
         // UI constraints derived from display mode.
-        if (mode === 0) {
-            positionSelect.disabled = true;
-            angleSelect.disabled = true;
-            timingSelect.disabled = true;
-        } else if (mode === 1) {
-            positionSelect.disabled = false;
-            angleSelect.disabled = false;
-            timingSelect.disabled = true;
-        } else if (mode === 2) {
-            positionSelect.disabled = false;
-            angleSelect.disabled = false;
-            timingSelect.disabled = false;
+        const positionDisabled = mode === 0;
+        const angleDisabled = mode === 0;
+        const timingDisabled = mode === 0 || mode === 1;
+
+        if (positionSelect !== null) {
+            positionSelect.disabled = positionDisabled;
+        }
+        if (angleSelect !== null) {
+            angleSelect.disabled = angleDisabled;
+        }
+        if (timingSelect !== null) {
+            timingSelect.disabled = timingDisabled;
         }
     }
 
@@ -868,18 +908,30 @@ export default class TextCueSManager extends BaseManager {
         if (!(checkedMode instanceof HTMLInputElement)) {
             return;
         }
-        const selects = this.#getModelSelects(form);
-        if (selects === null) {
-            return;
-        }
-        const positionSelect = selects.positionSelect;
-        const angleSelect = selects.angleSelect;
-        const timingSelect = selects.timingSelect;
+        // -1 signals "no selection": the corresponding <select> is absent
+        // from the form (e.g. a simplified interface). It is not this
+        // interface's role to invent a default: the server decides the
+        // default of each model on its own.
+        const { positionSelect, angleSelect, timingSelect } = this.#getModelSelects(form);
 
         data['mode'] = String(parseInt(checkedMode.value, 10));
-        data['model_pos'] = String(parseInt(positionSelect.value, 10));
-        data['model_angle'] = String(parseInt(angleSelect.value, 10));
-        data['model_timing'] = String(parseInt(timingSelect.value, 10));
+        data['model_pos'] = positionSelect !== null ? String(parseInt(positionSelect.value, 10)) : '-1';
+        data['model_angle'] = angleSelect !== null ? String(parseInt(angleSelect.value, 10)) : '-1';
+        data['model_timing'] = timingSelect !== null ? String(parseInt(timingSelect.value, 10)) : '-1';
+
+        // Keep the "Start Over" form (pathway_form) hidden inputs in sync:
+        // this AJAX call only refreshes displaymode_section, so without this,
+        // "Start Over" would keep submitting the mode/model values from the
+        // page's initial load instead of the ones just applied here.
+        const pathwayForm = document.getElementById(TextCueSManager.#ID_PATHWAY_FORM);
+        if (pathwayForm instanceof HTMLFormElement) {
+            for (const name of ['mode', 'model_pos', 'model_angle', 'model_timing']) {
+                const hiddenInput = pathwayForm.querySelector(`input[type="hidden"][name="${name}"]`);
+                if (hiddenInput instanceof HTMLInputElement) {
+                    hiddenInput.value = data[name];
+                }
+            }
+        }
 
         // If nothing changed: stop here (no request, no DOM update).
         if (
@@ -896,16 +948,26 @@ export default class TextCueSManager extends BaseManager {
             event_name: TextCueSManager.#EVENT_NAME_DISPLAYMODE,
             event_value: data
         };
-        const response = await this.postEvents(events);
+
+        // Video generation can take a long time. Give feedback and prevent
+        // re-submit while the request is in flight.
+        const submitButton = form.querySelector('button[type="submit"]');
+        this._setButtonBusy(submitButton, true);
+        let response;
+        try {
+            response = await this.postEvents(events);
+        } finally {
+            this._setButtonBusy(submitButton, false);
+        }
 
         // Update only if server returned a non-empty content.
         if (this._requestManager.status === 200) {
 
             if (response && response.error) {
-                this._showDialog(TextCueSManager.#ID_ERROR_DIALOG, response.error)
+                this._showDialog(BaseCuesManager.ID_ERROR_DIALOG, response.error)
             }
             if (response && response.info) {
-                this._showDialog(TextCueSManager.#ID_INFO_DIALOG, response.info)
+                this._showDialog(BaseCuesManager.ID_INFO_DIALOG, response.info)
             }
 
             if (response && typeof response.content === 'string' && response.content.trim().length > 0) {

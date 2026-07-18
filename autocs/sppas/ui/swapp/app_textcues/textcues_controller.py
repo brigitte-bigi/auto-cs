@@ -33,7 +33,7 @@
 import traceback
 import logging
 
-from .textcues_msg import MSG_ERROR_NO_TEXT
+from .textcues_msg import MSG_INFO_NO_TEXT
 from .textcues_msg import MSG_ERROR_NO_PRON
 from .textcues_msg import MSG_ERROR_EMPTY_PRON
 from .textcues_msg import MSG_ERROR_INVALID_FORMAT
@@ -90,14 +90,28 @@ class TextCueSController:
 
         """
         # First access to the app: no previous record.
+        # The welcome form navigates here with only "lang" (a plain GET
+        # query, parsed into "data" the very same way a POST body is): no
+        # "pathway" yet, but a language has just been chosen, distinct from
+        # a bare first access (no "lang" either), which starts from scratch.
         if "pathway" not in data:
             self.__record = self.__record_controller.init_record()
+            if "lang" in data:
+                self.__record.lang = data["lang"]
+                try:
+                    self.__model.set_lang(self.__record.lang)
+                except Exception as e:
+                    logging.exception(e)
+                    self.__record.set_extra("error", str(e))
+                # Refreshed now that the model knows the language (e.g. the
+                # Sound page's consonant/vowel inventories).
+                self.__record_controller.set_record_extras(self.__record)
             return
 
         # Fill in the record with the received data. Preserves options if any.
         self.__record = self.__record_controller.populate_record(self.__record, data)
-        self.__record_controller.set_record_extras(self.__record)
         self.__model.set_lang(self.__record.lang)
+        self.__record_controller.set_record_extras(self.__record)
 
         if self.__record.pathway == "":
             return
@@ -105,9 +119,6 @@ class TextCueSController:
         # The current page is "pathway_text". The user filled in the lang & text.
         # Launch the model for normalization and phonetization.
         if self.__record.pathway == PathwayTextView.get_id():
-            if self.__record.text is None:
-                self.__record.pathway = ""
-                return
             self._handle_pathway_text()
 
         # The current page is "pathway_sound".
@@ -239,23 +250,24 @@ class TextCueSController:
         Any exception is caught and an error message is stored in the record extras.
 
         """
-        try:
-            if self.__record.text is not None:
+        if self.__record.text is None:
+            # Not an error: the user just didn't type anything yet.
+            self.__record.extras["info"] = MSG_INFO_NO_TEXT
+
+        else:
+            try:
                 # Ask the model to annotate and get the normalization and
                 # phonetization with pronunciation variants
                 _tokens, _prons = self.__model.pathway_text(self.__record.text)
                 self.__record.textnorm = _tokens
                 self.__record.textprons = _prons
 
-            else:
-                raise Exception(MSG_ERROR_NO_TEXT)
-
-        except Exception as e:
-            logging.error(traceback.format_exc())
-            self.__record.extras["error"] = str(e)
+            except Exception as e:
+                logging.error(traceback.format_exc())
+                self.__record.extras["error"] = str(e)
 
         # Invalidate the previously estimated results
-        if "error" in self.__record.extras:
+        if "error" in self.__record.extras or "info" in self.__record.extras:
             self.__record.reset_results()
 
     # -----------------------------------------------------------------------
@@ -286,7 +298,7 @@ class TextCueSController:
                     self.__record.phonetize
                 )
         except Exception as e:
-            logging.error(traceback.format_exc())
+            logging.exception(e)
             self.__record.set_extra("error", str(e))
 
     # -----------------------------------------------------------------------
@@ -299,36 +311,69 @@ class TextCueSController:
         an error message is stored in the record extras under the key 'error'. If no exception
         occurs, the generated result is stored under the key 'cuedresult'.
 
+        The position/angle/timing models are backfilled from their own defaults (defined by
+        the underlying Cued Speech prediction systems, not invented here) whenever the record
+        does not yet have a value -- regardless of the display mode, so the options form
+        always reflects what would actually be used.
+
         """
+        if self.__record.model_pos is None or self.__record.model_angle is None \
+                or self.__record.model_timing is None:
+            _default_pos, _default_angle, _default_timing = self.__model.get_default_models()
+            if self.__record.model_pos is None:
+                self.__record.model_pos = _default_pos
+            if self.__record.model_angle is None:
+                self.__record.model_angle = _default_angle
+            if self.__record.model_timing is None:
+                self.__record.model_timing = _default_timing
+
+        # Tested once per pathway: a positive result is carried forward by
+        # the record and never re-tested (it can only get more expensive to
+        # re-check); a negative result is cheap to re-check (immediate raise).
+        if self.__record.overlay_status != TextCueSRecord.REASON_AVAILABLE:
+            self.__record.overlay_status = self.__model.test_overlay_available()
+        if self.__record.video_status != TextCueSRecord.REASON_AVAILABLE:
+            self.__record.video_status = self.__model.test_video_available()
+
         try:
             # Overlay image: shape over the face at the expected position
             if self.__record.mode == 1:
-                _result = self.__model.pathway_code_overlay(
+                # The result is a tuple with image filenames
+                _result, _pos_used, _angle_used = self.__model.pathway_code_overlay(
                     self.__record.cuedkeys,
+                    self.__record.cuedphons,
                     self.__record.model_pos,
                     self.__record.model_angle
                 )
+                self.__record.model_pos = _pos_used
+                self.__record.model_angle = _angle_used
 
             # Video with hand motion
             elif self.__record.mode == 2:
-                _result = self.__model.pathway_code_video(
+                # The result is a video filename
+                _result, _pos_used, _angle_used, _timing_used = self.__model.pathway_code_video(
                     self.__record.cuedkeys,
+                    self.__record.cuedphons,
                     self.__record.model_pos,
                     self.__record.model_angle,
                     self.__record.model_timing
                 )
+                self.__record.model_pos = _pos_used
+                self.__record.model_angle = _angle_used
+                self.__record.model_timing = _timing_used
 
-            # Separated images: shape + position
+            # Default: Separated images with shape + position
             else:
+                # The result is a tuple of tuples(image filename shape, image filename position)
                 _result = self.__model.pathway_code_images(
                     self.__record.cuedkeys
                 )
 
             # Check the estimated result
-            if self.__record.mode in (1, 2) and len(_result) != len(self.__record.cuedkeys):
-                raise Exception("The number of cued tokens does not match the number of tokens. "
-                                "Expected {:d}, got {:d}."
-                                "".format(len(self.__record.cuedkeys), len(_result)))
+            # if self.__record.mode != 2 and len(_result) != len(self.__record.cuedkeys):
+            #    raise Exception("The number of cued tokens does not match the number of tokens. "
+            #                    "Expected {:d}, got {:d}."
+            #                    "".format(len(self.__record.cuedkeys), len(_result)))
             # Normal: store the result for the view
             self.__record.extras["cuedresult"] = _result
 
@@ -336,7 +381,7 @@ class TextCueSController:
             self.__record.set_extra("info", MSG_YOYO_NOT_YET)
 
         except Exception as e:
-            logging.error(traceback.format_exc())
+            logging.exception(e)
             self.__record.set_extra("error", str(e))
 
         else:

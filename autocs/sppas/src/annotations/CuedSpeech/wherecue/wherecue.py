@@ -203,7 +203,7 @@ class sppasWhereCuePredictor(object):
         tier_pos_probas = self.__gentargets.positions_discretization(tier_pos_coords, tier_pos_transitions)
         tier_shp_probas = self.__gentargets.shapes_discretization(tier_pos_coords, tier_shapes_transitions)
 
-        # Predict coordinated of the target point, for each face in the list
+        # Predict coordinates of the target point, for each face in the list
         tier_target_coords = self.__gentargets.hands_to_target_coords(tier_pos_probas, tier_pos_coords)
 
         # Predict the angle of the arm, for each face in the list
@@ -236,13 +236,15 @@ class sppasWhereCuePredictor(object):
         :param filename: (str) Filename of the XRA/CSV with sights
         :param kid_index: (int) index of the kid to get sights
         :raises: sppasWhereCuedSightsValueError: there are sights but there are not of the expected size
-        :raises: Exception:
+        :raises: sppasIOError: Invalid sights
         :return: (list)
 
         """
         # Sights of each image previously estimated on a video
         # Open the file with sights coordinates dans load all its data
         data = sppasSightsVideoReader(filename)
+        if len(data.sights) != len(data.midpoints):
+            raise sppasIOError("The sights file is not valid.")
         cur_sights = self.__get_current_sights(data, kid_index)
 
         # Fill-in the data with sights of the given kid
@@ -251,7 +253,7 @@ class sppasWhereCuePredictor(object):
             midpoint = data.midpoints[i]
             if midpoint is None:
                 # This should never happen... but we can never say never...
-                raise Exception("No time point value at index {:d}.".format(i))
+                raise sppasIOError("No time point value at index {:d}.".format(i))
 
             # Get the current sights [only if available]
             if 0 < len(kids_sights) <= kid_index + 1:
