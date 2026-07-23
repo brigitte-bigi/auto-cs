@@ -1,14 +1,14 @@
 """
-:filename: sppas.ui.swapp.spinoff.twincues.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_textcues.models.pathway_sound_model.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Spin-off declaration for the web-based application "TwinCueS" of Auto-CS.
+:summary: Perform Alignement and Cued Speech on given phonetized text.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-    Copyright (C) 2024-2026  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -30,5 +30,19 @@
 
 """
 
-from .splics.discovery.app_twincues import TwinCueSWebData
-SWAPP_CLASS = TwinCueSWebData
+from __future__ import annotations
+
+from sppas.src.annotations.CuedSpeech.whatkey import CueingWordKeys
+
+# ---------------------------------------------------------------------------
+
+
+class PathwaySoundModel(CueingWordKeys):
+    """Generates cuedspeech result for given (tokens, prons).
+
+    The implementation lives in
+    :class:`sppas.src.annotations.CuedSpeech.whatkey.CueingWordKeys`. This
+    class is kept for backward compatibility of the TextCueS application.
+
+    """
+    pass

@@ -1,14 +1,14 @@
 """
-:filename: sppas.ui.swapp.spinoff.twincues.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_twincues.models.cues2words_model.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Spin-off declaration for the web-based application "TwinCueS" of Auto-CS.
+:summary: Return, for a given cue, the words sharing it.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-    Copyright (C) 2024-2026  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -30,5 +30,34 @@
 
 """
 
-from .splics.discovery.app_twincues import TwinCueSWebData
-SWAPP_CLASS = TwinCueSWebData
+from __future__ import annotations
+
+# ---------------------------------------------------------------------------
+
+
+class Cues2WordsModel:
+    """Return the words sharing a given cue.
+
+    """
+
+    def __init__(self, cue_index: dict):
+        """Create a new instance.
+
+        :param cue_index: (dict) cue -> tuple of (word, pronunciation)
+
+        """
+        self.__cue_index = cue_index
+
+    # -----------------------------------------------------------------------
+
+    def convert(self, cue: str) -> tuple:
+        """Return the words sharing the given cue.
+
+        :param cue: (str) Cue to be converted.
+        :return: (tuple) {"word": str, "pron": str}, one entry per matching word.
+
+        """
+        _cue = cue.strip()
+        _entries = self.__cue_index.get(_cue, tuple())
+
+        return tuple({"word": _w, "pron": _p} for _w, _p in _entries)

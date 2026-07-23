@@ -1,8 +1,8 @@
 """
-:filename: sppas.ui.swapp.spinoff.twincues.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.__init__.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Spin-off declaration for the web-based application "TwinCueS" of Auto-CS.
+:summary: The "Discovery" category of the SPLI:CS spin-off.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
@@ -28,7 +28,8 @@
 
     -------------------------------------------------------------------------
 
-"""
+This package gathers the applications of the "Discovery" category: the
+learning module, made of the LPC coding applications (ListCueS, TextCueS,
+TwinCueS, ...). Each of them declares `CATEGORY = DISCOVERY`.
 
-from .splics.discovery.app_twincues import TwinCueSWebData
-SWAPP_CLASS = TwinCueSWebData
+"""

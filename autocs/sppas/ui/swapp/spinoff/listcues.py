@@ -8,7 +8,7 @@
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-    Copyright (C) 2026  Brigitte Bigi, CNRS
+    Copyright (C) 2024-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -30,5 +30,5 @@
 
 """
 
-from ..app_listcues import ListCueSWebData
+from .splics.discovery.app_listcues import ListCueSWebData
 SWAPP_CLASS = ListCueSWebData

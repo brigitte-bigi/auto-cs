@@ -1,14 +1,14 @@
 """
-:filename: sppas.ui.swapp.spinoff.twincues.py
+:filename: sppas.ui.swapp.spinoff.splics.nodes.__init__.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Spin-off declaration for the web-based application "TwinCueS" of Auto-CS.
+:summary: The reusable HTML nodes of the SPLICS spin-off applications.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-    Copyright (C) 2024-2026  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,8 @@
 
     -------------------------------------------------------------------------
 
-"""
+This package contains the HTML building blocks shared by the SPLICS
+spin-off web applications (ListCueS, TextCueS, TwinCueS, ...), grouped by
+role: `buttons/`, `layout/`, `feedback/`, `cues/`.
 
-from .splics.discovery.app_twincues import TwinCueSWebData
-SWAPP_CLASS = TwinCueSWebData
+"""

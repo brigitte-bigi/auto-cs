@@ -1,14 +1,14 @@
 """
-:filename: sppas.ui.swapp.spinoff.twincues.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_twincues.twincues_settings.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Spin-off declaration for the web-based application "TwinCueS" of Auto-CS.
+:summary: Default settings for the web-based application "TwinCueS" of Auto-CS.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
     -------------------------------------------------------------------------
 
-    Copyright (C) 2024-2026  Brigitte Bigi, CNRS
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
     Laboratoire Parole et Langage, Aix-en-Provence, France
 
     This program is free software: you can redistribute it and/or modify
@@ -30,5 +30,22 @@
 
 """
 
-from .splics.discovery.app_twincues import TwinCueSWebData
-SWAPP_CLASS = TwinCueSWebData
+
+class TwinCueSSettings:
+    """Representation of global modifiable settings of TwinCueS."""
+
+    def __init__(self):
+        """Create the settings dictionary."""
+        self.__dict__ = dict(
+            lang="fra",
+        )
+
+    # -----------------------------------------------------------------------
+
+    def __enter__(self):
+        return self
+
+    # -----------------------------------------------------------------------
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
