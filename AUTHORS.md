@@ -14,7 +14,7 @@ of contributing authors.
 
 ## Main author, contributor, maintainer, developer:
 
-* 2011-2026: Brigitte Bigi - <https://sppas.org/bigi/>
+* 2021-2026: Brigitte Bigi - <https://sppas.org/bigi/>
 
 
 ## Contributors:

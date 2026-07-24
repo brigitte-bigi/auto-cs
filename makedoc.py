@@ -22,7 +22,7 @@
 #     dyslexia-friendly font (if provided by the statics).
 #
 # This file is part of Auto-CS tool.
-# Copyright (C) 2022-2026 Brigitte Bigi, CNRS
+# Copyright (C) 2021-2026 Brigitte Bigi, CNRS
 # Laboratoire Parole et Langage, Aix-en-Provence, France.
 #
 # Use of this software is governed by the GNU Affero Public License, version 3.

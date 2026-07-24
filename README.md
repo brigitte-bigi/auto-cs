@@ -358,7 +358,7 @@ described below.
 
 SPPAS-4, launch:
 ```bash
-.sppaspyenv~\Scripts\python sppas\ui\swapp
+sppas-venv\Scripts\python sppas\ui\swapp
 ```
 
 SPPAS-5, launch either sppas.bat, sppas.sh or sppas.app depending on the OS.
@@ -474,7 +474,11 @@ The author declares no conflict of interest.
 ## Funding / Acknowledgements
 
 This research was funded by the FIRAH (Recherche Appliquée sur le Handicap, Applied Disability 
-Research), project APa2022_022.
+Research), project APa2022_022, 2021-2026.
+
+This work received support from the French government under the France 2030 investment plan, 
+as part of the "Initiative d'Excellence d'Aix-Marseille Université" – AMIDEX - AMX-22-RE-AB-022,
+2025-2028.
 
 
 ## Versions
@@ -503,7 +507,7 @@ First release.
 Migrated to Whakerexa 2.0.
 
 
-### 2.0 - Attached to SPPAS-4.31 and SPPAS-5.0
+### 2.0 - Attached to SPPAS-4.31 and SPPAS-5.0 with sppas-5.0.0 source code.
 
 - Deleted textcued app.
 - Introduced **TextCueS** app, described here: <https://hal.science/hal-5511364/>
@@ -512,6 +516,14 @@ See TextCueS -with UI in French- in action at: <https://auto-cuedspeech.org/text
 
 It will be available -with UI in English- asap at: <https://sppas.org/textcues.html>
 
+
+### 2.1 - Attached to SPPAS-5.0 with sppas-5.0.1 source code
+
+- Refactoring to match the new sppas-5.0.1 namespaces.
+- Migrated to Whakerexa 2.4.
+- **TextCueS** app results are provided with 3 different outputs: images (like the 
+  previous version), overlay of images (hand+face) and video. The source code was also refactored.
+- a PoC of two new applications: **ListCueS** and **TwinCueS**.
 
 
 

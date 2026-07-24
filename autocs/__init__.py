@@ -20,6 +20,6 @@ This spin-off name is `Auto-CS` which stands for "Automatic Cued Speech".
 
 """
 
-__version__ = "2.0"
+__version__ = "2.1"
 ___author__ = "Brigitte Bigi"
-__copyright__ = "Copyright (C) 2022-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France"
+__copyright__ = "Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France"
