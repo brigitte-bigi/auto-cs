@@ -70,7 +70,7 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
     """
     
     # The default duration of the silence
-    SILENCE_DURATION = 0.80
+    SILENCE_DURATION = 1.00
     
     # The default duration of a phoneme
     DEFAULT_PHON_DURATION = 0.20
@@ -269,12 +269,17 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         - output: One filename
 
         :param cuedkeys: (tuple) Cued keys of each token.
-        :param cuedphos: (tuple) Phonemes of each key of each token.
+        :param cuedphons: (tuple) Phonemes of each key of each token.
         :raises: sppasError: No time aligned keys/segments created.
         :raises: sppasError: No 'prefix' found. 
         :return: (str) filename
 
         """
+        # Fix basename for files
+        _dirname = self.__generate_temp_basename()
+        os.mkdir(_dirname)
+        logging.info(f"Temporary basename for created files: {_dirname}")
+
         # ------------------------------------------------------------------
         # Predict what and when cueing the given phonemes
         # -----------------------------------------------
@@ -287,22 +292,24 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
 
         # Generate a video from the face, using the tiers duration and a fps value
         # Create a sppasMedia with the created input video
-        _vid_filename, _sights_filename = self._generate_video_and_sights(_duration)
+        _vid_filename, _sights_filename = self._generate_video_and_sights(_dirname, _duration)
         if len(_vid_filename) * len(_sights_filename) == 0:
             raise sppasError(f"No video generated from the given keys {cuedkeys} and phons {cuedphons}, for an expected duration of {_duration} seconds.")
 
         # When? Predict hand shapes and hand positions
         tier_pos_transitions, tier_shapes_transitions = self.__genhand.when_hands(tier_keys, tier_segments)
+        # Adjust positions to correspond to frames of the video
+        adjusted_pos = tier_pos_transitions.copy()
+        # Adjust shapes to correspond to frames of the video
+        adjusted_shapes = tier_shapes_transitions.copy()
+        # Save this file if debug mode
+        self.__save_predicted_tiers(_dirname, [tier_phon, tier_segments, tier_keys, adjusted_pos, adjusted_shapes])
 
         # ------------------------------------------------------------------
         # Predict where the vowels are, relatively to the given sights, where
         # to tag the hand, what is the angle of the hand and its size by
         # predicting S0 and S9 of the hand.
         # ------------------------------------------------------------------
-        # Adjust positions to correspond to frames of the video
-        adjusted_pos = tier_pos_transitions.copy()
-        # Adjust shapes to correspond to frames of the video
-        adjusted_shapes = tier_shapes_transitions.copy()
         # Eval where from the video sights and adjusted pos&shapes
         trs_coords = self.__gencue.predict_where(_sights_filename, adjusted_pos, adjusted_shapes)
         trs_coords.append(tier_phon)
@@ -429,12 +436,15 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         _tier_keys = sppasTier("CS-Keys")
         # Add a silence before starting to code
         _loc = sppasLocation(sppasInterval(sppasPoint(0.), sppasPoint(self.SILENCE_DURATION)))
-        _tier_phons.create_annotation(_loc, sppasLabel(sppasTag("sil")))
+        _tier_phons.create_annotation(_loc, sppasLabel(sppasTag("#")))
         _cur_pos = self.SILENCE_DURATION
-        
+        # Add the corresponding neutral key
+        _cuedkeys = ["0-n"] + list(cuedkeys) + ["0-n"]
+        _cuedphons = ["cnil-vnil"] + list(cuedphons) + ["cnil-vnil"]
+
         # for each coded token
         # --------------------
-        for coded_key_seq, coded_phon_seq in zip(cuedkeys, cuedphons):
+        for coded_key_seq, coded_phon_seq in zip(_cuedkeys, _cuedphons):
             coded_phons = tuple(coded_phon_seq.split(separators.syllables))
             coded_keys = tuple(coded_key_seq.split(separators.syllables))
 
@@ -473,26 +483,23 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
 
         # Add a silence after the code
         _loc = sppasLocation(sppasInterval(sppasPoint(_cur_pos), sppasPoint(_cur_pos + self.SILENCE_DURATION)))
-        _tier_phons.create_annotation(_loc, sppasLabel(sppasTag("sil")))
+        _tier_phons.create_annotation(_loc, sppasLabel(sppasTag("#")))
+        
         return _tier_phons, _tier_sgmts, _tier_keys
 
     # -----------------------------------------------------------------------
 
-    def _generate_video_and_sights(self, duration: float) -> tuple:
+    def _generate_video_and_sights(self, dirname: str, duration: float) -> tuple:
         """Generate a plain face video and a matching sights file for the given duration.
 
+        :param dirname: (str) Basename for saved files.
         :param duration: (float) Expected duration of the video in seconds.
         :return: (tuple) video filename, sights filename.
 
         """
-        # Fix basename for files
-        _dirname = self.__generate_temp_basename()
-        os.mkdir(_dirname)
-        logging.info(f"Temporary basename for created files: {_dirname}")
-
         # Create intermediate objects: image/video
         _w, _h = self._img.size()
-        _vid_filename, _vid_writer = self.__open_video(_dirname, _w, _h)
+        _vid_filename, _vid_writer = self.__open_video(dirname, _w, _h)
 
         # Create intermediate objects: tier/sights
         _tier = sppasTier("VideoCoords")
@@ -519,7 +526,7 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         _vid_media.set_meta("duration", str(duration))
         _vid_media.set_meta("size", str(self._img.size()))
         _tier.set_media(_vid_media)
-        _trs_filename = self.__save_sights(_dirname, _tier) 
+        _trs_filename = self.__save_sights(dirname, _tier)
 
         return _vid_filename, _trs_filename
     
@@ -621,6 +628,24 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         _filename = os.path.join(dirname, self._prefix + ".xra")
         _trs = sppasTranscription(self._prefix)
         _trs.append(tier)
+        _parser = sppasTrsRW(_filename)
+        _parser.write(_trs)
+        return _filename
+
+    # -----------------------------------------------------------------------
+
+    def __save_predicted_tiers(self, dirname: str, tiers: list) -> str:
+        """Save the given tiers to an XRA file and return the filename.
+
+        :param dirname: (str) Directory where the XRA file will be created.
+        :param tiers: (list of sppasTier) Tiers containing the predicted annotations.
+        :return: (str) Absolute path of the created XRA file.
+
+        """
+        _filename = os.path.join(dirname, self._prefix + "-cued.xra")
+        _trs = sppasTranscription(self._prefix)
+        for _tier in tiers:
+            _trs.append(_tier)
         _parser = sppasTrsRW(_filename)
         _parser.write(_trs)
         return _filename
