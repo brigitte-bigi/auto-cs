@@ -206,8 +206,9 @@ class TwinCueSModel:
         if self.__cues2words is None:
             raise ValueError("The 'lang' was not defined in the model.")
 
-        self.__validate_cue_format(cue)
-        return self.__cues2words.convert(cue)
+        # The lookup is made with the cue the validation gives back: the one
+        # entered may carry spaces, and no cue of the index does.
+        return self.__cues2words.convert(self.__validate_cue_format(cue))
 
     # -----------------------------------------------------------------------
 
@@ -317,18 +318,23 @@ class TwinCueSModel:
     # Private
     # -----------------------------------------------------------------------
 
-    def __validate_cue_format(self, cue: str) -> None:
-        """Raise if the given cue does not match the language's key rules.
+    def __validate_cue_format(self, cue: str) -> str:
+        """Return the given cue without its spaces, or raise if it is malformed.
 
         A valid cue is made of one or more '<shape>-<position>' segments,
         separated by '.'. Both the shape and the position must be codes
         defined by the Cued Speech rules of the current language.
 
+        A cue is a sequence of codes: a space carries no meaning in it,
+        wherever it is written. One typed between two segments -- or inside
+        one -- is removed here, and not counted as an error.
+
         :param cue: (str) Cue to be validated.
         :raises: ValueError: The cue is empty or does not match the expected format.
+        :return: (str) The cue, without any space.
 
         """
-        _cue = cue.strip()
+        _cue = "".join(cue.split())
         if len(_cue) == 0:
             raise ValueError(MSG_ERROR_INVALID_CUE.format(cue))
 
@@ -340,6 +346,8 @@ class TwinCueSModel:
             _shape, _position = _parts
             if _shape not in self.__valid_shapes or _position not in self.__valid_positions:
                 raise ValueError(MSG_ERROR_INVALID_CUE.format(cue))
+
+        return _cue
 
     @staticmethod
     def __build_index(sound_model: CueingWordKeys, pdict: sppasDictPron) -> tuple:

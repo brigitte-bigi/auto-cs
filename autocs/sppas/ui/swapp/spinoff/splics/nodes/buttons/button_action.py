@@ -48,8 +48,7 @@ class MenuLinkButtonNode(HTMLNode):
         self.add_attribute("type", "button")
         if len(target_page.strip()) > 0:
             self.add_attribute("data-href", target_page)
-        self.add_attribute("role", "menuitem")
-        self.add_attribute("class", "menu-png-button")
+        self.add_attribute("class", "menuitem")
 
     def set_text(self, text):
         if len(text.strip()) > 0:
@@ -63,22 +62,20 @@ class MenuLinkButtonNode(HTMLNode):
         self.append_child(_img)
         return _img
 
-    def set_svg_icon(self, svg_markup: str, text: str) -> None:
-        """Set an inline SVG icon and its text as the button content.
+    def set_named_icon(self, icon_name: str, text: str) -> None:
+        """Ask for an icon by its name, and write the text of the button.
 
-        Both are combined into a single raw value, matching the pattern
-        already used for the pin/contrast/theme buttons
-        (see wappview.append_accessibility_buttons): mixing a raw XML
-        value with children appended afterwards causes the SVG namespace
-        to be serialized incorrectly (a spurious "ns0:" prefix).
+        The name is written on the button itself, which already carries the
+        meaning: the loader of Whakerexa writes the drawing before the text
+        once the icon sets are declared, and it takes the colour of what
+        surrounds it in every mode and every theme (see icon_demand.js).
 
-        :param svg_markup: (str) Raw, HTML5-safe SVG markup, e.g. from
-               sppasImagesAccess.get_wexa_svg_icon() (which already strips
-               any "ns0:" namespace prefix -- not this method's concern).
+        :param icon_name: (str) Name of an icon of a declared set.
         :param text: (str) The button text.
 
         """
-        self.set_value(svg_markup + "<span>" + text + "</span>")
+        self.add_attribute("data-icon", icon_name)
+        self.set_text(text)
 
 # ---------------------------------------------------------------------------
 

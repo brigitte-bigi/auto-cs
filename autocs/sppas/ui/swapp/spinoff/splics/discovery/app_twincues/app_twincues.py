@@ -73,7 +73,7 @@ class TwinCueSWebData(swappWebData):
     @staticmethod
     def icon() -> str:
         """Return the page icon name."""
-        return splics_paths.icons + "twincues.png"
+        return splics_paths.logos + "twincues.png"
 
     @staticmethod
     def description() -> str:
@@ -84,6 +84,19 @@ class TwinCueSWebData(swappWebData):
     def name() -> str:
         """Return a short name of the application."""
         return "TwinCueS"
+
+    @staticmethod
+    def theme_name() -> str:
+        """Override. Return the theme this application is shown with.
+
+        The applications of SPLI:CS carry the identity of AutoCS, which
+        their view declares to the loader. Saying it here is what tells
+        the Dashboard to launch them without the theme in force on its
+        own page: the colour and the contrast the reader chose still
+        travel, an identity does not.
+
+        """
+        return "splics"
 
     # -----------------------------------------------------------------------
 

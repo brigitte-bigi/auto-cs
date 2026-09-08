@@ -1,0 +1,277 @@
+/*
+:filename: sppas.ui.swapp.statics.spinoff.splics.css.splics_theme.css
+:author: Brigitte Bigi
+:contact: contact@sppas.org
+:summary: Colour theme of the SPLI:CS applications.
+
+.. _This file is part of AutoCS: https://autocs.sourceforge.io/
+.. _Originally developed in SPPAS: https://sppas.org/
+
+    -------------------------------------------------------------------------
+
+    Copyright (C) 2021-2026  Brigitte Bigi, CNRS
+    Laboratoire Parole et Langage, Aix-en-Provence, France
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    This banner notice must not be removed.
+
+    -------------------------------------------------------------------------
+
+This file is a theme: it gives a value to colour variables already declared
+by Whakerexa and by SPPAS, and nothing else. Sizes, weights and radiuses are
+in splics.css.
+
+The colours are the ones of the auto-cuedspeech.org design, ported from its
+acs-theme.css. That design rests on four roles, each with its ground and its
+writing:
+
+  - the page          white ground,  rgb(51, 51, 51) writing
+  - the blocks        cream ground   rgb(255, 249, 227)
+  - what is actioned  peach ground   rgb(255, 231, 209)
+  - what is brought   green ground   rgb(223, 242, 210), with an orange
+    forward                          accent rgb(214, 127, 62)
+
+The dark theme takes the same four roles with its own hues.
+
+What the site names and these applications never show -- its panel of apps,
+its tooltips, the six deepest ranks of its table of contents, its column
+separators -- is not carried here.
+
+:note: Loaded through the link carrying the id "wexa-theme", whose target the
+       ThemeManager of Whakerexa swaps to change theme.
+*/
+
+
+/* =========================================================================
+   VALUES SHARED BY BOTH THEMES
+   ========================================================================= */
+
+:root {
+
+    /* A ground SPPAS paints its own panels with, and which these pages do
+       not show: named so that nothing of SPPAS shows through this theme. */
+    --nav-bg-image: none;
+    --apps-panel-bg-image: none;
+    --links-panel-bg-image: none;
+}
+
+
+/* =========================================================================
+   LIGHT THEME
+   ========================================================================= */
+
+:root:not(.dark) {
+
+    /* ---- The page ----------------------------------------------------- */
+
+    --bg-color: rgb(255, 255, 255);
+    --fg-color: rgb(51, 51, 51);
+    --bg-color-alt: rgb(255, 249, 227);
+    --fg-color-alt: rgb(102, 102, 102);
+    --border-color: rgb(51, 51, 51);
+
+    /* The sections of a page alternate two grounds: layout.css swaps the
+       two hues from one section to the next. */
+    --panel-bg-color-alt: rgb(230, 244, 230);
+    --panel-fg-color-alt: rgb(102, 102, 102);
+
+    /* ---- The cards ---------------------------------------------------- */
+
+    /* layout.css paints a card with --card-bg-color, and falls back on the
+       ground of the blocks when it is not given. The green of what is
+       brought forward tells a card from the page and from a section alike. */
+    --card-bg-color: rgb(223, 242, 210);
+    --card-fg-color: rgb(214, 127, 62);
+    --app-bg-image: rgb(255, 255, 255);
+
+    /* ---- The banner, the footer and the menu --------------------------- */
+
+    /* These three share the green of what is brought forward: they stand
+       out of the page without leaving the range. */
+    /* wexa.css paints the banner with the background property: the texture
+       of the design is held there, laid over the colour of the ground. */
+    --header-bg-color: radial-gradient(rgba(0, 0, 0, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / var(--font-size) var(--font-size), rgb(223, 242, 210);
+    --footer-bg-color: rgb(223, 242, 210);
+    --nav-bg-color: rgb(255, 249, 227);
+    --header-fg-color: rgb(51, 51, 51);
+    --footer-fg-color: rgb(51, 51, 51);
+    --nav-fg-color: rgb(102, 102, 102);
+
+    /* An item of the menu is told from the bar by a veil, and not by a hue
+       of its own: the bar is light here, so the veil is dark. Three depths,
+       for the resting item, the pointed one and the current one. */
+    --nav-item-bg-color: rgba(0, 0, 0, 0.05);
+    --nav-item-bg-color-hover: rgba(0, 0, 0, 0.10);
+    --nav-item-bg-color-current: rgba(0, 0, 0, 0.16);
+    --nav-item-pressed-shadow-color: rgba(0, 0, 0, 0.15);
+
+    /* ---- The buttons --------------------------------------------------- */
+
+    /* Peach ground, nearly black writing and border, green under the
+       pointer. */
+    --buttons-bg-color: rgb(255, 231, 209);
+    --buttons-fg-color: rgb(76, 116, 63);
+    --buttons-bg-color-hover: rgb(223, 242, 210);
+    --progress-bg-color: rgb(49, 85, 49);
+
+    /* ---- The headings, the links and the bullets ----------------------- */
+
+    /* The orange of the design is too pale to carry writing on a light
+       ground: the third and fourth headings and the bullets take a darker
+       version of it, of the same hue and saturation. The links take a blued
+       green, so as not to be read as a first or second heading. */
+    --h1-color: rgb(79, 121, 66);
+    --h2-color: rgb(79, 121, 66);
+    --h3-color: rgb(171, 94, 36);
+    --h4-color: rgb(171, 94, 36);
+    --h5-color: rgb(102, 102, 102);
+    --h6-color: rgb(102, 102, 102);
+    --a-color: rgb(57, 105, 90);
+    --li-color: rgb(171, 94, 36);
+
+    /* ---- The quotations ------------------------------------------------ */
+
+    --blockquote-border-color: rgb(88, 126, 105);
+    --blockquote-footer-color: rgb(88, 126, 105);
+
+    /* ---- The tables ---------------------------------------------------- */
+
+    --table-border-color: rgb(96, 108, 90);
+    --table-row-stripped-bg-color: rgba(184, 203, 208, 0.28);
+    --table-head-bg-color: rgb(202, 212, 204);
+    --table-head-fg-color: rgb(12, 22, 14);
+    --table-caption-bg-color: rgb(201, 227, 174);
+    --table-caption-fg-color: rgb(0, 0, 0);
+
+    /* ---- The table of contents of a page -------------------------------- */
+
+    /* Read by main_swapp.css. The number of each entry carries a ground of
+       its own, one per rank. */
+    --toc-num-fg-color: rgb(255, 255, 255);
+    --toc-num-bg-color: rgb(88, 126, 105);
+    --toc-num-bg-color-1: rgb(65, 128, 65);
+    --toc-num-bg-color-2: rgb(45, 105, 165);
+    --toc-num-bg-color-3: rgb(190, 95, 0);
+    --toc-num-bg-color-4: rgb(112, 145, 43);
+    --toc-num-bg-color-5: rgb(130, 65, 25);
+    --toc-label-color-hover: rgb(175, 85, 0);
+
+    /* ---- Sundry --------------------------------------------------------- */
+
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    /* An image is drawn for another page than the one it is read on, and
+       does not answer for its own edges: wexa.css lays it on a ground the
+       theme has to name. Nearly every one of them is drawn for white, so
+       white is what carries them, in both modes -- veiled enough to let the
+       page show through, opaque enough to hold the drawing. */
+    --img-bg-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================================================
+   DARK THEME
+
+   The same headings, in the same order, to be read beside the light one.
+   ========================================================================= */
+
+@media screen {
+    .dark {
+
+        /* ---- The page --------------------------------------------------- */
+
+        --bg-color: rgb(28, 43, 35);
+        --fg-color: rgb(244, 241, 230);
+        --bg-color-alt: rgb(47, 42, 30);
+        --fg-color-alt: rgb(193, 189, 175);
+        --border-color: rgb(244, 241, 230);
+
+        --panel-bg-color-alt: rgb(47, 42, 30);
+        --panel-fg-color-alt: rgb(193, 189, 175);
+
+        /* ---- The cards -------------------------------------------------- */
+
+        --card-bg-color: rgb(45, 59, 42);
+        --card-fg-color: rgb(230, 162, 112);
+        --app-bg-image: rgb(28, 43, 35);
+
+        /* ---- The banner, the footer and the menu ------------------------- */
+
+        --header-bg-color: radial-gradient(rgba(255, 255, 255, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / calc(var(--font-size) * 0.8) calc(var(--font-size) * 0.8), rgb(45, 59, 42);
+        --footer-bg-color: rgb(45, 59, 42);
+        --nav-bg-color: rgb(47, 42, 30);
+        --header-fg-color: rgb(244, 241, 230);
+        --footer-fg-color: rgb(244, 241, 230);
+        --nav-fg-color: rgb(193, 189, 175);
+
+        /* The bar is dark here, so the veil telling an item from it is light. */
+        --nav-item-bg-color: rgba(255, 255, 255, 0.05);
+        --nav-item-bg-color-hover: rgba(255, 255, 255, 0.12);
+        --nav-item-bg-color-current: rgba(255, 255, 255, 0.18);
+        --nav-item-pressed-shadow-color: rgba(255, 255, 255, 0.15);
+
+        /* ---- The buttons ------------------------------------------------- */
+
+        --buttons-bg-color: rgb(75, 47, 31);
+        --buttons-fg-color: rgb(199, 228, 195);
+        --buttons-bg-color-hover: rgb(45, 59, 42);
+        --progress-bg-color: rgb(39, 56, 49);
+
+        /* ---- The headings, the links and the bullets ---------------------- */
+
+        /* On a dark ground the colours of the design are light enough to
+           carry writing: they serve as they are. */
+        --h1-color: rgb(166, 212, 160);
+        --h2-color: rgb(166, 212, 160);
+        --h3-color: rgb(230, 162, 112);
+        --h4-color: rgb(230, 162, 112);
+        --h5-color: rgb(193, 189, 175);
+        --h6-color: rgb(193, 189, 175);
+        --a-color: rgb(166, 212, 160);
+        --li-color: rgb(230, 162, 112);
+
+        /* ---- The quotations ----------------------------------------------- */
+
+        --blockquote-border-color: rgb(24, 57, 43);
+        --blockquote-footer-color: rgb(95, 150, 135);
+
+        /* ---- The tables --------------------------------------------------- */
+
+        --table-border-color: rgb(95, 150, 135);
+        --table-row-stripped-bg-color: rgb(24, 28, 24);
+        --table-head-bg-color: rgb(29, 46, 40);
+        --table-head-fg-color: rgb(202, 212, 204);
+        --table-caption-bg-color: rgb(38, 67, 51);
+        --table-caption-fg-color: rgb(222, 252, 224);
+
+        /* ---- The table of contents of a page ------------------------------ */
+
+        --toc-num-fg-color: rgb(24, 34, 28);
+        --toc-num-bg-color: rgb(95, 150, 135);
+        --toc-num-bg-color-1: rgb(73, 166, 98);
+        --toc-num-bg-color-2: rgb(122, 170, 205);
+        --toc-num-bg-color-3: rgb(232, 160, 75);
+        --toc-num-bg-color-4: rgb(160, 190, 100);
+        --toc-num-bg-color-5: rgb(205, 150, 95);
+        --toc-label-color-hover: rgb(216, 155, 102);
+
+        /* ---- Sundry --------------------------------------------------------- */
+
+        --shadow-color: rgba(255, 255, 255, 0.1);
+        /* Lighter here than in the light theme: on a dark page the same
+           veil reads as a plate of its own. */
+        --img-bg-color: rgba(255, 255, 255, 0.3);
+    }
+}

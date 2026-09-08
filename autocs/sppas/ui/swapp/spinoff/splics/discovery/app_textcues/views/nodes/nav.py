@@ -31,12 +31,13 @@
 """
 
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
-from sppas.ui.swapp.wappcore.wapputils import sppasImagesAccess
+from sppas.ui.swapp.wappcore.wappsg import wapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import MenuLinkButtonNode
 
 from ...textcues_msg import MSG_ACS_PROJECT
 from ...textcues_msg import MSG_HOME
+from ...textcues_msg import MSG_APP_TITLE
 
 # -----------------------------------------------------------------------
 
@@ -58,7 +59,7 @@ class NavUtils:
         "link-acs_button",
             "https://auto-cuedspeech.org/"
         )
-        _acs.set_icon(None, splics_paths.icons + "ACS_project.png")
+        _acs.set_icon(None, splics_paths.logos + "ACS_project.png")
         _acs.set_text(MSG_ACS_PROJECT)
         parent.append_child(_acs)
 
@@ -74,11 +75,36 @@ class NavUtils:
         _home = MenuLinkButtonNode(
             parent.identifier,
             "link-welcome_button",
-            "index.html"
+            wapp_settings.default_page()
         )
         # Handled by whakerexa's LinkController (see links.js): "_self"
         # navigates in the current tab, unlike the default "_blank".
         _home.add_attribute("data-target", "_self")
-        _home.set_svg_icon(sppasImagesAccess.get_wexa_svg_icon("house"), MSG_HOME)
+        _home.set_named_icon("house", MSG_HOME)
         parent.append_child(_home)
+
+    # -----------------------------------------------------------------------
+
+    @staticmethod
+    def append_app_link_button(parent: TagNode) -> None:
+        """Create and append the link button leading back to the application.
+
+        The place of an application is the menu, beside the other places the
+        reader can go, and not the banner: a logo written there is read as a
+        picture of the page, not as somewhere to go.
+
+        :param parent: (TagNode) Parent node
+
+        """
+        _app = MenuLinkButtonNode(
+            parent.identifier,
+            "link-app_button",
+            "textcues.html"
+        )
+        # Handled by whakerexa's LinkController (see links.js): "_self"
+        # navigates in the current tab, unlike the default "_blank".
+        _app.add_attribute("data-target", "_self")
+        _app.set_icon(None, splics_paths.logos + "textcues.png")
+        _app.set_text(MSG_APP_TITLE)
+        parent.append_child(_app)
 

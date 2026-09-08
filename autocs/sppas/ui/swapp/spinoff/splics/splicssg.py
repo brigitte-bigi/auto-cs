@@ -67,7 +67,7 @@ class splicsPathSettings:
             statics=statics,
             css=statics + "css/",
             js=statics + "js/",
-            icons=statics + "icons/",
+            logos=statics + "logos/",
             images=statics + "images/"
         )
 

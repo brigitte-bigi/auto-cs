@@ -39,10 +39,9 @@ from whakerpy.htmlmaker import TagNode
 from sppas.ui import _
 from sppas.ui.swapp.wappcore.wappsg import wapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
-from sppas.ui.swapp.wappcore.wapputils import sppasImagesAccess
 from sppas.ui.swapp.wappbase.wappview import swappBaseView
 from sppas.ui.swapp.wappbase.wappview import JS_INIT
-from sppas.ui.swapp.wappbase.wappview import JS_WEXA_ONLOAD
+from sppas.ui.swapp.wappbase.wappview import JS_BOOT_PAGE
 
 from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import FooterNode
 from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import MenuLinkButtonNode
@@ -109,11 +108,29 @@ class ListCueSView(swappBaseView):
 
         # CSS
         # ----
-        self._htree.head.link(rel="logo icon", href=splics_paths.icons + "listcues.png")
-        self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/dialog.css", link_type="text/css")
+        self._htree.head.link(rel="logo icon", href=splics_paths.logos + "listcues.png")
+        # dialog.css is already linked by the head, before the sheets of SPPAS.
+        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/togglegroup.css", link_type="text/css")
         self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
-        self._htree.head.link("stylesheet", splics_paths.css + "app_cues.css", link_type="text/css")
+        self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
+        # The identity of SPLI:CS, brought to the themes the page cycles
+        # through and named as its default: the cycle of the button then
+        # reads splics, swapp, and the themes of Whakerexa after them. No
+        # other application of SPPAS is touched -- each head carries its own
+        # declaration.
+        self._htree.head.add_theme("splics", "/" + splics_paths.css + "splics_theme.css")
+        self._htree.head.set_default_theme("splics")
+        # The theme carries the id the ThemeManager swaps the href of: without
+        # it, a second link is created and the themes accumulate. It names the
+        # sheet of the default, so that the first paint is already in the
+        # identity, before any script has run.
+        theme_css = HTMLNode(self._htree.head.identifier, None, "link")
+        theme_css.add_attribute("id", "wexa-theme")
+        theme_css.add_attribute("rel", "stylesheet")
+        theme_css.add_attribute("href", splics_paths.css + "splics_theme.css")
+        theme_css.add_attribute("type", "text/css")
+        self._htree.head.append_child(theme_css)
+        self._htree.head.link("stylesheet", splics_paths.css + "splics.css", link_type="text/css")
 
         # JS
         # ----
@@ -124,9 +141,10 @@ class ListCueSView(swappBaseView):
         script.add_attribute("type", "module")
         self._htree.head.append_child(script)
 
-        # JS of the application -- used to load the menu manager.
+        # What the page starts once the loader is done. Not a module: the
+        # loader looks for the function on the window.
         script = HTMLNode(self._htree.head.identifier, None, "script",
-                          value=JS_WEXA_ONLOAD, attributes={'type': "module"})
+                          value=JS_BOOT_PAGE)
         self._htree.head.append_child(script)
 
     # -----------------------------------------------------------------------
@@ -149,16 +167,6 @@ class ListCueSView(swappBaseView):
         _c.set_attribute("id", "link-title-header")
         self._htree.body_header.append_child(_c)
 
-        # Application logo
-        home_link = TagNode(_c.identifier, None, "a")
-        home_link.set_attribute("href", "listcues.html")
-        home_link.set_attribute("role", "button")
-        logo = EmptyNode(home_link.identifier, None, "img")
-        logo.set_attribute("src", splics_paths.icons + "listcues.png")
-        logo.set_attribute("id", "home-link-logo")
-        home_link.append_child(logo)
-        _c.append_child(home_link)
-
         # Application title
         h1 = HTMLNode(_c.identifier, None, "h1", value=title)
         _c.append_child(h1)
@@ -178,15 +186,25 @@ class ListCueSView(swappBaseView):
         self._htree.body_nav.append_child(_s)
 
         _s = TagNode(self._htree.body_nav.identifier, None, "section")
-        _home = MenuLinkButtonNode(_s.identifier, "link-welcome_button", "index.html")
+        # The place of the application is the menu, beside the other places
+        # the reader can go, and not the banner: a logo written there is read
+        # as a picture of the page, not as somewhere to go.
+        _app = MenuLinkButtonNode(_s.identifier, "link-app_button", "listcues.html")
+        _app.add_attribute("data-target", "_self")
+        _app.set_icon(None, splics_paths.logos + "listcues.png")
+        _app.set_text(MSG_APP_TITLE)
+        _s.append_child(_app)
+
+        _home = MenuLinkButtonNode(_s.identifier, "link-welcome_button",
+                                   wapp_settings.default_page())
         # Handled by whakerexa's LinkController (see links.js): "_self"
         # navigates in the current tab, unlike the default "_blank".
         _home.add_attribute("data-target", "_self")
-        _home.set_svg_icon(sppasImagesAccess.get_wexa_svg_icon("house"), MSG_HOME)
+        _home.set_named_icon("house", MSG_HOME)
         _s.append_child(_home)
 
         _acs = MenuLinkButtonNode(_s.identifier, "link-acs_button", "https://auto-cuedspeech.org/")
-        _acs.set_icon(None, splics_paths.icons + "ACS_project.png")
+        _acs.set_icon(None, splics_paths.logos + "ACS_project.png")
         _acs.set_text(MSG_ACS_PROJECT)
         _s.append_child(_acs)
 

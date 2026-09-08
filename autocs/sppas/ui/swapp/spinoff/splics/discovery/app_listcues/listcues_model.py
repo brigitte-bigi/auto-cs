@@ -275,12 +275,16 @@ class ListCueSModel:
         by '.'. Both the shape and the position must be codes defined by the
         Cued Speech rules of the current language.
 
+        A cue is a sequence of codes: a space carries no meaning in it,
+        wherever it is written. One typed between two segments -- or inside
+        one -- is removed here, and not counted as an error.
+
         :param cue: (str) Cue to be validated and parsed.
         :raises: ValueError: The cue is empty, malformed, or has too many keys.
         :return: (tuple) Sequence of (shape, position) tuples.
 
         """
-        _cue = cue.strip()
+        _cue = "".join(cue.split())
         if len(_cue) == 0:
             raise ValueError(MSG_ERROR_INVALID_CUE.format(cue))
 

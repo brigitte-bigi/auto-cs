@@ -33,7 +33,6 @@
 from __future__ import annotations
 from whakerpy.htmlmaker import HTMLNode
 
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
 
 from ...textcues_msg import MSG_SOUND_PIANO_TITLE
 from ...textcues_msg import MSG_SOUND_PIANO_PREVIEW
@@ -103,7 +102,6 @@ class SoundPianoDialogNode(HTMLNode):
         _piano.add_attribute("data-target", STAGING_FIELD_ID)
         _piano.add_attribute("data-group-sep", "-")
         _piano.add_attribute("data-key-sep", "-")
-        _piano.add_attribute("data-icons-path", wapp_settings.wexa_statics + "icons/mono-svg")
         self.append_child(_piano)
 
         self.__append_free_group(_piano, MSG_PIANO_CONSONANTS_GROUP, consonants)

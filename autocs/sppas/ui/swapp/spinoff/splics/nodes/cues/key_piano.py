@@ -35,7 +35,6 @@ from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker import EmptyNode
 
 from sppas.core.coreutils import msg
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
 
 from .illustration import CuedIllustration
 
@@ -82,9 +81,6 @@ class KeyPianoNode(HTMLNode):
         super(KeyPianoNode, self).__init__(parent_id, "cue_piano", "div")
         self.add_attribute("class", "wexa-key-piano")
         self.add_attribute("data-target", target_id)
-        # A proven-correct URL prefix (already used for this app's own CSS/JS
-        # links to whakerexa): more robust than a JS-side relative computation.
-        self.add_attribute("data-icons-path", wapp_settings.wexa_statics + "icons/mono-svg")
 
         self.__append_group(MSG_PIANO_SHAPE_GROUP, shape_keys, CuedIllustration.yoyo_hand_image)
         self.__append_group(MSG_PIANO_POSITION_GROUP, position_keys, CuedIllustration.yoyo_face_image)
@@ -128,7 +124,7 @@ class KeyPianoNode(HTMLNode):
         _key = HTMLNode(group.identifier, None, "label")
         # "wexa-key-piano-key": whakerexa mechanics (hides the radio, shows the
         # checked/disabled state). "coded-key": TextCueS's own box styling
-        # (app_cues.css), reused as-is for the exact same look.
+        # (splics.css), reused as-is for the exact same look.
         _key.add_attribute("class", "wexa-key-piano-key coded-key")
         _key.add_attribute("aria-label", f"{MSG_KEY_PHONES}: {_phones}, {MSG_KEY_CODE} :{code}")
         group.append_child(_key)

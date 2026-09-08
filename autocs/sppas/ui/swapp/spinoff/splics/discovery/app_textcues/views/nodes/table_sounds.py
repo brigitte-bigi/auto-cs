@@ -35,7 +35,6 @@ from sppas.core.config import separators
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker import EmptyNode
 
-from sppas.ui.swapp.wappcore.wapputils import sppasImagesAccess
 
 from ...textcues_msg import MSG_TOKENS
 from ...textcues_msg import MSG_CHOICE_1
@@ -151,11 +150,11 @@ class SoundsTableNode(HTMLNode):
             # this row: opening on a mere focus of the input would violate
             # WCAG 3.2.2 (no unexpected change of context) -- it must be an
             # explicit, separate control (aria-haspopup="dialog"). Icon-only
-            # (inline SVG, same mechanism as the other Whakerexa icon
-            # buttons): the accessible name carries the text instead of a
-            # visible label.
-            _piano_btn = HTMLNode(_cell.identifier, None, "button",
-                                  value=sppasImagesAccess.get_wexa_svg_icon("content"))
+            # (the name is written on the button, the loader of Whakerexa
+            # writes the drawing in): the accessible name carries the text
+            # instead of a visible label.
+            _piano_btn = HTMLNode(_cell.identifier, None, "button")
+            _piano_btn.add_attribute('data-icon', "content")
             _piano_btn.add_attribute('type', "button")
             _piano_btn.add_attribute('class', "sound-piano-toggle")
             _piano_btn.add_attribute('data-target-input', f"{index}-sound_input")

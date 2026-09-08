@@ -258,7 +258,7 @@ class PathwayCodeView(PathwayBaseView):
         _p = HTMLNode(_f.identifier, None, "p", value=MSG_MODE_DISPLAY)
         _f.append_child(_p)
         _container = TagNode(_f.identifier, None, "div")
-        _container.add_attribute("class", "wexa-toggle-group")
+        _container.add_attribute("class", "toggle-group")
         _f.append_child(_container)
         for _i, _msg in enumerate(MSG_MODES):
             if _i == 1 and self._record.overlay_status != TextCueSRecord.REASON_AVAILABLE:
@@ -267,7 +267,7 @@ class PathwayCodeView(PathwayBaseView):
                 continue
 
             _label = HTMLNode(_container.identifier, None, "label")
-            _label.add_attribute("class", "wexa-toggle")
+            _label.add_attribute("class", "menuitem")
             _container.append_child(_label)
 
             _input = EmptyNode(_label.identifier, None, "input")

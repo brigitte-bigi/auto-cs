@@ -47,19 +47,19 @@ FOOTER = """
     <p class="email">contact[at]sppas.org</p>
     <p>
         <a title="ORCID profile" href="https://orcid.org/0000-0003-1834-6918" target="_blank">
-            <img class="socialnet" src="{PATH}/orcid.png" />
+            <img class="socialnet" src="{PATH}orcid.png" />
         </a>
         <a title="HAL profile" href="https://cv.hal.science/brigittebigi" target="_blank">
-            <img class="socialnet" src="{PATH}/idhal.svg" />
+            <img class="socialnet" src="{PATH}idhal.svg" />
         </a>
         <a title="SourceForge profile" href="https://sourceforge.net/u/brigittebigi/profile" target="_blank">
-            <img class="socialnet" src="{PATH}/sf.png" />
+            <img class="socialnet" src="{PATH}sf.png" />
         </a>
         <a title="Pypi.org profile" href="https://pypi.org/user/bigi_lpl/" target="_blank">
-            <img class="socialnet" src="{PATH}/pypi.svg" />
+            <img class="socialnet" src="{PATH}pypi.svg" />
         </a>
         <a title="Google Scholar Profile" href="https://scholar.google.fr/citations?user=eNGX8bUAAAAJ&hl=fr" target="_blank">
-            <img class="socialnet" src="{PATH}/scholar.ico" />
+            <img class="socialnet" src="{PATH}scholar.ico" />
         </a>
     </p>
 
@@ -68,7 +68,7 @@ FOOTER = """
     <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
         This site is under the terms of the GNU Free Documentation License, v1.3.</a></p>
 
-""".format(PATH=wapp_settings.icons)
+""".format(PATH=wapp_settings.logos)
 
 # ---------------------------------------------------------------------------
 

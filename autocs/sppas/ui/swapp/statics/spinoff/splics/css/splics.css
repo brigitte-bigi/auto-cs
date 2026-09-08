@@ -25,15 +25,32 @@
     -------------------------------------------------------------------------
 */
 
+/* --------------------------------------- */
+/* What is proper to the application       */
+/* --------------------------------------- */
+/* The palette is the one swapp gives: what follows names the few grounds it
+   has no meaning for, and each is drawn from a colour of that palette, so
+   the mode and the theme in force carry it. */
+
 :root {
     --header-height: max(calc(8rem / var(--size-divisor)), 7rem);
     --footer-height: max(calc(10rem / var(--size-divisor)), 7rem);
     --border-width: 6px;
 
-    --coded-key-border-color: rgb(179, 191, 184);
-    --coded-key-fg-color: rgb(24, 51, 2);
-    --coded-key-caption-bg-color: rgb(2, 51, 6);
-    --coded-key-caption-fg-color: rgb(245, 248, 246);
+    /* The ground of a coded key, and the sign written on its caption. */
+    --coded-key-bg-color: var(--card-bg-color);
+    --coded-key-border-color: var(--border-color);
+    --coded-key-fg-color: var(--card-fg-color);
+    --coded-key-caption-bg-color: var(--buttons-bg-color);
+    --coded-key-caption-fg-color: var(--buttons-fg-color);
+
+    /* An action button is swept from one end of the button colours to the
+       other, and back again under the pointer. */
+    --action-buttons-bg-color: linear-gradient(to right, var(--buttons-bg-color), var(--buttons-bg-color-hover));
+    --action-buttons-hover-bg-color: linear-gradient(to left, var(--buttons-bg-color), var(--buttons-bg-color-hover));
+
+    /* The fieldset a user enters their choices in. */
+    --fieldset-bg-color: linear-gradient(170deg, var(--card-bg-color) 0%, var(--bg-color-alt) 100%);
 }
 
 :root:not(.contrast) {
@@ -44,109 +61,6 @@
 .contrast {
     --border-width: 3px;
     --border-radius: 6px;
-}
-
-/* --------------------------------------- */
-/* Variables for light mode                */
-/* --------------------------------------- */
-/* was: :root:not([data-theme=dark]), [data-theme=light], .light */
-:root:not(.dark), .light {
-
-    --bg-color: rgb(245, 250, 245);
-    --bg-color-alt: rgb(237, 250, 235); /*rgb(207, 245, 198);*/
-    --fg-color: rgb(2, 51, 6);
-    --fg-color-alt: rgb(24, 51, 2);
-    --h1-color: rgb(16, 38, 22);
-    --h2-color: rgb(16, 38, 22);
-    --h3-color: rgb(16, 38, 22);
-    --h4-color: rgb(16, 38, 22);
-    --buttons-fg-color: rgb(2, 51, 6);
-    --buttons-bg-color: rgb(211, 237, 209);
-    --buttons-bg-color-hover: linear-gradient(300deg, rgb(211, 237, 209) 0%, rgb(235, 245, 235) 50%, rgb(195, 231, 190) 100%);
-    --border-color: rgb(128, 160, 128);
-    --blockquote-border-color: rgb(32, 71, 48);
-    --table-row-stripped-bg-color: rgb(235, 250, 239);
-    --table-head-bg-color: rgb(215, 225, 215);
-    --table-head-fg-color: rgb(30, 30, 40);
-    --table-caption-bg-color: rgb(230, 235, 245);
-    --table-caption-fg-color: rgb(30, 30, 40);
-    --card-bg-color: rgb(233, 244, 236);
-    --card-fg-color: rgb(10, 50, 20);
-    --li-color: rgb(30, 130, 30);
-    --a-color: rgb(40, 100, 140);
-
-    --nav-bg-color: transparent;
-    --nav-fg-color: rgb(245, 248, 246);
-
-    --header-fg-color: rgb(10, 50, 20);
-    --header-bg-color: linear-gradient(170deg, rgb(240, 255, 245) 0%, rgb(228, 245, 211) 42%, rgb(220, 250, 228) 68%, rgb(87, 199, 133) 100%);
-
-    --footer-fg-color: rgb(10, 50, 20);
-    --footer-bg-color: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color-alt) 30%, rgb(250, 250, 200) 70%, rgb(187, 207, 217) 100%);
-
-    --action-buttons-bg-color: linear-gradient(to right, rgb(211, 237, 209), rgb(155, 219, 147));
-    --action-buttons-hover-bg-color: linear-gradient(to left, rgb(211, 237, 209), rgb(155, 219, 147));
-
-    --fieldset-bg-color: linear-gradient(170deg, var(--bg-color) 0%, rgb(240, 250, 240) 60%, var(--bg-color-alt) 100%)
-}
-
-
-/* --------------------------------------- */
-/* Variables for dark mode                 */
-/* --------------------------------------- */
-
-@media not print {
-    .dark {
-        --bg-color: rgb(28, 32, 29);
-        --bg-color-alt: rgb(10, 13, 10);
-
-        --fg-color: rgb(245, 248, 246);
-        --fg-color-alt: rgb(240, 245, 215);
-
-        --h1-color: rgb(230, 243, 234);
-        --h2-color: rgb(230, 243, 234);
-        --h3-color: rgb(230, 243, 234);
-        --h4-color: rgb(230, 243, 234);
-
-        --buttons-fg-color: rgb(230, 243, 234);
-        --buttons-bg-color: rgb(31, 51, 38);
-        --buttons-bg-color-hover: linear-gradient(300deg, rgb(31, 51, 38) 0%, rgb(45, 70, 52) 50%, rgb(31, 90, 58) 100%);
-
-        --border-color: rgb(200, 220, 200);
-        --blockquote-border-color: rgb(62, 95, 75);
-
-        --table-row-stripped-bg-color: rgb(19, 35, 26);
-        --table-head-bg-color: rgb(26, 46, 34);
-        --table-head-fg-color: rgb(230, 243, 234);
-        --table-caption-bg-color: rgb(21, 39, 29);
-        --table-caption-fg-color: rgb(230, 243, 234);
-        --card-bg-color: rgb(21, 39, 29);
-        --card-fg-color: rgb(230, 243, 234);
-
-        --li-color: rgb(154, 215, 168);
-        --a-color: rgb(127, 187, 224);
-
-        --nav-bg-color: transparent;
-        --nav-fg-color: rgb(245, 248, 246);
-
-        --header-fg-color: rgb(230, 243, 234);
-        --header-bg-color: linear-gradient(
-            170deg,
-            rgb(15, 27, 20) 0%,
-            rgb(20, 36, 26) 42%,
-            rgb(23, 48, 34) 68%,
-            rgb(31, 90, 58) 100%
-        );
-
-        --footer-fg-color: rgb(230, 243, 234);
-        --footer-bg-color: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color-alt) 30%, rgb(20, 25, 20) 70%, rgb(30, 38, 31) 100%);
-
-        --action-buttons-bg-color: linear-gradient(to right, rgb(31, 90, 58), rgb(58, 138, 96));
-        --action-buttons-hover-bg-color: linear-gradient(to left, rgb(15, 74, 42), rgb(58, 138, 96));
-
-        --fieldset-bg-color: linear-gradient(170deg, var(--bg-color) 0%, rgb(20, 25, 20) 50%, var(--bg-color-alt) 100%);
-
-    }
 }
 
 /* --------------------------------------- */
@@ -195,42 +109,18 @@ select {
     color: var(--fg-color-alt);
     padding-left: 0.6rem;
     height: 2.6rem;
-    font: var(--font-family-sans);
-    /*background-image: var(--background-gradient);*/
     background-color: var(--bg-color);
     box-shadow: -0.2rem 0.2rem 0.6rem 0.2rem var(--shadow-color);
 }
 
 option {
-    font: var(--font-family-sans);
     font-size: calc(var(--font-size) * 0.5);
     color: var(--fg-color);
-    /*background-image: var(--background-gradient);*/
     background-color: var(--bg-color);
 }
 
 nav#nav-content {
     justify-content: space-around;
-}
-
-/* was: nav#nav-content.nav-wexa.side:not(.dark) */
-:root:not(.dark) nav#nav-content.nav-wexa.side {
-    background: linear-gradient(180deg,
-    rgb(0, 50, 0) 0%,
-    rgb(10, 60, 10) 20%,
-    rgb(20, 90, 40) 40%,
-    rgb(30, 100, 50) 70%,
-    rgb(0, 50, 0) 100%);
-}
-
-.dark nav#nav-content.nav-wexa.side {
-    background: linear-gradient(180deg,
-    rgb(15, 27, 20) 0%,
-    rgb(15, 27, 20) 10%,
-    rgb(23, 48, 34) 30%,
-    rgb(10, 60, 10) 50%,
-    rgb(10, 45, 5) 70%,
-    rgb(15, 27, 20) 100%);
 }
 
 .skip {
@@ -255,21 +145,6 @@ nav#nav-content {
 #home-link-logo {
     width: calc(3 * var(--font-size));
     height: auto;
-    /* The cues headers are light in light mode: cancel the white filter
-       main_swapp.css applies for the dark headers of SPPAS. */
-    filter: none;
-}
-
-#link-title-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;     /* vertical */
-    justify-content: flex-start;
-    gap: 1.5rem;
-    font-size: calc(3 * var(--font-size));
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 #link-title-header > a {
@@ -299,22 +174,13 @@ nav#nav-content {
     margin-bottom: 1rem;
 }
 
-.dark .wizard-fieldset {
-    scrollbar-color: rgb(102, 102, 102) rgb(42, 34, 58);
-}
-
-/* was: .wizard-fieldset:not([data-theme=dark]), [data-theme=light] */
 .wizard-fieldset {
     background: var(--fieldset-bg-color);
 }
 
-.wizard-fieldset form, .wizard-fieldset form *  {
-    background: transparent;
-}
-
 .wizard-fieldset legend {
-    background-color: rgb(32, 71, 48);
-    color: rgb(240, 255, 245);
+    background-color: var(--buttons-bg-color);
+    color: var(--buttons-fg-color);
     vertical-align: center;
     font-size: calc(var(--font-size) * 1.10);
     font-weight: var(--font-weight-semibold);
@@ -325,11 +191,6 @@ nav#nav-content {
     padding-right: 1rem;
     margin-bottom: 1rem;
     margin-left: 3rem;
-}
-
-.dark .wizard-fieldset legend {
-    background-color: rgb(240, 255, 245);
-    color: rgb(32, 71, 48);
 }
 
 /* --------------------------------------- */
@@ -370,7 +231,6 @@ nav#nav-content {
     top: 1.2rem;
     left: 1rem;
     transition: all 0.3s ease-in-out;
-    background: inherit;
     color: var(--fg-color-alt);
 }
 
@@ -381,13 +241,10 @@ nav#nav-content {
     font-size: 1.4rem;
     margin-bottom: 2rem;
     color: var(--fg-color-alt);
-    background: inherit;
 }
 
 .tilesWrap li p {
     margin-top: 1rem;
-    color: var(--header-bg-color);
-    background: inherit;
 
     text-wrap: wrap;
     overflow-wrap: break-word;
@@ -456,14 +313,14 @@ nav#nav-content {
     border: calc(1px + var(--border-width)) solid var(--border-color);
     overflow: hidden;
 
-    background-image: var(--action-buttons-bg-color) !important;
+    background-image: var(--action-buttons-bg-color);
     background-size: 200% 100%;
     background-position: left center;
     transition: background-position 200ms ease-in-out;
 }
 
 .app-cues-button:hover {
-    background-image: var(--action-buttons-hover-bg-color) !important;
+    background-image: var(--action-buttons-hover-bg-color);
 }
 
 .app-cues-button img {
@@ -580,7 +437,7 @@ button.sound-piano-toggle svg {
 /* And the "normal" state (aria-pressed=false) has to look like a non-pressed button */
 
 button.pron {
-    color: var(--fg-color-alt);
+    color: var(--buttons-fg-color);
     border-width: 1px;
     border: var(--border-width) solid var(--shadow-color);
 }
@@ -588,7 +445,6 @@ button.pron {
 button.pron[aria-pressed="true"]  {
     opacity: 1;
     font-weight: var(--font-weight-bold);
-    color: var(--fg-color);
     border-width: 2px;
     border: var(--border-width) solid var(--border-color);
     cursor: pointer;
@@ -617,14 +473,13 @@ button.pron[aria-pressed="true"]  {
     margin: 0;
     padding: 1rem;
     position: relative;
-    color: rgb(2, 51, 6);
+    color: var(--fg-color);
 
     border: var(--border-width) solid var(--border-color);
     border-radius: 2rem;
     border-color: var(--tips-color);
 
-    #background-color: var(--tips-bg-color);
-    background: rgb(250, 250, 200);
+    background: var(--tips-bg-color);
 }
 
 #yoyo-says-message::after {
@@ -678,11 +533,6 @@ p.error-details-content {
 /* --------------------------------------- */
 /* Styling elements of a form              */
 /* --------------------------------------- */
-
-/* Text of the button to submit the annotation */
-#text {
-    font: var(--font-family-sans);
-}
 
 /* --------------------------------------- */
 /* To display the code                     */
@@ -759,7 +609,7 @@ p.coded-token::before {
 }
 
 .coded-key {
-    background: white;
+    background-color: var(--coded-key-bg-color);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -769,10 +619,6 @@ p.coded-token::before {
     position: relative;
     min-width: 10rem;
     min-height: 5rem;
-}
-
-.coded-key > * {
-    background: inherit;
 }
 
 .coded-key > span {
@@ -809,7 +655,6 @@ p.coded-token::before {
 }
 
 img.hand-img {
-    background: inherit;
     width: 8rem;
     max-width: 100%;
     height: auto;
@@ -818,7 +663,6 @@ img.hand-img {
 }
 
 img.face-img {
-    background: inherit;
     width: 10rem;
     max-width: 100%;
     height: auto;
@@ -895,7 +739,6 @@ summary {
 }
 
 #change_results label {
-    color: var(--header-bg-color);
     background-color: var(--bg-color-alt);
 }
 
@@ -911,14 +754,12 @@ summary {
 #change_models_action_button {
     border-radius: 8px;
     padding: 0.8em;
-    /*background-image: var(--background-gradient);*/
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
 
 #select_result_level, #select_position_model, #select_angle_model, #select_timing_model {
     padding: 0.5em;
-    /*background-image: var(--background-gradient);*/
 }
 
 #submit_models {
@@ -926,90 +767,52 @@ summary {
 }
 
 /* ----------------------------------------------------------------------- */
-/* Radio group with inputs+labels: customized to look like a Toggle group  */
+/* Toggle group: the component of togglegroup.css, drawn for a form instead */
+/* of a nav bar. A ".menuitem" is cut for a nav item -- fixed height, fixed */
+/* width, no ground of its own once it is written outside a nav -- so what  */
+/* the form needs is given here, and nothing else.                          */
 /* ----------------------------------------------------------------------- */
 
-.wexa-toggle-group {
+.toggle-group {
     width: 80%;
     margin: 0.6rem 0 3rem 0;
     box-shadow: 0 0 0.9rem var(--shadow-color);
-
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
     border: var(--border-width) solid var(--border-color);
     border-radius: var(--border-radius);
-    background-color: var(--bg-color);
-    overflow: visible;
 }
 
-.wexa-toggle {
+.toggle-group > .menuitem {
     flex: 1 1 0;
-    position: relative;
+    width: auto;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    min-height: 3rem;
+    /* togglegroup.css pulls each item over its neighbour to fold two nav
+       borders into one: the items of this group carry a single separator. */
+    margin-left: 0;
     display: flex;
-    margin: 0;
-}
-
-.wexa-toggle input[type='radio'] {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    margin: 0;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.wexa-toggle span {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: 100%;
     align-items: center;
     justify-content: center;
-    min-height: 3rem;
     padding: 0.6rem 3.2rem 0.6rem 1rem;
-    text-align: center;
-    box-sizing: border-box;
+    cursor: pointer;
     background-color: var(--buttons-bg-color);
     color: var(--buttons-fg-color);
     font-weight: var(--font-weight-normal);
 }
 
-.wexa-toggle:first-child span {
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
+.toggle-group > .menuitem:not(:last-child) {
+    border-right: var(--border-width) solid var(--border-color);
 }
 
-.wexa-toggle:last-child span {
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-}
-
-.wexa-toggle:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: var(--border-width);
-    background-color: var(--border-color);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.wexa-toggle input[type='radio']:checked + span {
-    background-color: var(--bg-color-alt);
-    color: var(--fg-color-alt);
+.toggle-group > .menuitem:has(:checked) {
     font-weight: var(--font-weight-bold);
     box-shadow: inset 0 0 0.7rem var(--shadow-color);
 }
 
-.wexa-toggle input[type='radio']:checked + span::after {
-    content: '✔';
+/* The chosen item is named by a mark, not by its color alone. */
+.toggle-group > .menuitem:has(:checked)::after {
+    content: '\2714';
     position: absolute;
     right: 0.8rem;
     top: 50%;
@@ -1025,48 +828,35 @@ summary {
     pointer-events: none;
 }
 
-.wexa-toggle input[type='radio']:focus + span {
-    background-color: var(--buttons-bg-color);
-    z-index: 3;
-    box-shadow: 0px 0px var(--outline-size) var(--outline-size) var(--outline-color), inset 0 0 0.7rem var(--shadow-color);
-
-}
-
 /* Mobile screens: tile of buttons is vertical */
 /* ------------------------------------------- */
 
 @media (max-width: 820px) {
-    .wexa-toggle-group { align-items: stretch; }
-    .wexa-toggle-group > label.wexa-toggle { display: block; width: 100%; box-sizing: border-box; }
-    .wexa-toggle-group > label.wexa-toggle > span { width: 100%; box-sizing: border-box; }
-
-    .wexa-toggle-group {
+    .toggle-group {
         width: 100%;
         margin: 1rem 0;
         flex-direction: column;
     }
 
-    .wexa-toggle {
-        flex: 0 0 auto;
-        border-right: none;
-        border-bottom: var(--border-width) solid var(--border-color);
-    }
-
-    .wexa-toggle:last-child {
-        border-bottom: none;
-    }
-
-    .wexa-toggle input[type='radio'] {
-        inset: 1;
-        width: 100%;
-        height: 100%;
-    }
-
-    .wexa-toggle span {
+    .toggle-group > .menuitem {
         justify-content: flex-start;
         text-align: left;
         padding: 0.8rem 3.4rem 0.8rem 1rem;
         min-height: 3.2rem;
+        border-radius: 0;
+    }
+
+    .toggle-group > .menuitem:not(:last-child) {
+        border-right: none;
+        border-bottom: var(--border-width) solid var(--border-color);
+    }
+
+    .toggle-group > .menuitem:first-child {
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .toggle-group > .menuitem:last-child {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
     }
 }
 

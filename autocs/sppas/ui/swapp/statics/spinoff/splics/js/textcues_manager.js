@@ -4,7 +4,7 @@ const wexa_log_level = window.WEXA_LOG_LEVEL;
 const { WexaLogger } = await import(`${wexa_statics_js}/logger.js`);
 WexaLogger.setLogLevel(wexa_log_level);
 
-const { BaseCuesManager } = await import('./base_cues_manager.js');
+const { BaseCuesManager, cuesDialogs } = await import('./base_cues_manager.js');
 
 /**
  * :filename: sppas.ui.swapp.statics.spinoff.splics.js.textcues_manager.js
@@ -334,7 +334,7 @@ export default class TextCueSManager extends BaseCuesManager {
 
         const cancelButton = document.getElementById(TextCueSManager.#ID_SOUND_PIANO_CANCEL);
         if (cancelButton instanceof HTMLButtonElement) {
-            cancelButton.addEventListener('click', () => window.Wexa.dialog.close(dialog.id));
+            cancelButton.addEventListener('click', () => cuesDialogs.close(dialog.id));
         }
 
         // Restores focus on the button that opened the dialog: neither the
@@ -424,7 +424,7 @@ export default class TextCueSManager extends BaseCuesManager {
             this.#soundPiano.setTarget(TextCueSManager.#ID_SOUND_PIANO_STAGING);
         }
 
-        window.Wexa.dialog.open(dialog.id, true);
+        cuesDialogs.open(dialog.id, true);
     }
 
     // ----------------------------------------------------------------------
@@ -449,7 +449,7 @@ export default class TextCueSManager extends BaseCuesManager {
             realField.dispatchEvent(new Event('input', {bubbles: true}));
         }
 
-        window.Wexa.dialog.close(dialog.id);
+        cuesDialogs.close(dialog.id);
     }
 
     // ----------------------------------------------------------------------
