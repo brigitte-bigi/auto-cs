@@ -1598,17 +1598,19 @@ def _load_sights(self, filename: str, kid_index: int=0) -> list:
         :param filename: (str) Filename of the XRA/CSV with sights
         :param kid_index: (int) index of the kid to get sights
         :raises: sppasWhereCuedSightsValueError: there are sights but there are not of the expected size
-        :raises: Exception:
+        :raises: sppasIOError: Invalid sights
         :return: (list)
 
         """
     data = sppasSightsVideoReader(filename)
+    if len(data.sights) != len(data.midpoints):
+        raise sppasIOError('The sights file is not valid.')
     cur_sights = self.__get_current_sights(data, kid_index)
     data_sights = list()
     for i, kids_sights in enumerate(data.sights):
         midpoint = data.midpoints[i]
         if midpoint is None:
-            raise Exception('No time point value at index {:d}.'.format(i))
+            raise sppasIOError('No time point value at index {:d}.'.format(i))
         if 0 < len(kids_sights) <= kid_index + 1:
             s = kids_sights[kid_index]
             if s is not None:
@@ -1638,7 +1640,7 @@ The returned data is a list of tuples with:
 ##### Raises
 
 - *sppasWhereCuedSightsValueError*: there are sights but there are not of the expected size
-- *Exception*
+- *sppasIOError*: Invalid sights
 
 
 ##### Returns
@@ -1702,4 +1704,4 @@ def __get_current_sights(self, data: sppasSightsVideoReader, kid_index: int) -> 
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of sppasHandCoords. Estimate the coordinates of the S0 and S9 points of the hand." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.whowtag.hands.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="sppasImageVowelPosTagger.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whowtag.hands.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="sppasImageVowelPosTagger.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" aria-disabled="true"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whowtag.whowimgtag">    <h1>Module CuedSpeech.whowtag.whowimgtag</h1>
+    <section id="#CuedSpeech.whowtag.whowimgtag" class="chapter nonumber">    <h1>Module CuedSpeech.whowtag.whowimgtag</h1>
 <section id="#sppasHandCoords">
 <h2>Class sppasHandCoords</h2>
 
@@ -132,6 +98,8 @@ enabling precise placement of the hand in an image based on:</p>
 </section>
 <section>
 <h3 id="#constructor_sppasHandCoords">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Create a new instance.</em></p>
 
@@ -149,11 +117,11 @@ enabling precise placement of the hand in an image based on:</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="o">=</span><span class="n">CuedSpeechCueingRules</span><span class="p">(),</span> <span class="n">img_hand_tagger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+<span class="w">    </span><span class="sd">"""Create a new instance.</span>
 
 <span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__hand_tagger</span> <span class="o">=</span> <span class="kc">None</span>
@@ -186,13 +154,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set new rules.</span>
+<span class="w">    </span><span class="sd">"""Set new rules.</span>
 
 <span class="sd">        :param cue_rules: (CuedSpeechCueingRules) Rules and codes for vowel positions and hand shapes</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)),</span> <span class="s1">&#39;CuedSpeechCueingRules&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)),</span> <span class="s1">'CuedSpeechCueingRules'</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_vowels_codes</span><span class="p">())</span>
 </code></pre></div>
@@ -219,11 +187,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel_code</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an index from the code of a vowel or -1.</span>
+<span class="w">    </span><span class="sd">"""Return an index from the code of a vowel or -1.</span>
 
 <span class="sd">        :param vowel_code: (char) One of n, b, c, s, m, t for French.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">vowel_code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">vowel_code</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
@@ -251,17 +219,17 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_hand_tagger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_tagger</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the hand tagger or None.</span>
+<span class="w">    </span><span class="sd">"""Set the hand tagger or None.</span>
 
 <span class="sd">        :param hand_tagger: (sppasImageHandTagger) Allows to get hand sights of the choose handset</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">hand_tagger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__hand_tagger</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">hand_tagger</span><span class="p">,</span> <span class="s1">&#39;slap_on&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">hand_tagger</span><span class="p">,</span> <span class="s1">'slap_on'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__hand_tagger</span> <span class="o">=</span> <span class="n">hand_tagger</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">hand_tagger</span><span class="p">)),</span> <span class="s1">&#39;sppasImageHandTagger&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">hand_tagger</span><span class="p">)),</span> <span class="s1">'sppasImageHandTagger'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -290,12 +258,12 @@ in an image based on:</p>
 <li>(<em>list</em>) [target, S0, S9] with coordinates of hand points</li>
 </ul>
 
-<p>The returned list contains sppasLabel() instances with:</p>
-
-<ul>
-<li>sppasFuzzyPoint() to store the coordinates of hand points</li>
-<li>label key to indicate its definition ('target' or 'sights<em>00' or 'sights</em>09')</li>
-</ul>
+<p>Example of returned result:
+[
+sppasTag(b'(452,570)' (point), score=None),
+sppasTag(b'(300,733)' (point), score=None),
+sppasTag(b'(372,647)' (point), score=None)
+]</p>
 
     </article>
 
@@ -304,8 +272,8 @@ in an image based on:</p>
     <summary>
 View Source
     </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval_hand_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">vowel_angle</span><span class="p">,</span> <span class="n">face_height</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A solution to return hand coords from target, angle and face height.</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval_hand_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">vowel_angle</span><span class="p">,</span> <span class="n">face_height</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A solution to return hand coords from target, angle and face height.</span>
 
 <span class="sd">        It allows to fix where to place the hand, i.e., S0 and S9 coordinates,</span>
 <span class="sd">        in an image based on:</span>
@@ -316,14 +284,16 @@ View Source
 <span class="sd">        :param face_height: (int) Size of the face, in pixels</span>
 <span class="sd">        :return: (list) [target, S0, S9] with coordinates of hand points</span>
 
-<span class="sd">        The returned list contains sppasLabel() instances with:</span>
+<span class="sd">        Example of returned result:</span>
+<span class="sd">            [</span>
+<span class="sd">                sppasTag(b'(452,570)' (point), score=None),</span>
+<span class="sd">                sppasTag(b'(300,733)' (point), score=None),</span>
+<span class="sd">                sppasTag(b'(372,647)' (point), score=None)</span>
+<span class="sd">            ]</span>
 
-<span class="sd">        - sppasFuzzyPoint() to store the coordinates of hand points</span>
-<span class="sd">        - label key to indicate its definition (&#39;target&#39; or &#39;sights_00&#39; or &#39;sights_09&#39;)</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sights_00&#39;</span><span class="p">,</span> <span class="s1">&#39;sights_09&#39;</span><span class="p">]</span>
-    <span class="n">hand_pts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__create_label</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;target&#39;</span><span class="p">)]</span>
+<span class="sd">        """</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'sights_00'</span><span class="p">,</span> <span class="s1">'sights_09'</span><span class="p">]</span>
+    <span class="n">hand_pts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__create_label</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'target'</span><span class="p">)]</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">_pts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_to_hand_sights</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">,</span> <span class="n">vowel_angle</span><span class="p">,</span> <span class="n">face_height</span><span class="p">)</span>
@@ -383,16 +353,16 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">angle_to_s0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the angle of the given sight compared to S0-S9 axis.</span>
+<span class="w">    </span><span class="sd">"""Return the angle of the given sight compared to S0-S9 axis.</span>
 
 <span class="sd">        :param shape_code: (str) Hand shape vowel code</span>
 <span class="sd">        :param sight_index: (int) The index of the sight</span>
 <span class="sd">        :return: (int) the computed angle</span>
 <span class="sd">        :raises: IntervalRangeException: If the index is negative or out of bounds</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hand_tagger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">shape_code</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">shape_code</span> <span class="o">==</span> <span class="s1">'0'</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">30</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
@@ -435,14 +405,14 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">distance_to_s0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sight_index</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the distance between s0 and a sight of the hand.</span>
+<span class="w">    </span><span class="sd">"""Get the distance between s0 and a sight of the hand.</span>
 
 <span class="sd">        :param shape_code: (str) Shape code name</span>
 <span class="sd">        :param sight_index: (int) The index of the sight</span>
 <span class="sd">        :raises: IntervalRangeException: If the index is negative or out of bounds</span>
 <span class="sd">        :return: (int) the computed distance</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hand_tagger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">sight_index</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">71</span>
@@ -507,19 +477,19 @@ sinus(AST) = AT / TS    = &gt;  AT = sin(alpha) * TS    = &gt;  x0 = x + sin(alp
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">target_to_hand_sights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape_code</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">face_height</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate coordinates of S0 and S9 sights of the hand.</span>
+<span class="w">    </span><span class="sd">"""Estimate coordinates of S0 and S9 sights of the hand.</span>
 
 <span class="sd">        The given angle is the one between the target and the S0 sight</span>
 <span class="sd">        relatively to the vertical axis.</span>
 
-<span class="sd">        :param shape_code: (char) Consonant shape name. If unknown, &#39;0&#39; is used instead.</span>
+<span class="sd">        :param shape_code: (char) Consonant shape name. If unknown, '0' is used instead.</span>
 <span class="sd">        :param target: (tuple(x,y))</span>
 <span class="sd">        :param angle: (int) Value between -360 and 360 in the unit circle</span>
 <span class="sd">        :param face_height: (int) Height of the face</span>
 <span class="sd">        :return: tuple(x0, y0), tuple(x9, y9) or (None, None) if error in distance estimation</span>
 
 <span class="sd">        Target(x,y)</span>
-<span class="sd">        *-------------------A&#39;(x0,y)</span>
+<span class="sd">        *-------------------A'(x0,y)</span>
 <span class="sd">        |  \\ alpha          |</span>
 <span class="sd">        |      \\            |</span>
 <span class="sd">        |         \\         |</span>
@@ -534,23 +504,21 @@ View Source
 <span class="sd">        sinus(ATS) = AS / TS    = &gt;  AS = sin(sigma) * TS    = &gt;  y0 = y + sin(sigma) * hypotenuse</span>
 <span class="sd">        sinus(AST) = AT / TS    = &gt;  AT = sin(alpha) * TS    = &gt;  x0 = x + sin(alpha) * hypotenuse</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">ref_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ref_dist</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Distance between S0 and S9 is 0. It probably means there&#39;s a problem in hand sights.&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Distance between S0 and S9 is 0. It probably means there's a problem in hand sights."</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">ratio</span> <span class="o">=</span> <span class="n">face_height</span> <span class="o">*</span> <span class="mf">0.45</span> <span class="o">/</span> <span class="n">ref_dist</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">-</span> <span class="mi">90</span>
     <span class="n">target_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_shape_target</span><span class="p">(</span><span class="n">shape_code</span><span class="p">)</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">target_index</span><span class="p">)</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">target_index</span><span class="p">)</span>
     <span class="n">hypotenuse</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">*</span> <span class="n">ratio</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">-</span> <span class="mi">90</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">angle_to_s0</span><span class="p">(</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">target_index</span><span class="p">)</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">-</span> <span class="n">alpha</span>
     <span class="n">x_s0</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sinus</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenuse</span><span class="p">)</span>
     <span class="n">y_s0</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sinus</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenuse</span><span class="p">)</span>
     <span class="n">hypotenuse</span> <span class="o">=</span> <span class="n">ref_dist</span> <span class="o">*</span> <span class="n">ratio</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">-</span> <span class="mi">90</span>
-    <span class="n">sigma</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">-</span> <span class="n">alpha</span>
     <span class="n">x_s9</span> <span class="o">=</span> <span class="n">x_s0</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sinus</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenuse</span><span class="p">)</span>
     <span class="n">y_s9</span> <span class="o">=</span> <span class="n">y_s0</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sinus</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenuse</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">x_s0</span><span class="p">,</span> <span class="n">y_s0</span><span class="p">),</span> <span class="p">(</span><span class="n">x_s9</span><span class="p">,</span> <span class="n">y_s9</span><span class="p">))</span>
@@ -588,7 +556,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">sinus</span><span class="p">(</span><span class="n">degree</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return sinus value of the given degree.</span>
+<span class="w">    </span><span class="sd">"""Return sinus value of the given degree.</span>
 
 <span class="sd">        To find the sine of degrees, it must first be converted into radians</span>
 <span class="sd">        with the math.radians() method.</span>
@@ -596,7 +564,7 @@ View Source
 <span class="sd">        :param degree: (int, float) A degree value</span>
 <span class="sd">        :return: Sine value in degrees.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">degree</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span> <span class="o">%</span> <span class="mf">360.0</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">degree</span><span class="p">))</span>
 </code></pre></div>
@@ -614,7 +582,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__create_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-    <span class="n">tag</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">'point'</span><span class="p">)</span>
     <span class="n">label</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
     <span class="n">label</span><span class="o">.</span><span class="n">set_key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">label</span>
@@ -628,7 +596,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

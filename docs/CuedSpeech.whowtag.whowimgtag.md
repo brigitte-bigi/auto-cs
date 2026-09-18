@@ -132,7 +132,7 @@ def set_hand_tagger(self, hand_tagger) -> None:
 #### eval_hand_points
 
 ```python
-def eval_hand_points(self, target, shapes, vowel_angle, face_height):
+def eval_hand_points(self, target, shapes, vowel_angle, face_height) -> list:
     """A solution to return hand coords from target, angle and face height.
 
         It allows to fix where to place the hand, i.e., S0 and S9 coordinates,
@@ -144,10 +144,12 @@ def eval_hand_points(self, target, shapes, vowel_angle, face_height):
         :param face_height: (int) Size of the face, in pixels
         :return: (list) [target, S0, S9] with coordinates of hand points
 
-        The returned list contains sppasLabel() instances with:
-
-        - sppasFuzzyPoint() to store the coordinates of hand points
-        - label key to indicate its definition ('target' or 'sights_00' or 'sights_09')
+        Example of returned result:
+            [
+                sppasTag(b'(452,570)' (point), score=None),
+                sppasTag(b'(300,733)' (point), score=None),
+                sppasTag(b'(372,647)' (point), score=None)
+            ]
 
         """
     names = ['sights_00', 'sights_09']
@@ -193,10 +195,12 @@ in an image based on:
 
 - (*list*) [target, S0, S9] with coordinates of hand points
 
-The returned list contains sppasLabel() instances with:
-
-- sppasFuzzyPoint() to store the coordinates of hand points
-- label key to indicate its definition ('target' or 'sights_00' or 'sights_09')
+Example of returned result:
+[
+sppasTag(b'(452,570)' (point), score=None),
+sppasTag(b'(300,733)' (point), score=None),
+sppasTag(b'(372,647)' (point), score=None)
+]
 
 #### angle_to_s0
 
@@ -316,17 +320,15 @@ def target_to_hand_sights(self, shape_code, target, angle, face_height):
         logging.error("Distance between S0 and S9 is 0. It probably means there's a problem in hand sights.")
         return (None, None)
     ratio = face_height * 0.45 / ref_dist
-    alpha = angle - 90
     target_index = self.__cued.get_shape_target(shape_code)
-    alpha = alpha - self.angle_to_s0(shape_code, target_index)
     dist = self.distance_to_s0(shape_code, target_index)
     hypotenuse = dist * ratio
+    alpha = angle - 90
+    alpha = alpha - self.angle_to_s0(shape_code, target_index)
     sigma = 90 - alpha
     x_s0 = target[0] + int(self.sinus(alpha) * hypotenuse)
     y_s0 = target[1] + int(self.sinus(sigma) * hypotenuse)
     hypotenuse = ref_dist * ratio
-    alpha = angle - 90
-    sigma = 90 - alpha
     x_s9 = x_s0 - int(self.sinus(alpha) * hypotenuse)
     y_s9 = y_s0 - int(self.sinus(sigma) * hypotenuse)
     return ((x_s0, y_s0), (x_s9, y_s9))
@@ -1002,8 +1004,6 @@ def slap_on(self, image: numpy.ndarray, shapes: tuple, hand_sights: list | None)
 
         hand_sights is the list of S0, S9 and target finger coordinates
         where the hand sights have to be put on the image.
-        For example:
-        [sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)],
 
         :param image: (sppasImage or numpy.ndarray) The image that we want tag the hand on it
         :param shapes: (list[str, float]) One or two consonant names and their probabilities
@@ -1034,8 +1034,6 @@ def slap_on(self, image: numpy.ndarray, shapes: tuple, hand_sights: list | None)
 
 hand_sights is the list of S0, S9 and target finger coordinates
 where the hand sights have to be put on the image.
-For example:
-[sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)],
 
 ##### Parameters
 
@@ -1322,4 +1320,4 @@ def __check_image(self, image: numpy.ndarray) -> sppasImage:
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

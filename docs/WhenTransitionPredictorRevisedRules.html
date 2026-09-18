@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="WhenTransitionPredictorRevisedRules. Predict hand transition moments with a revised rule-based system." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="WhenTransitionPredictorRules.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="WhenTransitionPredictorRules.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.wherecue.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whenhand.transition">    <h1>Module CuedSpeech.whenhand.transition</h1>
+    <section id="#CuedSpeech.whenhand.transition" class="chapter nonumber">    <h1>Module CuedSpeech.whenhand.transition</h1>
 <section id="#WhenTransitionPredictorRevisedRules">
 <h2>Class WhenTransitionPredictorRevisedRules</h2>
 
@@ -109,6 +75,8 @@ A1A3 intervals.</p>
 </section>
 <section>
 <h3 id="#constructor_WhenTransitionPredictorRevisedRules">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Instantiate a custom hand transition moment's predictor.</em></p>
 
@@ -120,9 +88,9 @@ A1A3 intervals.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a custom hand transition moment&#39;s predictor.</span>
+<span class="w">    </span><span class="sd">"""Instantiate a custom hand transition moment's predictor.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">WhenTransitionPredictorRevisedRules</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_RULES</span>
 </code></pre></div>
@@ -158,12 +126,12 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1;M2] the moments when the hand is moving.</span>
+<span class="w">    </span><span class="sd">"""Predict [M1;M2] the moments when the hand is moving.</span>
 
 <span class="sd">        :param rank: (int) The rank of the key. 0=silence, 1=1st key after a silence, etc.</span>
 <span class="sd">        :return: (m1: float, m2: float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rank</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_pos_to_neutral</span><span class="p">()</span>
@@ -213,7 +181,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_nil_pos</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1;D2] the moments when fingers are changing.</span>
+<span class="w">    </span><span class="sd">"""Predict [D1;D2] the moments when fingers are changing.</span>
 
 <span class="sd">        It is considered but not proved that:</span>
 
@@ -222,11 +190,11 @@ View Source
 <span class="sd">        - [D1;D2] is a relative fast change and must occur asap.</span>
 
 <span class="sd">        :param rank: (int) The rank of the key. 0=silence, 1=1st key after a silence, etc.</span>
-<span class="sd">        :param is_nil_shape: (bool) True is the key is of the form &quot;-V&quot;, i.e. no consonant</span>
-<span class="sd">        :param is_nil_pos: (bool) True is the key is of the form &quot;C-&quot;, i.e. no vowel</span>
+<span class="sd">        :param is_nil_shape: (bool) True is the key is of the form "-V", i.e. no consonant</span>
+<span class="sd">        :param is_nil_pos: (bool) True is the key is of the form "C-", i.e. no vowel</span>
 <span class="sd">        :return: (d1: float, d2: float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_shp_to_neutral</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -277,13 +245,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_predict_pos_to_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1;M2] for a destination key NN.</span>
+<span class="w">    </span><span class="sd">"""Predict [M1;M2] for a destination key NN.</span>
 
 <span class="sd">        This transition is delayed compared to the other ones.</span>
 
 <span class="sd">        :return: tuple(float, float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_static_duration</span><span class="p">()</span>
     <span class="n">m1a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.1</span>
     <span class="n">m2a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">1.25</span>
@@ -316,13 +284,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_predict_pos_from_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1;M2] from a silence to the first key on the face.</span>
+<span class="w">    </span><span class="sd">"""Predict [M1;M2] from a silence to the first key on the face.</span>
 
 <span class="sd">        This transition is anticipated compared to the other ones.</span>
 
 <span class="sd">        :return: tuple(float, float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
     <span class="n">m1a1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">1.6</span><span class="p">)</span>
     <span class="n">m2a1</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -384,13 +352,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_predict_pos_generic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">is_nil_shape</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_nil_pos</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1;M2] for a destination key &#39;C&#39;, &#39;V&#39; or &#39;CV&#39;.</span>
+<span class="w">    </span><span class="sd">"""Predict [M1;M2] for a destination key 'C', 'V' or 'CV'.</span>
 
 <span class="sd">        Prediction algorithm is as follows:</span>
-<span class="sd">        &gt;    if &#39;C&#39;:</span>
+<span class="sd">        &gt;    if 'C':</span>
 <span class="sd">        &gt;         m1 = a1 - (a3a1 * 1.60)</span>
 <span class="sd">        &gt;         m2 = a1 - (a3a1 * 0.30)</span>
-<span class="sd">        &gt;     elif &#39;V&#39;:</span>
+<span class="sd">        &gt;     elif 'V':</span>
 <span class="sd">        &gt;         m1 = a1 - (a3a1 * 2.40)</span>
 <span class="sd">        &gt;         m2 = a1 - (a3a1 * 0.60)</span>
 <span class="sd">        &gt;     else:</span>
@@ -401,16 +369,16 @@ View Source
 <span class="sd">        &gt;             m2 = a1 + (a3a1 * 0.11)</span>
 
 <span class="sd">        :param rank: (int) Rank of the key into the speech segment</span>
-<span class="sd">        :param is_nil_shape: (bool) True is the key is of the form &quot;-V&quot;, i.e. no consonant</span>
-<span class="sd">        :param is_nil_pos: (bool) True is the key is of the form &quot;C-&quot;, i.e. no vowel</span>
+<span class="sd">        :param is_nil_shape: (bool) True is the key is of the form "-V", i.e. no consonant</span>
+<span class="sd">        :param is_nil_pos: (bool) True is the key is of the form "C-", i.e. no vowel</span>
 <span class="sd">        :raises: ValueError: invalid rank. It must be &gt; 1.</span>
 <span class="sd">        :return: tuple(float, float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">((</span><span class="n">is_nil_shape</span><span class="p">,</span> <span class="n">is_nil_pos</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;For the generic prediction, nil_shape and nil_pos can&#39;t be both True together.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"For the generic prediction, nil_shape and nil_pos can't be both True together."</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;For the generic prediction, rank must be &gt;= 2.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'For the generic prediction, rank must be &gt;= 2.'</span><span class="p">)</span>
     <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">is_nil_pos</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">m1a1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">1.6</span><span class="p">)</span>
@@ -454,14 +422,14 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_predict_shp_to_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1;D2] for a destination key NN.</span>
+<span class="w">    </span><span class="sd">"""Predict [D1;D2] for a destination key NN.</span>
 
 <span class="sd">        [A1;A3] is a silence, so the transition is from a previous sounded key</span>
 <span class="sd">        (CV, -V or C-) to the neutral one.</span>
 
 <span class="sd">        :return: tuple(float, float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_static_duration</span><span class="p">()</span>
     <span class="n">d1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">+</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.4</span>
     <span class="n">d2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">+</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.7</span>
@@ -490,11 +458,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_predict_shp_from_neutral</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1;D2] from a key NN to a facial one.</span>
+<span class="w">    </span><span class="sd">"""Predict [D1;D2] from a key NN to a facial one.</span>
 
 <span class="sd">        :return: tuple(float, float)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">a3a1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
     <span class="n">d1a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">1.3</span>
     <span class="n">d2a1</span> <span class="o">=</span> <span class="n">a3a1</span> <span class="o">*</span> <span class="mf">0.9</span>
@@ -511,7 +479,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

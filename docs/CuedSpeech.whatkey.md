@@ -453,6 +453,52 @@ the "nil" key is returned.
 
 - key or tuple(key,key) if diphtong or None if unknown
 
+#### get_phonemes
+
+```python
+def get_phonemes(self, code: str) -> tuple:
+    """Return the phonemes (or diphthongs) matching the given shape or position code.
+
+        This is the reverse of get_key(): a key is necessarily made of both
+        a shape and a position, but a single phoneme is either a consonant
+        (shape code) or a vowel (position code). Several phonemes can share
+        the same code, since Cued Speech intentionally groups phonemes that
+        look alike on the lips under a single shape or position.
+
+        :param code: (str) A shape code or a position code (not a full key).
+        :return: (tuple) Phonemes and/or diphthongs matching the given code.
+
+        """
+    result = list()
+    for phoneme in self.__phon:
+        phon_code = self.get_key(phoneme)
+        if phon_code is None:
+            continue
+        if self.get_class(phoneme) == 'W':
+            if code in phon_code:
+                result.append(phoneme)
+        elif phon_code == code:
+            result.append(phoneme)
+    return tuple(result)
+```
+
+*Return the phonemes (or diphthongs) matching the given shape or position code.*
+
+This is the reverse of get_key(): a key is necessarily made of both
+a shape and a position, but a single phoneme is either a consonant
+(shape code) or a vowel (position code). Several phonemes can share
+the same code, since Cued Speech intentionally groups phonemes that
+look alike on the lips under a single shape or position.
+
+##### Parameters
+
+- **code**: (*str*) A shape code or a position code (not a full key).
+
+
+##### Returns
+
+- (*tuple*) Phonemes and/or diphthongs matching the given code.
+
 #### get_diphthong_key
 
 ```python
@@ -1801,6 +1847,161 @@ def __create_labels(consonant, vowel, ann_key_c, ann_key_v):
 
 
 
+## Class `CueingWordKeys`
+
+### Description
+
+*Generates Cued Speech keys for given tokens and their pronunciations.*
+
+Unlike :class:`sppasWhatKeyPredictor`, which works on time-aligned phoneme
+tiers, this class works directly on pronunciation strings (e.g. from a
+pronunciation dictionary), without requiring any time alignment.
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+### Constructor
+
+#### __init__
+
+```python
+def __init__(self, cued_rules: CuedSpeechKeys):
+    """Create a new instance.
+
+    :param cued_rules: (CuedSpeechKeys) The rules of the cued speech.
+
+    """
+    if isinstance(cued_rules, CuedSpeechKeys) is False:
+        raise TypeError(f'Given cued_rules must be a CuedSpeechKeys object. Got {type(cued_rules)} instead.')
+    self.__cs = cued_rules
+    self.__cue_tokenizer = CueingPronTokenizer(self.__cs)
+    self.__keys_by_token = CueingKeysByToken()
+    self._stops = list(symbols.phone.keys())
+    self._stops.append('#')
+    self._stops.append('*')
+    self._stops.append('@@')
+    self._stops.append('+')
+    self._stops.append('sil')
+    self._stops.append('sp')
+    self._stops.append('gb')
+    self._stops.append('lg')
+    self._stops.append('fp')
+    self._stops.append('dummy')
+    self._stops.append('noise')
+    self._stops.append('laugh')
+```
+
+*Create a new instance.*
+
+##### Parameters
+
+- **cued_rules**: (CuedSpeechKeys) The rules of the cued speech.
+
+
+
+### Public functions
+
+#### annotate
+
+```python
+def annotate(self, tokens: list, prons: list) -> tuple:
+    """Return the sequence of keys from the list of tokens and their pronunciations.
+
+        Input tokens: ["test", "hello"]
+        Input prons: ['t-E-s-t', 'E-l-o']
+        Code result: [('5-c.3-s.5-c.6-s', 't-E.s-vnil.t-E.l-o')]
+        Returned keys by token: (('5-c.3-s', '5-c.6-s'), ('t-E.s-vnil', 't-E.l-o'))
+
+        :param tokens: (list) List of tokens
+        :param prons: (list) List of pronunciations
+        :raises: TypeError: Invalid text type.
+        :return: tuple(str) List of keys
+
+        """
+    if type(prons) not in (list, tuple):
+        raise TypeError(f"Given pronunciations must be a list. Got '{type(prons)}' instead.")
+    if type(tokens) not in (list, tuple):
+        raise TypeError(f"Given tokens must be a list. Got '{type(tokens)}' instead.")
+    cued = self._cuer(prons)
+    normalized_word_phonemes = self.__cue_tokenizer.normalize_word_phonemes(tuple(prons))
+    codes, phons = self.__keys_by_token.segment(normalized_word_phonemes, cued)
+    return (codes, phons)
+```
+
+*Return the sequence of keys from the list of tokens and their pronunciations.*
+
+Input tokens: ["test", "hello"]
+Input prons: ['t-E-s-t', 'E-l-o']
+Code result: [('5-c.3-s.5-c.6-s', 't-E.s-vnil.t-E.l-o')]
+Returned keys by token: (('5-c.3-s', '5-c.6-s'), ('t-E.s-vnil', 't-E.l-o'))
+
+##### Parameters
+
+- **tokens**: (*list*) List of tokens
+- **prons**: (*list*) List of pronunciations
+
+
+##### Raises
+
+- *TypeError*: Invalid text type.
+
+
+##### Returns
+
+- tuple(*str*) List of keys
+
+
+
+### Private functions
+
+#### _cuer
+
+```python
+def _cuer(self, token_prons: list) -> list:
+    """Return the result of "CuedSpeech" on the given phonetized text.
+
+        :param token_prons: (list) Pronunciation of each token.
+        :return: (list) List of keys
+
+        """
+    results = list()
+    prons = list()
+    for token_pron in token_prons:
+        prons.extend(token_pron.split('-'))
+    phonemes = list()
+    for p in prons:
+        if p in self._stops:
+            if len(phonemes) > 0:
+                sgmts = self.__cs.syllabify(phonemes)
+                phons = self.__cs.phonetize_syllables(phonemes, sgmts)
+                keys = self.__cs.keys_phonetized(phons)
+                results.append((keys, phons))
+                phonemes = list()
+            if p in ('#', 'sil', 'lg', 'laugh'):
+                results.append(('0-n', 'cnil-' + p))
+            else:
+                results.append(('0-s', 'cnil-' + p))
+        else:
+            phonemes.append(p)
+    if len(phonemes) > 0:
+        sgmts = self.__cs.syllabify(phonemes)
+        phons = self.__cs.phonetize_syllables(phonemes, sgmts)
+        keys = self.__cs.keys_phonetized(phons)
+        results.append((keys, phons))
+    return results
+```
+
+*Return the result of "CuedSpeech" on the given phonetized text.*
+
+##### Parameters
+
+- **token_prons**: (*list*) Pronunciation of each token.
+
+
+##### Returns
+
+- (*list*) List of keys
+
+
+
+
+
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

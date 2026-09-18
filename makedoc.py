@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 # File: makedoc.py
 # Author: Brigitte Bigi
-# Purpose: Generate the Auto-CS documentation using ClammingPy (>= 2.0).
+# Purpose: Generate the Auto-CS documentation using ClammingPy (>= 3.3).
 #
 # Install:
 #   $SPPAS/.sppaspyenv~/bin/python -m pip install ClammingPy
@@ -57,6 +57,8 @@ sys.path.append(os.path.join("autocs", "sppas", "src", "annotations"))
 
 import autocs
 import CuedSpeech
+import CuedSpeech.whowtag.hands
+import CuedSpeech.whowtag.whowimgtag
 
 try:
     import clamming
@@ -95,8 +97,13 @@ opts_export.favicon = 'autocs32x32.ico'
 opts_export.icon = 'autocs.png'
 # ... the theme corresponds to a statics/<theme>.css file or "light" or "dark"
 opts_export.theme = 'light'
+# ... the table of contents is either a collapsible aside or a fixed panel
+opts_export.aside_toc = True
+# ... the CSS theme defines the colors of the pages, in the statics folder.
+# The reader can switch it for the high-contrast theme of Whakerexa.
+opts_export.css_theme = 'clamming_theme.css'
 # ... path to 'wexa_statics' folder, relatively to "docs"
-opts_export.wexa_statics = "./Whakerexa-2.0/wexa_statics"
+opts_export.wexa_statics = "./Whakerexa-current/wexa_statics"
 
 
 # -------------------------------------------------

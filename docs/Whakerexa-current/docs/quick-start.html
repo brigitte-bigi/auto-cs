@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quick start — Whakerexa</title>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../wexa_statics/icons/whakerexa.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../wexa_statics/css/wexa.css" type="text/css" media="screen" />
+    <link rel="stylesheet" id="wexa-theme" href="../wexa_statics/css/themes/wexa_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../wexa_statics/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="../wexa_statics/css/menu.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../wexa_statics/css/layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="doc.css" type="text/css" media="all" />
+
+    <style>
+        :root {
+            --header-height:   2rem;
+            --header-bg-color: transparent;
+            --header-fg-color: var(--fg-color-alt);
+            --header-slidein:  none;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header-content">
+    <a class="skip" href="#main-content" aria-label="skip to main content">Skip to main content</a>
+    <p>Whakerexa &gt; Getting started &gt; Quick start</p>
+</header>
+<nav class="nav-wexa top" aria-label="Page navigation">
+    <a class="menuitem" id="btn-back" data-href="../index.html" data-target="_self" aria-label="Back" title="Back" data-icon="chevron-left">
+    </a>
+    <button id="btn-css-theme" class="menuitem" type="button"
+            aria-label="Switch theme" title="Switch theme"
+            onclick="window.themes && window.themes.next()">
+    </button>
+    <button id="btn-contrast" class="menuitem accessibility"
+            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+            onclick="Wexa.accessibility.switchContrastScheme()"></button>
+    <button id="btn-color" class="menuitem accessibility"
+            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+            onclick="Wexa.accessibility.switchColorScheme()"></button>
+</nav>
+
+<main id="main-content">
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h1>Quick start</h1>
+
+        <h2>Minimal setup</h2>
+        <p>Three lines in <code>&lt;head&gt;</code> are enough to get Whakerexa styles:</p>
+
+        <article class="card-doc" aria-label="Minimal CSS setup">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>
+                    <code>wexa.css</code> is the foundation: typography, colors, light/dark mode, accessibility layers.<br>
+                    <code>layout.css</code> adds panels and card grids — include it only if you use them.<br>
+                    <code>menu.css</code> handles navigation bars — include it only if you use a nav.
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;link rel="stylesheet" href="wexa_statics/css/wexa.css"&gt;
+&lt;link rel="stylesheet" href="wexa_statics/css/layout.css"&gt;
+&lt;link rel="stylesheet" href="wexa_statics/css/menu.css"&gt;</code></pre>
+        </article>
+
+        <h2>Minimal HTML page</h2>
+        <p>A standard HTML5 page — Whakerexa styles it without any extra classes:</p>
+
+        <article class="card-doc" aria-label="Minimal HTML page">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>Semantic HTML only — no Whakerexa-specific classes required.
+                Typography, colors, and light/dark mode work immediately.</p>
+            </div>
+            <pre class="dark"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="stylesheet" href="wexa_statics/css/wexa.css"&gt;
+    &lt;script src="wexa_statics/js/wexa.loader.js" data-base="wexa_statics/"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+    &lt;h1&gt;My page&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;p&gt;Your content here.&lt;/p&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;My footer.&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </article>
+
+        <h2>Add accessibility controls</h2>
+        <p>
+            To expose light/dark and contrast switching to users, add a <code>nav</code>
+            after the header with the two accessibility buttons:
+        </p>
+
+        <article class="card-doc" aria-label="Accessibility controls">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <nav class="nav-wexa top" aria-label="Accessibility example" style="position: static; width: auto;">
+                    <button id="btn-contrast-ex" class="menuitem accessibility"
+                            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+                            onclick="Wexa.accessibility.switchContrastScheme()" data-icon="contrast">
+                    </button>
+                    <button id="btn-color-ex" class="menuitem accessibility"
+                            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+                            onclick="Wexa.accessibility.switchColorScheme()" data-icon="color">
+                    </button>
+                </nav>
+            </div>
+            <pre class="dark"><code>&lt;nav class="nav-wexa top" aria-label="Accessibility"&gt;
+    &lt;button id="btn-contrast" class="menuitem accessibility"
+            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+            onclick="Wexa.accessibility.switchContrastScheme()"&gt;&lt;/button&gt;
+    &lt;button id="btn-color" class="menuitem accessibility"
+            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+            onclick="Wexa.accessibility.switchColorScheme()"&gt;&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+        </article>
+
+        <h2>With a local server (recommended)</h2>
+        <p>A browser refuses ES6 modules on <code>file://</code>, where the loader falls back on
+            the bundle. Served over HTTP, a page loads the modules, and only the ones it asks
+            for:</p>
+
+        <article class="card-doc" aria-label="Local server setup">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>Then open <code>http://localhost:8000/</code>. Nothing to change in the page: the loader
+                    reads the protocol and takes the modules from there.</p>
+            </div>
+            <pre class="dark"><code>python -m http.server 8000</code></pre>
+        </article>
+
+        <article class="card-doc" aria-label="What the loader is asked">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>The loader takes what a page has to say on its own tag: where
+                    <code>wexa_statics/</code> stands, the theme to apply when the address names
+                    none, the identifiers whose address carries the theme, and the files to load
+                    besides <code>wexa.js</code>. A page that has something of its own to start
+                    declares a function <code>bootPage</code>: the loader calls it once everything
+                    is there, and hands it the framework and those files.</p>
+            </div>
+            <pre class="dark"><code>&lt;script src="wexa_statics/js/wexa.loader.js"
+        data-base="wexa_statics/"
+        data-default="wexa_theme"
+        data-links="btn-back"
+        data-extras="js/extras/sortatable.js"&gt;&lt;/script&gt;</code></pre>
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+    <p class="center">This site respects your privacy.</p>
+    <p class="center">We do not collect any information and do not use cookies.</p>
+    <hr>
+    <p>Copyright @ 2023-2026 Brigitte Bigi, CNRS<br>
+        Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+    <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
+        This document is under the terms of the GNU Free Documentation License, v1.3.</a>
+    </p>
+</footer>
+
+
+<script src="../wexa_statics/js/wexa.loader.js"
+        data-base="../wexa_statics/"
+        data-links="btn-back"></script>
+</body>
+</html>

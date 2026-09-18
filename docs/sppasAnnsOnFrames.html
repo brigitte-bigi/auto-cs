@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of sppasAnnsOnFrames. Move points to match with the framerate of the media" />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" aria-disabled="true"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="sppasCuedSpeech.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.whatkey.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" aria-disabled="true"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="sppasCuedSpeech.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whatkey.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech">    <h1>Module CuedSpeech</h1>
+    <section id="#CuedSpeech" class="chapter nonumber">    <h1>Module CuedSpeech</h1>
 <section id="#sppasAnnsOnFrames">
 <h2>Class sppasAnnsOnFrames</h2>
 
@@ -98,6 +64,8 @@
 </section>
 <section>
 <h3 id="#constructor_sppasAnnsOnFrames">Constructor</h3>
+<h4>__init__</h4>
+
     <details>
     <summary>
 View Source
@@ -125,7 +93,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_fps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return framerate (float).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return framerate (float)."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fps</span>
 </code></pre></div>
 
@@ -151,17 +119,17 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_fps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set a new framerate.</span>
+<span class="w">    </span><span class="sd">"""Set a new framerate.</span>
 
 <span class="sd">        :param value: (float) A framerate.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Expected a float.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">'Expected a float.'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid framerate. &#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Invalid framerate. '</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__fps</span> <span class="o">=</span> <span class="n">value</span>
 </code></pre></div>
 
@@ -187,17 +155,20 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">adjust_boundaries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Move boundaries to frames of a video.</span>
+<span class="w">    </span><span class="sd">"""Move boundaries to frames of a video.</span>
 
 <span class="sd">        :param tier: (sppasTier) Tier to be adjusted.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">tier</span><span class="p">:</span>
         <span class="n">begin_point</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span>
         <span class="n">end_point</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">()</span>
         <span class="n">new_begin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_point_boundary</span><span class="p">(</span><span class="n">begin_point</span><span class="p">)</span>
         <span class="n">new_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjust_point_boundary</span><span class="p">(</span><span class="n">end_point</span><span class="p">)</span>
-        <span class="n">ann</span><span class="o">.</span><span class="n">set_best_localization</span><span class="p">(</span><span class="n">sppasInterval</span><span class="p">(</span><span class="n">new_begin</span><span class="p">,</span> <span class="n">new_end</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ann</span><span class="o">.</span><span class="n">set_best_localization</span><span class="p">(</span><span class="n">sppasInterval</span><span class="p">(</span><span class="n">new_begin</span><span class="p">,</span> <span class="n">new_end</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">ann</span><span class="si">}</span><span class="s1"> not appended: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -225,14 +196,14 @@ Set the radius to fully cover 0, 1 or 2 frames.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">adjust_point_boundary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Move a point to a frame of a video.</span>
+<span class="w">    </span><span class="sd">"""Move a point to a frame of a video.</span>
 
 <span class="sd">        Put the midpoint either between 2 frames or at the middle of a frame.</span>
 <span class="sd">        Set the radius to fully cover 0, 1 or 2 frames.</span>
 
 <span class="sd">        :param tier: (sppasTier) Tier to be adjusted.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">frame_duration</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fps</span>
     <span class="n">half_frame</span> <span class="o">=</span> <span class="n">frame_duration</span> <span class="o">/</span> <span class="mf">2.0</span>
     <span class="n">quart_frame</span> <span class="o">=</span> <span class="n">frame_duration</span> <span class="o">/</span> <span class="mf">4.0</span>
@@ -269,7 +240,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

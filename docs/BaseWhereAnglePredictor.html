@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of BaseWhereAnglePredictor. Base class to predict the angle of the hand." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="WhereAnglePredictorCustoms.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.position.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.wherecue.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="WhereAnglePredictorCustoms.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.wherecue.position.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.wherecue.angle">    <h1>Module CuedSpeech.wherecue.angle</h1>
+    <section id="#CuedSpeech.wherecue.angle" class="chapter nonumber">    <h1>Module CuedSpeech.wherecue.angle</h1>
 <section id="#BaseWhereAnglePredictor">
 <h2>Class BaseWhereAnglePredictor</h2>
 
@@ -115,6 +81,8 @@ following unit circle:</p>
 </section>
 <section>
 <h3 id="#constructor_BaseWhereAnglePredictor">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Instantiate a hand angle's predictor.</em></p>
 
@@ -126,13 +94,13 @@ following unit circle:</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a hand angle&#39;s predictor.</span>
+<span class="w">    </span><span class="sd">"""Instantiate a hand angle's predictor.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">MSG_DESCRIPTION_BASE</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_b</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_c</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_m</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_s</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_t</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_n</span><span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'b'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_b</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_c</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_m</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_s</span><span class="p">,</span> <span class="s1">'t'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_t</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_angle_n</span><span class="p">}</span>
 </code></pre></div>
 
     </details>
@@ -154,7 +122,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">vowel_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of vowel codes the class can calculate hand angles for.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return the list of vowel codes the class can calculate hand angles for."""</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </code></pre></div>
 
@@ -174,7 +142,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vagueness of angle value.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Vagueness of angle value."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radius</span>
 </code></pre></div>
 
@@ -206,12 +174,12 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix a new radius value.</span>
+<span class="w">    </span><span class="sd">"""Fix a new radius value.</span>
 
 <span class="sd">        :param r: (int) The new radius value between 0 and MAX_RADIUS.</span>
 <span class="sd">        :raises: ValueError: Invalid given radius value.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_RADIUS</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">IntervalRangeException</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BaseWhereAnglePredictor</span><span class="o">.</span><span class="n">MAX_RADIUS</span><span class="p">)</span>
@@ -251,17 +219,17 @@ View Source
     <summary>
 View Source
     </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the angle at a given position.</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'n'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the angle at a given position.</span>
 
-<span class="sd">        :param vowel: (char) Vowel position name. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :param vowel: (char) Vowel position name. If unknown, 'n' is used instead.</span>
 <span class="sd">        :return: (int)</span>
 <span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span>
-    <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Predicted Angles&#39;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">'Predicted Angles'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -293,21 +261,21 @@ View Source
     <summary>
 View Source
     </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_angle_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate the angle of the hand for all the given positions.</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_angle_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="o">=</span><span class="p">(</span><span class="s1">'n'</span><span class="p">,))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Estimate the angle of the hand for all the given positions.</span>
 
 <span class="sd">        It uses predefined angles and stores them in a dictionary.</span>
 
-<span class="sd">        :param vowels: (tuple) List of vowel position names. If unknown, &#39;n&#39; is used instead.</span>
+<span class="sd">        :param vowels: (tuple) List of vowel position names. If unknown, 'n' is used instead.</span>
 <span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">vowel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Position Code&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">'Position Code'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vowels</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vowel_mapping</span><span class="p">[</span><span class="n">vowel</span><span class="p">]()</span>
 </code></pre></div>
 
@@ -339,16 +307,16 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowels</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the given vowel codes are valid.</span>
+<span class="w">    </span><span class="sd">"""Check if the given vowel codes are valid.</span>
 
 <span class="sd">        :param vowels: (list of characters)</span>
 <span class="sd">        :raises: sppasKeyError: Invalid given vowel code.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">vowel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">&#39;Position Code&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="s1">'Position Code'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -376,11 +344,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_n</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the neutral position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the neutral position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -406,11 +374,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the cheek bone position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the cheek bone position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -436,11 +404,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_c</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the chin position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the chin position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -466,11 +434,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_m</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the mouse position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the mouse position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -496,11 +464,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_s</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the side position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the side position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -526,11 +494,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_calculate_angle_t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;To be overridden. Calculate the angle at the throat position.</span>
+<span class="w">    </span><span class="sd">"""To be overridden. Calculate the angle at the throat position.</span>
 
 <span class="sd">        :return: (int) angle in degrees</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="mi">60</span>
 </code></pre></div>
 
@@ -542,7 +510,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

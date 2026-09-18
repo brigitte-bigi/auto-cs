@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="WhenTransitionPredictor. Hand transitions predictor for both hand shape and hand position." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.whatkey.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="sppasCuedPredictorError.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="sppasWhenHandTransitionPredictor.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whatkey.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="sppasCuedPredictorError.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="sppasWhenHandTransitionPredictor.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whenhand">    <h1>Module CuedSpeech.whenhand</h1>
+    <section id="#CuedSpeech.whenhand" class="chapter nonumber">    <h1>Module CuedSpeech.whenhand</h1>
 <section id="#WhenTransitionPredictor">
 <h2>Class WhenTransitionPredictor</h2>
 
@@ -130,6 +96,8 @@ the current one (the consonant).</li>
 </section>
 <section>
 <h3 id="#constructor_WhenTransitionPredictor">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Create a hand transitions predictor.</em></p>
 
@@ -147,11 +115,11 @@ the current one (the consonant).</li>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_number</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="n">DEFAULT</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a hand transitions predictor.</span>
+<span class="w">    </span><span class="sd">"""Create a hand transitions predictor.</span>
 
 <span class="sd">    :param version_number: (int) Version of the predictor system ranging (0-3).</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__version</span> <span class="o">=</span> <span class="n">WhenTransitionPredictor</span><span class="o">.</span><span class="n">DEFAULT</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_version_number</span><span class="p">(</span><span class="n">version_number</span><span class="p">)</span>
@@ -177,7 +145,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">version_numbers</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the whole list of supported version numbers.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return the whole list of supported version numbers."""</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">WhenTransitionPredictor</span><span class="o">.</span><span class="n">HAND_TRANSITIONS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </code></pre></div>
 
@@ -200,12 +168,12 @@ returned.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_a1a3_avg_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the average of stored [A1;A3] durations or the fixed one.</span>
+<span class="w">    </span><span class="sd">"""Return the average of stored [A1;A3] durations or the fixed one.</span>
 
-<span class="sd">        If there&#39;s not enough known [A1;A3] durations, the fixed value is</span>
+<span class="sd">        If there's not enough known [A1;A3] durations, the fixed value is</span>
 <span class="sd">        returned.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_a1a3_avg_duration</span><span class="p">()</span>
 </code></pre></div>
 
@@ -225,7 +193,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_version_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the version number of the selected predictor (int).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return the version number of the selected predictor (int)."""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__version</span>
 </code></pre></div>
 
@@ -259,21 +227,21 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_version_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the predictor version number.</span>
+<span class="w">    </span><span class="sd">"""Change the predictor version number.</span>
 
 <span class="sd">        It invalidates the current values of A1 and A3.</span>
 
 <span class="sd">        :param version_number: (int) One of the supported versions.</span>
 <span class="sd">        :raises: sppasKeyError: if invalid version number</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">authorized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">version_numbers</span><span class="p">()</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">version_number</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">authorized</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">authorized</span><span class="p">),</span> <span class="n">version_number</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Hand transition: invalid predictor version </span><span class="si">{}</span><span class="s1">. Expected one of: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version_number</span><span class="p">,</span> <span class="n">authorized</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Hand transition: invalid predictor version </span><span class="si">{}</span><span class="s1">. Expected one of: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version_number</span><span class="p">,</span> <span class="n">authorized</span><span class="p">))</span>
         <span class="k">raise</span> <span class="n">sppasKeyError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">authorized</span><span class="p">),</span> <span class="n">version_number</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__version</span> <span class="o">=</span> <span class="n">v</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="o">=</span> <span class="n">WhenTransitionPredictor</span><span class="o">.</span><span class="n">HAND_TRANSITIONS</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__version</span><span class="p">]()</span>
@@ -318,7 +286,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_a</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">a3</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set [A1,A3] the moments of the sounds of a newly observed key.</span>
+<span class="w">    </span><span class="sd">"""Set [A1,A3] the moments of the sounds of a newly observed key.</span>
 
 <span class="sd">        Instantiate the predictor with the given interval:</span>
 
@@ -332,7 +300,7 @@ View Source
 <span class="sd">        :raises: RangeBoundsException: if a3 is lesser than a1</span>
 <span class="sd">        :raises: sppasCuedPredictorError: No predictor system is defined</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">sppasCuedPredictorError</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">set_key_interval</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="n">store</span><span class="p">)</span>
@@ -354,7 +322,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reset_key_intervals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forget the stored A1,A3 moments.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Forget the stored A1,A3 moments."""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">reset_key_intervals</span><span class="p">()</span>
 </code></pre></div>
 
@@ -404,7 +372,7 @@ A nil shape means it's a key of type -V.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_m</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [M1,M2] the moments when the hand is moving.</span>
+<span class="w">    </span><span class="sd">"""Predict [M1,M2] the moments when the hand is moving.</span>
 
 <span class="sd">        Make use of the defined predictor and estimates the position</span>
 <span class="sd">        transition moments:</span>
@@ -412,18 +380,18 @@ View Source
 <span class="sd">            - Predict M1 - when leaving the current position</span>
 <span class="sd">            - Predict M2 - when arrived to the expected position</span>
 
-<span class="sd">        Neutral means it&#39;s not a phoneme: the key is 0-n.</span>
-<span class="sd">        A nil shape means it&#39;s a key of type -V.</span>
+<span class="sd">        Neutral means it's not a phoneme: the key is 0-n.</span>
+<span class="sd">        A nil shape means it's a key of type -V.</span>
 
 <span class="sd">        Depending on the predictor, possible arguments are:</span>
 
 <span class="sd">         - rank: (int) The rank of the key after a silence (sil=0, 1st key=1, ...)</span>
-<span class="sd">         - is_nil_shape: (bool) The shape is nil, i.e. there&#39;s no consonant in the syllable (N-V)</span>
+<span class="sd">         - is_nil_shape: (bool) The shape is nil, i.e. there's no consonant in the syllable (N-V)</span>
 
 <span class="sd">        :return: tuple(float, float) The interval [M1,M2] or (0.,0.)</span>
 <span class="sd">        :raises: sppasCuedPredictorError: No predictor defined.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">sppasCuedPredictorError</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">predict_position</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -469,7 +437,7 @@ moments:</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">predict_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict [D1,D2] the moments when fingers are changing.</span>
+<span class="w">    </span><span class="sd">"""Predict [D1,D2] the moments when fingers are changing.</span>
 
 <span class="sd">        Make use of the defined predictor and estimates the shape transition</span>
 <span class="sd">        moments:</span>
@@ -479,12 +447,12 @@ View Source
 
 <span class="sd">        Depending on the predictor, possible arguments are:</span>
 <span class="sd">         - rank: (int) The rank of the key after a silence (sil=0, 1st key=1, ...)</span>
-<span class="sd">         - is_nil_shape: (bool) The shape is nil, i.e. there&#39;s no consonant in the syllable (N-V)</span>
+<span class="sd">         - is_nil_shape: (bool) The shape is nil, i.e. there's no consonant in the syllable (N-V)</span>
 
 <span class="sd">        :return: tuple(float, float) The interval [D1,D2] or (0.,0.)</span>
 <span class="sd">        :raises: sppasCuedPredictorError: No predictor defined.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">sppasCuedPredictorError</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">predict_shape</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -498,7 +466,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

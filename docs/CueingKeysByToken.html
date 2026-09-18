@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of CueingKeysByToken. Segment an already cued text into per-token keys and per-token phones." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="CueingPronTokenizer.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="sppasWhatKeyPredictor.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="CueingPronTokenizer.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="sppasWhatKeyPredictor.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whatkey">    <h1>Module CuedSpeech.whatkey</h1>
+    <section id="#CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module CuedSpeech.whatkey</h1>
 <section id="#CueingKeysByToken">
 <h2>Class CueingKeysByToken</h2>
 
@@ -103,6 +69,8 @@ Each string can contain multiple key pairs separated with '.'.</p>
 </section>
 <section>
 <h3 id="#constructor_CueingKeysByToken">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Create a new instance.</em></p>
 
@@ -114,7 +82,7 @@ Each string can contain multiple key pairs separated with '.'.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create a new instance."""</span>
     <span class="k">pass</span>
 </code></pre></div>
 
@@ -150,13 +118,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_phonemes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">key_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return per-token keys and per-token phones.</span>
+<span class="w">    </span><span class="sd">"""Return per-token keys and per-token phones.</span>
 
-<span class="sd">        :param word_phonemes: (tuple) Pronunciation of each token (&#39;-&#39; separated phones).</span>
+<span class="sd">        :param word_phonemes: (tuple) Pronunciation of each token ('-' separated phones).</span>
 <span class="sd">        :param key_items: (list) Cueing result: list of (keys_str, phones_str).</span>
-<span class="sd">        :return: (tuple) (codes_by_token, phones_by_token), each is a tuple of strings (&#39;.&#39; separated).</span>
+<span class="sd">        :return: (tuple) (codes_by_token, phones_by_token), each is a tuple of strings ('.' separated).</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">words_phones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_words</span><span class="p">(</span><span class="n">word_phonemes</span><span class="p">)</span>
     <span class="n">flat_codes</span><span class="p">,</span> <span class="n">flat_phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__flatten_key_items</span><span class="p">(</span><span class="n">key_items</span><span class="p">)</span>
     <span class="n">token_codes</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words_phones</span><span class="p">))]</span>
@@ -169,20 +137,20 @@ View Source
         <span class="n">consonants</span><span class="p">,</span> <span class="n">vowels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_key_pair</span><span class="p">(</span><span class="n">phon_item</span><span class="p">)</span>
         <span class="n">token_index</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">consonants</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">token_index</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="n">consonants</span><span class="p">,</span> <span class="s1">&#39;consonants&#39;</span><span class="p">)</span>
+            <span class="n">token_index</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="n">consonants</span><span class="p">,</span> <span class="s1">'consonants'</span><span class="p">)</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">advance_if_done</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">token_index</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="n">vowels</span><span class="p">,</span> <span class="s1">&#39;vowels&#39;</span><span class="p">)</span>
+            <span class="n">token_index</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="n">vowels</span><span class="p">,</span> <span class="s1">'vowels'</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">token_index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Key has neither consonant nor vowel phones: &#39;</span> <span class="o">+</span> <span class="n">phon_item</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Key has neither consonant nor vowel phones: '</span> <span class="o">+</span> <span class="n">phon_item</span><span class="p">)</span>
         <span class="n">token_codes</span><span class="p">[</span><span class="n">token_index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code_item</span><span class="p">)</span>
         <span class="n">token_phons</span><span class="p">[</span><span class="n">token_index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phon_item</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words_phones</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">token_consumed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">token_codes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">token_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__PLACEHOLDER_CODE</span><span class="p">)</span>
             <span class="n">token_phons</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__PLACEHOLDER_PHON</span><span class="p">)</span>
-    <span class="n">codes_by_token</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">token_codes</span><span class="p">])</span>
-    <span class="n">phons_by_token</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">token_phons</span><span class="p">])</span>
+    <span class="n">codes_by_token</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">'.'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">token_codes</span><span class="p">])</span>
+    <span class="n">phons_by_token</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">'.'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">token_phons</span><span class="p">])</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">codes_by_token</span><span class="p">,</span> <span class="n">phons_by_token</span><span class="p">)</span>
 </code></pre></div>
 
@@ -210,19 +178,19 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__parse_words</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_phonemes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of list of phones per token.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return a list of list of phones per token."""</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">word_phonemes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;word_phonemes must be a tuple or list&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'word_phonemes must be a tuple or list'</span><span class="p">)</span>
     <span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">word_phonemes</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Each item of word_phonemes must be a str&#39;</span><span class="p">)</span>
-        <span class="n">phones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Each item of word_phonemes must be a str'</span><span class="p">)</span>
+        <span class="n">phones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Empty phoneme list for a token&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Empty phoneme list for a token'</span><span class="p">)</span>
         <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;word_phonemes is empty&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'word_phonemes is empty'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">words</span>
 </code></pre></div>
 
@@ -247,29 +215,29 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__flatten_key_items</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return flat lists of codes and phones.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return flat lists of codes and phones."""</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key_items</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;key_items must be a list&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'key_items must be a list'</span><span class="p">)</span>
     <span class="n">codes_flat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">phons_flat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">key_items</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Each item of key_items must be a (codes_str, phon_str) pair.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Each item of key_items must be a (codes_str, phon_str) pair.'</span><span class="p">)</span>
         <span class="n">codes_str</span><span class="p">,</span> <span class="n">phon_str</span> <span class="o">=</span> <span class="n">item</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">codes_str</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;codes_str must be a str&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'codes_str must be a str'</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">phon_str</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;phon_str must be a str&#39;</span><span class="p">)</span>
-        <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">codes_str</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
-        <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">phon_str</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'phon_str must be a str'</span><span class="p">)</span>
+        <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">codes_str</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span>
+        <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">phon_str</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;codes_str &#39;&quot;</span> <span class="o">+</span> <span class="n">codes_str</span> <span class="o">+</span> <span class="s2">&quot;&#39; and phon_str &#39;&quot;</span> <span class="o">+</span> <span class="n">phon_str</span> <span class="o">+</span> <span class="s2">&quot;&#39; do not have the same number of keys.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"codes_str '"</span> <span class="o">+</span> <span class="n">codes_str</span> <span class="o">+</span> <span class="s2">"' and phon_str '"</span> <span class="o">+</span> <span class="n">phon_str</span> <span class="o">+</span> <span class="s2">"' do not have the same number of keys."</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
             <span class="n">codes_flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">phons</span><span class="p">:</span>
             <span class="n">phons_flat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes_flat</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No key found in key_items&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'No key found in key_items'</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">codes_flat</span><span class="p">,</span> <span class="n">phons_flat</span><span class="p">)</span>
 </code></pre></div>
 
@@ -294,20 +262,20 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__parse_key_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pair_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return (consonants, vowels) lists from a &#39;C-V&#39; pair string.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return (consonants, vowels) lists from a 'C-V' pair string."""</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pair_str</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid key-phoneme pair: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pair_str</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">pair_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid key-phoneme pair: &#39;</span> <span class="o">+</span> <span class="n">pair_str</span><span class="p">)</span>
-    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">pair_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Invalid key-phoneme pair: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pair_str</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">pair_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Invalid key-phoneme pair: '</span> <span class="o">+</span> <span class="n">pair_str</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">pair_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">consonants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">vowels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">left</span> <span class="o">!=</span> <span class="s1">&#39;cnil&#39;</span><span class="p">:</span>
-        <span class="n">consonants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">right</span> <span class="o">!=</span> <span class="s1">&#39;vnil&#39;</span><span class="p">:</span>
-        <span class="n">vowels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">left</span> <span class="o">!=</span> <span class="s1">'cnil'</span><span class="p">:</span>
+        <span class="n">consonants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">right</span> <span class="o">!=</span> <span class="s1">'vnil'</span><span class="p">:</span>
+        <span class="n">vowels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__split_non_empty</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">consonants</span><span class="p">,</span> <span class="n">vowels</span><span class="p">)</span>
 </code></pre></div>
 
@@ -334,7 +302,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">__split_non_empty</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split and remove empty items.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Split and remove empty items."""</span>
     <span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -350,7 +318,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

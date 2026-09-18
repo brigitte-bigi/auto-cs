@@ -1282,4 +1282,4 @@ def _predict_shp_from_neutral(self) -> tuple:
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

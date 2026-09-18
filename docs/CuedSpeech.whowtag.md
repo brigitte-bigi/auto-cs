@@ -10,7 +10,7 @@
 
 ```python
 def __init__(self, *args, **kwargs):
-    raise sppasError("The hand filters can't be used.")
+    raise sppasError("The hand filters can't be used. No hands available.")
 ```
 
 
@@ -25,7 +25,7 @@ def __init__(self, *args, **kwargs):
 
 ```python
 def __init__(self, *args, **kwargs):
-    raise sppasEnableFeatureError('autocs')
+    raise sppasError("The 'resources/cuedspeech' folder doesn't contains any hand-set.")
 ```
 
 
@@ -48,4 +48,4 @@ def get_hands_filters() -> list:
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

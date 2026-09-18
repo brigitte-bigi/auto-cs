@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <title>Typography • Whakerexa</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="web, css, html5, framework, accessibility, disability"/>
+
+    <link rel="icon" href="../wexa_statics/icons/whakerexa.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../wexa_statics/css/wexa.css" type="text/css" media="screen" />
+    <link rel="stylesheet" id="wexa-theme" href="../wexa_statics/css/themes/wexa_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../wexa_statics/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="doc.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../wexa_statics/css/menu.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../wexa_statics/css/layout.css" type="text/css" media="all" />
+
+    <style>
+        :root {
+            --header-height:   2rem;
+            --header-bg-color: transparent;
+            --header-fg-color: var(--fg-color-alt);
+            --header-slidein:  none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+<header id="header-content">
+    <a class="skip" href="#main-content" aria-label="skip to main content">Skip to main content</a>
+    <p>Whakerexa > Content > Typography</p>
+</header>
+
+<nav class="nav-wexa top" aria-label="Page navigation">
+    <a class="menuitem" id="btn-back" data-href="../index.html" data-target="_self" aria-label="Back" title="Back" data-icon="chevron-left">
+    </a>
+    <button id="btn-css-theme" class="menuitem" type="button"
+            aria-label="Switch theme" title="Switch theme"
+            onclick="window.themes && window.themes.next()">
+    </button>
+    <button id="btn-contrast" class="menuitem accessibility"
+            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+            onclick="Wexa.accessibility.switchContrastScheme()"></button>
+    <button id="btn-color" class="menuitem accessibility"
+            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+            onclick="Wexa.accessibility.switchColorScheme()"></button>
+</nav>
+
+<main id="main-content">
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+    <h1>Typography</h1>
+    <p>
+        All typography rules are included in <code>wexa.css</code> — no additional stylesheet required.
+        Headings, body text, inline elements, lists and blockquotes are styled by default.
+        Colors and font metrics are controlled by CSS variables.
+    </p>
+
+        <h2>Headings</h2>
+        <p>
+            Six heading levels are available. Each level has its own color variable,
+            and font size is computed relative to <code>--font-size</code>
+            so that the scale adapts to all screen sizes and accessibility modes.
+        </p>
+
+        <article class="card-doc" aria-label="Headings h1 to h6 — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+            </div>
+            <pre class="dark"><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+        </article>
+
+        <h3>Variables</h3>
+        <p>Heading colors are controlled by the theme variables:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--h1-color</code></td>
+                    <td>Color of <code>h1</code></td>
+                </tr>
+                <tr>
+                    <td><code>--h2-color</code></td>
+                    <td>Color of <code>h2</code></td>
+                </tr>
+                <tr>
+                    <td><code>--h3-color</code></td>
+                    <td>Color of <code>h3</code></td>
+                </tr>
+                <tr>
+                    <td><code>--h4-color</code></td>
+                    <td>Color of <code>h4</code></td>
+                </tr>
+                <tr>
+                    <td><code>--h5-color</code></td>
+                    <td>Color of <code>h5</code></td>
+                </tr>
+                <tr>
+                    <td><code>--h6-color</code></td>
+                    <td>Color of <code>h6</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Font families</h2>
+        <p>
+            Four font family classes are available: <code>.font-sans</code>, <code>.font-serif</code>,
+            <code>.font-mono</code> and <code>.font-pre</code>.
+            Each maps to its corresponding CSS variable and falls back gracefully
+            when the named font is not installed.
+            In contrast mode, all families fall back to <code>ContrastFont</code>
+            for improved legibility.
+        </p>
+
+        <article class="card-doc" aria-label="Font families — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <p class="font-sans">Sans — <strong>Bold.</strong> <em>Italic.</em></p>
+                <p class="font-serif">Serif — <strong>Bold.</strong> <em>Italic.</em></p>
+                <p class="font-mono">Mono — <strong>Bold.</strong> <em>Italic.</em></p>
+                <p class="font-pre">Pre — <strong>Bold.</strong> <em>Italic.</em></p>
+            </div>
+            <pre class="dark"><code>&lt;p class="font-sans"&gt;Sans text&lt;/p&gt;
+&lt;p class="font-serif"&gt;Serif text&lt;/p&gt;
+&lt;p class="font-mono"&gt;Mono text&lt;/p&gt;
+&lt;p class="font-pre"&gt;Pre text&lt;/p&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Script blocks</h2>
+        <p>
+            Every family is cut into <code>unicode-range</code> subsets, one file per
+            script block. A block travels only when the page holds one of its
+            characters: an English or a French page never fetches the Greek or the
+            Cyrillic outlines, and no character is ever lost since the blocks cover
+            the whole font.
+        </p>
+        <p>
+            To watch it happen, open the network panel of the browser, filter it on
+            fonts and reload this page: besides the latin block every page needs,
+            the samples below pull the files facing them, and no other. A sample
+            rendered in another typeface than its neighbours means its subset
+            failed to load.
+        </p>
+        <p>
+            The accessible font follows the same rule. Press the contrast button of
+            the navigation bar: every family is replaced by <code>ContrastFont</code>,
+            and the samples above pull the AccessibleDfA subsets instead.
+        </p>
+        <p>
+            AccessibleDfA does not draw every script, though. It knows the latin
+            letters, the phonetic characters and a handful of Greek and Cyrillic
+            ones, and nothing more. A subset holds the characters the font really
+            draws, so the Greek and the Cyrillic samples fall back to the sans
+            family in contrast mode and stay readable, where a font announcing a
+            character it leaves empty would show nothing at all.
+        </p>
+
+        <article class="card-doc" aria-label="Script blocks — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <table>
+                    <caption>Samples of one script block each, and the file they pull in either mode</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Block</th>
+                            <th scope="col">Sample</th>
+                            <th scope="col">Standard mode</th>
+                            <th scope="col">Contrast mode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">latin</th>
+                            <td class="font-sans">A a Z z 0 9 é ü ñ</td>
+                            <td><code>Commissioner-latin.woff2</code></td>
+                            <td><code>AccessibleDfA-Regular-latin.woff2</code></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">latin extended</th>
+                            <td class="font-sans">Ā ă ą Ć ď Ē ŵ Ź</td>
+                            <td><code>Commissioner-latin-ext.woff2</code></td>
+                            <td><code>AccessibleDfA-Regular-latin-ext.woff2</code></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">vietnamese</th>
+                            <td class="font-sans">Ạ ạ Ậ ậ Ệ ệ Ọ ọ</td>
+                            <td><code>Commissioner-vietnamese.woff2</code></td>
+                            <td><code>AccessibleDfA-Regular-vietnamese.woff2</code></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">greek</th>
+                            <td class="font-sans">Α β Γ δ Ω ω</td>
+                            <td><code>Commissioner-greek.woff2</code></td>
+                            <td><code>Commissioner-greek.woff2</code>, by fallback</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">cyrillic</th>
+                            <td class="font-sans">В Е М Н О Р С Т а е о р с х</td>
+                            <td><code>Commissioner-cyrillic.woff2</code></td>
+                            <td><code>AccessibleDfA-Regular-cyrillic.woff2</code></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">cyrillic extended</th>
+                            <td class="font-sans">Ѣ Ѳ Ҩ Ӂ Ԑ</td>
+                            <td><code>Commissioner-cyrillic-ext.woff2</code></td>
+                            <td><code>Commissioner-cyrillic-ext.woff2</code>, by fallback</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">other</th>
+                            <td class="font-sans">∅ ∂ ∆ ∏ ∑ √ ∞ ∫ ≈ ≠ ≤ ≥ ◊ ﬁ ﬂ</td>
+                            <td><code>Commissioner-other.woff2</code></td>
+                            <td><code>AccessibleDfA-Regular-other.woff2</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <pre class="dark"><code>@font-face {
+    font-family: SansFont;
+    src: url('../fonts/Commissioner-greek.woff2') format('woff2');
+    font-display: swap;
+    unicode-range: U+0374-0375, U+037E, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE, U+03D7;
+}
+
+@font-face {
+    font-family: ContrastFont;
+    src: url('../fonts/AccessibleDfA-Regular-greek.woff2') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+    unicode-range: U+0374-0375, U+037A-037E, U+0384-03FF;
+}</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Font weights</h2>
+        <p>
+            Four weight classes are available: <code>.font-weight-thin</code>,
+            <code>.font-weight-normal</code>, <code>.font-weight-bold</code>
+            and <code>.font-weight-black</code>.
+            In contrast mode, the underlying numeric values are automatically increased
+            so that all weights remain legible at higher contrast levels.
+        </p>
+
+        <article class="card-doc" aria-label="Font weights — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <p class="font-sans font-weight-thin">Sans — weight thin</p>
+                <p class="font-sans font-weight-normal">Sans — weight normal</p>
+                <p class="font-sans font-weight-bold">Sans — weight bold</p>
+                <p class="font-sans font-weight-black">Sans — weight black</p>
+                <p class="font-serif font-weight-thin">Serif — weight thin</p>
+                <p class="font-serif font-weight-normal">Serif — weight normal</p>
+                <p class="font-serif font-weight-bold">Serif — weight bold</p>
+                <p class="font-serif font-weight-black">Serif — weight black</p>
+            </div>
+            <pre class="dark"><code>&lt;p class="font-sans font-weight-thin"&gt;weight thin&lt;/p&gt;
+&lt;p class="font-sans font-weight-normal"&gt;weight normal&lt;/p&gt;
+&lt;p class="font-sans font-weight-bold"&gt;weight bold&lt;/p&gt;
+&lt;p class="font-sans font-weight-black"&gt;weight black&lt;/p&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Inline text elements</h2>
+        <p>
+            Standard HTML inline elements are styled by default.
+            No class is required.
+        </p>
+
+        <article class="card-doc" aria-label="Inline text elements — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Link</a>
+                    <strong>Bold</strong>
+                    <em>Italic</em>
+                    <u>Underline</u>
+                    <del>Deleted</del>
+                    <ins>Inserted</ins>
+                    <s>Strikethrough</s>
+                    <small>Small</small>
+                    Text <sub>sub</sub>
+                    Text <sup>sup</sup>
+                    <abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr>
+                    <kbd>Ctrl+K</kbd>
+                    <mark>Highlighted</mark>
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;a href="..."&gt;Link&lt;/a&gt;
+&lt;strong&gt;Bold&lt;/strong&gt;
+&lt;em&gt;Italic&lt;/em&gt;
+&lt;u&gt;Underline&lt;/u&gt;
+&lt;del&gt;Deleted&lt;/del&gt;
+&lt;ins&gt;Inserted&lt;/ins&gt;
+&lt;s&gt;Strikethrough&lt;/s&gt;
+&lt;small&gt;Small&lt;/small&gt;
+&lt;sub&gt;sub&lt;/sub&gt;  &lt;sup&gt;sup&lt;/sup&gt;
+&lt;abbr title="..."&gt;Abbr.&lt;/abbr&gt;
+&lt;kbd&gt;Ctrl+K&lt;/kbd&gt;
+&lt;mark&gt;Highlighted&lt;/mark&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Blockquote</h2>
+        <p>
+            Use <code>&lt;blockquote&gt;</code> for extended quotations.
+            An optional <code>&lt;cite&gt;</code> element inside the blockquote
+            renders the attribution on its own line.
+        </p>
+        <p>
+            A theme paints the quote with <code>--blockquote-border-color</code>,
+            <code>--blockquote-bg-color</code>, <code>--blockquote-fg-color</code> and,
+            for the <code>&lt;cite&gt;</code> line, <code>--blockquote-footer-color</code>.
+            The last three are unset by default: the quote then reads its ground from the
+            <code>--bg-color-alt</code> to <code>--bg-color</code> gradient and its ink from
+            <code>--fg-color</code>. Setting <code>--blockquote-bg-color</code> replaces the
+            gradient with one flat color.
+        </p>
+
+        <article class="card-doc" aria-label="Blockquote — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <blockquote>
+                    La règle d'or de la conduite est la tolérance mutuelle, car nous ne
+                    penserons jamais tous de la même façon, nous ne verrons qu'une partie
+                    de la vérité et sous des angles différents.
+                    <cite>&mdash; Mahatma Gandhi</cite>
+                </blockquote>
+            </div>
+            <pre class="dark"><code>&lt;blockquote&gt;
+    Quote text.
+    &lt;cite&gt;&amp;mdash; Author&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Lists</h2>
+        <p>
+            Unordered (<code>&lt;ul&gt;</code>), ordered (<code>&lt;ol&gt;</code>)
+            and description (<code>&lt;dl&gt;</code>) lists are all styled by default.
+            No class is required.
+        </p>
+
+        <article class="card-doc" aria-label="Lists — ul, ol, dl examples">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <ul>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item with a longer text to show wrapping behavior inside a list.</li>
+                </ul>
+                <ol>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item with a longer text to show wrapping behavior inside a list.</li>
+                </ol>
+                <dl>
+                    <dt>Term one</dt>
+                        <dd>Definition of the first term.</dd>
+                    <dt>Term two</dt>
+                        <dd>Definition of the second term.</dd>
+                        <dd>A second definition for the same term.</dd>
+                </dl>
+            </div>
+            <pre class="dark"><code>&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+    &lt;dt&gt;Term&lt;/dt&gt;
+    &lt;dd&gt;Description&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Aside</h2>
+        <p>
+            Use <code>&lt;aside&gt;</code> to display supplementary content
+            visually distinguished from the main text — a note, a warning, a tip.
+        </p>
+
+        <article class="card-doc" aria-label="Aside — example">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start; width: 100%;">
+                <aside>
+                    This is an aside. It draws attention to supplementary content
+                    without interrupting the main reading flow.
+                </aside>
+                <p>This is the main content that follows.</p>
+            </div>
+            <pre class="dark"><code>&lt;aside&gt;Supplementary content.&lt;/aside&gt;
+&lt;p&gt;Main content.&lt;/p&gt;</code></pre>
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+    <p class="center">This site respects your privacy.</p>
+    <p class="center">We do not collect any information and do not use cookies.</p>
+    <hr>
+    <p>Copyright @ 2023-2026 Brigitte Bigi, CNRS<br>
+        Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+    <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
+        This document is under the terms of the GNU Free Documentation License, v1.3.</a>
+    </p>
+</footer>
+
+<script src="../wexa_statics/js/wexa.loader.js"
+        data-base="../wexa_statics/"
+        data-links="btn-back"></script>
+</body>
+</html>

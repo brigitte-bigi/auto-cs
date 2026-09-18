@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Accessibility — Whakerexa</title>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../wexa_statics/icons/whakerexa.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../wexa_statics/css/wexa.css" type="text/css" media="screen" />
+    <link rel="stylesheet" id="wexa-theme" href="../wexa_statics/css/themes/wexa_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../wexa_statics/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="../wexa_statics/css/menu.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../wexa_statics/css/layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="doc.css" type="text/css" media="all" />
+
+    <style>
+        :root {
+            --header-height:   2rem;
+            --header-bg-color: transparent;
+            --header-fg-color: var(--fg-color-alt);
+            --header-slidein:  none;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header-content">
+    <a class="skip" href="#main-content" aria-label="skip to main content">Skip to main content</a>
+    <p>Whakerexa &gt; Getting started &gt; Accessibility</p>
+</header>
+<nav class="nav-wexa top" aria-label="Page navigation">
+    <a class="menuitem" id="btn-back" data-href="../index.html" data-target="_self" aria-label="Back" title="Back" data-icon="chevron-left">
+    </a>
+    <button id="btn-css-theme" class="menuitem" type="button"
+            aria-label="Switch theme" title="Switch theme"
+            onclick="window.themes && window.themes.next()">
+    </button>
+    <button id="btn-contrast" class="menuitem accessibility"
+            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+            onclick="Wexa.accessibility.switchContrastScheme()"></button>
+    <button id="btn-color" class="menuitem accessibility"
+            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+            onclick="Wexa.accessibility.switchColorScheme()"></button>
+</nav>
+
+<main id="main-content">
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h1>Accessibility</h1>
+
+        <p>
+            A <dfn>web page is accessible</dfn> when it can be read, understood, and operated
+            by everyone — including people with visual, motor, cognitive, or hearing impairments,
+            people using assistive technologies such as screen readers or keyboard-only navigation,
+            and people in difficult conditions such as poor lighting, slow connections, or small screens.
+            Accessibility is not a niche concern: it benefits all users, in all situations.
+            Learn more: <a class="external-link" href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">W3C — Introduction to Web Accessibility</a>,
+            <a class="external-link" href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 Guidelines</a>.
+        </p>
+        <p>
+            In Whakerexa, accessibility is not a feature you add at the end.
+            It is <strong>the foundation the framework is built on</strong>.
+            Every component, every stylesheet, every color decision starts from the question:
+            <em>will this work for everyone?</em>
+            The result: your pages are accessible by default, with zero extra effort on your part.
+        </p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Your users choose how they read</h2>
+
+        <p>
+            Two buttons — already in the navigation bar of this page — give your users
+            direct control over their reading experience.
+            No settings panel. No account required. One click.
+        </p>
+
+        <article class="card-doc" aria-label="Light / Dark mode demo">
+            <div class="card-view" style="flex-direction: column; align-items: center; gap: 0.5rem;">
+                <button id="btn-color-demo" class="menuitem accessibility"
+                        type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+                        onclick="Wexa.accessibility.switchColorScheme()" data-icon="color">
+                </button>
+                <p><strong>Light / Dark mode</strong></p>
+                <p>
+                    Switches the entire page between light and dark palette instantly.
+                    Respects the user's OS preference on first load.
+                    The choice travels with the URL — share a link, keep the preference.
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;button id="btn-color" class="menuitem accessibility"
+        type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+        onclick="Wexa.accessibility.switchColorScheme()"&gt;&lt;/button&gt;</code></pre>
+        </article>
+
+        <article class="card-doc" aria-label="High contrast mode demo">
+            <div class="card-view" style="flex-direction: column; align-items: center; gap: 0.5rem;">
+                <button id="btn-contrast-demo" class="menuitem accessibility"
+                        type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+                        onclick="Wexa.accessibility.switchContrastScheme()" data-icon="contrast">
+                </button>
+                <p><strong>High contrast mode</strong></p>
+                <p>
+                    Activates a reading profile designed for users with low vision or
+                    sensitivity to visual noise: larger font, increased spacing,
+                    heavier weights, stronger borders.
+                    Compliant with <a class="external-link" href="https://www.w3.org/TR/WCAG21/#text-spacing">WCAG 2.1 — 1.4.12 Text Spacing</a>.
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;button id="btn-contrast" class="menuitem accessibility"
+        type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+        onclick="Wexa.accessibility.switchContrastScheme()"&gt;&lt;/button&gt;</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Accessibility is architectural</h2>
+
+        <p>
+            Whakerexa uses <strong>CSS Cascade Layers</strong> to make accessibility guarantees that cannot
+            be accidentally broken by custom styles.
+            The <code>@layer accessibility</code> layer owns contrast mode and enforces its rules with
+            <code>!important</code> — exclusively within that layer, never elsewhere.
+            Your own CSS, written outside any layer, wins over everything else
+            and can never interfere with contrast mode.
+        </p>
+        <p>
+            What this means in practice: <strong>you cannot accidentally break accessibility</strong>
+            by adding your own styles, even without knowing how CSS layers work.
+        </p>
+
+        <h2>Semantic HTML, ready out of the box</h2>
+
+        <p>
+            Whakerexa styles standard HTML5 elements directly —
+            <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+            <code>&lt;footer&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;dialog&gt;</code> —
+            without requiring extra wrapper classes.
+            Screen readers, keyboard navigation, and browser accessibility tools
+            all work because the HTML is correct, not because workarounds were added.
+        </p>
+        <p>
+            All interactive components carry the right <code>aria-*</code> attributes.
+            Focus outlines are always visible. Skip-to-content links are included in every page template.
+            External links are marked with a visible icon and an implicit warning for screen readers.
+        </p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>No stored preferences — no surprises</h2>
+
+        <p>
+            Whakerexa never uses <code>localStorage</code> or cookies to persist user preferences.
+            Mode choices (dark, contrast, theme) travel as URL parameters.
+            Every page state is <strong>reproducible from a link</strong>:
+            send a URL, your colleague sees exactly what you see.
+            Close the tab, the next visit starts fresh.
+        </p>
+
+        <h2>Printing just works</h2>
+
+        <p>
+            A dedicated <code>print.css</code> silences all animations, resets backgrounds,
+            and enforces readable typography for print.
+            No black boxes, no disappearing content, no broken layouts on paper.
+        </p>
+
+        <h2>Wire it up in two lines</h2>
+
+        <article class="card-doc" aria-label="AccessibilityManager wiring">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>
+                    Add two buttons to your navigation — IDs and <code>aria-pressed</code> are the only requirements.
+                    <code>AccessibilityManager</code>, loaded automatically with <code>wexa.js</code> or the bundle,
+                    handles everything else.
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;button id="btn-contrast" class="menuitem accessibility"
+        type="button" aria-pressed="false" aria-label="Switch contrast" title="Switch contrast"
+        onclick="Wexa.accessibility.switchContrastScheme()"&gt;&lt;/button&gt;
+
+&lt;button id="btn-color" class="menuitem accessibility"
+        type="button" aria-pressed="false" aria-label="Switch light and dark" title="Switch light and dark"
+        onclick="Wexa.accessibility.switchColorScheme()"&gt;&lt;/button&gt;</code></pre>
+        </article>
+
+        <h2>The bar, written by the framework</h2>
+
+        <p>
+            A page that does not want to write the three buttons itself asks
+            <code>AccessibilityNav</code> for them. It builds a <code>nav</code> holding the
+            theme, the contrast and the color mode &mdash; and only those a document says it
+            offers: a document with a single theme has nothing to cycle, and says so.
+        </p>
+
+        <article class="card-doc" aria-label="AccessibilityNav — the bar it builds">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>The bar is built, then added where it belongs. The buttons carry the
+                    identifiers the framework answers to, so what is written by hand and what
+                    is built here behave the same.</p>
+            </div>
+            <pre class="dark"><code>const bar = new Wexa.AccessibilityNav({ theme: true, contrast: true, color: true });
+document.getElementById('header-nav-content').appendChild(await bar.build());</code></pre>
+        </article>
+
+        <article class="card-doc" aria-label="AccessibilityNav — the wording it proposes">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>
+                    The wording is proposed, never imposed. <code>NAV_WORDING</code> carries what
+                    a button is called when the page says nothing &mdash; <em>Switch theme</em>,
+                    <em>Switch contrast</em>, <em>Switch light and dark</em>, each one written as
+                    the label and as the title. A page names the ones it wants to name, in its own
+                    language, and what it leaves out keeps the proposal.
+                </p>
+            </div>
+            <pre class="dark"><code>await bar.build({
+    wording: {
+        contrast: { label: 'Contraste élevé', title: 'Contraste élevé' },
+        color:    { label: 'Clair ou sombre', title: 'Clair ou sombre' }
+    }
+});</code></pre>
+        </article>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Keyboard shortcuts, without stealing the letters</h2>
+
+        <p>
+            A page that answers keys has one thing to get right: standing back when the person
+            is typing. <code>KeyboardController</code> holds that rule, so no component writes
+            it again. It listens once, answers the keys the page declared, and gives every key
+            back as soon as the focus is on a field, a control, a link, a media with its own
+            commands, or anything the page made reachable with the tab key. Enter and space are
+            never answered: they operate whatever holds the focus.
+        </p>
+
+        <article class="card-doc" aria-label="KeyboardController — one shortcut">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>
+                    A shortcut is its keys and what they do — a function, or the name of a
+                    <code>CustomEvent</code> dispatched on the document for a component whose
+                    work is done elsewhere. A key that would scroll the page says so.
+                </p>
+            </div>
+            <pre class="dark"><code>const keyboard = new Wexa.KeyboardController();
+
+keyboard.register({keys: ['h', 'H', '?'], label: 'Help',
+                   action: () =&gt; document.getElementById('btn-help').click()});
+
+keyboard.register({keys: ['ArrowRight'], label: 'Next',
+                   action: 'page:navigate', detail: {action: 'next'},
+                   preventsDefault: true});
+
+keyboard.init();</code></pre>
+        </article>
+
+        <p>
+            What was declared is read back with <code>keyboard.shortcuts</code>, which gives the
+            keys and their labels: a help dialog written from it says what the page answers, and
+            nothing else. <code>forget(keys)</code> gives keys back, <code>destroy()</code> gives
+            them all back. The slides of the framework are the first user of this class: their
+            own file holds nothing but their fourteen shortcuts and the events each of them says.
+        </p>
+
+        <h2>Reusing a named tab</h2>
+
+        <article class="card-doc" aria-label="Named tab links">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>
+                    A plain <code>&lt;a&gt;</code> normally navigates the current tab. Set
+                    <code>data-named-target</code> to a window name instead, and the click opens
+                    — or switches to, if it is already open — the tab carrying that name, leaving
+                    the current tab untouched. A page claims a name for its own tab by setting
+                    <code>window.name</code> on load; any later link pointing to that same name
+                    reuses it rather than opening a duplicate.
+                </p>
+                <p>
+                    This differs from <code>LinkController</code>'s <code>data-target</code>
+                    (see <a href="links.html">Links</a>): that one opens a NEW tab under the given
+                    name every time none exists yet under that exact name at the moment of the
+                    click. <code>data-named-target</code> is for the reverse case — a link meant
+                    to rejoin a tab that already claimed its own identity independently, whether
+                    or not it was opened by this click.
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;!-- The page that owns the tab claims its name once, on load --&gt;
+&lt;script&gt;window.name = 'app-main';&lt;/script&gt;
+
+&lt;!-- Any link elsewhere reuses that tab instead of duplicating it --&gt;
+&lt;a href="main.html" data-named-target="app-main"&gt;Back to Main&lt;/a&gt;</code></pre>
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+    <p class="center">This site respects your privacy.</p>
+    <p class="center">We do not collect any information and do not use cookies.</p>
+    <hr>
+    <p>Copyright @ 2023-2026 Brigitte Bigi, CNRS<br>
+        Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+    <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
+        This document is under the terms of the GNU Free Documentation License, v1.3.</a>
+    </p>
+</footer>
+
+
+<script src="../wexa_statics/js/wexa.loader.js"
+        data-base="../wexa_statics/"
+        data-links="btn-back"></script>
+</body>
+</html>

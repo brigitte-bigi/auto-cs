@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of sppasCuedSpeech. SPPAS integration of the automatic Cued Speech key-code generation." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" aria-disabled="true"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="sppasAnnsOnFrames.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.whatkey.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" aria-disabled="true"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="sppasAnnsOnFrames.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whatkey.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech">    <h1>Module CuedSpeech</h1>
+    <section id="#CuedSpeech" class="chapter nonumber">    <h1>Module CuedSpeech</h1>
 <section id="#sppasCuedSpeech">
 <h2>Class sppasCuedSpeech</h2>
 
@@ -98,6 +64,8 @@
 </section>
 <section>
 <h3 id="#constructor_sppasCuedSpeech">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Create a new instance.</em></p>
 
@@ -118,19 +86,19 @@ results. If None, logs are redirected to the default logging system.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+<span class="w">    </span><span class="sd">"""Create a new instance.</span>
 
 <span class="sd">    Log is used for a better communication of the annotation process and its</span>
 <span class="sd">    results. If None, logs are redirected to the default logging system.</span>
 
 <span class="sd">    :param log: (sppasLog) Human-readable logs.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">sppasCuedSpeech</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;cuedspeech.json&#39;</span><span class="p">,</span> <span class="n">log</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span> <span class="o">=</span> <span class="s1">&#39;und&#39;</span>
+<span class="sd">    """</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">sppasCuedSpeech</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">'cuedspeech.json'</span><span class="p">,</span> <span class="n">log</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span> <span class="o">=</span> <span class="s1">'und'</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__genkey</span> <span class="o">=</span> <span class="n">sppasWhatKeyPredictor</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span> <span class="o">=</span> <span class="n">sppasWhenHandTransitionPredictor</span><span class="p">(</span><span class="n">predictor_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;handtrans&#39;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span> <span class="o">=</span> <span class="n">sppasWhenHandTransitionPredictor</span><span class="p">(</span><span class="n">predictor_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'handtrans'</span><span class="p">])</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span> <span class="o">=</span> <span class="n">sppasWhereCuePredictor</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__ann_on_media</span> <span class="o">=</span> <span class="n">sppasAnnsOnFrames</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mf">60.0</span><span class="p">)</span>
@@ -161,20 +129,20 @@ View Source
     <summary>
 View Source
     </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_filename</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;und&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the keys from a configuration file.</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_filename</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">'und'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fix the keys from a configuration file.</span>
 
 <span class="sd">        :param config_filename: Name of the configuration file with the keys</span>
-<span class="sd">        :param lang: (str) Iso639-3 of the language or &quot;und&quot; if unknown.</span>
+<span class="sd">        :param lang: (str) Iso639-3 of the language or "und" if unknown.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span> <span class="o">=</span> <span class="n">lang</span>
-    <span class="k">if</span> <span class="n">lang</span> <span class="o">!=</span> <span class="s1">&#39;und&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lang</span> <span class="o">!=</span> <span class="s1">'und'</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_filename</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__genkey</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="p">)</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;createvideo&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'createvideo'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__set_video_tagger</span><span class="p">()</span>
 </code></pre></div>
 
@@ -213,7 +181,7 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fix_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix all options.</span>
+<span class="w">    </span><span class="sd">"""Fix all options.</span>
 
 <span class="sd">        Available options are:</span>
 
@@ -228,20 +196,20 @@ View Source
 
 <span class="sd">        :param options: (sppasOption)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get_key</span><span class="p">()</span>
-        <span class="k">if</span> <span class="s1">&#39;createvideo&#39;</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">'createvideo'</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_create_video</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
-        <span class="k">elif</span> <span class="s1">&#39;pattern&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="s1">'pattern'</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="s1">&#39;handtrans&#39;</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="s1">'handtrans'</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_when_handtrans_version</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
-        <span class="k">elif</span> <span class="s1">&#39;handangle&#39;</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="s1">'handangle'</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_where_handangle_version</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
-        <span class="k">elif</span> <span class="s1">&#39;handpos&#39;</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="s1">'handpos'</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_where_handposition_version</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
-        <span class="k">elif</span> <span class="s1">&#39;angleface&#39;</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="s1">'angleface'</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_where_angleface_correction</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">())</span>
         <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">CuedSpeechVideoTagger</span><span class="o">.</span><span class="n">OPTIONS</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
@@ -274,19 +242,19 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_when_handtrans_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the version of the hand transition times generator.</span>
+<span class="w">    </span><span class="sd">"""Fix the version of the hand transition times generator.</span>
 
 <span class="sd">        :param version: (int)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">all_versions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span><span class="o">.</span><span class="n">get_whenpredictor_versions</span><span class="p">()</span>
     <span class="n">version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">version</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_versions</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid version number &#39;</span><span class="si">{}</span><span class="s2">&#39; for transition times. Expected one of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"Invalid version number '</span><span class="si">{}</span><span class="s2">' for transition times. Expected one of </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
         <span class="n">version</span> <span class="o">=</span> <span class="mi">4</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span><span class="o">.</span><span class="n">set_whenpredictor_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;handtrans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'handtrans'</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
 </code></pre></div>
 
     </details>
@@ -311,19 +279,19 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_where_handposition_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the version of the vowel&#39; positions generator.</span>
+<span class="w">    </span><span class="sd">"""Fix the version of the vowel' positions generator.</span>
 
 <span class="sd">        :param version: (int)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">all_versions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">get_wherepositionpredictor_versions</span><span class="p">()</span>
     <span class="n">version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">version</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_versions</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid version number &#39;</span><span class="si">{}</span><span class="s2">&#39; for vowels positions predictor. Expected one of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"Invalid version number '</span><span class="si">{}</span><span class="s2">' for vowels positions predictor. Expected one of </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
         <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">set_wherepositionpredictor_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;handpos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'handpos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
 </code></pre></div>
 
     </details>
@@ -348,19 +316,19 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_where_handangle_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the version of the hand angle generator.</span>
+<span class="w">    </span><span class="sd">"""Fix the version of the hand angle generator.</span>
 
 <span class="sd">        :param version: (int)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">all_versions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">get_whereanglepredictor_versions</span><span class="p">()</span>
     <span class="n">version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">version</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_versions</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Invalid version number &#39;</span><span class="si">{}</span><span class="s2">&#39; for angle predictor. Expected one of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"Invalid version number '</span><span class="si">{}</span><span class="s2">' for angle predictor. Expected one of </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">all_versions</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
         <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">set_whereanglepredictor_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;handangle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'handangle'</span><span class="p">]</span> <span class="o">=</span> <span class="n">version</span>
 </code></pre></div>
 
     </details>
@@ -385,14 +353,14 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_where_angleface_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether correct tha hand angle or not with the face one.</span>
+<span class="w">    </span><span class="sd">"""Whether correct tha hand angle or not with the face one.</span>
 
 <span class="sd">        :param value: (bool)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__gencue</span><span class="o">.</span><span class="n">set_angle_use_face</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;angleface&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'angleface'</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </code></pre></div>
 
     </details>
@@ -417,13 +385,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_create_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix the createvideo option.</span>
+<span class="w">    </span><span class="sd">"""Fix the createvideo option.</span>
 
 <span class="sd">        :param create: (bool)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">create</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">create</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;createvideo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">create</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'createvideo'</span><span class="p">]</span> <span class="o">=</span> <span class="n">create</span>
     <span class="k">if</span> <span class="n">create</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__set_video_tagger</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
@@ -459,13 +427,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phonemes</span><span class="p">,</span> <span class="n">media</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Syllabify labels of a time-aligned phones tier.</span>
+<span class="w">    </span><span class="sd">"""Syllabify labels of a time-aligned phones tier.</span>
 
 <span class="sd">        :param phonemes: (sppasTier) time-aligned phonemes tier</span>
 <span class="sd">        :param media: (sppasMedia) a media representing the video file</span>
 <span class="sd">        :returns: (sppasTier*6)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">cs_segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__genkey</span><span class="o">.</span><span class="n">phons_to_segments</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
     <span class="n">cs_keys</span><span class="p">,</span> <span class="n">cs_class</span><span class="p">,</span> <span class="n">cs_struct</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__genkey</span><span class="o">.</span><span class="n">segments_to_keys</span><span class="p">(</span><span class="n">cs_segments</span><span class="p">,</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_first_point</span><span class="p">(),</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_last_point</span><span class="p">())</span>
     <span class="n">cs_pos</span><span class="p">,</span> <span class="n">cs_shapes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__genhand</span><span class="o">.</span><span class="n">when_hands</span><span class="p">(</span><span class="n">cs_keys</span><span class="p">,</span> <span class="n">cs_segments</span><span class="p">)</span>
@@ -496,20 +464,20 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">make_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_file</span><span class="p">,</span> <span class="n">trs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a video with the tagged keys.</span>
+<span class="w">    </span><span class="sd">"""Create a video with the tagged keys.</span>
 
 <span class="sd">        :param video_file: (str) Filename of the given video</span>
 <span class="sd">        :param trs: (sppasTranscription) All required tiers to tag the video</span>
 <span class="sd">        :param output: (str) Output file name</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">feature_installed</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="s1">&#39;Create the tagged video&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">feature_installed</span><span class="p">(</span><span class="s1">'video'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="s1">'Create the tagged video'</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">video_file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="o">.</span><span class="n">tag_with_keys</span><span class="p">(</span><span class="n">trs</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;To tag a video, the video support feature must be enabled (</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">feature_installed</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">)</span><span class="si">}</span><span class="s1">) and a video tagger must be instantiated (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="sa">f</span><span class="s1">'To tag a video, the video support feature must be enabled (</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">feature_installed</span><span class="p">(</span><span class="s1">'video'</span><span class="p">)</span><span class="si">}</span><span class="s1">) and a video tagger must be instantiated (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s1">).'</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">annots</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -544,13 +512,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_files</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the media and the annotated filenames.</span>
+<span class="w">    </span><span class="sd">"""Return the media and the annotated filenames.</span>
 
 <span class="sd">        :param input_files: (list)</span>
 <span class="sd">        :raise: NoInputError</span>
 <span class="sd">        :return: (str, str) Names of the 3 expected files</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">ext</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_input_extensions</span><span class="p">()</span>
     <span class="n">media_ext</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ext</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
     <span class="n">phons_ext</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ext</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -558,8 +526,8 @@ View Source
     <span class="n">media</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">annot_phons</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">annot_sights</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">pphones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;inputpattern1&#39;</span><span class="p">]</span>
-    <span class="n">psights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;inputpattern3&#39;</span><span class="p">]</span>
+    <span class="n">pphones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'inputpattern1'</span><span class="p">]</span>
+    <span class="n">psights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'inputpattern3'</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">continue</span>
@@ -571,7 +539,7 @@ View Source
         <span class="k">elif</span> <span class="n">annot_sights</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">fe</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">sights_ext</span> <span class="ow">and</span> <span class="n">fn</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">psights</span><span class="p">):</span>
             <span class="n">annot_sights</span> <span class="o">=</span> <span class="n">filename</span>
     <span class="k">if</span> <span class="n">annot_phons</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;The annotated file with time-aligned phonemes was not found.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'The annotated file with time-aligned phonemes was not found.'</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">NoInputError</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">annot_phons</span><span class="p">,</span> <span class="n">annot_sights</span><span class="p">)</span>
 </code></pre></div>
@@ -597,19 +565,19 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_filename</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a sppasMedia() instance from a video filename.</span>
+<span class="w">    </span><span class="sd">"""Create a sppasMedia() instance from a video filename.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">video_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
     <span class="n">extm</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">video_filename</span><span class="o">.</span><span class="n">lower</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">video_media</span> <span class="o">=</span> <span class="n">sppasMedia</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">video_filename</span><span class="p">),</span> <span class="n">mime_type</span><span class="o">=</span><span class="s1">&#39;video/&#39;</span> <span class="o">+</span> <span class="n">extm</span><span class="p">)</span>
+    <span class="n">video_media</span> <span class="o">=</span> <span class="n">sppasMedia</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">video_filename</span><span class="p">),</span> <span class="n">mime_type</span><span class="o">=</span><span class="s1">'video/'</span> <span class="o">+</span> <span class="n">extm</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">vid</span> <span class="o">=</span> <span class="n">sppasVideoReader</span><span class="p">()</span>
         <span class="n">vid</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">video_filename</span><span class="p">)</span>
-        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;fps&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_framerate</span><span class="p">()))</span>
-        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_duration</span><span class="p">()))</span>
-        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_size</span><span class="p">()))</span>
+        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'fps'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_framerate</span><span class="p">()))</span>
+        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'duration'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_duration</span><span class="p">()))</span>
+        <span class="n">video_media</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'size'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">vid</span><span class="o">.</span><span class="n">get_size</span><span class="p">()))</span>
         <span class="n">vid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">pass</span>
@@ -645,13 +613,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_files</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the automatic annotation process on an input.</span>
+<span class="w">    </span><span class="sd">"""Run the automatic annotation process on an input.</span>
 
 <span class="sd">        :param input_files: (list of str) time-aligned phonemes, and optionally video, csv files</span>
 <span class="sd">        :param output: (str) the output name</span>
 <span class="sd">        :returns: (sppasTranscription)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">do_vid</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">file_video</span><span class="p">,</span> <span class="n">file_phons</span><span class="p">,</span> <span class="n">file_sights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">(</span><span class="n">input_files</span><span class="p">)</span>
@@ -685,15 +653,15 @@ View Source
             <span class="n">trs_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tier_phon</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">tier</span> <span class="ow">in</span> <span class="n">trs_coords</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_set_media_to_tier</span><span class="p">(</span><span class="n">tier</span><span class="p">,</span> <span class="n">video_media</span><span class="p">,</span> <span class="n">adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;createvideo&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">'createvideo'</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">file_video</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">file_sights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                         <span class="n">do_vid</span> <span class="o">=</span> <span class="kc">True</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">make_video</span><span class="p">(</span><span class="n">file_video</span><span class="p">,</span> <span class="n">trs_coords</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">do_vid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="s1">&#39;The option to tag the video was enabled but no video/csv corresponding to the annotated file </span><span class="si">{:s}</span><span class="s1"> was found.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">status</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="o">.</span><span class="n">print_message</span><span class="p">(</span><span class="s1">'The option to tag the video was enabled but no video/csv corresponding to the annotated file </span><span class="si">{:s}</span><span class="s1"> was found.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">input_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">status</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No sights available.&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'No sights available.'</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">trs_output</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -705,7 +673,7 @@ View Source
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">EmptyOutputError</span>
         <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">coords_output</span> <span class="o">=</span> <span class="n">output_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_output_pattern</span><span class="p">(),</span> <span class="s1">&#39;-coords&#39;</span><span class="p">)</span>
+            <span class="n">coords_output</span> <span class="o">=</span> <span class="n">output_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_output_pattern</span><span class="p">(),</span> <span class="s1">'-coords'</span><span class="p">)</span>
             <span class="n">parser</span> <span class="o">=</span> <span class="n">sppasTrsRW</span><span class="p">(</span><span class="n">coords_output</span><span class="p">)</span>
             <span class="n">parser</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">trs_coords</span><span class="p">)</span>
             <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coords_output</span><span class="p">)</span>
@@ -732,8 +700,8 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_output_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pattern this annotation uses in an output filename.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;outputpattern&#39;</span><span class="p">,</span> <span class="s1">&#39;-cuedspeech&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""Pattern this annotation uses in an output filename."""</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'outputpattern'</span><span class="p">,</span> <span class="s1">'-cuedspeech'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -752,8 +720,8 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_input_patterns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pattern this annotation expects for its input filename.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inputpattern1&#39;</span><span class="p">,</span> <span class="s1">&#39;-palign&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inputpattern2&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inputpattern3&#39;</span><span class="p">,</span> <span class="s1">&#39;-sights&#39;</span><span class="p">)]</span>
+<span class="w">    </span><span class="sd">"""Pattern this annotation expects for its input filename."""</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'inputpattern1'</span><span class="p">,</span> <span class="s1">'-palign'</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'inputpattern2'</span><span class="p">,</span> <span class="s1">''</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'inputpattern3'</span><span class="p">,</span> <span class="s1">'-sights'</span><span class="p">)]</span>
 </code></pre></div>
 
     </details>
@@ -775,15 +743,15 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_input_extensions</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extensions that the annotation expects for its input filename.</span>
+<span class="w">    </span><span class="sd">"""Extensions that the annotation expects for its input filename.</span>
 
 <span class="sd">        Priority is given to video files, then image files.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="n">media_ext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">&#39;VIDEO&#39;</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">img_ext</span> <span class="ow">in</span> <span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">&#39;IMAGE&#39;</span><span class="p">):</span>
+<span class="sd">        """</span>
+    <span class="n">media_ext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">'VIDEO'</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">img_ext</span> <span class="ow">in</span> <span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">'IMAGE'</span><span class="p">):</span>
         <span class="n">media_ext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_ext</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">&#39;ANNOT_ANNOT&#39;</span><span class="p">),</span> <span class="n">media_ext</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;.xra&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">sppasFiles</span><span class="o">.</span><span class="n">get_informat_extensions</span><span class="p">(</span><span class="s1">'ANNOT_ANNOT'</span><span class="p">),</span> <span class="n">media_ext</span><span class="p">,</span> <span class="p">[</span><span class="s1">'.xra'</span><span class="p">,</span> <span class="s1">'.csv'</span><span class="p">]]</span>
 </code></pre></div>
 
     </details>
@@ -809,11 +777,11 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_hands_sets</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of all hands sets in the resources.cuedspeech folder.</span>
+<span class="w">    </span><span class="sd">"""List of all hands sets in the resources.cuedspeech folder.</span>
 
 <span class="sd">        :return: (list) A list of all hands sets available.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">hand_manager</span> <span class="o">=</span> <span class="n">sppasHandResource</span><span class="p">()</span>
     <span class="n">hand_manager</span><span class="o">.</span><span class="n">automatic_loading</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">hand_manager</span><span class="o">.</span><span class="n">get_hand_sets_identifiers</span><span class="p">()</span>
@@ -842,11 +810,11 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_hands_filters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of all available hands filters.</span>
+<span class="w">    </span><span class="sd">"""List of all available hands filters.</span>
 
 <span class="sd">        :return: (list) A list of all hands filters.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">return</span> <span class="n">CuedSpeechVideoTagger</span><span class="o">.</span><span class="n">get_hands_filters</span><span class="p">()</span>
 </code></pre></div>
 
@@ -876,13 +844,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_set_media_to_tier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the media to the tier and adjust annotation boundaries.</span>
+<span class="w">    </span><span class="sd">"""Set the media to the tier and adjust annotation boundaries.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">media</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="n">tier</span><span class="o">.</span><span class="n">set_media</span><span class="p">(</span><span class="n">media</span><span class="p">)</span>
-    <span class="n">fps</span> <span class="o">=</span> <span class="n">media</span><span class="o">.</span><span class="n">get_meta</span><span class="p">(</span><span class="s1">&#39;fps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">fps</span> <span class="o">=</span> <span class="n">media</span><span class="o">.</span><span class="n">get_meta</span><span class="p">(</span><span class="s1">'fps'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">adjust</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__ann_on_media</span><span class="o">.</span><span class="n">fps</span> <span class="o">=</span> <span class="n">fps</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__ann_on_media</span><span class="o">.</span><span class="n">adjust_boundaries</span><span class="p">(</span><span class="n">tier</span><span class="p">)</span>
@@ -898,15 +866,15 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_set_trs_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trs</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;annotation_result_of&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_iso&#39;</span><span class="p">,</span> <span class="s1">&#39;iso639-3&#39;</span><span class="p">)</span>
-    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_name_0&#39;</span><span class="p">,</span> <span class="s1">&#39;Undetermined&#39;</span><span class="p">)</span>
+    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'annotation_result_of'</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_iso'</span><span class="p">,</span> <span class="s1">'iso639-3'</span><span class="p">)</span>
+    <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_name_0'</span><span class="p">,</span> <span class="s1">'Undetermined'</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__lang</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_code_0&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span><span class="p">)</span>
-        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_url_0&#39;</span><span class="p">,</span> <span class="s1">&#39;https://iso639-3.sil.org/code/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span><span class="p">)</span>
+        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_code_0'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span><span class="p">)</span>
+        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_url_0'</span><span class="p">,</span> <span class="s1">'https://iso639-3.sil.org/code/'</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__lang</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_code_0&#39;</span><span class="p">,</span> <span class="s1">&#39;und&#39;</span><span class="p">)</span>
-        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;language_url_0&#39;</span><span class="p">,</span> <span class="s1">&#39;https://iso639-3.sil.org/code/und&#39;</span><span class="p">)</span>
+        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_code_0'</span><span class="p">,</span> <span class="s1">'und'</span><span class="p">)</span>
+        <span class="n">trs</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'language_url_0'</span><span class="p">,</span> <span class="s1">'https://iso639-3.sil.org/code/und'</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -932,7 +900,7 @@ View Source
             <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">sppasEnableFeatureError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__tagger</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Cued Speech Video Tagger can&#39;t be enabled: </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Cued Speech Video Tagger can't be enabled: </span><span class="si">{:s}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
 </code></pre></div>
 
     </details>
@@ -943,7 +911,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

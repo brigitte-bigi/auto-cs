@@ -812,4 +812,4 @@ def __get_phones(tier, interval) -> str:
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

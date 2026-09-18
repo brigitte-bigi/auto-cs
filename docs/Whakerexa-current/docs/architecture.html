@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Architecture — Whakerexa</title>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../wexa_statics/icons/whakerexa.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../wexa_statics/css/wexa.css" type="text/css" media="screen" />
+    <link rel="stylesheet" id="wexa-theme" href="../wexa_statics/css/themes/wexa_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../wexa_statics/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="../wexa_statics/css/menu.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../wexa_statics/css/layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="doc.css" type="text/css" media="all" />
+
+    <style>
+        :root {
+            --header-height:   2rem;
+            --header-bg-color: transparent;
+            --header-fg-color: var(--fg-color-alt);
+            --header-slidein:  none;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header-content">
+    <a class="skip" href="#main-content" aria-label="skip to main content">Skip to main content</a>
+    <p>Whakerexa &gt; Getting started &gt; Architecture</p>
+</header>
+<nav class="nav-wexa top" aria-label="Page navigation">
+    <a class="menuitem" id="btn-back" data-href="../index.html" data-target="_self" aria-label="Back" title="Back" data-icon="chevron-left">
+    </a>
+    <button id="btn-css-theme" class="menuitem" type="button"
+            aria-label="Switch theme" title="Switch theme"
+            onclick="window.themes && window.themes.next()">
+    </button>
+    <button id="btn-contrast" class="menuitem accessibility"
+            type="button" aria-label="Switch contrast" title="Switch contrast" aria-pressed="false"
+            onclick="Wexa.accessibility.switchContrastScheme()"></button>
+    <button id="btn-color" class="menuitem accessibility"
+            type="button" aria-label="Switch light and dark" title="Switch light and dark" aria-pressed="false"
+            onclick="Wexa.accessibility.switchColorScheme()"></button>
+</nav>
+
+<main id="main-content">
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h1>Architecture</h1>
+
+        <h2>Overview</h2>
+
+        <p><b>wexa.css</b> is a CSS framework intended to be as simple as possible to make
+            <mark><dfn title="usable by everyone, regardless of disability, device, or context">accessible</dfn></mark> web content, and to minimize the use of CSS classes for enhancing the
+            readability of HTML code, like it should always be! <b>wexa.css</b> is the main
+            CSS framework of <a class="external-link" href="https://github.com/brigitte-bigi/Whakerexa">Whakerexa</a>.
+        </p>
+        <p>It was designed to be easily <mark>customizable</mark>, allowing users to adjust
+            properties such as fonts, colors, borders, etc., effortlessly. Most of the properties
+            are stored into variables which makes possible to re-define them, then to obtain a
+            custom different style. Fonts, colors, borders, etc., can be overridden by re-defining
+            the corresponding variables, enabling users to achieve a unique style.</p>
+
+        <h2>CSS Cascade Architecture</h2>
+
+        <p><b>wexa.css</b> is built on CSS Cascade Layers
+            (<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer"><code>@layer</code></a>):
+        </p>
+
+        <article class="card-doc" aria-label="CSS layer declaration">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <ul>
+                    <li><code>reset</code> — universal margin, padding, box-sizing defaults.</li>
+                    <li><code>base</code> — structural rules, scrollbar, focus outlines, disabled states, typography defaults.</li>
+                    <li><code>theme</code> — light and dark color palettes, animation variables.</li>
+                    <li><code>accessibility</code> — contrast mode (WCAG 1.4.12 spacing and ContrastFont), enforced with <code>!important</code> only in that context.</li>
+                </ul>
+                <p>Any CSS you write outside of a layer <strong>automatically wins</strong> over all wexa rules,
+                    regardless of selector specificity. A plain <code>header { background: blue }</code> in your
+                    own stylesheet overrides wexa without needing <code>!important</code> or complex selectors.</p>
+                <p>To create a custom theme, use <code>@layer theme { }</code> in a stylesheet loaded after
+                    <code>wexa.css</code> — your values override the defaults within that layer.</p>
+            </div>
+            <pre class="dark"><code>@layer reset, base, theme, accessibility;</code></pre>
+        </article>
+
+        <h3>Sizes, and where the rule stops</h3>
+
+        <p>Every size is written as a coefficient of <code>--font-size</code>, never in
+            <code>rem</code> nor in <code>em</code>: a browser does not recompute those when the
+            contrast mode changes the size of the text, so a component written with them keeps
+            the dimensions of a mode it has left.</p>
+
+        <p>One place cannot follow that rule: the condition of a media query. It is evaluated
+            before any variable is resolved, so a breakpoint is a number of pixels and stays
+            calibrated on a text of 16. In contrast mode the text is written larger while the
+            breakpoints do not move, and a layout gets tight slightly before its threshold.
+            Container queries do not help: their <code>em</code> resolve against the same value
+            a browser does not recompute.</p>
+
+        <p>What decides a threshold in JavaScript has no such limit, and counts in font sizes:
+            the bibliography hides its two columns of digits under 38.75 of them, which is 620
+            pixels for a text of 16 and 698 for a text of 18.</p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="panel-item">
+
+        <h2>Custom classes</h2>
+
+        <p>When using standard HTML5, accessibility is increased. Only three significant
+            classes are introduced in <code>wexa.css</code>, specifically for accessibility:</p>
+        <ol>
+            <li><code>dark</code></li>
+            <li><code>contrast</code></li>
+            <li><code>external-link</code></li>
+        </ol>
+        <p>The other classes allow changing the font or the font-weight of any element:</p>
+        <ul>
+            <li><code>font-sans</code> — default font family</li>
+            <li><code>font-serif</code></li>
+            <li><code>font-mono</code> — used by <code>code</code> element</li>
+            <li><code>font-pre</code> — used by <code>pre</code> element</li>
+            <li><code>font-weight-thin</code></li>
+            <li><code>font-weight-normal</code> — default font weight</li>
+            <li><code>font-weight-semibold</code></li>
+            <li><code>font-weight-bold</code> — used by <code>b</code> element</li>
+            <li><code>font-weight-black</code> — used by <code>strong</code> element</li>
+        </ul>
+
+        <h3>The <code>dark</code> class</h3>
+
+        <article class="card-doc" aria-label="dark class demo">
+            <div class="card-view">
+                <section class="dark" style="padding: 1rem; width: 100%;">
+                    <p>As said in its name, the <code>dark</code> class turns the content into dark colors.
+                        Only colors are changed.</p>
+                    <blockquote><p>Dark blockquote example</p><cite>Made by me!</cite></blockquote>
+                </section>
+            </div>
+            <pre class="dark"><code>&lt;section class="dark"&gt;
+    &lt;p&gt;Only colors are changed.&lt;/p&gt;
+    &lt;blockquote&gt;&lt;p&gt;Dark blockquote example&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/section&gt;</code></pre>
+        </article>
+
+        <h3>The <code>contrast</code> class</h3>
+
+        <article class="card-doc" aria-label="contrast class demo">
+            <div class="card-view">
+                <section class="contrast" style="padding: 1rem; width: 100%;">
+                    <p>This is a high contrast section. Font, font weight, font size, spacing and a few other
+                        properties are changed to make it easier to read. A <a href="#">link</a> is slightly
+                        colored differently.</p>
+                    <blockquote>Contrast blockquote example</blockquote>
+                </section>
+            </div>
+            <pre class="dark"><code>&lt;section class="contrast"&gt;
+    &lt;p&gt;High contrast section.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+        </article>
+
+        <h3>The <code>external-link</code> class</h3>
+
+        <article class="card-doc" aria-label="external-link class demo">
+            <div class="card-view" style="flex-direction: column; align-items: flex-start;">
+                <p>When specified on <code>&lt;a&gt;</code>, <code>external-link</code> adds a small icon
+                    indicating the link redirects to an external page. Example:<br>
+                    "You can find <a class="external-link" href="https://github.com/brigitte-bigi/Whakerexa">Whakerexa</a>
+                    on GitHub."
+                </p>
+            </div>
+            <pre class="dark"><code>&lt;a class="external-link" href="https://github.com/..."&gt;Whakerexa&lt;/a&gt;</code></pre>
+        </article>
+
+    </section>
+
+</main>
+
+<footer>
+    <p class="center">This site respects your privacy.</p>
+    <p class="center">We do not collect any information and do not use cookies.</p>
+    <hr>
+    <p>Copyright @ 2023-2026 Brigitte Bigi, CNRS<br>
+        Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+    <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
+        This document is under the terms of the GNU Free Documentation License, v1.3.</a>
+    </p>
+</footer>
+
+<script src="../wexa_statics/js/wexa.loader.js"
+        data-base="../wexa_statics/"
+        data-links="btn-back"></script>
+</body>
+</html>

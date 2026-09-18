@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of sppasWhatKeyPredictor. Cued Speech keys automatic generator from a sequence of phonemes." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="CueingKeysByToken.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="CueingKeysByToken.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="CueingWordKeys.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whatkey">    <h1>Module CuedSpeech.whatkey</h1>
+    <section id="#CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module CuedSpeech.whatkey</h1>
 <section id="#sppasWhatKeyPredictor">
 <h2>Class sppasWhatKeyPredictor</h2>
 
@@ -98,6 +64,8 @@
 </section>
 <section>
 <h3 id="#constructor_sppasWhatKeyPredictor">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Instantiate a CS generator.</em></p>
 
@@ -115,11 +83,11 @@
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="o">=</span><span class="n">CuedSpeechKeys</span><span class="p">()):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Instantiate a CS generator.</span>
+<span class="w">    </span><span class="sd">"""Instantiate a CS generator.</span>
 
 <span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules to convert phonemes to keys</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
 </code></pre></div>
@@ -149,13 +117,13 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set new rules.</span>
+<span class="w">    </span><span class="sd">"""Set new rules.</span>
 
 <span class="sd">        :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">&#39;cue_rules&#39;</span><span class="p">,</span> <span class="s1">&#39;CuedSpeechKeys&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">'cue_rules'</span><span class="p">,</span> <span class="s1">'CuedSpeechKeys'</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
 </code></pre></div>
 
@@ -190,7 +158,7 @@ CS-PhonSegments:      |  b O~     |  Z u    |  R   |</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">phons_to_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phonemes</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasTier</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert time-aligned phonemes into CS segments.</span>
+<span class="w">    </span><span class="sd">"""Convert time-aligned phonemes into CS segments.</span>
 
 <span class="sd">        PhonAlign:            |  b   | O~ |  Z |  u |  R   |</span>
 <span class="sd">        CS-PhonSegments:      |  b O~     |  Z u    |  R   |</span>
@@ -198,11 +166,11 @@ View Source
 <span class="sd">        :param phonemes: (sppasTier) time-aligned phonemes tier</span>
 <span class="sd">        :return: (sppasTier) Phonemes grouped into key segments</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">&#39;phons&#39;</span><span class="p">,</span> <span class="s1">&#39;sppasTier&#39;</span><span class="p">)</span>
-    <span class="n">segments_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-PhonSegments&#39;</span><span class="p">)</span>
-    <span class="n">segments_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_segments_of_tier&#39;</span><span class="p">,</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">'phons'</span><span class="p">,</span> <span class="s1">'sppasTier'</span><span class="p">)</span>
+    <span class="n">segments_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-PhonSegments'</span><span class="p">)</span>
+    <span class="n">segments_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'cued_speech_segments_of_tier'</span><span class="p">,</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
     <span class="n">intervals</span> <span class="o">=</span> <span class="n">sppasWhatKeyPredictor</span><span class="o">.</span><span class="n">_phon_to_intervals</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">:</span>
         <span class="n">start_phon_idx</span> <span class="o">=</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">lindex</span><span class="p">(</span><span class="n">interval</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">())</span>
@@ -214,7 +182,7 @@ View Source
         <span class="k">if</span> <span class="n">start_phon_idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">end_phon_idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__gen_key_segments</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">start_phon_idx</span><span class="p">,</span> <span class="n">end_phon_idx</span><span class="p">,</span> <span class="n">segments_tier</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">info</span><span class="p">(</span><span class="mi">1224</span><span class="p">,</span> <span class="s1">&#39;annotations&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">interval</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">info</span><span class="p">(</span><span class="mi">1224</span><span class="p">,</span> <span class="s1">'annotations'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">interval</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">segments_tier</span>
 </code></pre></div>
 
@@ -253,7 +221,7 @@ CS-KeysClass:         |  C V      |  C V    |  C N  |  N N  |</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">segments_to_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">start_point</span><span class="p">:</span> <span class="n">sppasPoint</span> <span class="o">|</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="p">:</span> <span class="n">sppasPoint</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create tiers with the CS denomination and the class of each phoneme.</span>
+<span class="w">    </span><span class="sd">"""Create tiers with the CS denomination and the class of each phoneme.</span>
 
 <span class="sd">        CS-PhonSegments:      |  b O~     |  Z u    |   R   |   #   |</span>
 <span class="sd">        CS-PhonStructs:       |  C V      |  C V    |   C   |       |</span>
@@ -265,25 +233,25 @@ View Source
 <span class="sd">        :param end_point: (sppasPoint)</span>
 <span class="sd">        :returns: (sppasTier, sppasTier, sppasTier) CS-Keys CS-KeysClass CS-PhonStructs</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="n">key_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Keys&#39;</span><span class="p">)</span>
-    <span class="n">key_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_key_of_tier&#39;</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
-    <span class="n">class_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-KeysClass&#39;</span><span class="p">)</span>
-    <span class="n">class_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_phonclass_of_tier&#39;</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
-    <span class="n">struct_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-PhonStructs&#39;</span><span class="p">)</span>
-    <span class="n">struct_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">&#39;cued_speech_struct_of_tier&#39;</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+<span class="sd">        """</span>
+    <span class="n">key_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-Keys'</span><span class="p">)</span>
+    <span class="n">key_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'cued_speech_key_of_tier'</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="n">class_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-KeysClass'</span><span class="p">)</span>
+    <span class="n">class_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'cued_speech_phonclass_of_tier'</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+    <span class="n">struct_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-PhonStructs'</span><span class="p">)</span>
+    <span class="n">struct_tier</span><span class="o">.</span><span class="n">set_meta</span><span class="p">(</span><span class="s1">'cued_speech_struct_of_tier'</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
         <span class="n">phons</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A CS key should contain at least one phoneme.Got </span><span class="si">{:d}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'A CS key should contain at least one phoneme.Got </span><span class="si">{:d}</span><span class="s1"> instead.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A CS key should contain at max two phonemes.Got </span><span class="si">{:d}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'A CS key should contain at max two phonemes.Got </span><span class="si">{:d}</span><span class="s1"> instead.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">content</span> <span class="o">=</span> <span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
-                <span class="n">phons</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="s1">&#39;cnil&#39;</span><span class="p">)))</span>
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
-                <span class="n">phons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="s1">&#39;vnil&#39;</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'V'</span><span class="p">:</span>
+                <span class="n">phons</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="s1">'cnil'</span><span class="p">)))</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'C'</span><span class="p">:</span>
+                <span class="n">phons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="s1">'vnil'</span><span class="p">)))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">phons</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">(</span><span class="n">symbols</span><span class="o">.</span><span class="n">unk</span><span class="p">)))</span>
         <span class="n">consonant</span> <span class="o">=</span> <span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
@@ -298,7 +266,7 @@ View Source
         <span class="n">a2</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">a2</span><span class="o">.</span><span class="n">set_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
         <span class="n">class_tier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_labels</span><span class="p">(</span><span class="n">consonant_class</span> <span class="k">if</span> <span class="n">consonant_class</span> <span class="o">!=</span> <span class="s1">&#39;N&#39;</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vowel_class</span> <span class="k">if</span> <span class="n">vowel_class</span> <span class="o">!=</span> <span class="s1">&#39;N&#39;</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_key</span><span class="p">(),</span> <span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_key</span><span class="p">())</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_labels</span><span class="p">(</span><span class="n">consonant_class</span> <span class="k">if</span> <span class="n">consonant_class</span> <span class="o">!=</span> <span class="s1">'N'</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vowel_class</span> <span class="k">if</span> <span class="n">vowel_class</span> <span class="o">!=</span> <span class="s1">'N'</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">phons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_key</span><span class="p">(),</span> <span class="n">phons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_key</span><span class="p">())</span>
         <span class="n">a3</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">a3</span><span class="o">.</span><span class="n">set_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
         <span class="n">struct_tier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
@@ -341,7 +309,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_phon_to_intervals</span><span class="p">(</span><span class="n">phonemes</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sppasTier</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a tier with only the intervals to be syllabified.</span>
+<span class="w">    </span><span class="sd">"""Create a tier with only the intervals to be syllabified.</span>
 
 <span class="sd">        We could use symbols.phone only, but for backward compatibility,</span>
 <span class="sd">        the symbols used in previous versions of SPPAS are added here.</span>
@@ -349,13 +317,13 @@ View Source
 <span class="sd">        :param phonemes: (sppasTier)</span>
 <span class="sd">        :return: a tier with consecutive filled intervals.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">stop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">symbols</span><span class="o">.</span><span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
-    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;@@&#39;</span><span class="p">)</span>
-    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
-    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;gb&#39;</span><span class="p">)</span>
-    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;lg&#39;</span><span class="p">)</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'#'</span><span class="p">)</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'@@'</span><span class="p">)</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'+'</span><span class="p">)</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'gb'</span><span class="p">)</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'lg'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">export_to_intervals</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
 </code></pre></div>
 
@@ -387,14 +355,14 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__gen_key_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_palign</span><span class="p">,</span> <span class="n">from_p</span><span class="p">,</span> <span class="n">to_p</span><span class="p">,</span> <span class="n">tier_key_segs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform the key generation of a sequence of phonemes.</span>
+<span class="w">    </span><span class="sd">"""Perform the key generation of a sequence of phonemes.</span>
 
 <span class="sd">        :param tier_palign: (sppasTier) Time-aligned phonemes</span>
 <span class="sd">        :param from_p: (int) index of the first phoneme to be syllabified</span>
 <span class="sd">        :param to_p: (int) index of the last phoneme to be syllabified</span>
 <span class="sd">        :param tier_key_segs: (sppasTier)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">phons</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">tier_palign</span><span class="p">[</span><span class="n">from_p</span><span class="p">:</span><span class="n">to_p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
         <span class="n">tag</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_best_tag</span><span class="p">()</span>
@@ -438,12 +406,12 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__fill_key_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_keys</span><span class="p">,</span> <span class="n">tier_class</span><span class="p">,</span> <span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fill the gaps with the neutral shape and neutral position.</span>
+<span class="w">    </span><span class="sd">"""Fill the gaps with the neutral shape and neutral position.</span>
 
 <span class="sd">        :param tier_keys: (sppasTier)</span>
 <span class="sd">        :param tier_class: (sppasTier)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_keys</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="n">cn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()</span>
@@ -472,7 +440,7 @@ View Source
         <span class="k">if</span> <span class="n">prev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prev</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">():</span>
             <span class="n">interval</span> <span class="o">=</span> <span class="n">sppasInterval</span><span class="p">(</span><span class="n">prev</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">())</span>
             <span class="n">duration</span> <span class="o">=</span> <span class="n">interval</span><span class="o">.</span><span class="n">duration</span><span class="p">()</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">prev_shape_key</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span> <span class="ow">and</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="n">sppasWhatKeyPredictor</span><span class="o">.</span><span class="n">NEUTRAL_SHAPE_THRESHOLD</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prev_shape_key</span> <span class="o">==</span> <span class="s1">'s'</span> <span class="ow">and</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="n">sppasWhatKeyPredictor</span><span class="o">.</span><span class="n">NEUTRAL_SHAPE_THRESHOLD</span><span class="p">:</span>
                 <span class="n">current_shape_key</span> <span class="o">=</span> <span class="n">cn</span>
                 <span class="n">current_shape_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">NEUTRAL_CLASS</span>
                 <span class="n">fill_hole</span> <span class="o">=</span> <span class="kc">True</span>
@@ -548,7 +516,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

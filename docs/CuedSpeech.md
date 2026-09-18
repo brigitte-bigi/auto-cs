@@ -74,7 +74,10 @@ def adjust_boundaries(self, tier):
         end_point = ann.get_highest_localization()
         new_begin = self.adjust_point_boundary(begin_point)
         new_end = self.adjust_point_boundary(end_point)
-        ann.set_best_localization(sppasInterval(new_begin, new_end))
+        try:
+            ann.set_best_localization(sppasInterval(new_begin, new_end))
+        except Exception as e:
+            logging.error(f'{ann} not appended: {str(e)}')
 ```
 
 *Move boundaries to frames of a video.*
@@ -756,4 +759,4 @@ def __set_video_tagger(self):
 
 
 
-~ Created using [Clamming](https://clamming.sf.net) version 2.1 ~
+~ Created using [Clamming](https://github.com/brigitte-bigi/ClammingPy) version 3.3 ~

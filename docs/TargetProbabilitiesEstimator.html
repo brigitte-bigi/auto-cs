@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="">
 
         <head>
             
@@ -10,82 +10,48 @@
             <meta name="description" content="Python Class Documentation of TargetProbabilitiesEstimator. Generate the probabilities of the targets (pos&shape)." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/wexa.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/layout.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/book.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/menu.css" type="text/css" />
-            <link rel="stylesheet" href="./Whakerexa-2.0/wexa_statics/css/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
             <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
-
-            <!-- Whakerexa JS loader: ES6 modules on http(s), bundle on file:// -->
-            <script>
-            (function () {
-              const usingFile = (window.location.protocol === 'file:');
-              const s = document.createElement('script');
-            
-              if (usingFile) {
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.bundle.js';
-              } else {
-                s.type = 'module';
-                s.src = './Whakerexa-2.0/wexa_statics/js/wexa.js';
-              }
-            
-              s.onload = function () {
-                window.Wexa.onload.addLoadFunction(function () {
-                  const book = new window.Wexa.Book("main-content");
-                  book.fill_table(false);
-                });
-              };
-            
-              document.head.appendChild(s);
-            })();
-            </script>
 
        </head>
        
-       <body class="light">
+       <body>
         <header>
 
             <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
                 Go to main content
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <button id="btn-contrast" role="menuitem" class="print-off" onclick="window.Wexa.accessibility.switch_contrast_scheme()" aria-label="Contrast">
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/contrast_switcher.jpg" alt="Contrast" id="img-contrast"/>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="btn-theme" class="print-off" role="menuitem" onclick="window.Wexa.accessibility.switch_color_scheme()" aria-label="Theme" >
-                            <img class="nav-item-img" src="./Whakerexa-2.0/wexa_statics/icons/theme_switcher.png" alt="Theme" id="img-theme"/>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
             </nav>
         
-    <h1>Auto-CS 2.0</h1>
+    <h1>Auto-CS 2.2</h1>
         <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
         <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
     </header>
-    <nav id="nav-book" class="side-nav">
-    <h1>Auto-CS 2.0</h1>
-    <img class="small-logo center" src="./statics/autocs.png" alt=""/>
-        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" href="CuedSpeech.whenhand.transition.html"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" href="sppasFaceHeight.html"> &uarr; Prev. Class</a></li>
-<li><a role="button" tabindex="0" href="index.html"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" href="BaseWhereModelPredictor.html"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" href="CuedSpeech.wherecue.angle.html"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="sppasFaceHeight.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" href="BaseWhereModelPredictor.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
-    <h2>Table of Contents</h2>
     <ul id="toc"></ul>
     <hr>
-    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://clamming.sf.net">ClammingPy</a></small></p>
-</nav>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
     <main id="main-content">
-    <section id="#CuedSpeech.wherecue">    <h1>Module CuedSpeech.wherecue</h1>
+    <section id="#CuedSpeech.wherecue" class="chapter nonumber">    <h1>Module CuedSpeech.wherecue</h1>
 <section id="#TargetProbabilitiesEstimator">
 <h2>Class TargetProbabilitiesEstimator</h2>
 
@@ -102,6 +68,8 @@ probability of the position are estimated.</p>
 </section>
 <section>
 <h3 id="#constructor_TargetProbabilitiesEstimator">Constructor</h3>
+<h4>__init__</h4>
+
     <article class="docstring">
 <p><em>Create a new instance.</em></p>
 
@@ -119,11 +87,11 @@ probability of the position are estimated.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="o">=</span><span class="n">CuedSpeechCueingRules</span><span class="p">()):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new instance.</span>
+<span class="w">    </span><span class="sd">"""Create a new instance.</span>
 
 <span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
@@ -154,11 +122,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_vowel_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vowel_code</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an index from the code of a vowel or -1.</span>
+<span class="w">    </span><span class="sd">"""Return an index from the code of a vowel or -1.</span>
 
 <span class="sd">        :param vowel_code: (char) One of n, b, c, s, m, t for French.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="n">vowel_code</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">vowel_code</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
@@ -192,14 +160,14 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set new rules.</span>
+<span class="w">    </span><span class="sd">"""Set new rules.</span>
 
 <span class="sd">        :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
 <span class="sd">        :raises: sppasTypeError: given parameter is not CuedSpeechCueingRules</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechCueingRules</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">&#39;cue_rules&#39;</span><span class="p">,</span> <span class="s1">&#39;CuedSpeechCueingRules&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="s1">'cue_rules'</span><span class="p">,</span> <span class="s1">'CuedSpeechCueingRules'</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__cued</span> <span class="o">=</span> <span class="n">cue_rules</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_vowels_codes</span><span class="p">())</span>
 </code></pre></div>
@@ -237,7 +205,7 @@ destination during the whole transition time.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">positions_discretization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">,</span> <span class="n">tier_pos_transitions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the probabilities of the positions for each annotation in tier_pos_coords.</span>
+<span class="w">    </span><span class="sd">"""Generate the probabilities of the positions for each annotation in tier_pos_coords.</span>
 
 <span class="sd">        Discretizing the transitions between a position to the next </span>
 <span class="sd">        one implies to assign a probability to the source and to the </span>
@@ -245,13 +213,13 @@ View Source
 
 <span class="sd">        :param tier_pos_coords: (sppasTier) Tier with coordinates of the vowel positions and neutral</span>
 <span class="sd">        :param tier_pos_transitions: (sppasTier) Tier with transition intervals between vowels</span>
-<span class="sd">        :return: (sppasTier) Tier &quot;CS-PosProbas&quot; with probabilities for each position </span>
+<span class="sd">        :return: (sppasTier) Tier "CS-PosProbas" with probabilities for each position </span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-PosProbas&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-PosProbas'</span><span class="p">)</span>
     <span class="n">pos_probas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__discretize_positions</span><span class="p">(</span><span class="n">tier_pos_transitions</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target vowels probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Target vowels probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ann</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
         <span class="n">tags</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__probas_to_lists</span><span class="p">(</span><span class="n">pos_probas</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -295,7 +263,7 @@ destination during the whole transition time.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">shapes_discretization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">,</span> <span class="n">tier_shapes_transitions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the probabilities of the shapes for each annotation in tier_pos_coords.</span>
+<span class="w">    </span><span class="sd">"""Generate the probabilities of the shapes for each annotation in tier_pos_coords.</span>
 
 <span class="sd">        Discretizing the transitions between a shape to the next </span>
 <span class="sd">        one implies to assign a probability to the source and to the </span>
@@ -303,13 +271,13 @@ View Source
 
 <span class="sd">        :param tier_pos_coords: (sppasTier) Tier with coordinates of the vowel positions and neutral</span>
 <span class="sd">        :param tier_shapes_transitions: (sppasTier) Tier with transition intervals between shapes</span>
-<span class="sd">        :return: (sppasTier) Tier &quot;CS-ShapeProbas&quot; with probabilities for each shape </span>
+<span class="sd">        :return: (sppasTier) Tier "CS-ShapeProbas" with probabilities for each shape </span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="n">shape_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-ShapeProbas&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+    <span class="n">shape_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-ShapeProbas'</span><span class="p">)</span>
     <span class="n">shape_probas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__discretize_shapes</span><span class="p">(</span><span class="n">tier_shapes_transitions</span><span class="p">,</span> <span class="n">tier_pos_coords</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target consonants probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Target consonants probas estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">)))</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ann</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tier_pos_coords</span><span class="p">):</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
         <span class="n">tags</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__probas_to_lists</span><span class="p">(</span><span class="n">shape_probas</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -349,29 +317,29 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hands_to_target_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the coordinates of the target finger.</span>
+<span class="w">    </span><span class="sd">"""Generate the coordinates of the target finger.</span>
 
 <span class="sd">        :param hand_pos_probas: (sppasTier) Tier with hand position probabilities</span>
 <span class="sd">        :param vowels_coords: (sppasTier) Tier with coordinates of the vowels and neutral</span>
 <span class="sd">        :return: (sppasTier) CS-TargetCoords</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">position_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eval_hand_target_coords_straight</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Target vowels coords estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">)))</span>
-    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-TargetCoords&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Target vowels coords estimation: </span><span class="si">{:d}</span><span class="s1"> != </span><span class="si">{:d}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">)))</span>
+    <span class="n">pos_tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-TargetCoords'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ann</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vowels_coords</span><span class="p">):</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">))</span>
+            <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="n">sppasTag</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">'point'</span><span class="p">))</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">pos1</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">tag1</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="n">tag1</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">'point'</span><span class="p">)</span>
             <span class="n">pos2</span> <span class="o">=</span> <span class="n">position_coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">tag2</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+            <span class="n">tag2</span> <span class="o">=</span> <span class="n">sppasTag</span><span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">tag_type</span><span class="o">=</span><span class="s1">'point'</span><span class="p">)</span>
             <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">([</span><span class="n">tag1</span><span class="p">,</span> <span class="n">tag2</span><span class="p">],</span> <span class="p">[</span><span class="n">pos1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos2</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">label_pos</span> <span class="o">=</span> <span class="n">sppasLabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -410,11 +378,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__discretize_positions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return proba of the hand position for each ann in given tier.</span>
+<span class="w">    </span><span class="sd">"""Return proba of the hand position for each ann in given tier.</span>
 
 <span class="sd">        :return: (sppasTier)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">positions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">cur_pos</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()]</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -487,11 +455,11 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__discretize_shapes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_shapes</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return proba of the hand shape for each ann in given tier.</span>
+<span class="w">    </span><span class="sd">"""Return proba of the hand shape for each ann in given tier.</span>
 
 <span class="sd">        :return: (sppasTier)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">shapes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">cur_shape</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()]</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -585,7 +553,7 @@ next one.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_target_coords_straight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return coords of the hand position for each ann in given tier.</span>
+<span class="w">    </span><span class="sd">"""Return coords of the hand position for each ann in given tier.</span>
 
 <span class="sd">        Coordinates are following a straight line to go from a position to</span>
 <span class="sd">        the next one. It is ignoring the fact that keys have a different</span>
@@ -594,7 +562,7 @@ View Source
 
 <span class="sd">        :return: (list)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">pos_coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">)):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
@@ -615,7 +583,7 @@ View Source
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">to_vowel_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vrank</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Unknown vowel: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Unknown vowel: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_vowels</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
                 <span class="k">continue</span>
             <span class="n">coord2</span> <span class="o">=</span> <span class="n">vowels_coords</span><span class="p">[</span><span class="n">to_vowel_idx</span><span class="p">]</span>
             <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">coord2</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">()</span>
@@ -638,7 +606,7 @@ View Source
             <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No vowel at index </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'No vowel at index </span><span class="si">{:d}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">pos_coords</span>
 </code></pre></div>
 
@@ -673,14 +641,14 @@ Its position is the one of the vowel.</p>
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__eval_hand_target_coords_fixed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hand_pos_probas</span><span class="p">,</span> <span class="n">vowels_coords_tier</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return coords of the hand position for each ann in given tier.</span>
+<span class="w">    </span><span class="sd">"""Return coords of the hand position for each ann in given tier.</span>
 
 <span class="sd">        The hand does not move from a position to the next one.</span>
 <span class="sd">        Its position is the one of the vowel.</span>
 
 <span class="sd">        :return: (list)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
     <span class="n">pos_coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hand_pos_probas</span><span class="p">)):</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">vowels_coords_tier</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
@@ -710,7 +678,7 @@ View Source
                 <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">((</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="n">cur_probas</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pos_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No vowel at index </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'No vowel at index </span><span class="si">{:d}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">pos_coords</span>
 </code></pre></div>
 
@@ -737,12 +705,12 @@ View Source
 View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__create_tier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_tier</span><span class="p">,</span> <span class="n">vowels_coords</span><span class="p">,</span> <span class="n">consonant</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a tier with a content for each given vowels coords.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Create a tier with a content for each given vowels coords."""</span>
     <span class="k">if</span> <span class="n">consonant</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Shapes&#39;</span><span class="p">)</span>
+        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-Shapes'</span><span class="p">)</span>
         <span class="n">cur_content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_consonant</span><span class="p">()]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">&#39;CS-Positions&#39;</span><span class="p">)</span>
+        <span class="n">tier</span> <span class="o">=</span> <span class="n">sppasTier</span><span class="p">(</span><span class="s1">'CS-Positions'</span><span class="p">)</span>
         <span class="n">cur_content</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__cued</span><span class="o">.</span><span class="n">get_neutral_vowel</span><span class="p">()]</span>
     <span class="k">for</span> <span class="n">ann</span> <span class="ow">in</span> <span class="n">vowels_coords</span><span class="p">:</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_location</span><span class="p">()</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span>
@@ -778,7 +746,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">__get_label_contents_at</span><span class="p">(</span><span class="n">tier</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the list of label contents of the annotation at the given moment.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return the list of label contents of the annotation at the given moment."""</span>
     <span class="n">content</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">ann_idx</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">mindex</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ann_idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -790,7 +758,7 @@ View Source
             <span class="n">c2</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
             <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;One or two labels were expected. Got </span><span class="si">{:d}</span><span class="s1"> instead.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'One or two labels were expected. Got </span><span class="si">{:d}</span><span class="s1"> instead.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">content</span>
 </code></pre></div>
 
@@ -816,7 +784,7 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">__probas_to_lists</span><span class="p">(</span><span class="n">probas</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the tags and scores of the given list of probabilities.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return the tags and scores of the given list of probabilities."""</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">probas</span><span class="p">:</span>
@@ -833,7 +801,35 @@ View Source
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
             </footer>
         
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
 </body>
 </html>

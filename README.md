@@ -526,6 +526,12 @@ It will be available -with UI in English- asap at: <https://sppas.org/textcues.h
 - a PoC of two new applications: **ListCueS** and **TwinCueS**.
 
 
+### 2.2 - Attached to SPPAS-5.0 with sppas-5.0.5 source code
+ 
+- Migrated to Whakerexa 4.1.
+- **TextCueS** app: fixed the hand transitions at the beginning and at the end of the generated video.
+
+
 
 # Help
 
@@ -536,5 +542,5 @@ It will be available -with UI in English- asap at: <https://sppas.org/textcues.h
 > certificate (_ssl.c:1147).
 
 Your Python installation cannot validate HTTPS connections (missing or outdated SSL certificates).
-Install a recent version of Python, then reinstall and retry.
+Install a recent version of Python and the "certifi" package, then retry.
 

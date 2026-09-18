@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of CueingWordKeys. Generates Cued Speech keys for given tokens and their pronunciations." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+       </head>
+       
+       <body>
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
+            </nav>
+        
+    <h1>Auto-CS 2.2</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
+    <ul>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="sppasWhatKeyPredictor.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+    </ul>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
+    <main id="main-content">
+    <section id="#CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module CuedSpeech.whatkey</h1>
+<section id="#CueingWordKeys">
+<h2>Class CueingWordKeys</h2>
+
+<section>
+<h3 id="#description_CueingWordKeys">Description</h3>
+    <article class="docstring">
+<p><em>Generates Cued Speech keys for given tokens and their pronunciations.</em></p>
+
+<p>Unlike :class:<code>sppasWhatKeyPredictor</code>, which works on time-aligned phoneme
+tiers, this class works directly on pronunciation strings (e.g. from a
+pronunciation dictionary), without requiring any time alignment.</p>
+
+    </article>
+</section>
+<section>
+<h3 id="#constructor_CueingWordKeys">Constructor</h3>
+<h4>__init__</h4>
+
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cued_rules</strong>: (CuedSpeechKeys) The rules of the cued speech.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cued_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Create a new instance.</span>
+
+<span class="sd">    :param cued_rules: (CuedSpeechKeys) The rules of the cued speech.</span>
+
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cued_rules</span><span class="p">,</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Given cued_rules must be a CuedSpeechKeys object. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">cued_rules</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span> <span class="o">=</span> <span class="n">cued_rules</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__cue_tokenizer</span> <span class="o">=</span> <span class="n">CueingPronTokenizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__keys_by_token</span> <span class="o">=</span> <span class="n">CueingKeysByToken</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">symbols</span><span class="o">.</span><span class="n">phone</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'#'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'@@'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'+'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sil'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sp'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'gb'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'lg'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'fp'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'dummy'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'noise'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'laugh'</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#public_fct_CueingWordKeys">Public functions</h3>
+<h4>annotate</h4>
+
+    <article class="docstring">
+<p><em>Return the sequence of keys from the list of tokens and their pronunciations.</em></p>
+
+<p>Input tokens: ["test", "hello"]
+Input prons: ['t-E-s-t', 'E-l-o']
+Code result: [('5-c.3-s.5-c.6-s', 't-E.s-vnil.t-E.l-o')]
+Returned keys by token: (('5-c.3-s', '5-c.6-s'), ('t-E.s-vnil', 't-E.l-o'))</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tokens</strong>: (<em>list</em>) List of tokens</li>
+<li><strong>prons</strong>: (<em>list</em>) List of pronunciations</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>TypeError</em>: Invalid text type.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>tuple(<em>str</em>) List of keys</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">prons</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the sequence of keys from the list of tokens and their pronunciations.</span>
+
+<span class="sd">        Input tokens: ["test", "hello"]</span>
+<span class="sd">        Input prons: ['t-E-s-t', 'E-l-o']</span>
+<span class="sd">        Code result: [('5-c.3-s.5-c.6-s', 't-E.s-vnil.t-E.l-o')]</span>
+<span class="sd">        Returned keys by token: (('5-c.3-s', '5-c.6-s'), ('t-E.s-vnil', 't-E.l-o'))</span>
+
+<span class="sd">        :param tokens: (list) List of tokens</span>
+<span class="sd">        :param prons: (list) List of pronunciations</span>
+<span class="sd">        :raises: TypeError: Invalid text type.</span>
+<span class="sd">        :return: tuple(str) List of keys</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">prons</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Given pronunciations must be a list. Got '</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">prons</span><span class="p">)</span><span class="si">}</span><span class="s2">' instead."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Given tokens must be a list. Got '</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span><span class="si">}</span><span class="s2">' instead."</span><span class="p">)</span>
+    <span class="n">cued</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cuer</span><span class="p">(</span><span class="n">prons</span><span class="p">)</span>
+    <span class="n">normalized_word_phonemes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cue_tokenizer</span><span class="o">.</span><span class="n">normalize_word_phonemes</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">prons</span><span class="p">))</span>
+    <span class="n">codes</span><span class="p">,</span> <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__keys_by_token</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">normalized_word_phonemes</span><span class="p">,</span> <span class="n">cued</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">codes</span><span class="p">,</span> <span class="n">phons</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#private_fct_CueingWordKeys">Private functions</h3>
+<h4>_cuer</h4>
+
+    <article class="docstring">
+<p><em>Return the result of "CuedSpeech" on the given phonetized text.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>token_prons</strong>: (<em>list</em>) Pronunciation of each token.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>) List of keys</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_cuer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_prons</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the result of "CuedSpeech" on the given phonetized text.</span>
+
+<span class="sd">        :param token_prons: (list) Pronunciation of each token.</span>
+<span class="sd">        :return: (list) List of keys</span>
+
+<span class="sd">        """</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">prons</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">token_pron</span> <span class="ow">in</span> <span class="n">token_prons</span><span class="p">:</span>
+        <span class="n">prons</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">token_pron</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">))</span>
+    <span class="n">phonemes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prons</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stops</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sgmts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+                <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">phonetize_syllables</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">sgmts</span><span class="p">)</span>
+                <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">keys_phonetized</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">keys</span><span class="p">,</span> <span class="n">phons</span><span class="p">))</span>
+                <span class="n">phonemes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'#'</span><span class="p">,</span> <span class="s1">'sil'</span><span class="p">,</span> <span class="s1">'lg'</span><span class="p">,</span> <span class="s1">'laugh'</span><span class="p">):</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'0-n'</span><span class="p">,</span> <span class="s1">'cnil-'</span> <span class="o">+</span> <span class="n">p</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'0-s'</span><span class="p">,</span> <span class="s1">'cnil-'</span> <span class="o">+</span> <span class="n">p</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">phonemes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sgmts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">syllabify</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+        <span class="n">phons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">phonetize_syllables</span><span class="p">(</span><span class="n">phonemes</span><span class="p">,</span> <span class="n">sgmts</span><span class="p">)</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cs</span><span class="o">.</span><span class="n">keys_phonetized</span><span class="p">(</span><span class="n">phons</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">keys</span><span class="p">,</span> <span class="n">phons</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+</section>    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
+            </footer>
+        
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
+</body>
+</html>
