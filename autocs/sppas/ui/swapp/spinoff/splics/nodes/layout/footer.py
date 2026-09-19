@@ -32,7 +32,7 @@
 
 from whakerpy.htmlmaker import HTMLNode
 
-from sppas.ui.swapp.swappcore.swappsg import swapp_settings
+from sppas.ui.swapp.swapp_core.swappsg import swapp_settings
 
 
 FOOTER = """

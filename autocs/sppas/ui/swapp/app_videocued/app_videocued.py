@@ -37,11 +37,11 @@ import logging
 from whakerpy.httpd import BaseResponseRecipe
 
 from sppas.ui import _
-from sppas.ui.swapp import sppasImagesAccess
+from sppas.ui.swapp import swappImagesAccess
 
 from ..apps.swapp_bakery import swappWebData
 
-from .videocuedmaker import VideoCuedResponseRecipe
+from .videocued_maker import VideoCuedResponseRecipe
 
 # ---------------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ class VideoCuedWebData(swappWebData):
     @staticmethod
     def icon() -> str:
         """Return the path of the icon of the response."""
-        return sppasImagesAccess.get_icon_filename("ACS_video")
+        return swappImagesAccess.get_icon_filename("ACS_video")
 
     # -----------------------------------------------------------------------
 

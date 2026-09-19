@@ -57,7 +57,7 @@ from sppas.src.annotations.CuedSpeech.wherecue.wherecue import sppasWhereCuePred
 from sppas.src.annotations.CuedSpeech.whowtag import CuedSpeechVideoTagger
 from sppas.src.imgdata import sppasImage
 from sppas.src.videodata import sppasVideoWriter
-from sppas.ui.swapp.swappcore.swappsg import swapp_settings
+from sppas.ui.swapp.swapp_core.swappsg import swapp_settings
 
 from .images_model import splicsPathwayCodeImagesModel
 

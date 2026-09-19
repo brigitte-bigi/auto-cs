@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 """
-:filename: sppas.ui.swapp.app_videocued.videocuedmaker.py
+:filename: sppas.ui.swapp.app_videocued.videocued_maker.py
 :author: Brigitte Bigi
 :contributor: Florian Lopitaux
 :contact: contact@sppas.org
@@ -43,7 +43,7 @@ from sppas.ui import _
 from ..components import ViewManager
 from ..components import ViewBarNode
 from ..swappsg import swapp_settings
-from ..htmltags.hstatusnode import HTMLTreeError410
+from ..htmltags.hstatus_node import swappHTMLTreeError410
 from ..htmltags import swappHeader
 from ..htmltags import swappFooter
 
@@ -103,7 +103,7 @@ class VideoCuedResponseRecipe(WhakerKitResponse):
         self._htree.head.link("stylesheet", swapp_settings.css + "/page_autocued.css", link_type="text/css")
 
         # Enable css and js dependencies for components that the webapp use
-        self.enable_components(["Views", "AnnotParamDialog"])
+        self.enable_components(["Views", "swappAnnotParamDialog"])
 
         self._htree.body_header = swappHeader(self._htree.identifier, title="CuedSpeech Video Tagger")
         self._htree.body_footer = swappFooter(self._htree.identifier)
@@ -141,7 +141,7 @@ class VideoCuedResponseRecipe(WhakerKitResponse):
 
     def _bake(self) -> None:
         if self._status.code == 410:
-            self._htree = HTMLTreeError410()
+            self._htree = swappHTMLTreeError410()
             return None
 
         current_view = self.__views.get_current_view()

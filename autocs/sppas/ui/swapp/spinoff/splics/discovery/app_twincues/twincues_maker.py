@@ -1,5 +1,5 @@
 """
-:filename: sppas.ui.swapp.spinoff.splics.discovery.app_twincues.twincuesmaker.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_twincues.twincues_maker.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
 :summary: Single response baker (welcome and conversion) of "TwinCueS" application of Auto-CS.
@@ -33,8 +33,8 @@
 from __future__ import annotations
 import logging
 
-from sppas.ui.swapp.nodes.feedback.hstatusnode import HTMLTreeError410
-from sppas.ui.swapp.swappbase.swappresponse import swappBaseResponse
+from sppas.ui.swapp.nodes.feedback.hstatus_node import swappHTMLTreeError410
+from sppas.ui.swapp.swapp_base.swapp_response import swappBaseResponse
 
 from .twincues_model import splicsTwinCueSModel
 from .twincues_view import splicsTwinCueSView
@@ -173,7 +173,7 @@ class splicsTwinCueSResponseRecipe(swappBaseResponse):
         if self._status.code == 410:
             # The 410 is "Gone" response sent when the requested content has been
             # permanently deleted from server, with no forwarding address.
-            self._htree = HTMLTreeError410()
+            self._htree = swappHTMLTreeError410()
 
         elif self._status.code == 200:
             # Fills-in the body_main node

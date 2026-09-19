@@ -36,9 +36,9 @@ import logging
 from whakerpy.httpd import BaseResponseRecipe
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_categories
-from sppas.ui.swapp.swappbase.swappbakery import swappWebData
+from sppas.ui.swapp.swapp_base.swapp_bakery import swappWebData
 
-from .listcuesmaker import splicsListCueSResponseRecipe
+from .listcues_maker import splicsListCueSResponseRecipe
 from .listcues_msg import MSG_DESCR
 
 # ---------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-from .listcuesmaker import splicsListCueSResponseRecipe
+from .listcues_maker import splicsListCueSResponseRecipe
 from .app_listcues import splicsListCueSWebData
 
 __all__ = (

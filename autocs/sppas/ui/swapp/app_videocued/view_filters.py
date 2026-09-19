@@ -48,7 +48,7 @@ from sppas.src.annotations.CuedSpeech.whowtag import sppasHandFilters
 from sppas.ui import _
 
 from ..components import BaseViewNode
-from ..components import AnnotParamDialog
+from ..components import swappAnnotParamDialog
 
 # -----------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ class ViewFilter(BaseViewNode):
         self._msg = MSG_VIEW_TITLE
 
         self.__hands_filtered = dict()
-        self.__ann_options = AnnotParamDialog("cuedspeech", self.identifier)
+        self.__ann_options = swappAnnotParamDialog("cuedspeech", self.identifier)
         self.__ann_options.set_option("createvideo", True)
 
         # hidden in the dialog useless options already configure by the interface

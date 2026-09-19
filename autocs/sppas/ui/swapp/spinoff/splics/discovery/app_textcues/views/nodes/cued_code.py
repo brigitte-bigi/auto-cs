@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 """
-:filename: sppas.ui.swapp.spinoff.splics.discovery.app_textcues.views.nodes.cuedcode.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_textcues.views.nodes.cued_code.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
 :summary: Create nodes for the generated cued result.

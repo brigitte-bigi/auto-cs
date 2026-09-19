@@ -37,11 +37,11 @@ from whakerpy.htmlmaker import EmptyNode
 from whakerpy.htmlmaker import TagNode
 
 from sppas.ui import _
-from sppas.ui.swapp.swappcore.swappsg import swapp_settings
+from sppas.ui.swapp.swapp_core.swappsg import swapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
-from sppas.ui.swapp.swappbase.swappview import swappBaseView
-from sppas.ui.swapp.swappbase.swappview import JS_INIT
-from sppas.ui.swapp.swappbase.swappview import JS_BOOT_PAGE
+from sppas.ui.swapp.swapp_base.swapp_view import swappBaseView
+from sppas.ui.swapp.swapp_base.swapp_view import JS_INIT
+from sppas.ui.swapp.swapp_base.swapp_view import JS_BOOT_PAGE
 
 from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import splicsFooterNode
 from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import splicsMenuLinkButtonNode

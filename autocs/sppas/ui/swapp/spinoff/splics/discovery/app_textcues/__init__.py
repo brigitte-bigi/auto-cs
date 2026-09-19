@@ -1,4 +1,4 @@
-from .textcuesmaker import splicsTextCueSResponseRecipe
+from .textcues_maker import splicsTextCueSResponseRecipe
 from .app_textcues import splicsTextCueSWebData
 
 __all__ = (

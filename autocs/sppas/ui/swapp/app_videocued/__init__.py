@@ -80,7 +80,7 @@ elif sys.version_info < (3, 9):
             raise sppasPythonFeatureError("app_videocued", "3.9+")
 
 else:
-    from .videocuedmaker import VideoCuedResponseRecipe
+    from .videocued_maker import VideoCuedResponseRecipe
     from .app_videocued import VideoCuedWebData
 
 # ---------------------------------------------------------------------------

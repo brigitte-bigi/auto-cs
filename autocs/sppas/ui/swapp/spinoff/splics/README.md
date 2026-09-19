@@ -74,8 +74,8 @@ and `models/` of `splics/`.
 
 ## Dependencies on swapp
 
-SPLI:CS depends on swapp through a stable surface only: `swappcore` (settings),
-`swappbase` (the `WebData`, response and view base classes) and the shared
+SPLI:CS depends on swapp through a stable surface only: `swapp_core` (settings),
+`swapp_base` (the `WebData`, response and view base classes) and the shared
 `nodes/`. It never reaches into another app of swapp. This keeps the graft
 detachable and lets the future standalone `splics` program reuse the same apps
 through `import sppas`.

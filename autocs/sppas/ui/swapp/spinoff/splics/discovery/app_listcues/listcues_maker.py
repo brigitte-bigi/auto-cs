@@ -1,8 +1,8 @@
 """
-:filename: sppas.ui.swapp.spinoff.splics.discovery.app_textcues.textcuesmaker.py
+:filename: sppas.ui.swapp.spinoff.splics.discovery.app_listcues.listcues_maker.py
 :author: Brigitte Bigi
 :contact: contact@sppas.org
-:summary: Launcher for the pathway in "TextCueS" application of Auto-CS.
+:summary: Single response baker (welcome and conversion) of "ListCueS" application of Auto-CS.
 
 ..
     This file is part of Auto-CS: <https://autocs.sourceforge.io>
@@ -33,52 +33,52 @@
 from __future__ import annotations
 import logging
 
-from sppas.ui.swapp.nodes.feedback.hstatusnode import HTMLTreeError410
-from sppas.ui.swapp.swappbase.swappresponse import swappBaseResponse
+from sppas.ui.swapp.nodes.feedback.hstatus_node import swappHTMLTreeError410
+from sppas.ui.swapp.swapp_base.swapp_response import swappBaseResponse
 
-from .textcues_model import splicsTextCueSModel
-from .textcues_view import splicsTextCueSView
-from .textcues_controller import splicsTextCueSController
+from .listcues_model import splicsListCueSModel
+from .listcues_view import splicsListCueSView
+from .listcues_controller import splicsListCueSController
 
 # -----------------------------------------------------------------------
 
 
-class splicsTextCueSResponseRecipe(swappBaseResponse):
-    """The textcues.html HTTPD response baker: welcome and pathway in one page.
+class splicsListCueSResponseRecipe(swappBaseResponse):
+    """The listcues.html HTTPD response baker: welcome and conversion in one page.
 
     No language is chosen yet -> the welcome content is shown (an intro and a
     language choice form). Once a language has reached the controller -- via
-    the welcome form's GET navigation, or via a pathway POST -- the pathway
-    content (Text, Sound or Code) is shown instead. Both cases are handled by
-    the very same :meth:`splicsTextCueSController.handle`, so there is only one code
-    path to keep in sync.
+    the welcome form's GET navigation, or via a "convert" POST event -- the
+    conversion content (key piano and its result) is shown instead. Both
+    cases are handled by the very same :meth:`splicsListCueSController.handle_convert`,
+    so there is only one code path to keep in sync.
 
     """
 
-    def __init__(self, name="TextCueSCoding", tree=None):
-        self.__model = splicsTextCueSModel()
+    def __init__(self, name="ListCueSConversion", tree=None):
+        self.__model = splicsListCueSModel()
         self.__view = None
         self.__controller = None
         # Default: the fixed welcome page, until bake_response() records the
         # actual requested page name (see set_requested_page()).
         self.__requested_page = self.page()
-        super(splicsTextCueSResponseRecipe, self).__init__(name, tree)
+        super(splicsListCueSResponseRecipe, self).__init__(name, tree)
 
     # -----------------------------------------------------------------------
-    # OVERRIDE METHODS FROM Whakerpy -- Create une UI
+    # OVERRIDE METHODS FROM Whakerpy -- Create the UI
     # -----------------------------------------------------------------------
 
     @classmethod
     def page(cls) -> str:
         """Return the name of the page."""
-        return "textcues.html"
+        return "listcues.html"
 
     # -----------------------------------------------------------------------
 
     def set_requested_page(self, page_name: str) -> None:
         """Record which actual URL this instance is serving.
 
-        The fixed, guessable welcome page ("textcues.html") must never
+        The fixed, guessable welcome page ("listcues.html") must never
         process a "lang" query directly: only a random page name (see
         splicsHTMLTag.page_random(), used by the welcome form's own action) is
         allowed to trigger the expensive per-language processing, so a bot
@@ -99,8 +99,8 @@ class splicsTextCueSResponseRecipe(swappBaseResponse):
 
         """
         super().create()
-        self.__view = splicsTextCueSView(self._htree)
-        self.__controller = splicsTextCueSController(self.__model, self.__view)
+        self.__view = splicsListCueSView(self._htree)
+        self.__controller = splicsListCueSController(self.__model, self.__view)
 
     # -----------------------------------------------------------------------
     # Callbacks
@@ -113,7 +113,7 @@ class splicsTextCueSResponseRecipe(swappBaseResponse):
         :return: (bool) True if the whole page must be re-created.
 
         """
-        logging.debug(f" >>>>> Page Application TextCueS -- Process events: {events} <<<<<< ")
+        logging.debug(f" >>>>> Page Application ListCueS -- Process events: {events} <<<<<< ")
         self._data = dict()
         self._status.code = 200
 
@@ -132,32 +132,31 @@ class splicsTextCueSResponseRecipe(swappBaseResponse):
             else:
                 events.pop("accessibility_contrast")
 
-        # Received events from an HTTP Post.
-        if "event_name" in events:
-            e_name = events["event_name"]
-            if e_name == "displaymode":
-                self.__process_displaymode_event(events.get('event_value', dict()))
-            else:
-                self._status.code = 400
-                self._data["error"] = f"The server received an unknown event name: {e_name}."
-            return False
-
-        else:
-            # The welcome form navigates here with only "lang" (a plain GET,
-            # parsed into "events" the very same way a POST body is). Except
-            # on the fixed "textcues.html" itself: a bot only knows that
-            # guessable URL, never the random one the welcome form actually
-            # submits to (see set_requested_page()), so a "lang" query
-            # received there with no "pathway" yet is never legitimate and
-            # is silently ignored -- welcome shows regardless, and the
-            # expensive per-language processing never runs.
-            if "pathway" not in events and "lang" in events and self.__requested_page == self.page():
-                events = dict()
-
-            # Events are propagated to the controller.
-            # The controller returns the status code and the data to be posted (if any)
-            self.__controller.handle(events)
+        # Both the welcome form ("?lang=xxx", a plain GET) and the conversion
+        # form ("lang" + "cue", a plain POST) are real page navigations,
+        # parsed into "events" the very same way (see WhakerPy's
+        # process_post() and parse_query_string()). The whole page must be
+        # re-created (True) so that _bake() renders the conversion content,
+        # including the Yoyo dialogs for any error or info.
+        #
+        # Except on the fixed "listcues.html" itself: a bot only knows that
+        # guessable URL, never the random one the welcome form actually
+        # submits to (see set_requested_page()), so a "lang" query received
+        # there is never legitimate and is silently ignored -- welcome shows
+        # regardless, and the expensive per-language processing never runs.
+        if "lang" in events and self.__requested_page != self.page():
+            self.__controller.handle_convert(events)
             return True
+
+        # A plain navigation with no query string/body at all -- e.g. the
+        # header logo link back to "listcues.html" -- or a "lang" query
+        # ignored above because it targeted the fixed welcome URL. The
+        # controller is reused by the server across unrelated requests:
+        # without an explicit reset, it would keep showing whatever a
+        # previous request left it
+        # in, instead of going back to the welcome page.
+        self.__controller.reset()
+        return True
 
     # -----------------------------------------------------------------------
 
@@ -173,7 +172,7 @@ class splicsTextCueSResponseRecipe(swappBaseResponse):
         if self._status.code == 410:
             # The 410 is "Gone" response sent when the requested content has been
             # permanently deleted from server, with no forwarding address.
-            self._htree = HTMLTreeError410()
+            self._htree = swappHTMLTreeError410()
 
         elif self._status.code == 200:
             # Fills-in the body_main node
@@ -185,37 +184,3 @@ class splicsTextCueSResponseRecipe(swappBaseResponse):
             p = self._htree.element("p")
             p.set_value(msg)
 
-    # -----------------------------------------------------------------------
-    # PRIVATE
-    # -----------------------------------------------------------------------
-
-    def __process_displaymode_event(self, event_value: dict) -> None:
-        """Process the given event value coming from the POST of options_form.
-
-        :param event_value: (dict) Data to fill in a splicsTextCueSRecord
-
-        """
-        if isinstance(event_value, dict) is False:
-            self._data["error"] = f"The server received an invalid event value type: {type(event_value)}."
-            self._status.code = 400
-            return
-
-        if len(event_value) == 0:
-            self._data["error"] = f"The server received an empty event value: {event_value}."
-            self._status.code = 400
-            return
-
-        record = self.__controller.handle_display_mode(event_value)
-
-        if "content" in record.extras:
-            self._status.code = 200
-            self._data["content"] = record.extras["content"]
-
-            if "error" in record.extras:
-                self._data["error"] = record.extras["error"]
-            if "info" in record.extras:
-                self._data["info"] = record.extras["info"]
-
-        else:
-            self._status.code = 400
-            self._data["error"] = record.extras.get("error", "An unidentified error has occurred.")

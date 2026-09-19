@@ -50,7 +50,7 @@ from sppas.src.annotations.CuedSpeech.wherecue.angles import WhereAnglesPredicto
 from sppas.src.annotations.CuedSpeech.wherecue.faceheight import sppasFaceHeight
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag import sppasHandCoords
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag import sppasImageHandTagger
-from sppas.ui.swapp.swappcore.swappsg import swapp_settings
+from sppas.ui.swapp.swapp_core.swappsg import swapp_settings
 
 from .images_model import splicsPathwayCodeImagesModel
 

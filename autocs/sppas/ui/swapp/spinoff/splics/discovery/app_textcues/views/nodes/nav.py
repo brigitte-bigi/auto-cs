@@ -31,7 +31,7 @@
 """
 
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
-from sppas.ui.swapp.swappcore.swappsg import swapp_settings
+from sppas.ui.swapp.swapp_core.swappsg import swapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import splicsMenuLinkButtonNode
 

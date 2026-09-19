@@ -59,7 +59,7 @@ Page: `listcues.html`, in two states.
   pronunciation and matching word(s) -- is updated in place.
 
 Missing assets (to be added):
-- The icon referenced by `sppasImagesAccess.get_icon_filename("listcues")`
+- The icon referenced by `swappImagesAccess.get_icon_filename("listcues")`
   is only defined for the "Refine" theme.
 - The piano keys are plain text codes for now (e.g. "1", "s"); images may
   replace them later without changing `splicsKeyPianoNode`'s HTML contract.

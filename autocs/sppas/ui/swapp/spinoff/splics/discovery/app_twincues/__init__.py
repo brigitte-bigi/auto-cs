@@ -1,4 +1,4 @@
-from .twincuesmaker import splicsTwinCueSResponseRecipe
+from .twincues_maker import splicsTwinCueSResponseRecipe
 from .app_twincues import splicsTwinCueSWebData
 
 __all__ = (

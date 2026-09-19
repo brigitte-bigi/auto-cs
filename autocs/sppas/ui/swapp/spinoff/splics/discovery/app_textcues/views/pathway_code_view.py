@@ -55,7 +55,7 @@ from ..textcues_msg import MSG_RESULT
 from ..textcues_record import splicsTextCueSRecord
 
 from .nodes.tags import splicsHTMLTag
-from .nodes.cuedcode import splicsCuedCode
+from .nodes.cued_code import splicsCuedCode
 from .pathway_base_view import splicsPathwayBaseView
 
 # ---------------------------------------------------------------------------
