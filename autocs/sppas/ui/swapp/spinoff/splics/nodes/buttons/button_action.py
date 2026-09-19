@@ -36,13 +36,13 @@ from whakerpy.htmlmaker import EmptyNode
 # ---------------------------------------------------------------------------
 
 
-class MenuLinkButtonNode(HTMLNode):
+class splicsMenuLinkButtonNode(HTMLNode):
 
     def __init__(self, parent_id, identifier: str, target_page: str):
         """Create a menu button to redirect to target page.
 
         """
-        super(MenuLinkButtonNode, self).__init__(parent_id, identifier, "button")
+        super(splicsMenuLinkButtonNode, self).__init__(parent_id, identifier, "button")
         self.add_attribute("id", identifier)
         self.add_attribute("name", identifier)
         self.add_attribute("type", "button")
@@ -80,14 +80,14 @@ class MenuLinkButtonNode(HTMLNode):
 # ---------------------------------------------------------------------------
 
 
-class ActionLinkNode(HTMLNode):
+class splicsActionLinkNode(HTMLNode):
     """Represent a link element to perform an action."""
 
     def __init__(self, parent_id, identifier: str, target_page: str):
         """Create a button to redirect to target page.
 
         """
-        super(ActionLinkNode, self).__init__(parent_id, identifier, "a")
+        super(splicsActionLinkNode, self).__init__(parent_id, identifier, "a")
         self.add_attribute('id', identifier)
         if len(target_page.strip()) > 0:
             self.add_attribute('href', target_page)
@@ -109,14 +109,14 @@ class ActionLinkNode(HTMLNode):
 # ---------------------------------------------------------------------------
 
 
-class ActionButton(HTMLNode):
+class splicsActionButton(HTMLNode):
     """Represent a button element to perform an action."""
 
     def __init__(self, parent_id: str, identifier: str):
         """Create a button to redirect to target page.
 
         """
-        super(ActionButton, self).__init__(parent_id, identifier, "button")
+        super(splicsActionButton, self).__init__(parent_id, identifier, "button")
         self.add_attribute('id', identifier)
         self.add_attribute('class', "app-cues-button")
 
@@ -135,8 +135,8 @@ class ActionButton(HTMLNode):
 # ---------------------------------------------------------------------------
 
 
-class ActionSubmitButton(ActionButton):
+class splicsActionSubmitButton(splicsActionButton):
     """Represent a submit element to submit a form."""
     def __init__(self, parent_id: str, identifier: str):
-        super(ActionSubmitButton, self).__init__(parent_id, identifier)
+        super(splicsActionSubmitButton, self).__init__(parent_id, identifier)
         self.add_attribute('type', "submit")

@@ -42,24 +42,24 @@ from ..twincues_msg import MSG_CUE_PLACEHOLDER
 from ..twincues_msg import MSG_VALIDATE_BUTTON
 from ..twincues_msg import MSG_RESULT_CUE_LABEL
 from ..twincues_msg import MSG_RESULT_WORD_LABEL
-from ..twincues_record import TwinCueSRecord
+from ..twincues_record import splicsTwinCueSRecord
 
-from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import HTMLTag
-from sppas.ui.swapp.spinoff.splics.nodes.cues.key_piano import KeyPianoNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import splicsHTMLTag
+from sppas.ui.swapp.spinoff.splics.nodes.cues.key_piano import splicsKeyPianoNode
 
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSPageView:
+class splicsTwinCueSPageView:
     """View of the conversion page: 2 textarea (word, cue) and their result.
 
     """
 
-    def __init__(self, parent: HTMLNode, record: TwinCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsTwinCueSRecord) -> None:
         """Create the HTML node of the conversion page of "TwinCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param record: (TwinCueSRecord) The data to fill-in the view content
+        :param record: (splicsTwinCueSRecord) The data to fill-in the view content
 
         """
         self._parent = parent
@@ -74,9 +74,9 @@ class TwinCueSPageView:
         """Create and append the children nodes.
 
         """
-        _content = HTMLTag.create_section(self._parent)
+        _content = splicsHTMLTag.create_section(self._parent)
 
-        self._form = HTMLTag.create_form(_content, "twincues_form")
+        self._form = splicsHTMLTag.create_form(_content, "twincues_form")
         self._fill_form()
 
         self.display_result()
@@ -87,7 +87,7 @@ class TwinCueSPageView:
         """Create and fill-in the result section from the record extras.
 
         Errors and info messages are exclusively reported through the Yoyo
-        dialogs (see :class:`TwinCueSController`), not inline in this section.
+        dialogs (see :class:`splicsTwinCueSController`), not inline in this section.
 
         :return: (TagNode) The result section node
 
@@ -119,7 +119,7 @@ class TwinCueSPageView:
         self._append_cue_label()
         self._append_key_piano()
         self._append_cue_textarea()
-        HTMLTag.append_submit_in_form(self._form, "twincues", MSG_VALIDATE_BUTTON)
+        splicsHTMLTag.append_submit_in_form(self._form, "twincues", MSG_VALIDATE_BUTTON)
 
     # -----------------------------------------------------------------------
 
@@ -180,7 +180,7 @@ class TwinCueSPageView:
         if len(_shape_keys) == 0 or len(_position_keys) == 0:
             return
 
-        _piano = KeyPianoNode(self._form.identifier, "cue", _shape_keys, _position_keys)
+        _piano = splicsKeyPianoNode(self._form.identifier, "cue", _shape_keys, _position_keys)
         self._form.append_child(_piano)
 
     # -----------------------------------------------------------------------
@@ -211,7 +211,7 @@ class TwinCueSPageView:
     # -----------------------------------------------------------------------
 
     def __create_result_container(self) -> TagNode:
-        _s = HTMLTag.create_section(self._parent)
+        _s = splicsHTMLTag.create_section(self._parent)
         _s.add_attribute("id", "result_section")
         return _s
 
@@ -222,7 +222,7 @@ class TwinCueSPageView:
         """Append, for each distinct cue of the queried word, its pronunciations and twins.
 
         :param parent: (TagNode) The parent node
-        :param entries: (tuple) See :class:`Word2CuesModel.convert`
+        :param entries: (tuple) See :class:`splicsWord2CuesModel.convert`
 
         """
         for entry in entries:
@@ -249,7 +249,7 @@ class TwinCueSPageView:
         """Append the words sharing the queried cue.
 
         :param parent: (TagNode) The parent node
-        :param entries: (tuple) See :class:`Cues2WordsModel.convert`
+        :param entries: (tuple) See :class:`splicsCues2WordsModel.convert`
 
         """
         _p = HTMLNode(parent.identifier, None, "p", value=MSG_RESULT_WORD_LABEL)

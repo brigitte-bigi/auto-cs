@@ -36,15 +36,15 @@ import logging
 from whakerpy.httpd import BaseResponseRecipe
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_categories
-from sppas.ui.swapp.wappbase.wappbakery import swappWebData
+from sppas.ui.swapp.swappbase.swappbakery import swappWebData
 
-from .listcuesmaker import ListCueSResponseRecipe
+from .listcuesmaker import splicsListCueSResponseRecipe
 from .listcues_msg import MSG_DESCR
 
 # ---------------------------------------------------------------------------
 
 
-class ListCueSWebData(swappWebData):
+class splicsListCueSWebData(swappWebData):
     """Parse the JSON file, store data and create the bakery system.
 
     """
@@ -53,15 +53,15 @@ class ListCueSWebData(swappWebData):
     CATEGORY = splics_categories.discovery
 
     def __init__(self, json_filename: str | None = None) -> None:
-        """Create a ListCueSWebData instance.
+        """Create a splicsListCueSWebData instance.
 
         :param json_filename: (str|None) Path of the JSON file to parse, or None.
         :return: (None)
 
         """
-        super(ListCueSWebData, self).__init__(json_filename)
+        super(splicsListCueSWebData, self).__init__(json_filename)
         # Filename of the default page.
-        self._default = ListCueSResponseRecipe.page()
+        self._default = splicsListCueSResponseRecipe.page()
 
     # -----------------------------------------------------------------------
 
@@ -111,12 +111,12 @@ class ListCueSWebData(swappWebData):
             return True
 
         # The conversion page, reached with a random name once a language
-        # has been chosen on welcome (see HTMLTag.page_random()).
+        # has been chosen on welcome (see splicsHTMLTag.page_random()).
         if page_name.startswith("listcues_") is True and page_name.endswith(".html") is True:
             return True
 
         # The welcome page of the application.
-        if page_name == ListCueSResponseRecipe.page():
+        if page_name == splicsListCueSResponseRecipe.page():
             return True
 
         return False
@@ -135,10 +135,10 @@ class ListCueSWebData(swappWebData):
 
         # The conversion page (a random name), or the fixed welcome page.
         is_conversion = page_name.startswith("listcues_") is True and page_name.endswith(".html") is True
-        is_welcome = page_name == ListCueSResponseRecipe.page()
+        is_welcome = page_name == splicsListCueSResponseRecipe.page()
 
         if is_conversion is True or is_welcome is True:
-            recipe = ListCueSResponseRecipe()
+            recipe = splicsListCueSResponseRecipe()
             # Tells the recipe which of the two it actually is, so it can
             # refuse to process a "lang" query received on the fixed,
             # guessable welcome URL (see set_requested_page()).

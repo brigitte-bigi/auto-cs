@@ -44,7 +44,7 @@ ABSENT = None
 # ---------------------------------------------------------------------------
 
 
-class Keys2PronsModel:
+class splicsKeys2PronsModel:
     """Return the pronounceable phoneme sequences of a key sequence, and their words.
 
     A key ("<shape>-<position>") is ambiguous by design: several consonants
@@ -165,7 +165,7 @@ class Keys2PronsModel:
         :return: (bool)
 
         """
-        if len(sequence) < Keys2PronsModel.NGRAM_SIZE:
+        if len(sequence) < splicsKeys2PronsModel.NGRAM_SIZE:
             return True
 
-        return tuple(sequence[-Keys2PronsModel.NGRAM_SIZE:]) in self.__ngrams
+        return tuple(sequence[-splicsKeys2PronsModel.NGRAM_SIZE:]) in self.__ngrams

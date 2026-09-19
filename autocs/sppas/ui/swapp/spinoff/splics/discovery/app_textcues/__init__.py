@@ -1,7 +1,7 @@
-from .textcuesmaker import TextCueSResponseRecipe
-from .app_textcues import TextCueSWebData
+from .textcuesmaker import splicsTextCueSResponseRecipe
+from .app_textcues import splicsTextCueSWebData
 
 __all__ = (
-    "TextCueSResponseRecipe",
-    "TextCueSWebData"
+    "splicsTextCueSResponseRecipe",
+    "splicsTextCueSWebData"
 )

@@ -37,17 +37,17 @@ from ..twincues_msg import MSG_INTRO
 from ..twincues_msg import MSG_LAUNCH
 from ..twincues_msg import MSG_YOYO_WELCOME
 from ..twincues_msg import MSG_LANG
-from ..twincues_record import TwinCueSRecord
+from ..twincues_record import splicsTwinCueSRecord
 
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import BaseYoyoMessageNode
-from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import HTMLTag
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsBaseYoyoMessageNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import splicsHTMLTag
 
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSWelcomeView:
+class splicsTwinCueSWelcomeView:
 
-    def __init__(self, parent: HTMLNode, record: TwinCueSRecord):
+    def __init__(self, parent: HTMLNode, record: splicsTwinCueSRecord):
         """Create the HTML node for the welcome page of "TwinCueS".
 
         The language is chosen here, not on the conversion page: it is
@@ -57,7 +57,7 @@ class TwinCueSWelcomeView:
         parameters already do).
 
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param record: (TwinCueSRecord) The data to fill-in the language choices
+        :param record: (splicsTwinCueSRecord) The data to fill-in the language choices
 
         """
         _lang_choices = record.extras.get("lang_choices", dict())
@@ -73,18 +73,18 @@ class TwinCueSWelcomeView:
         _intro.set_value(MSG_INTRO)
         _part_1.append_child(_intro)
 
-        _yoyo = BaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
+        _yoyo = splicsBaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
                                             len(_lang_choices) > 0)
         _part_1.append_child(_yoyo)
 
         # section 2: language choice, then launch
         # -----------------------------------------
-        _form = HTMLTag.create_form(parent, "twincues_welcome_form")
+        _form = splicsHTMLTag.create_form(parent, "twincues_welcome_form")
         _form.set_attribute("method", "get")
         # A random name: a bot can reach the welcome page but can't guess
         # this URL, so it never triggers the expensive per-language
         # processing directly.
-        _form.set_attribute("action", HTMLTag.page_random("twincues"))
+        _form.set_attribute("action", splicsHTMLTag.page_random("twincues"))
 
         if len(_lang_choices) > 0:
             _label = HTMLNode(_form.identifier, None, "label",
@@ -102,5 +102,5 @@ class TwinCueSWelcomeView:
                 _option.set_attribute("value", iso)
                 _select.append_child(_option)
 
-        HTMLTag.append_submit_in_form(_form, "twincues_welcome", MSG_LAUNCH,
+        splicsHTMLTag.append_submit_in_form(_form, "twincues_welcome", MSG_LAUNCH,
                                       enabled=len(_lang_choices) > 0)

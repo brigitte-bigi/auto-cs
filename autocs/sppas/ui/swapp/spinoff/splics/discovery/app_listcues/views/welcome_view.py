@@ -37,17 +37,17 @@ from ..listcues_msg import MSG_INTRO
 from ..listcues_msg import MSG_LAUNCH
 from ..listcues_msg import MSG_YOYO_WELCOME
 from ..listcues_msg import MSG_LANG
-from ..listcues_record import ListCueSRecord
+from ..listcues_record import splicsListCueSRecord
 
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import BaseYoyoMessageNode
-from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import HTMLTag
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsBaseYoyoMessageNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import splicsHTMLTag
 
 # ---------------------------------------------------------------------------
 
 
-class ListCueSWelcomeView:
+class splicsListCueSWelcomeView:
 
-    def __init__(self, parent: HTMLNode, record: ListCueSRecord):
+    def __init__(self, parent: HTMLNode, record: splicsListCueSRecord):
         """Create the HTML node for the welcome page of "ListCueS".
 
         The language is chosen here, not on the conversion page: it is
@@ -56,7 +56,7 @@ class ListCueSWelcomeView:
         (a plain GET, exactly like the accessibility parameters already do).
 
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param record: (ListCueSRecord) The data to fill-in the language choices
+        :param record: (splicsListCueSRecord) The data to fill-in the language choices
 
         """
         _lang_choices = record.extras.get("lang_choices", dict())
@@ -72,18 +72,18 @@ class ListCueSWelcomeView:
         _intro.set_value(MSG_INTRO)
         _part_1.append_child(_intro)
 
-        _yoyo = BaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
+        _yoyo = splicsBaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
                                             len(_lang_choices) > 0)
         _part_1.append_child(_yoyo)
 
         # section 2: language choice, then launch
         # -----------------------------------------
-        _form = HTMLTag.create_form(parent, "listcues_welcome_form")
+        _form = splicsHTMLTag.create_form(parent, "listcues_welcome_form")
         _form.set_attribute("method", "get")
         # A random name: a bot can reach the welcome page but can't guess
         # this URL, so it never triggers the expensive per-language
         # processing directly.
-        _form.set_attribute("action", HTMLTag.page_random("listcues"))
+        _form.set_attribute("action", splicsHTMLTag.page_random("listcues"))
 
         if len(_lang_choices) > 0:
             _label = HTMLNode(_form.identifier, None, "label",
@@ -101,5 +101,5 @@ class ListCueSWelcomeView:
                 _option.set_attribute("value", iso)
                 _select.append_child(_option)
 
-        HTMLTag.append_submit_in_form(_form, "listcues_welcome", MSG_LAUNCH,
+        splicsHTMLTag.append_submit_in_form(_form, "listcues_welcome", MSG_LAUNCH,
                                       enabled=len(_lang_choices) > 0)

@@ -46,11 +46,11 @@ from sppas.src.annotations.CuedSpeech.wherecue.angles import WhereAnglesPredicto
 from sppas.src.annotations.CuedSpeech.whenhand.transitions import WhenTransitionPredictor
 from sppas.src.resources import sppasDictPron
 
-from .models.pathway_text_model import PathwayTextModel
-from .models.pathway_sound_model import PathwaySoundModel
-from .models.images_model import PathwayCodeImagesModel
-from .models.overlays_model import PathwayCodeOverlayModel
-from .models.video_model import PathwayCodeVideoModel
+from .models.pathway_text_model import splicsPathwayTextModel
+from .models.pathway_sound_model import splicsPathwaySoundModel
+from .models.images_model import splicsPathwayCodeImagesModel
+from .models.overlays_model import splicsPathwayCodeOverlayModel
+from .models.video_model import splicsPathwayCodeVideoModel
 
 from .textcues_msg import MSG_ERROR_NO_TOKENS
 from .textcues_msg import MSG_ERROR_LEN_MISMATCH
@@ -60,7 +60,7 @@ from .textcues_msg import MSG_ERROR_UNKNOWN_PHON
 # ---------------------------------------------------------------------------
 
 
-class TextCueSModel:
+class splicsTextCueSModel:
     """Model for the TextCueS application.
 
     """
@@ -213,12 +213,12 @@ class TextCueSModel:
         if self.__cs is None:
             raise ValueError("The 'lang' was not defined in the model.")
 
-        _model = PathwayTextModel()
+        _model = splicsPathwayTextModel()
         _tokens, _prons = _model.annotate(
             self._parameters.get_lang(self._ann_step_idx),
             text
         )
-        TextCueSModel.validate_pronunciations(_tokens, _prons)
+        splicsTextCueSModel.validate_pronunciations(_tokens, _prons)
 
         return _tokens, _prons
 
@@ -229,7 +229,7 @@ class TextCueSModel:
         if self.__cs is None:
             raise ValueError("Pathway model 'lang' is not defined.")
 
-        _model = PathwaySoundModel(self.__cs)
+        _model = splicsPathwaySoundModel(self.__cs)
         return _model.annotate(tokens, prons)
 
     # -----------------------------------------------------------------------
@@ -246,7 +246,7 @@ class TextCueSModel:
         if self.__cs is None:
             raise ValueError("Cued Speech rules is not defined.")
 
-        p = PathwayCodeImagesModel(self.__cs)
+        p = splicsPathwayCodeImagesModel(self.__cs)
         return p.generate(cuedkeys)
 
     # -----------------------------------------------------------------------
@@ -262,9 +262,9 @@ class TextCueSModel:
         if self.__cs is None:
             raise ValueError("Cued Speech rules is not defined.")
 
-        PathwayCodeImagesModel.cleanup_tmp()
+        splicsPathwayCodeImagesModel.cleanup_tmp()
 
-        p = PathwayCodeOverlayModel(self.__cs)
+        p = splicsPathwayCodeOverlayModel(self.__cs)
         if model_pos is not None:
             p.set_model_position(model_pos)
         if model_angle is not None:
@@ -287,9 +287,9 @@ class TextCueSModel:
         if self.__cs is None:
             raise ValueError("Cued Speech rules is not defined.")
 
-        PathwayCodeImagesModel.cleanup_tmp()
+        splicsPathwayCodeImagesModel.cleanup_tmp()
 
-        p = PathwayCodeVideoModel(self.__cs)
+        p = splicsPathwayCodeVideoModel(self.__cs)
         if model_timing is not None:
             p.set_whenpredictor_version(model_timing)
         if model_pos is not None:
@@ -324,15 +324,15 @@ class TextCueSModel:
             raise ValueError("Cued Speech rules is not defined.")
 
         try:
-            PathwayCodeOverlayModel(self.__cs)
+            splicsPathwayCodeOverlayModel(self.__cs)
         except sppasKeyError as e:
             logging.exception(e)
-            return TextCueSModel.REASON_NOT_IMPLEMENTED
+            return splicsTextCueSModel.REASON_NOT_IMPLEMENTED
         except Exception as e:
             logging.exception(e)
-            return TextCueSModel.REASON_NOT_INSTALLED
+            return splicsTextCueSModel.REASON_NOT_INSTALLED
 
-        return TextCueSModel.REASON_AVAILABLE
+        return splicsTextCueSModel.REASON_AVAILABLE
 
     # -----------------------------------------------------------------------
 
@@ -354,18 +354,18 @@ class TextCueSModel:
             raise ValueError("Cued Speech rules is not defined.")
 
         try:
-            PathwayCodeVideoModel(self.__cs)
+            splicsPathwayCodeVideoModel(self.__cs)
         except sppasKeyError as e:
             logging.exception(e)
-            return TextCueSModel.REASON_NOT_IMPLEMENTED
+            return splicsTextCueSModel.REASON_NOT_IMPLEMENTED
         except Exception as e:
             logging.exception(e)
-            return TextCueSModel.REASON_NOT_INSTALLED
+            return splicsTextCueSModel.REASON_NOT_INSTALLED
 
         if self.__test_positions_complete() is False:
-            return TextCueSModel.REASON_NOT_IMPLEMENTED
+            return splicsTextCueSModel.REASON_NOT_IMPLEMENTED
 
-        return TextCueSModel.REASON_AVAILABLE
+        return splicsTextCueSModel.REASON_AVAILABLE
 
     # -----------------------------------------------------------------------
 

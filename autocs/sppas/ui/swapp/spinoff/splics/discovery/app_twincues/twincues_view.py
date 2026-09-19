@@ -37,25 +37,25 @@ from whakerpy.htmlmaker import EmptyNode
 from whakerpy.htmlmaker import TagNode
 
 from sppas.ui import _
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
-from sppas.ui.swapp.wappbase.wappview import swappBaseView
-from sppas.ui.swapp.wappbase.wappview import JS_INIT
-from sppas.ui.swapp.wappbase.wappview import JS_BOOT_PAGE
+from sppas.ui.swapp.swappbase.swappview import swappBaseView
+from sppas.ui.swapp.swappbase.swappview import JS_INIT
+from sppas.ui.swapp.swappbase.swappview import JS_BOOT_PAGE
 
-from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import FooterNode
-from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import MenuLinkButtonNode
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import YoyoInfoNode
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import YoyoErrorNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import splicsFooterNode
+from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import splicsMenuLinkButtonNode
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsYoyoInfoNode
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsYoyoErrorNode
 
-from .twincues_record import TwinCueSRecord
+from .twincues_record import splicsTwinCueSRecord
 from .twincues_msg import MSG_APP_TITLE
 from .twincues_msg import MSG_HOME
 from .twincues_msg import MSG_APP_TITLE2
 from .twincues_msg import MSG_ACS_PROJECT
 from .twincues_msg import MSG_ERROR_DETAILS
-from .views.welcome_view import TwinCueSWelcomeView
-from .views.page_view import TwinCueSPageView
+from .views.welcome_view import splicsTwinCueSWelcomeView
+from .views.page_view import splicsTwinCueSPageView
 
 # ---------------------------------------------------------------------------
 
@@ -70,14 +70,14 @@ BODY_SCRIPT = f"""
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSView(swappBaseView):
+class splicsTwinCueSView(swappBaseView):
     """View class is responsible for populating the *twincues*.html* pages.
 
     This class represents the **View** component of the MVC pattern for the
     TwinCueS web application. It receives an existing :class:`HTMLTree`
     instance and fills it with all static and dynamic visual content.
 
-    The :class:`TwinCueSView` does not manage user events nor business logic;
+    The :class:`splicsTwinCueSView` does not manage user events nor business logic;
     it focuses solely on defining the HTML structure and resources required
     for rendering the TwinCueS conversion interface.
 
@@ -92,7 +92,7 @@ class TwinCueSView(swappBaseView):
 
         """
         if isinstance(tree, HTMLTree) is False:
-            raise TypeError("TwinCueSView: tree must be an instance of HTMLTree. "
+            raise TypeError("splicsTwinCueSView: tree must be an instance of HTMLTree. "
                             "Got {} instead.".format(type(tree)))
         super().__init__(tree, MSG_APP_TITLE)
 
@@ -110,9 +110,9 @@ class TwinCueSView(swappBaseView):
         # ----
         self._htree.head.link(rel="logo icon", href=splics_paths.logos + "twincues.png")
         # dialog.css is already linked by the head, before the sheets of SPPAS.
-        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/togglegroup.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.wexa_statics + "css/togglegroup.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.css + "main_swapp.css", link_type="text/css")
         # The identity of SPLI:CS, brought to the themes the page cycles
         # through and named as its default: the cycle of the button then
         # reads splics, swapp, and the themes of Whakerexa after them. No
@@ -189,21 +189,21 @@ class TwinCueSView(swappBaseView):
         # The place of the application is the menu, beside the other places
         # the reader can go, and not the banner: a logo written there is read
         # as a picture of the page, not as somewhere to go.
-        _app = MenuLinkButtonNode(_s.identifier, "link-app_button", "twincues.html")
+        _app = splicsMenuLinkButtonNode(_s.identifier, "link-app_button", "twincues.html")
         _app.add_attribute("data-target", "_self")
         _app.set_icon(None, splics_paths.logos + "twincues.png")
         _app.set_text(MSG_APP_TITLE)
         _s.append_child(_app)
 
-        _home = MenuLinkButtonNode(_s.identifier, "link-welcome_button",
-                                   wapp_settings.default_page())
+        _home = splicsMenuLinkButtonNode(_s.identifier, "link-welcome_button",
+                                   swapp_settings.default_page())
         # Handled by whakerexa's LinkController (see links.js): "_self"
         # navigates in the current tab, unlike the default "_blank".
         _home.add_attribute("data-target", "_self")
         _home.set_named_icon("house", MSG_HOME)
         _s.append_child(_home)
 
-        _acs = MenuLinkButtonNode(_s.identifier, "link-acs_button", "https://auto-cuedspeech.org/")
+        _acs = splicsMenuLinkButtonNode(_s.identifier, "link-acs_button", "https://auto-cuedspeech.org/")
         _acs.set_icon(None, splics_paths.logos + "ACS_project.png")
         _acs.set_text(MSG_ACS_PROJECT)
         _s.append_child(_acs)
@@ -215,7 +215,7 @@ class TwinCueSView(swappBaseView):
 
     def populate_body_footer(self) -> None:
         """Override. Replace the footer body section."""
-        self._htree.body_footer = FooterNode(self._htree.get_body_main())
+        self._htree.body_footer = splicsFooterNode(self._htree.get_body_main())
 
     # -----------------------------------------------------------------------
 
@@ -228,30 +228,30 @@ class TwinCueSView(swappBaseView):
     # Update the tree -- for baking the page
     # -----------------------------------------------------------------------
 
-    def populate_tree_content(self, record: TwinCueSRecord) -> None:
+    def populate_tree_content(self, record: splicsTwinCueSRecord) -> None:
         """Populate the tree content.
 
         No language chosen yet (record.lang is None) shows the welcome
         content (intro and language choice form); a language having reached
         the controller shows the conversion content (word/cue and result).
 
-        :param record: (TwinCueSRecord) The data to fill-in the view content.
+        :param record: (splicsTwinCueSRecord) The data to fill-in the view content.
 
         """
         if record.lang is None:
-            TwinCueSWelcomeView(self._htree.body_main, record)
+            splicsTwinCueSWelcomeView(self._htree.body_main, record)
         else:
             self.append_alert_dialogs(self._htree.body_main)
             self._populate_dialogs(record)
-            _p = TwinCueSPageView(self._htree.body_main, record)
+            _p = splicsTwinCueSPageView(self._htree.body_main, record)
             _p.create()
 
     # -----------------------------------------------------------------------
 
-    def _populate_dialogs(self, record: TwinCueSRecord) -> None:
+    def _populate_dialogs(self, record: splicsTwinCueSRecord) -> None:
         """Fill-in the error or info dialog, if the record has such an extra.
 
-        :param record: (TwinCueSRecord) The data to choose and fill-in the view content.
+        :param record: (splicsTwinCueSRecord) The data to choose and fill-in the view content.
 
         """
         if "error" in record.extras:
@@ -266,15 +266,15 @@ class TwinCueSView(swappBaseView):
     # -----------------------------------------------------------------------
 
     @staticmethod
-    def __build_error_dialog_nodes(parent_id: str, record: TwinCueSRecord) -> list:
+    def __build_error_dialog_nodes(parent_id: str, record: splicsTwinCueSRecord) -> list:
         """Build the Yoyo-styled error dialog nodes, not attached to any parent.
 
         :param parent_id: (str) Identifier to reference as the nodes' parent.
-        :param record: (TwinCueSRecord) The data holding the "error" extra.
+        :param record: (splicsTwinCueSRecord) The data holding the "error" extra.
         :return: (list) The Yoyo image+message node, the title and the details paragraphs.
 
         """
-        _n = YoyoErrorNode(parent_id)
+        _n = splicsYoyoErrorNode(parent_id)
         _n.add_attribute("class", "width_30")
 
         _title = HTMLNode(parent_id, None, "p", value=MSG_ERROR_DETAILS)
@@ -288,15 +288,15 @@ class TwinCueSView(swappBaseView):
     # -----------------------------------------------------------------------
 
     @staticmethod
-    def __build_info_dialog_node(parent_id: str, record: TwinCueSRecord) -> HTMLNode:
+    def __build_info_dialog_node(parent_id: str, record: splicsTwinCueSRecord) -> HTMLNode:
         """Build the Yoyo-styled info dialog node, not attached to any parent.
 
         :param parent_id: (str) Identifier to reference as the node's parent.
-        :param record: (TwinCueSRecord) The data holding the "info" extra.
+        :param record: (splicsTwinCueSRecord) The data holding the "info" extra.
         :return: (HTMLNode) The Yoyo image+message node.
 
         """
-        _n = YoyoInfoNode(parent_id, record.extras["info"])
+        _n = splicsYoyoInfoNode(parent_id, record.extras["info"])
         _n.add_attribute("class", "width_30")
         return _n
 

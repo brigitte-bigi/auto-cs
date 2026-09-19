@@ -50,7 +50,7 @@ YOYO_IMAGES_PATH = "textcues"
 # ---------------------------------------------------------------------------
 
 
-class BaseYoyoMessageNode(HTMLNode):
+class splicsBaseYoyoMessageNode(HTMLNode):
     """Base view node to render a Yoyo message block.
 
     This node creates a <div> container with CSS class 'yoyo-says'.
@@ -65,7 +65,7 @@ class BaseYoyoMessageNode(HTMLNode):
         :param parent_id: (str) Identifier of the parent HTML node.
 
         """
-        super(BaseYoyoMessageNode, self).__init__(parent_id, None, "div")
+        super(splicsBaseYoyoMessageNode, self).__init__(parent_id, None, "div")
         self.add_attribute("class", "yoyo-says")
 
     # -----------------------------------------------------------------------
@@ -108,7 +108,7 @@ class BaseYoyoMessageNode(HTMLNode):
 
     @staticmethod
     def welcome(parent_id: str, welcome_message: str,
-                has_language: bool) -> "BaseYoyoMessageNode":
+                has_language: bool) -> "splicsBaseYoyoMessageNode":
         """Return the Yoyo of a welcome page.
 
         The welcome Yoyo is replaced by an error Yoyo when no language is
@@ -117,20 +117,20 @@ class BaseYoyoMessageNode(HTMLNode):
         :param parent_id: (str) Identifier of the parent HTML node.
         :param welcome_message: (str) The message Yoyo says when all is well.
         :param has_language: (bool) At least one language is available.
-        :return: (BaseYoyoMessageNode) The Yoyo node to append to the page.
+        :return: (splicsBaseYoyoMessageNode) The Yoyo node to append to the page.
 
         """
         if has_language is True:
-            yoyo = YoyoMessageNode(parent_id, welcome_message)
+            yoyo = splicsYoyoMessageNode(parent_id, welcome_message)
         else:
-            yoyo = YoyoErrorNode(parent_id, MSG_NO_LANG)
+            yoyo = splicsYoyoErrorNode(parent_id, MSG_NO_LANG)
         yoyo.add_attribute("class", "width_20")
         return yoyo
 
 # ---------------------------------------------------------------------------
 
 
-class YoyoMessageNode(BaseYoyoMessageNode):
+class splicsYoyoMessageNode(splicsBaseYoyoMessageNode):
     """A standard message Yoyo says."""
 
     def __init__(self, parent_id: str, message: str):
@@ -140,14 +140,14 @@ class YoyoMessageNode(BaseYoyoMessageNode):
         :param message: (str) The message Yoyo is saying.
 
         """
-        super(YoyoMessageNode, self).__init__(parent_id)
+        super(splicsYoyoMessageNode, self).__init__(parent_id)
         self.append_message(message)
         self.append_image("yoyo_says.png")
 
 # ---------------------------------------------------------------------------
 
 
-class YoyoInfoNode(BaseYoyoMessageNode):
+class splicsYoyoInfoNode(splicsBaseYoyoMessageNode):
     """A standard message Yoyo says."""
 
     def __init__(self, parent_id: str, message: str):
@@ -157,14 +157,14 @@ class YoyoInfoNode(BaseYoyoMessageNode):
         :param message: (str) The message Yoyo is saying.
 
         """
-        super(YoyoInfoNode, self).__init__(parent_id)
+        super(splicsYoyoInfoNode, self).__init__(parent_id)
         self.append_message(message)
         self.append_image("yoyo_says_info.png")
 
 # ---------------------------------------------------------------------------
 
 
-class YoyoErrorNode(BaseYoyoMessageNode):
+class splicsYoyoErrorNode(splicsBaseYoyoMessageNode):
     """An error Yoyo explains."""
 
     def __init__(self, parent_id: str, message: str = MSG_YOYO_SORRY):
@@ -174,7 +174,7 @@ class YoyoErrorNode(BaseYoyoMessageNode):
         :param message: (str) The message Yoyo is saying.
 
         """
-        super(YoyoErrorNode, self).__init__(parent_id)
+        super(splicsYoyoErrorNode, self).__init__(parent_id)
         # The "error" modifier, on the bubble itself, turns it red.
         _bubble = self.append_message(message)
         _bubble.add_attribute("class", "error")

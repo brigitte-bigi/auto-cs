@@ -47,7 +47,7 @@ from ...textcues_msg import MSG_SOUND_PIANO_TOGGLE
 # ---------------------------------------------------------------------------
 
 
-class SoundsTableNode(HTMLNode):
+class splicsSoundsTableNode(HTMLNode):
     """Manage the nodes for the table representing word pronunciation variants.
 
     """
@@ -59,7 +59,7 @@ class SoundsTableNode(HTMLNode):
         :param sounds: (list) List of tokens with their pronunciation variants
 
         """
-        super(SoundsTableNode, self).__init__(parent_id, "sounds_table", "table")
+        super(splicsSoundsTableNode, self).__init__(parent_id, "sounds_table", "table")
         self.add_attribute("role", "grid")
         self.add_attribute("class", "sounds-table")
 

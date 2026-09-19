@@ -1,7 +1,7 @@
-from .twincuesmaker import TwinCueSResponseRecipe
-from .app_twincues import TwinCueSWebData
+from .twincuesmaker import splicsTwinCueSResponseRecipe
+from .app_twincues import splicsTwinCueSWebData
 
 __all__ = (
-    "TwinCueSResponseRecipe",
-    "TwinCueSWebData"
+    "splicsTwinCueSResponseRecipe",
+    "splicsTwinCueSWebData"
 )

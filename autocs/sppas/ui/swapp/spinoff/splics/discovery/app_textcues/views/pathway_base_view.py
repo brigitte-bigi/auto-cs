@@ -34,34 +34,34 @@ from __future__ import annotations
 from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 
-from ..textcues_record import TextCueSRecord
+from ..textcues_record import splicsTextCueSRecord
 
 # ---------------------------------------------------------------------------
 
 
-class PathwayBaseView:
+class splicsPathwayBaseView:
     """Base class representing a step in the TextCueS pathway.
 
     """
 
-    def __init__(self, parent: HTMLNode, record: TextCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsTextCueSRecord) -> None:
         """Create a view of the Pathway in "TextCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
         :raises: TypeError: The given parent is not a HTMLNode
-        :raises: TypeError: The given record is not a TextCueSRecord.
+        :raises: TypeError: The given record is not a splicsTextCueSRecord.
         :raises: KeyError: The given record has no "pathway_msg" in extras.
 
         """
         if isinstance(parent, HTMLNode) is False:
-            raise TypeError("The parent of PathwayBaseView arg must be a HTMLNode."
+            raise TypeError("The parent of splicsPathwayBaseView arg must be a HTMLNode."
                             "Got {} instead.".format(type(parent)))
-        if isinstance(record, TextCueSRecord) is False:
-            raise TypeError("The record of PathwayBaseView arg must be a TextCueSRecord."
+        if isinstance(record, splicsTextCueSRecord) is False:
+            raise TypeError("The record of splicsPathwayBaseView arg must be a splicsTextCueSRecord."
                             "Got {} instead.".format(type(record)))
         if "pathway_msg" not in record.extras:
             raise KeyError("Missing 'pathway_msg' in the given record "
-                           "to PathwayBaseView.__init__")
+                           "to splicsPathwayBaseView.__init__")
 
         self._parent = parent
         self._form = None

@@ -34,16 +34,16 @@ from __future__ import annotations
 import logging
 
 from sppas.ui.swapp.nodes.feedback.hstatusnode import HTMLTreeError410
-from sppas.ui.swapp.wappbase.wappresponse import swappBaseResponse
+from sppas.ui.swapp.swappbase.swappresponse import swappBaseResponse
 
-from .twincues_model import TwinCueSModel
-from .twincues_view import TwinCueSView
-from .twincues_controller import TwinCueSController
+from .twincues_model import splicsTwinCueSModel
+from .twincues_view import splicsTwinCueSView
+from .twincues_controller import splicsTwinCueSController
 
 # -----------------------------------------------------------------------
 
 
-class TwinCueSResponseRecipe(swappBaseResponse):
+class splicsTwinCueSResponseRecipe(swappBaseResponse):
     """The twincues.html HTTPD response baker: welcome and conversion in one page.
 
     No language is chosen yet -> the welcome content is shown (an intro and a
@@ -51,19 +51,19 @@ class TwinCueSResponseRecipe(swappBaseResponse):
     the welcome form's GET navigation, or via the conversion form's POST --
     the conversion content (word/cue textareas and results) is shown instead.
     Both cases are handled by the very same
-    :meth:`TwinCueSController.handle_convert`, so there is only one code path
+    :meth:`splicsTwinCueSController.handle_convert`, so there is only one code path
     to keep in sync.
 
     """
 
     def __init__(self, name="TwinCueSConversion", tree=None):
-        self.__model = TwinCueSModel()
+        self.__model = splicsTwinCueSModel()
         self.__view = None
         self.__controller = None
         # Default: the fixed welcome page, until bake_response() records the
         # actual requested page name (see set_requested_page()).
         self.__requested_page = self.page()
-        super(TwinCueSResponseRecipe, self).__init__(name, tree)
+        super(splicsTwinCueSResponseRecipe, self).__init__(name, tree)
 
     # -----------------------------------------------------------------------
     # OVERRIDE METHODS FROM Whakerpy -- Create the UI
@@ -81,7 +81,7 @@ class TwinCueSResponseRecipe(swappBaseResponse):
 
         The fixed, guessable welcome page ("twincues.html") must never
         process a "lang" query directly: only a random page name (see
-        HTMLTag.page_random(), used by the welcome form's own action) is
+        splicsHTMLTag.page_random(), used by the welcome form's own action) is
         allowed to trigger the expensive per-language processing, so a bot
         that only knows the fixed URL can never reach it directly.
 
@@ -100,8 +100,8 @@ class TwinCueSResponseRecipe(swappBaseResponse):
 
         """
         super().create()
-        self.__view = TwinCueSView(self._htree)
-        self.__controller = TwinCueSController(self.__model, self.__view)
+        self.__view = splicsTwinCueSView(self._htree)
+        self.__controller = splicsTwinCueSController(self.__model, self.__view)
 
     # -----------------------------------------------------------------------
     # Callbacks

@@ -41,9 +41,9 @@ from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 from sppas.src.annotations.CuedSpeech.whatkey import CueingWordKeys
 from sppas.src.resources import sppasDictPron
 
-from sppas.ui.swapp.spinoff.splics.models.text_normalizer import CueingTextNormalizer
-from sppas.ui.swapp.spinoff.splics.models.phonetizer import CueingPhonetizer
-from sppas.ui.swapp.spinoff.splics.models.images_model import KeyPianoImagesModel
+from sppas.ui.swapp.spinoff.splics.models.text_normalizer import splicsCueingTextNormalizer
+from sppas.ui.swapp.spinoff.splics.models.phonetizer import splicsCueingPhonetizer
+from sppas.ui.swapp.spinoff.splics.models.images_model import splicsKeyPianoImagesModel
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NIL_CONSONANT_CODES
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NIL_VOWEL_CODES
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NO_PHONEME_MARKER
@@ -51,13 +51,13 @@ from sppas.ui.swapp.spinoff.splics.models.key_candidates import build_key_candid
 
 from .twincues_msg import MSG_ERROR_INVALID_CUE
 from .twincues_msg import MSG_ERROR_INVALID_WORD
-from .models.word2cues_model import Word2CuesModel
-from .models.cues2words_model import Cues2WordsModel
+from .models.word2cues_model import splicsWord2CuesModel
+from .models.cues2words_model import splicsCues2WordsModel
 
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSModel:
+class splicsTwinCueSModel:
     """Model for the TwinCueS application.
 
     Loads a pronunciation dictionary for the current language, computes the
@@ -84,7 +84,7 @@ class TwinCueSModel:
         self.__cons_absent = None
         self.__vow_absent = None
         self.__max_cue_length = 0
-        self.__normalizer = CueingTextNormalizer()
+        self.__normalizer = splicsCueingTextNormalizer()
 
     # -----------------------------------------------------------------------
 
@@ -149,11 +149,11 @@ class TwinCueSModel:
         pdict = sppasDictPron(pdict_file, nodump=False)
 
         sound_model = CueingWordKeys(cued_rules)
-        phonetizer = CueingPhonetizer(pdict)
+        phonetizer = splicsCueingPhonetizer(pdict)
 
         cue_index, attested = self.__build_index(sound_model, pdict)
-        self.__word2cues = Word2CuesModel(phonetizer, sound_model, cue_index)
-        self.__cues2words = Cues2WordsModel(cue_index)
+        self.__word2cues = splicsWord2CuesModel(phonetizer, sound_model, cue_index)
+        self.__cues2words = splicsCues2WordsModel(cue_index)
         self.__max_cue_length = max((len(_cue) for _cue in cue_index), default=0)
 
         cons_by_shape, cons_absent = build_key_candidates(
@@ -181,7 +181,7 @@ class TwinCueSModel:
 
         :param word: (str) Word to be converted.
         :raises: ValueError: The language was not set, or the word is invalid.
-        :return: (tuple) See :class:`Word2CuesModel.convert`.
+        :return: (tuple) See :class:`splicsWord2CuesModel.convert`.
 
         """
         if self.__word2cues is None:
@@ -200,7 +200,7 @@ class TwinCueSModel:
 
         :param cue: (str) Cue to be converted.
         :raises: ValueError: The language was not set, or the cue is invalid.
-        :return: (tuple) See :class:`Cues2WordsModel.convert`.
+        :return: (tuple) See :class:`splicsCues2WordsModel.convert`.
 
         """
         if self.__cues2words is None:
@@ -284,7 +284,7 @@ class TwinCueSModel:
             _phonemes = self.__cons_by_shape.get(_code, tuple())
             if self.__cons_absent.get(_code, False) is True:
                 _phonemes = _phonemes + (NO_PHONEME_MARKER,)
-            _result.append({"code": _code, "image": KeyPianoImagesModel.shape_image(_code),
+            _result.append({"code": _code, "image": splicsKeyPianoImagesModel.shape_image(_code),
                             "phonemes": _phonemes})
 
         return tuple(_result)
@@ -309,7 +309,7 @@ class TwinCueSModel:
             _phonemes = self.__vow_by_pos.get(_code, tuple())
             if self.__vow_absent.get(_code, False) is True:
                 _phonemes = _phonemes + (NO_PHONEME_MARKER,)
-            _result.append({"code": _code, "image": KeyPianoImagesModel.position_image(_code),
+            _result.append({"code": _code, "image": splicsKeyPianoImagesModel.position_image(_code),
                             "phonemes": _phonemes})
 
         return tuple(_result)

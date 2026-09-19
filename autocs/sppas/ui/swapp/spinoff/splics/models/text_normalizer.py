@@ -41,7 +41,7 @@ from sppas.src.annotations.TextNorm.normalize import TextNormalizer
 # ---------------------------------------------------------------------------
 
 
-class CueingTextNormalizer:
+class splicsCueingTextNormalizer:
     """Turn a raw input text into a list of tokens, for a given language.
 
     A word entered by a user (e.g. "parce que") is not necessarily the token

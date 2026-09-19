@@ -31,7 +31,7 @@
 The generic building blocks (create_section, append_hidden_input_in_form,
 append_submit_in_form) are shared with the other Auto-CS spin-off
 applications and inherited from
-`sppas.ui.swapp.nodes.layout.tags.HTMLTag`. This subclass only adds
+`sppas.ui.swapp.nodes.layout.tags.splicsHTMLTag`. This subclass only adds
 the TextCueS-specific pathway page navigation (a fresh page name per step
 of the wizard).
 
@@ -40,12 +40,12 @@ of the wizard).
 import secrets
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 
-from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import HTMLTag as _BaseHTMLTag
+from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import splicsHTMLTag as _BaseHTMLTag
 
 # ---------------------------------------------------------------------------
 
 
-class HTMLTag(_BaseHTMLTag):
+class splicsHTMLTag(_BaseHTMLTag):
     """Utility class to create HTML nodes, with the TextCueS pathway extension.
 
     """
@@ -62,7 +62,7 @@ class HTMLTag(_BaseHTMLTag):
         _form.add_attribute("id", identifier)
         _form.add_attribute("method", "POST")
         if identifier.startswith("pathway"):
-            _form.add_attribute("action", HTMLTag.page_random())
+            _form.add_attribute("action", splicsHTMLTag.page_random())
         parent.append_child(_form)
         return _form
 

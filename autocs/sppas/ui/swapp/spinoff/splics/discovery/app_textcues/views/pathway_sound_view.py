@@ -39,12 +39,12 @@ from ..textcues_msg import MSG_PHON_FIELD_LEGEND
 from ..textcues_msg import MSG_PHON_ANN_BUTTON
 from ..textcues_msg import MSG_SEE_ALSO
 from ..textcues_msg import MSG_ERROR_NO_RESULT
-from ..textcues_record import TextCueSRecord
+from ..textcues_record import splicsTextCueSRecord
 
-from .nodes.tags import HTMLTag
-from .pathway_base_view import PathwayBaseView
-from .nodes.table_sounds import SoundsTableNode
-from .nodes.sound_piano_dialog import SoundPianoDialogNode
+from .nodes.tags import splicsHTMLTag
+from .pathway_base_view import splicsPathwayBaseView
+from .nodes.table_sounds import splicsSoundsTableNode
+from .nodes.sound_piano_dialog import splicsSoundPianoDialogNode
 
 # ---------------------------------------------------------------------------
 
@@ -79,15 +79,15 @@ HTML_REFERENCE = """
 # ---------------------------------------------------------------------------
 
 
-class PathwaySoundView(PathwayBaseView):
+class splicsPathwaySoundView(splicsPathwayBaseView):
 
-    def __init__(self, parent: HTMLNode, record: TextCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsTextCueSRecord) -> None:
         """Create the HTML node for the pathway "sound" page of "TextCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
 
         """
-        super(PathwaySoundView, self).__init__(parent, record)
+        super(splicsPathwaySoundView, self).__init__(parent, record)
         record.pathway = self.get_id()
 
     # -----------------------------------------------------------------------
@@ -138,7 +138,7 @@ class PathwaySoundView(PathwayBaseView):
         _paths = self._pathway_msg_to_dict( self._record.extras["pathway_msg"], self.get_msg())
 
         # Section: main container
-        _content = HTMLTag.create_section(self._parent, MSG_PHON_TITLE)
+        _content = splicsHTMLTag.create_section(self._parent, MSG_PHON_TITLE)
 
         # The tiles to indicate progress in the pathway
         self._create_tiles(_content, _paths, [self._record.textnorm, None, None])
@@ -147,7 +147,7 @@ class PathwaySoundView(PathwayBaseView):
         _fieldset = self._append_fieldset(_content, MSG_PHON_FIELD_LEGEND)
 
         # A form for user inputs
-        self._form = HTMLTag.create_form(_fieldset, "pathway_form")
+        self._form = splicsHTMLTag.create_form(_fieldset, "pathway_form")
         self._fill_form()
 
         # Any other Section container to be added below
@@ -163,7 +163,7 @@ class PathwaySoundView(PathwayBaseView):
         dictionarized =  self._record.serialize()
         for item in dictionarized:
             if item not in ("phonetize", "cuedkeys", "cuedphons"):
-                HTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
+                splicsHTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
 
         # The pronunciations table
         if self._record.textnorm is None or self._record.textprons is None:
@@ -171,17 +171,17 @@ class PathwaySoundView(PathwayBaseView):
             self._form.append_child(_p)
         else:
             _sounds = self.extract_sounds_from_data()
-            _table = SoundsTableNode(self._form.identifier, _sounds)
+            _table = splicsSoundsTableNode(self._form.identifier, _sounds)
             self._form.append_child(_table)
 
             # A single dialog, shared by every row's "Phoneme keyboard" toggle.
             _consonants = self._record.extras.get("consonants", tuple())
             _vowels = self._record.extras.get("vowels", tuple())
-            _dialog = SoundPianoDialogNode(self._parent.identifier, _consonants, _vowels)
+            _dialog = splicsSoundPianoDialogNode(self._parent.identifier, _consonants, _vowels)
             self._parent.append_child(_dialog)
 
         # Submit button
-        HTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_PHON_ANN_BUTTON)
+        splicsHTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_PHON_ANN_BUTTON)
 
     # -----------------------------------------------------------------------
 

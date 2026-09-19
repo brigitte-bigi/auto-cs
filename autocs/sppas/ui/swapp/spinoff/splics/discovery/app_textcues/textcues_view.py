@@ -37,25 +37,25 @@ from whakerpy.htmlmaker import EmptyNode
 from whakerpy.htmlmaker import TagNode
 
 from sppas.ui import _
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
-from sppas.ui.swapp.wappbase.wappview import swappBaseView
-from sppas.ui.swapp.wappbase.wappview import JS_INIT
-from sppas.ui.swapp.wappbase.wappview import JS_BOOT_PAGE
+from sppas.ui.swapp.swappbase.swappview import swappBaseView
+from sppas.ui.swapp.swappbase.swappview import JS_INIT
+from sppas.ui.swapp.swappbase.swappview import JS_BOOT_PAGE
 
-from .textcues_record import TextCueSRecord
+from .textcues_record import splicsTextCueSRecord
 from .textcues_msg import MSG_APP_TITLE
 from .textcues_msg import MSG_APP_TITLE2
 from .textcues_msg import MSG_ERROR_DETAILS
-from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import FooterNode
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import YoyoInfoNode
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import YoyoErrorNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.footer import splicsFooterNode
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsYoyoInfoNode
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsYoyoErrorNode
 
-from .views.nodes.nav import NavUtils
-from .views.welcome_view import TextCueSWelcomeView
-from .views.pathway_text_view import PathwayTextView
-from .views.pathway_sound_view import PathwaySoundView
-from .views.pathway_code_view import PathwayCodeView
+from .views.nodes.nav import splicsNavUtils
+from .views.welcome_view import splicsTextCueSWelcomeView
+from .views.pathway_text_view import splicsPathwayTextView
+from .views.pathway_sound_view import splicsPathwaySoundView
+from .views.pathway_code_view import splicsPathwayCodeView
 
 # ---------------------------------------------------------------------------
 
@@ -70,14 +70,14 @@ BODY_SCRIPT = f"""
 # ---------------------------------------------------------------------------
 
 
-class TextCueSView(swappBaseView):
+class splicsTextCueSView(swappBaseView):
     """View class is responsible for populating the *textcues_*.html* page.
 
     This class represents the **View** component of the MVC pattern for the
     TextCueS web application. It receives an existing :class:`HTMLTree`
     instance and fills it with all static and dynamic visual content.
 
-    The :class:`TextCueSView` does not manage user events nor business logic;
+    The :class:`splicsTextCueSView` does not manage user events nor business logic;
     it focuses solely on defining the HTML structure and resources required
     for rendering the TextCueS coding interface.
 
@@ -99,7 +99,7 @@ class TextCueSView(swappBaseView):
 
         """
         if isinstance(tree, HTMLTree) is False:
-            raise TypeError("TextCueSView: tree must be an instance of HTMLTree. "
+            raise TypeError("splicsTextCueSView: tree must be an instance of HTMLTree. "
                             "Got {} instead.".format(type(tree)))
         super().__init__(tree, MSG_APP_TITLE)
 
@@ -121,9 +121,9 @@ class TextCueSView(swappBaseView):
         # ----
         self._htree.head.link(rel="logo icon", href=splics_paths.logos + "textcues.png")
         # dialog.css is already linked by the head, before the sheets of SPPAS.
-        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/togglegroup.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "main_swapp.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.wexa_statics + "css/togglegroup.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.wexa_statics + "css/extras/keypiano.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.css + "main_swapp.css", link_type="text/css")
         # The identity of SPLI:CS, brought to the themes the page cycles
         # through and named as its default: the cycle of the button then
         # reads splics, swapp, and the themes of Whakerexa after them. No
@@ -163,7 +163,7 @@ class TextCueSView(swappBaseView):
     def populate_body_header(self, title, *args, **kwargs):
         """Override. Populate the `<header>` section of the page.
 
-        Replaces the current header with a :class:`SwappHeader` instance and
+        Replaces the current header with a :class:`swappHeader` instance and
         delegates additional customization to `_populate_body_header()`.
 
         """
@@ -200,9 +200,9 @@ class TextCueSView(swappBaseView):
         self._htree.body_nav.append_child(_s)
 
         _s = TagNode(self._htree.body_nav.identifier, None, "section")
-        NavUtils.append_app_link_button(_s)
-        NavUtils.append_home_link_button(_s)
-        NavUtils.append_acs_link_button(_s)
+        splicsNavUtils.append_app_link_button(_s)
+        splicsNavUtils.append_home_link_button(_s)
+        splicsNavUtils.append_acs_link_button(_s)
         self.append_sppas_link_button(_s)
         self._htree.body_nav.append_child(_s)
 
@@ -210,7 +210,7 @@ class TextCueSView(swappBaseView):
 
     def populate_body_footer(self) -> None:
         """Override. Replace the footer body section."""
-        self._htree.body_footer = FooterNode(self._htree.get_body_main())
+        self._htree.body_footer = splicsFooterNode(self._htree.get_body_main())
 
     # -----------------------------------------------------------------------
 
@@ -223,31 +223,31 @@ class TextCueSView(swappBaseView):
     # Update the tree -- for baking the page
     # -----------------------------------------------------------------------
 
-    def populate_tree_content(self, record: TextCueSRecord) -> None:
+    def populate_tree_content(self, record: splicsTextCueSRecord) -> None:
         """Populate the tree content.
 
         No language chosen yet (record.lang is None) shows the welcome
         content (intro and language choice form); a language having reached
         the controller shows the pathway content (Text, Sound or Code).
 
-        :param record: (TextCueSRecord) The data to choose and fill-in the view content.
+        :param record: (splicsTextCueSRecord) The data to choose and fill-in the view content.
         :raises: KeyError: invalid or missing entry in given data.
 
         """
         if record.lang is None:
-            TextCueSWelcomeView(self._htree.body_main, record)
+            splicsTextCueSWelcomeView(self._htree.body_main, record)
         else:
             self._populate_pathway_tree(record)
             self._populate_dialogs(record)
 
     # -----------------------------------------------------------------------
 
-    def _populate_pathway_tree(self, record: TextCueSRecord) -> None:
+    def _populate_pathway_tree(self, record: splicsTextCueSRecord) -> None:
         """Populate the tree content.
 
         Choose and create the page view matching the given record fields.
 
-        :param record: (TextCueSRecord) The data allowing to choose and create the view.
+        :param record: (splicsTextCueSRecord) The data allowing to choose and create the view.
 
         """
         p = None
@@ -255,44 +255,44 @@ class TextCueSView(swappBaseView):
             # Stay on the same page
             # ---------------------
 
-            if record.pathway in ("", PathwayTextView.get_id()):
-                p = PathwayTextView(self._htree.body_main, record)
+            if record.pathway in ("", splicsPathwayTextView.get_id()):
+                p = splicsPathwayTextView(self._htree.body_main, record)
 
-            elif record.pathway == PathwaySoundView.get_id():
-                p = PathwaySoundView(self._htree.body_main, record)
+            elif record.pathway == splicsPathwaySoundView.get_id():
+                p = splicsPathwaySoundView(self._htree.body_main, record)
 
-            elif record.pathway == PathwayCodeView.get_id():
-                p = PathwayCodeView(self._htree.body_main, record)
+            elif record.pathway == splicsPathwayCodeView.get_id():
+                p = splicsPathwayCodeView(self._htree.body_main, record)
 
         else:
             # Follow the pathway: Text -> Sound -> Code
             # -----------------------------------------
 
-            if record.pathway == PathwaySoundView.get_id():
-                p = PathwayCodeView(self._htree.body_main, record)
+            if record.pathway == splicsPathwaySoundView.get_id():
+                p = splicsPathwayCodeView(self._htree.body_main, record)
 
-            elif record.pathway == PathwayTextView.get_id():
-                p = PathwaySoundView(self._htree.body_main, record)
+            elif record.pathway == splicsPathwayTextView.get_id():
+                p = splicsPathwaySoundView(self._htree.body_main, record)
 
             else:
-            #if record.pathway in ("", PathwayCodeView.get_id()) or record.text is None:
-                p = PathwayTextView(self._htree.body_main, record)
+            #if record.pathway in ("", splicsPathwayCodeView.get_id()) or record.text is None:
+                p = splicsPathwayTextView(self._htree.body_main, record)
 
         # Create the full HTML nodes for the page content
         p.create()
 
     # -----------------------------------------------------------------------
 
-    def _populate_dialogs(self, record: TextCueSRecord) -> None:
+    def _populate_dialogs(self, record: splicsTextCueSRecord) -> None:
         """Add dialogs for messages and fill in if necessary.
 
-        :param record: (TextCueSRecord) The data to choose and fill-in the view content.
+        :param record: (splicsTextCueSRecord) The data to choose and fill-in the view content.
 
         """
         self.append_alert_dialogs(self._htree.body_main)
         if "error" in record.extras:
             error_dlg = self._htree.body_main.get_child("error_dialog")
-            _n = YoyoErrorNode(error_dlg.identifier)
+            _n = splicsYoyoErrorNode(error_dlg.identifier)
             _n.add_attribute("class", "width_30")
             error_dlg.append_child(_n)
 
@@ -305,22 +305,22 @@ class TextCueSView(swappBaseView):
 
         elif "info" in record.extras:
             info_dlg = self._htree.body_main.get_child("info_dialog")
-            _n = YoyoInfoNode(info_dlg.identifier, record.extras['info'])
+            _n = splicsYoyoInfoNode(info_dlg.identifier, record.extras['info'])
             _n.add_attribute("class", "width_30")
             info_dlg.append_child(_n)
 
     # -----------------------------------------------------------------------
 
-    def get_displaymode_content(self, record: TextCueSRecord) -> str:
+    def get_displaymode_content(self, record: splicsTextCueSRecord) -> str:
         """Return the display mode content of the cued text.
 
-        Allows to not *create* the full PathwayCodeView but the cued result only.
+        Allows to not *create* the full splicsPathwayCodeView but the cued result only.
 
-        :param record: (TextCueSRecord) The data to choose and fill-in the view content.
+        :param record: (splicsTextCueSRecord) The data to choose and fill-in the view content.
         :raises: KeyError: invalid or missing entry in given data.
         :return: (str) The serialized HTML content depending on the displayed mode.
 
         """
-        p = PathwayCodeView(self._htree.body_main, record)
+        p = splicsPathwayCodeView(self._htree.body_main, record)
         content = p.display_content()
         return content.serialize()

@@ -195,7 +195,7 @@ export default class TextCueSManager extends BaseCuesManager {
      * Handle submit of the welcome form (language choice).
      *
      * The form itself already navigates to a random "textcues_<hex>.html"
-     * page with "?lang=..." (a plain GET, see HTMLTag.page_random()): this
+     * page with "?lang=..." (a plain GET, see splicsHTMLTag.page_random()): this
      * only adds the accessibility parameters (theme, contrast...) to that
      * navigation, exactly as the menu links do.
      *
@@ -320,7 +320,7 @@ export default class TextCueSManager extends BaseCuesManager {
         if (pianoContainer instanceof HTMLElement) {
             // Resolved from window.WEXA_JS_PATH (see wexa_statics_js at the
             // top of this file), itself server-injected from
-            // wapp_settings.wexa_statics: never a path hardcoded relative to
+            // swapp_settings.wexa_statics: never a path hardcoded relative to
             // this file's own location, which would silently break if
             // Whakerexa's install location changes.
             const { KeyPiano } = await import(`${wexa_statics_js}/extras/keypiano/keypiano.js`);

@@ -33,12 +33,12 @@
 from __future__ import annotations
 import re
 
-from .textcues_settings import TextCueSSettings
+from .textcues_settings import splicsTextCueSSettings
 
 # ---------------------------------------------------------------------------
 
 
-class TextCueSRecord:
+class splicsTextCueSRecord:
     """Container for all extracted data.
 
     Allows data check, and transport between the models and the views.
@@ -68,7 +68,7 @@ class TextCueSRecord:
     }
 
     # Possible values of overlay_status/video_status -- must match
-    # TextCueSModel.REASON_AVAILABLE/REASON_NOT_INSTALLED/REASON_NOT_IMPLEMENTED.
+    # splicsTextCueSModel.REASON_AVAILABLE/REASON_NOT_INSTALLED/REASON_NOT_IMPLEMENTED.
     # Duplicated here, not imported: the record must not depend on the
     # model (strict MVC), it only transports what the model decided.
     REASON_AVAILABLE = "available"
@@ -80,7 +80,7 @@ class TextCueSRecord:
     def __init__(self, pathway_id: str = "", lang: str = None, alphabet: str = None):
         """Initialize the minimal required data.
 
-        :param pathway_id: (str) An 'id' of a PathwayBaseView inherited class.
+        :param pathway_id: (str) An 'id' of a splicsPathwayBaseView inherited class.
         :param lang: (str|None) ISO639-3 of a supported language. Set to default if None.
         :param alphabet: (str|None) One of the supported alphabets. Set to default if None.
 
@@ -110,9 +110,9 @@ class TextCueSRecord:
         # actually be generated: missing dependency/resource (environment),
         # or current language not covered by the prediction models (content).
         # Tested once by the controller and carried forward, not re-tested
-        # at each step. See TextCueSModel.REASON_*.
-        self.__overlay_status = TextCueSRecord.REASON_NOT_INSTALLED
-        self.__video_status = TextCueSRecord.REASON_NOT_INSTALLED
+        # at each step. See splicsTextCueSModel.REASON_*.
+        self.__overlay_status = splicsTextCueSRecord.REASON_NOT_INSTALLED
+        self.__video_status = splicsTextCueSRecord.REASON_NOT_INSTALLED
 
         # Any extra data
         self.__extras = dict()
@@ -133,8 +133,8 @@ class TextCueSRecord:
         self.__model_angle = None
         self.__model_timing = None
 
-        self.__overlay_status = TextCueSRecord.REASON_NOT_INSTALLED
-        self.__video_status = TextCueSRecord.REASON_NOT_INSTALLED
+        self.__overlay_status = splicsTextCueSRecord.REASON_NOT_INSTALLED
+        self.__video_status = splicsTextCueSRecord.REASON_NOT_INSTALLED
 
         # Any extra data
         self.__extras = dict()
@@ -187,7 +187,7 @@ class TextCueSRecord:
         :param entry: (str) String
 
         """
-        e = TextCueSRecord.strip_string(entry)
+        e = splicsTextCueSRecord.strip_string(entry)
         return e.replace("'", "%27")
 
     # -----------------------------------------------------------------------
@@ -199,7 +199,7 @@ class TextCueSRecord:
         :param entry: (str) String
 
         """
-        e = TextCueSRecord.strip_string(entry)
+        e = splicsTextCueSRecord.strip_string(entry)
         return e.replace("%27", "'")
 
     # -----------------------------------------------------------------------
@@ -213,7 +213,7 @@ class TextCueSRecord:
 
         """
         serialized = " ".join(entry)
-        return TextCueSRecord.format_string(serialized)
+        return splicsTextCueSRecord.format_string(serialized)
 
     # -----------------------------------------------------------------------
 
@@ -225,7 +225,7 @@ class TextCueSRecord:
         :return: (list) List
 
         """
-        _s = TextCueSRecord.parse_string(entry)
+        _s = splicsTextCueSRecord.parse_string(entry)
         return _s.split(" ")
 
     # -----------------------------------------------------------------------
@@ -293,27 +293,27 @@ class TextCueSRecord:
             self.set_mode(int(data["mode"]))
 
         if "text" in data:
-            _text = TextCueSRecord.parse_string(data["text"])
+            _text = splicsTextCueSRecord.parse_string(data["text"])
             if len(_text.strip()) > 0:
                 self.set_text(_text)
 
         if "textnorm" in data:
-            self.set_textnorm(TextCueSRecord.parse_entry(data["textnorm"]))
+            self.set_textnorm(splicsTextCueSRecord.parse_entry(data["textnorm"]))
         if "textprons" in data:
-            self.set_textprons(TextCueSRecord.parse_entry(data["textprons"]))
+            self.set_textprons(splicsTextCueSRecord.parse_entry(data["textprons"]))
         if "phonetize" in data:
-            self.set_phonetize(TextCueSRecord.parse_entry(data["phonetize"]))
+            self.set_phonetize(splicsTextCueSRecord.parse_entry(data["phonetize"]))
         if "cuedphons" in data:
-            self.set_cuedphons(TextCueSRecord.parse_entry(data["cuedphons"]))
+            self.set_cuedphons(splicsTextCueSRecord.parse_entry(data["cuedphons"]))
         if "cuedkeys" in data:
-            self.set_cuedkeys(TextCueSRecord.parse_entry(data["cuedkeys"]))
+            self.set_cuedkeys(splicsTextCueSRecord.parse_entry(data["cuedkeys"]))
 
         if "model_pos" in data:
-            self.set_model_pos(TextCueSRecord._parse_model_value(data["model_pos"]))
+            self.set_model_pos(splicsTextCueSRecord._parse_model_value(data["model_pos"]))
         if "model_angle" in data:
-            self.set_model_angle(TextCueSRecord._parse_model_value(data["model_angle"]))
+            self.set_model_angle(splicsTextCueSRecord._parse_model_value(data["model_angle"]))
         if "model_timing" in data:
-            self.set_model_timing(TextCueSRecord._parse_model_value(data["model_timing"]))
+            self.set_model_timing(splicsTextCueSRecord._parse_model_value(data["model_timing"]))
 
         if "overlay_status" in data:
             self.set_overlay_status(data["overlay_status"])
@@ -413,7 +413,7 @@ class TextCueSRecord:
 
         """
         if value is None:
-            with TextCueSSettings() as st:
+            with splicsTextCueSSettings() as st:
                 value = st.alphabet
         accepted = (None, "X-SAMPA", "IPA")
         if value not in accepted:
@@ -442,7 +442,7 @@ class TextCueSRecord:
             raise TypeError(f"Given value must be a string or None. "
                             f"Got '{type(value)}' instead.")
         if value is not None:
-            value = TextCueSRecord.strip_string(value)
+            value = splicsTextCueSRecord.strip_string(value)
             if len(value) == 0:
                 raise ValueError("Given value can't be an empty string.")
 
@@ -733,9 +733,9 @@ class TextCueSRecord:
 
         """
         accepted = (
-            TextCueSRecord.REASON_AVAILABLE,
-            TextCueSRecord.REASON_NOT_INSTALLED,
-            TextCueSRecord.REASON_NOT_IMPLEMENTED
+            splicsTextCueSRecord.REASON_AVAILABLE,
+            splicsTextCueSRecord.REASON_NOT_INSTALLED,
+            splicsTextCueSRecord.REASON_NOT_IMPLEMENTED
         )
         if value not in accepted:
             raise ValueError(f"Invalid given value: '{value}'.")
@@ -760,9 +760,9 @@ class TextCueSRecord:
 
         """
         accepted = (
-            TextCueSRecord.REASON_AVAILABLE,
-            TextCueSRecord.REASON_NOT_INSTALLED,
-            TextCueSRecord.REASON_NOT_IMPLEMENTED
+            splicsTextCueSRecord.REASON_AVAILABLE,
+            splicsTextCueSRecord.REASON_NOT_INSTALLED,
+            splicsTextCueSRecord.REASON_NOT_IMPLEMENTED
         )
         if value not in accepted:
             raise ValueError(f"Invalid given value: '{value}'.")

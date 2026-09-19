@@ -35,12 +35,12 @@ from __future__ import annotations
 from sppas.core.config import separators
 from sppas.src.annotations.CuedSpeech.whatkey import CueingWordKeys
 
-from sppas.ui.swapp.spinoff.splics.models.phonetizer import CueingPhonetizer
+from sppas.ui.swapp.spinoff.splics.models.phonetizer import splicsCueingPhonetizer
 
 # ---------------------------------------------------------------------------
 
 
-class Word2CuesModel:
+class splicsWord2CuesModel:
     """Return the cue(s) of a word and its twin words.
 
     The word is phonetized on demand (known words get their dictionary
@@ -51,10 +51,10 @@ class Word2CuesModel:
 
     """
 
-    def __init__(self, phonetizer: CueingPhonetizer, sound_model: CueingWordKeys, cue_index: dict):
+    def __init__(self, phonetizer: splicsCueingPhonetizer, sound_model: CueingWordKeys, cue_index: dict):
         """Create a new instance.
 
-        :param phonetizer: (CueingPhonetizer) Phonetizer of the current language.
+        :param phonetizer: (splicsCueingPhonetizer) Phonetizer of the current language.
         :param sound_model: (CueingWordKeys) Cued Speech key generator of the current language.
         :param cue_index: (dict) cue -> tuple of (word, pronunciation)
 

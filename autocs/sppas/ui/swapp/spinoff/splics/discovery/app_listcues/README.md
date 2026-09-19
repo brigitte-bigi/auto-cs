@@ -1,28 +1,28 @@
 This package implements the SPPAS spin-off ListCueS web application following a
 Model–View–Controller (MVC) architecture.
 
-- **ListCueSResponseRecipe** is the single *HTTP transport layer* recipe,
+- **splicsListCueSResponseRecipe** is the single *HTTP transport layer* recipe,
   for the single page `listcues.html`. There is no separate launcher: a
   language having reached the controller (welcome form, or a `convert`
   event) is the only thing distinguishing the conversion state from the
   welcome one -- the application is stateless (no session, no server-side
   memory), so this distinction cannot rely on anything else.
 
-- **ListCueSController** represents the *MVC controller*.
+- **splicsListCueSController** represents the *MVC controller*.
   It manages the application logic: dispatching the received sequence of keys
   to the model, and invoking the view to build the HTML fragment of the result.
   `handle_convert()` is used identically whether the language arrives alone
   (from the welcome form) or together with a cue (from the "Validate" button).
 
-- **ListCueSView** is the *View* component responsible for building the static
+- **splicsListCueSView** is the *View* component responsible for building the static
   and dynamic HTML structure (head, header, body, footer, scripts) using
-  WhakerPy's HTMLTree utilities. It shows **ListCueSWelcomeView** while
-  `record.lang` is `None`, and **ListCueSPageView** (piano and result) once a
+  WhakerPy's HTMLTree utilities. It shows **splicsListCueSWelcomeView** while
+  `record.lang` is `None`, and **splicsListCueSPageView** (piano and result) once a
   language is known.
 
-- **ListCueSModel** restricts the Cued Speech key -> phoneme(s) rules of the
+- **splicsListCueSModel** restricts the Cued Speech key -> phoneme(s) rules of the
   current language to the phonemes actually attested in its pronunciation
-  dictionary, then dispatches to **Keys2PronsModel** to enumerate the
+  dictionary, then dispatches to **splicsKeys2PronsModel** to enumerate the
   pronounceable phoneme sequences of the input keys and their matching words.
 
 A key ("<shape>-<position>") is ambiguous by design: several consonants can
@@ -32,11 +32,11 @@ phoneme sequences (e.g. a single French key repeated 7 times, all-consonants
 -- 19 candidates per key, ~19^7 leaf paths without pruning). Pronounceability
 alone (PHONMERGE consonant-cluster legality) is not enough to bound this: for
 some phonemes, nearly every 2-consonant combination is a legal cluster, so
-branching stays close to the unpruned maximum. **Keys2PronsModel** instead
+branching stays close to the unpruned maximum. **splicsKeys2PronsModel** instead
 prunes the search itself, the same way the first pass of an ASR system based
 on Viterbi/Baum-Welch decoding cuts a lattice: the set of every contiguous
 4-phoneme window actually observed across the pronunciation dictionary is
-built once (`NGRAM_SIZE = 4`, in the same pass as `ListCueSModel`'s dictionary
+built once (`NGRAM_SIZE = 4`, in the same pass as `splicsListCueSModel`'s dictionary
 index), and a branch is cut as soon as its trailing 4-phoneme window was
 never observed -- it can then never lead to a real word. 4 was determined
 empirically to be the smallest window that keeps the worst case (7 maximally
@@ -62,4 +62,4 @@ Missing assets (to be added):
 - The icon referenced by `sppasImagesAccess.get_icon_filename("listcues")`
   is only defined for the "Refine" theme.
 - The piano keys are plain text codes for now (e.g. "1", "s"); images may
-  replace them later without changing `KeyPianoNode`'s HTML contract.
+  replace them later without changing `splicsKeyPianoNode`'s HTML contract.

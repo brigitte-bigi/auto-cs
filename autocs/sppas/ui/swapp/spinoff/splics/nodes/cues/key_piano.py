@@ -36,7 +36,7 @@ from whakerpy.htmlmaker import EmptyNode
 
 from sppas.core.coreutils import msg
 
-from .illustration import CuedIllustration
+from .illustration import splicsCuedIllustration
 
 # ---------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ MSG_KEY_PHONES = msg("Phonemes", "splics")
 # ---------------------------------------------------------------------------
 
 
-class KeyPianoNode(HTMLNode):
+class splicsKeyPianoNode(HTMLNode):
     """The Whakerexa "KeyPiano" markup, filled with the shape and position keys.
 
     Used by any "cue" app needing to compose a "<shape>-<position>" key
@@ -60,7 +60,7 @@ class KeyPianoNode(HTMLNode):
     a key.
 
     Each key reuses the very same illustration builder as TextCueS's coded
-    result (:class:`nodes.cues.illustration.CuedIllustration`), so
+    result (:class:`nodes.cues.illustration.splicsCuedIllustration`), so
     a piano key looks the same size and style, in the same order: the
     matching phonemes above the illustration, the code below it (in the
     figcaption). Both are marked ``aria-hidden``, because the key's own
@@ -78,12 +78,12 @@ class KeyPianoNode(HTMLNode):
         :param position_keys: (tuple) {"code": str, "image": str, "phonemes": tuple}, one per position
 
         """
-        super(KeyPianoNode, self).__init__(parent_id, "cue_piano", "div")
+        super(splicsKeyPianoNode, self).__init__(parent_id, "cue_piano", "div")
         self.add_attribute("class", "wexa-key-piano")
         self.add_attribute("data-target", target_id)
 
-        self.__append_group(MSG_PIANO_SHAPE_GROUP, shape_keys, CuedIllustration.yoyo_hand_image)
-        self.__append_group(MSG_PIANO_POSITION_GROUP, position_keys, CuedIllustration.yoyo_face_image)
+        self.__append_group(MSG_PIANO_SHAPE_GROUP, shape_keys, splicsCuedIllustration.yoyo_hand_image)
+        self.__append_group(MSG_PIANO_POSITION_GROUP, position_keys, splicsCuedIllustration.yoyo_face_image)
 
     # -----------------------------------------------------------------------
     # PRIVATE
@@ -94,8 +94,8 @@ class KeyPianoNode(HTMLNode):
 
         :param group_label: (str) Accessible name of the group.
         :param keys: (tuple) {"code": str, "image": str, "phonemes": tuple}, one per key.
-        :param image_builder: (Callable) CuedIllustration.yoyo_hand_image for shapes,
-               CuedIllustration.yoyo_face_image for positions.
+        :param image_builder: (Callable) splicsCuedIllustration.yoyo_hand_image for shapes,
+               splicsCuedIllustration.yoyo_face_image for positions.
 
         """
         _group = HTMLNode(self.identifier, None, "div")
@@ -117,7 +117,7 @@ class KeyPianoNode(HTMLNode):
         :param code: (str) Shape or position code, e.g. "1" or "s".
         :param image: (str) Path of the illustration image.
         :param phonemes: (tuple) Phonemes matching this code.
-        :param image_builder: (Callable) CuedIllustration.yoyo_hand_image or yoyo_face_image.
+        :param image_builder: (Callable) splicsCuedIllustration.yoyo_hand_image or yoyo_face_image.
 
         """
         _phones = " ".join(phonemes)
@@ -139,7 +139,7 @@ class KeyPianoNode(HTMLNode):
         _span.add_attribute("aria-hidden", "true")
         _key.append_child(_span)
 
-        _figure = CuedIllustration.coded_illus(_key)
+        _figure = splicsCuedIllustration.coded_illus(_key)
         image_builder(_figure, image)
 
         _caption = HTMLNode(_figure.identifier, None, "figcaption", value=code)

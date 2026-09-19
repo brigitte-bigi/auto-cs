@@ -36,7 +36,7 @@ import re
 # ---------------------------------------------------------------------------
 
 
-class ListCueSRecord:
+class splicsListCueSRecord:
     """Container for the cue data of a conversion request.
 
     Allows data check, and transport between the model and the views.
@@ -153,7 +153,7 @@ class ListCueSRecord:
             raise TypeError(f"Given value must be a string or None. "
                             f"Got '{type(value)}' instead.")
         if value is not None:
-            value = ListCueSRecord.strip_string(value)
+            value = splicsListCueSRecord.strip_string(value)
             if len(value) == 0:
                 value = None
 

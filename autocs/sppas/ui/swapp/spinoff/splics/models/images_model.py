@@ -36,11 +36,11 @@ from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 # ---------------------------------------------------------------------------
 
 
-class KeyPianoImagesModel:
+class splicsKeyPianoImagesModel:
     """Return the image path of a shape or a position code.
 
     Same shared "yoyo" illustrations and naming convention as TextCueS
-    (see :class:`app_textcues.models.images_model.PathwayCodeImagesModel`):
+    (see :class:`app_textcues.models.images_model.splicsPathwayCodeImagesModel`):
     "<prefix>_<code>.png" for a shape (hand), "<prefix>_<code>.jpg" for a
     position (face).
 
@@ -59,7 +59,7 @@ class KeyPianoImagesModel:
         :return: (str) Image path.
 
         """
-        return f"{KeyPianoImagesModel.IMAGES_PATH}{KeyPianoImagesModel.PREFIX}_{code}.png"
+        return f"{splicsKeyPianoImagesModel.IMAGES_PATH}{splicsKeyPianoImagesModel.PREFIX}_{code}.png"
 
     # -----------------------------------------------------------------------
 
@@ -71,4 +71,4 @@ class KeyPianoImagesModel:
         :return: (str) Image path.
 
         """
-        return f"{KeyPianoImagesModel.IMAGES_PATH}{KeyPianoImagesModel.PREFIX}_{code}.jpg"
+        return f"{splicsKeyPianoImagesModel.IMAGES_PATH}{splicsKeyPianoImagesModel.PREFIX}_{code}.jpg"

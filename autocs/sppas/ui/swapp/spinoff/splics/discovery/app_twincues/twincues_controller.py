@@ -36,12 +36,12 @@ from .twincues_msg import MSG_ERROR_NOT_YET_IMPLEMENTED
 from .twincues_msg import MSG_INFO_NO_INPUT
 from .twincues_msg import MSG_INFO_NO_TWIN_WORD
 from .twincues_msg import MSG_INFO_NO_TWIN_CUE
-from .twincues_record import TwinCueSRecord
+from .twincues_record import splicsTwinCueSRecord
 
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSController:
+class splicsTwinCueSController:
     """Coordinate model execution and view preparation for the TwinCueS application.
 
     This controller implements the Controller role of the MVC pattern. It receives
@@ -52,8 +52,8 @@ class TwinCueSController:
     def __init__(self, model, view):
         """Initialize the controller with a model and a view.
 
-        :param model: (TwinCueSModel) The model managing the conversions.
-        :param view: (TwinCueSView) The view managing the HTML structure.
+        :param model: (splicsTwinCueSModel) The model managing the conversions.
+        :param view: (splicsTwinCueSView) The view managing the HTML structure.
 
         """
         self.__model = model
@@ -73,7 +73,7 @@ class TwinCueSController:
         unrelated request left the record in, instead of the welcome page.
 
         """
-        self.__record = TwinCueSRecord()
+        self.__record = splicsTwinCueSRecord()
         self.__record.set_extra("lang_choices", self.__model.get_lang_choices())
 
     # -----------------------------------------------------------------------
@@ -86,7 +86,7 @@ class TwinCueSController:
 
     # -----------------------------------------------------------------------
 
-    def handle_convert(self, data: dict) -> TwinCueSRecord:
+    def handle_convert(self, data: dict) -> splicsTwinCueSRecord:
         """Handle a conversion request and update the record accordingly.
 
         A new record is built from the received data. The word, when given, is
@@ -96,10 +96,10 @@ class TwinCueSController:
         the Yoyo dialogs.
 
         :param data: (dict) Data received from the client, expected to contain 'word' and/or 'cue'.
-        :return: (TwinCueSRecord) The updated record.
+        :return: (splicsTwinCueSRecord) The updated record.
 
         """
-        self.__record = TwinCueSRecord()
+        self.__record = splicsTwinCueSRecord()
         self.__record.parse(data)
         self.__record.set_extra("lang_choices", self.__model.get_lang_choices())
 
@@ -132,10 +132,10 @@ class TwinCueSController:
     # Workers
     # -----------------------------------------------------------------------
 
-    def _handle_word(self, record: TwinCueSRecord) -> None:
+    def _handle_word(self, record: splicsTwinCueSRecord) -> None:
         """Convert the word of the record into a cue and store the result.
 
-        :param record: (TwinCueSRecord) The record to update.
+        :param record: (splicsTwinCueSRecord) The record to update.
 
         """
         if record.word is None:
@@ -156,10 +156,10 @@ class TwinCueSController:
 
     # -----------------------------------------------------------------------
 
-    def _handle_cue(self, record: TwinCueSRecord) -> None:
+    def _handle_cue(self, record: splicsTwinCueSRecord) -> None:
         """Convert the cue of the record into word(s) and store the result.
 
-        :param record: (TwinCueSRecord) The record to update.
+        :param record: (splicsTwinCueSRecord) The record to update.
 
         """
         if record.cue is None:

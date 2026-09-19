@@ -35,7 +35,7 @@ from __future__ import annotations
 # ---------------------------------------------------------------------------
 
 
-class Cues2WordsModel:
+class splicsCues2WordsModel:
     """Return the words sharing a given cue.
 
     """

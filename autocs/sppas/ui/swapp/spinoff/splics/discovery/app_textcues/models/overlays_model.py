@@ -50,9 +50,9 @@ from sppas.src.annotations.CuedSpeech.wherecue.angles import WhereAnglesPredicto
 from sppas.src.annotations.CuedSpeech.wherecue.faceheight import sppasFaceHeight
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag import sppasHandCoords
 from sppas.src.annotations.CuedSpeech.whowtag.whowimgtag import sppasImageHandTagger
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 
-from .images_model import PathwayCodeImagesModel
+from .images_model import splicsPathwayCodeImagesModel
 
 # ---------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ COLORS = {
 # ---------------------------------------------------------------------------
 
 
-class PathwayCodeOverlayModel(PathwayCodeImagesModel):
+class splicsPathwayCodeOverlayModel(splicsPathwayCodeImagesModel):
     """Generates image results for a given cued sequence.
 
     """
@@ -84,8 +84,8 @@ class PathwayCodeOverlayModel(PathwayCodeImagesModel):
         super().__init__(cued_rules, prefix)
 
         # Face image and sights file -- both must exist at construction time.
-        self._face_path = PathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}.jpg"
-        self._face_sight = PathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}-sights.xra"
+        self._face_path = splicsPathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}.jpg"
+        self._face_sight = splicsPathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}-sights.xra"
         if os.path.exists(self._face_path) is False:
             raise sppasIOError(self._face_path)
         if os.path.exists(self._face_sight) is False:
@@ -206,7 +206,7 @@ class PathwayCodeOverlayModel(PathwayCodeImagesModel):
         date_str = now.strftime('%Y_%m_%d')
         seconds_since_midnight = now.hour * 3600 + now.minute * 60 + now.second
 
-        return PathwayCodeImagesModel.TMP_PATH + self._prefix + date_str + "_" + str(seconds_since_midnight)
+        return splicsPathwayCodeImagesModel.TMP_PATH + self._prefix + date_str + "_" + str(seconds_since_midnight)
     
     # -----------------------------------------------------------------------
 
@@ -288,7 +288,7 @@ if __name__ == "__main__":
 
     cued_rules = CuedSpeechKeys(paths.resources + "/cuedspeech/cueConfig-fra.txt")
 
-    model = PathwayCodeOverlayModel(cued_rules, prefix="yoyo")
+    model = splicsPathwayCodeOverlayModel(cued_rules, prefix="yoyo")
     output_filenames = model.generate(cuedkeys, cuedphons)
 
     print(output_filenames)

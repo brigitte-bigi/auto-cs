@@ -109,7 +109,7 @@ export default class ListCueSManager extends BaseCuesManager {
         const pianoContainer = container.querySelector('.wexa-key-piano');
         if (pianoContainer instanceof HTMLElement) {
             // Resolved from window.WEXA_JS_PATH (see wexa_statics_js above),
-            // itself server-injected from wapp_settings.wexa_statics: never
+            // itself server-injected from swapp_settings.wexa_statics: never
             // a path hardcoded relative to this file's own location, which
             // would silently break if Whakerexa's install location changes.
             const { KeyPiano } = await import(`${wexa_statics_js}/extras/keypiano/keypiano.js`);

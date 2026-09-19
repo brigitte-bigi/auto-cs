@@ -30,5 +30,5 @@
 
 """
 
-from .splics.discovery.app_textcues import TextCueSWebData
-SWAPP_CLASS = TextCueSWebData
+from .splics.discovery.app_textcues import splicsTextCueSWebData
+SWAPP_CLASS = splicsTextCueSWebData

@@ -42,7 +42,7 @@ from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 # ---------------------------------------------------------------------------
 
 
-class PathwayCodeImagesModel:
+class splicsPathwayCodeImagesModel:
     """Generates image results for a given cued sequence.
 
     Also used as a base class for any PathwayCode Model.
@@ -80,12 +80,12 @@ class PathwayCodeImagesModel:
         :param max_age_seconds: (int) Age threshold, in seconds.
 
         """
-        if os.path.exists(PathwayCodeImagesModel.TMP_PATH) is False:
+        if os.path.exists(splicsPathwayCodeImagesModel.TMP_PATH) is False:
             return
 
         now = time.time()
-        for name in os.listdir(PathwayCodeImagesModel.TMP_PATH):
-            path = os.path.join(PathwayCodeImagesModel.TMP_PATH, name)
+        for name in os.listdir(splicsPathwayCodeImagesModel.TMP_PATH):
+            path = os.path.join(splicsPathwayCodeImagesModel.TMP_PATH, name)
             try:
                 age = now - os.path.getmtime(path)
             except OSError:

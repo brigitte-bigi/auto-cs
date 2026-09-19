@@ -37,7 +37,7 @@ from sppas.src.annotations.CuedSpeech.whatkey import CueingWordKeys
 # ---------------------------------------------------------------------------
 
 
-class PathwaySoundModel(CueingWordKeys):
+class splicsPathwaySoundModel(CueingWordKeys):
     """Generates cuedspeech result for given (tokens, prons).
 
     The implementation lives in

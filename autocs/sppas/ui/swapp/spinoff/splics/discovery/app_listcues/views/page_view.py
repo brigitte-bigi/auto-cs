@@ -40,26 +40,26 @@ from sppas.core.config import separators
 from ..listcues_msg import MSG_CUE_LABEL
 from ..listcues_msg import MSG_CUE_PLACEHOLDER
 from ..listcues_msg import MSG_VALIDATE_BUTTON
-from ..listcues_record import ListCueSRecord
-from ..listcues_model import ListCueSModel
+from ..listcues_record import splicsListCueSRecord
+from ..listcues_model import splicsListCueSModel
 
-from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import HTMLTag
-from sppas.ui.swapp.spinoff.splics.nodes.cues.key_piano import KeyPianoNode
-from .nodes.prons_table import PronsTableNode
+from sppas.ui.swapp.spinoff.splics.nodes.layout.tags import splicsHTMLTag
+from sppas.ui.swapp.spinoff.splics.nodes.cues.key_piano import splicsKeyPianoNode
+from .nodes.prons_table import splicsPronsTableNode
 
 # ---------------------------------------------------------------------------
 
 
-class ListCueSPageView:
+class splicsListCueSPageView:
     """View of the conversion page: 1 textarea (cue) and its result table.
 
     """
 
-    def __init__(self, parent: HTMLNode, record: ListCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsListCueSRecord) -> None:
         """Create the HTML node of the conversion page of "ListCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param record: (ListCueSRecord) The data to fill-in the view content
+        :param record: (splicsListCueSRecord) The data to fill-in the view content
 
         """
         self._parent = parent
@@ -74,9 +74,9 @@ class ListCueSPageView:
         """Create and append the children nodes.
 
         """
-        _content = HTMLTag.create_section(self._parent)
+        _content = splicsHTMLTag.create_section(self._parent)
 
-        self._form = HTMLTag.create_form(_content, "listcues_form")
+        self._form = splicsHTMLTag.create_form(_content, "listcues_form")
         self._fill_form()
 
         self.display_result()
@@ -87,7 +87,7 @@ class ListCueSPageView:
         """Create and fill-in the result section from the record extras.
 
         Errors and info messages are exclusively reported through the Yoyo
-        dialogs (see :class:`ListCueSController`), not inline in this section.
+        dialogs (see :class:`splicsListCueSController`), not inline in this section.
 
         :return: (TagNode) The result section node
 
@@ -115,7 +115,7 @@ class ListCueSPageView:
         self._append_cue_label()
         self._append_key_piano()
         self._append_cue_textarea()
-        HTMLTag.append_submit_in_form(self._form, "listcues", MSG_VALIDATE_BUTTON)
+        splicsHTMLTag.append_submit_in_form(self._form, "listcues", MSG_VALIDATE_BUTTON)
 
     # -----------------------------------------------------------------------
 
@@ -142,7 +142,7 @@ class ListCueSPageView:
         if len(_shape_keys) == 0 or len(_position_keys) == 0:
             return
 
-        _piano = KeyPianoNode(self._form.identifier, "cue", _shape_keys, _position_keys)
+        _piano = splicsKeyPianoNode(self._form.identifier, "cue", _shape_keys, _position_keys)
         self._form.append_child(_piano)
 
     # -----------------------------------------------------------------------
@@ -180,7 +180,7 @@ class ListCueSPageView:
     def __max_cue_length(self) -> int:
         """Return the max character length of a valid cue, for the current language.
 
-        The model accepts up to ListCueSModel.MAX_KEYS '<shape>-<position>'
+        The model accepts up to splicsListCueSModel.MAX_KEYS '<shape>-<position>'
         segments separated by '.': the actual max length depends on the
         language's longest shape/position codes (e.g. English has 2-character
         position codes "sf"/"sd", unlike French's single-character ones).
@@ -194,15 +194,15 @@ class ListCueSPageView:
         _max_position = max((len(_k["code"]) for _k in _position_keys), default=1)
 
         _one_key = _max_shape + len(separators.phonemes) + _max_position
-        _nb_seps = ListCueSModel.MAX_KEYS - 1
-        return (_one_key * ListCueSModel.MAX_KEYS) + (len(separators.syllables) * _nb_seps)
+        _nb_seps = splicsListCueSModel.MAX_KEYS - 1
+        return (_one_key * splicsListCueSModel.MAX_KEYS) + (len(separators.syllables) * _nb_seps)
 
     # -----------------------------------------------------------------------
     # PRIVATE
     # -----------------------------------------------------------------------
 
     def __create_result_container(self) -> TagNode:
-        _s = HTMLTag.create_section(self._parent)
+        _s = splicsHTMLTag.create_section(self._parent)
         _s.add_attribute("id", "result_section")
         return _s
 
@@ -213,11 +213,11 @@ class ListCueSPageView:
         """Append the table of pronunciations and their matching words.
 
         :param parent: (TagNode) The parent node
-        :param entries: (tuple) See :class:`Keys2PronsModel.convert`
+        :param entries: (tuple) See :class:`splicsKeys2PronsModel.convert`
 
         """
         if len(entries) == 0:
             return
 
-        _table = PronsTableNode(parent.identifier, entries)
+        _table = splicsPronsTableNode(parent.identifier, entries)
         parent.append_child(_table)

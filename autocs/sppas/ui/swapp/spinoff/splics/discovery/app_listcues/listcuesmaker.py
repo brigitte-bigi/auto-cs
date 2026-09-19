@@ -34,35 +34,35 @@ from __future__ import annotations
 import logging
 
 from sppas.ui.swapp.nodes.feedback.hstatusnode import HTMLTreeError410
-from sppas.ui.swapp.wappbase.wappresponse import swappBaseResponse
+from sppas.ui.swapp.swappbase.swappresponse import swappBaseResponse
 
-from .listcues_model import ListCueSModel
-from .listcues_view import ListCueSView
-from .listcues_controller import ListCueSController
+from .listcues_model import splicsListCueSModel
+from .listcues_view import splicsListCueSView
+from .listcues_controller import splicsListCueSController
 
 # -----------------------------------------------------------------------
 
 
-class ListCueSResponseRecipe(swappBaseResponse):
+class splicsListCueSResponseRecipe(swappBaseResponse):
     """The listcues.html HTTPD response baker: welcome and conversion in one page.
 
     No language is chosen yet -> the welcome content is shown (an intro and a
     language choice form). Once a language has reached the controller -- via
     the welcome form's GET navigation, or via a "convert" POST event -- the
     conversion content (key piano and its result) is shown instead. Both
-    cases are handled by the very same :meth:`ListCueSController.handle_convert`,
+    cases are handled by the very same :meth:`splicsListCueSController.handle_convert`,
     so there is only one code path to keep in sync.
 
     """
 
     def __init__(self, name="ListCueSConversion", tree=None):
-        self.__model = ListCueSModel()
+        self.__model = splicsListCueSModel()
         self.__view = None
         self.__controller = None
         # Default: the fixed welcome page, until bake_response() records the
         # actual requested page name (see set_requested_page()).
         self.__requested_page = self.page()
-        super(ListCueSResponseRecipe, self).__init__(name, tree)
+        super(splicsListCueSResponseRecipe, self).__init__(name, tree)
 
     # -----------------------------------------------------------------------
     # OVERRIDE METHODS FROM Whakerpy -- Create the UI
@@ -80,7 +80,7 @@ class ListCueSResponseRecipe(swappBaseResponse):
 
         The fixed, guessable welcome page ("listcues.html") must never
         process a "lang" query directly: only a random page name (see
-        HTMLTag.page_random(), used by the welcome form's own action) is
+        splicsHTMLTag.page_random(), used by the welcome form's own action) is
         allowed to trigger the expensive per-language processing, so a bot
         that only knows the fixed URL can never reach it directly.
 
@@ -99,8 +99,8 @@ class ListCueSResponseRecipe(swappBaseResponse):
 
         """
         super().create()
-        self.__view = ListCueSView(self._htree)
-        self.__controller = ListCueSController(self.__model, self.__view)
+        self.__view = splicsListCueSView(self._htree)
+        self.__controller = splicsListCueSController(self.__model, self.__view)
 
     # -----------------------------------------------------------------------
     # Callbacks

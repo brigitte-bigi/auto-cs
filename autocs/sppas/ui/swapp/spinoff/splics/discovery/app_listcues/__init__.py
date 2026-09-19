@@ -1,7 +1,7 @@
-from .listcuesmaker import ListCueSResponseRecipe
-from .app_listcues import ListCueSWebData
+from .listcuesmaker import splicsListCueSResponseRecipe
+from .app_listcues import splicsListCueSWebData
 
 __all__ = (
-    "ListCueSResponseRecipe",
-    "ListCueSWebData"
+    "splicsListCueSResponseRecipe",
+    "splicsListCueSWebData"
 )

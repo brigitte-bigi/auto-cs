@@ -42,10 +42,10 @@ from sppas.ui import _
 
 from ..components import ViewManager
 from ..components import ViewBarNode
-from ..wappsg import wapp_settings
+from ..swappsg import swapp_settings
 from ..htmltags.hstatusnode import HTMLTreeError410
-from ..htmltags import SwappHeader
-from ..htmltags import SwappFooter
+from ..htmltags import swappHeader
+from ..htmltags import swappFooter
 
 from .view_workspace import ViewWorkspace
 from .view_hands import ViewHands
@@ -97,16 +97,16 @@ class VideoCuedResponseRecipe(WhakerKitResponse):
         super().create()
 
         # The default links
-        self._htree.head.link(rel="logo icon", href=wapp_settings.icons + "sppas.ico")
-        self._htree.head.link("stylesheet", wapp_settings.css + "/main_swapp.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "/page_textcued.css", link_type="text/css")
-        self._htree.head.link("stylesheet", wapp_settings.css + "/page_autocued.css", link_type="text/css")
+        self._htree.head.link(rel="logo icon", href=swapp_settings.icons + "sppas.ico")
+        self._htree.head.link("stylesheet", swapp_settings.css + "/main_swapp.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.css + "/page_textcued.css", link_type="text/css")
+        self._htree.head.link("stylesheet", swapp_settings.css + "/page_autocued.css", link_type="text/css")
 
         # Enable css and js dependencies for components that the webapp use
         self.enable_components(["Views", "AnnotParamDialog"])
 
-        self._htree.body_header = SwappHeader(self._htree.identifier, title="CuedSpeech Video Tagger")
-        self._htree.body_footer = SwappFooter(self._htree.identifier)
+        self._htree.body_header = swappHeader(self._htree.identifier, title="CuedSpeech Video Tagger")
+        self._htree.body_footer = swappFooter(self._htree.identifier)
 
     # -----------------------------------------------------------------------
 

@@ -40,18 +40,18 @@ from ..textcues_msg import MSG_LANG
 from ..textcues_msg import MSG_TEXTCUES_CONCEPT
 from ..textcues_msg import MSG_SUPPORT
 from ..textcues_msg import MSG_SEE_ALSO
-from ..textcues_record import TextCueSRecord
+from ..textcues_record import splicsTextCueSRecord
 
-from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import BaseYoyoMessageNode
+from sppas.ui.swapp.spinoff.splics.nodes.feedback.yoyo_message import splicsBaseYoyoMessageNode
 
-from .nodes.tags import HTMLTag
+from .nodes.tags import splicsHTMLTag
 
 # ---------------------------------------------------------------------------
 
 
-class TextCueSWelcomeView:
+class splicsTextCueSWelcomeView:
 
-    def __init__(self, parent: HTMLNode, record: TextCueSRecord):
+    def __init__(self, parent: HTMLNode, record: splicsTextCueSRecord):
         """Create the HTML node for the welcome page of "TextCueS".
 
         The language is chosen here, not on the "Text" pathway page: it is
@@ -60,7 +60,7 @@ class TextCueSWelcomeView:
         exactly like the accessibility parameters already do).
 
         :param parent: (HTMLNode) The parent id of the HTML node
-        :param record: (TextCueSRecord) The data to fill-in the language choices
+        :param record: (splicsTextCueSRecord) The data to fill-in the language choices
 
         """
         _lang_choices = record.extras.get("lang_choices", dict())
@@ -78,17 +78,17 @@ class TextCueSWelcomeView:
         _part_1.append_child(_left)
 
         # At right, the yoyo message.
-        yoyo = BaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
+        yoyo = splicsBaseYoyoMessageNode.welcome(_part_1.identifier, MSG_YOYO_WELCOME,
                                            len(_lang_choices) > 0)
         _part_1.append_child(yoyo)
 
         # section 2: language choice, then launch
         # -----------------------------------------
         # The form's identifier starts with "pathway": create_form() already
-        # gives it a random action (see HTMLTag.page_random()) -- a bot can
+        # gives it a random action (see splicsHTMLTag.page_random()) -- a bot can
         # reach the welcome page but can't guess this URL, so it never
         # triggers the expensive per-language processing directly.
-        _form = HTMLTag.create_form(parent, "pathway_welcome_form")
+        _form = splicsHTMLTag.create_form(parent, "pathway_welcome_form")
         _form.set_attribute("method", "get")
 
         if len(_lang_choices) > 0:
@@ -107,7 +107,7 @@ class TextCueSWelcomeView:
                 _option.set_attribute("value", iso)
                 _select.append_child(_option)
 
-        HTMLTag.append_submit_in_form(_form, "pathway_welcome", MSG_LAUNCH,
+        splicsHTMLTag.append_submit_in_form(_form, "pathway_welcome", MSG_LAUNCH,
                                       enabled=len(_lang_choices) > 0)
 
         # section 3

@@ -31,7 +31,7 @@
 """
 
 
-class TwinCueSSettings:
+class splicsTwinCueSSettings:
     """Representation of global modifiable settings of TwinCueS."""
 
     def __init__(self):

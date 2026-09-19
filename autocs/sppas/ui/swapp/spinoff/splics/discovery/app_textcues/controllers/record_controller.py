@@ -34,15 +34,15 @@ from __future__ import annotations
 import logging
 import traceback
 
-from ..textcues_record import TextCueSRecord
-from ..views.pathway_text_view import PathwayTextView
-from ..views.pathway_sound_view import PathwaySoundView
-from ..views.pathway_code_view import PathwayCodeView
+from ..textcues_record import splicsTextCueSRecord
+from ..views.pathway_text_view import splicsPathwayTextView
+from ..views.pathway_sound_view import splicsPathwaySoundView
+from ..views.pathway_code_view import splicsPathwayCodeView
 
 # ---------------------------------------------------------------------------
 
 
-class TextCueSRecordController:
+class splicsTextCueSRecordController:
     """Manage the TextCueS record lifecycle and validation.
 
     This helper centralizes record creation, population from client data,
@@ -53,26 +53,26 @@ class TextCueSRecordController:
     def __init__(self, model):
         """Initialize the record controller.
 
-        :param model: (TextCueSModel) The model used for validations and choices.
+        :param model: (splicsTextCueSModel) The model used for validations and choices.
 
         """
         self.__model = model
 
     # -----------------------------------------------------------------------
 
-    def init_record(self) -> TextCueSRecord:
+    def init_record(self) -> splicsTextCueSRecord:
         """Create a fresh record and set required extras.
 
-        :return: (TextCueSRecord) A new record initialized for the first step.
+        :return: (splicsTextCueSRecord) A new record initialized for the first step.
 
         """
-        _record = TextCueSRecord(pathway_id='')
+        _record = splicsTextCueSRecord(pathway_id='')
         self.set_record_extras(_record)
         return _record
 
     # -----------------------------------------------------------------------
 
-    def set_record_extras(self, record: TextCueSRecord) -> None:
+    def set_record_extras(self, record: splicsTextCueSRecord) -> None:
         """Populate the record with view-required extra fields.
 
         The consonant/vowel phoneme inventories (for the Sound page's
@@ -80,23 +80,23 @@ class TextCueSRecordController:
         the model can't provide them before that, and the welcome state
         (record.lang is None) has no use for them anyway.
 
-        :param record: (TextCueSRecord) The record to update.
+        :param record: (splicsTextCueSRecord) The record to update.
 
         """
         record.set_extra(
             'pathway_ids',
             (
-                PathwayTextView.get_id(),
-                PathwaySoundView.get_id(),
-                PathwayCodeView.get_id()
+                splicsPathwayTextView.get_id(),
+                splicsPathwaySoundView.get_id(),
+                splicsPathwayCodeView.get_id()
             )
         )
         record.set_extra(
             'pathway_msg',
             (
-                PathwayTextView.get_msg(),
-                PathwaySoundView.get_msg(),
-                PathwayCodeView.get_msg()
+                splicsPathwayTextView.get_msg(),
+                splicsPathwaySoundView.get_msg(),
+                splicsPathwayCodeView.get_msg()
             )
         )
         record.set_extra('lang_choices', self.__model.get_lang_choices())
@@ -107,15 +107,15 @@ class TextCueSRecordController:
 
     # -----------------------------------------------------------------------
 
-    def populate_record(self, current_record: TextCueSRecord, data: dict) -> TextCueSRecord:
-        """Create and validate a TextCueSRecord from received client data.
+    def populate_record(self, current_record: splicsTextCueSRecord, data: dict) -> splicsTextCueSRecord:
+        """Create and validate a splicsTextCueSRecord from received client data.
 
-        :param current_record: (TextCueSRecord) Current controller record, used for consistency checks.
+        :param current_record: (splicsTextCueSRecord) Current controller record, used for consistency checks.
         :param data: (dict) Data received from the client to build the record.
-        :return: (TextCueSRecord) A validated record reflecting a coherent pathway state.
+        :return: (splicsTextCueSRecord) A validated record reflecting a coherent pathway state.
 
         """
-        _record = TextCueSRecord(data['pathway'])
+        _record = splicsTextCueSRecord(data['pathway'])
         _record.parse(data)
         if 'error' in data:
             _record.set_extra('error', data['error'])
@@ -134,12 +134,12 @@ class TextCueSRecordController:
                     self.__model.validate_pronunciations(_record.textnorm, _record.textprons)
 
                 if _record.phonetize is not None and _record.pathway not in (
-                    PathwaySoundView.get_id(),
-                    PathwayCodeView.get_id()
+                    splicsPathwaySoundView.get_id(),
+                    splicsPathwayCodeView.get_id()
                 ):
                     _record.phonetize = None
 
-                if _record.cuedkeys is not None and _record.pathway != PathwayCodeView.get_id():
+                if _record.cuedkeys is not None and _record.pathway != splicsPathwayCodeView.get_id():
                     _record.cuedkeys = None
                     _record.cuedphons = None
             else:

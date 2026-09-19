@@ -38,15 +38,15 @@ from whakerpy.htmlmaker.htmnodes.htmnode import HTMLNode
 
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 
-from ..buttons.button_action import ActionSubmitButton
-from ..feedback.yoyo_message import YoyoMessageNode
-from ..feedback.yoyo_message import YoyoErrorNode
+from ..buttons.button_action import splicsActionSubmitButton
+from ..feedback.yoyo_message import splicsYoyoMessageNode
+from ..feedback.yoyo_message import splicsYoyoErrorNode
 from ..feedback.yoyo_message import MSG_NO_LANG
 
 # ---------------------------------------------------------------------------
 
 
-class HTMLTag:
+class splicsHTMLTag:
     """Utility class to create HTML nodes.
 
     """
@@ -95,7 +95,7 @@ class HTMLTag:
         """Return a random page name, "<prefix>_<32 hex chars>.html".
 
         Same convention as TextCueS's own pathway pages (see
-        app_textcues.views.nodes.tags.HTMLTag.page_random()): a bot can't
+        app_textcues.views.nodes.tags.splicsHTMLTag.page_random()): a bot can't
         guess this URL, so it can only reach the (cheap) welcome page and
         never trigger the expensive per-language processing directly.
 
@@ -135,7 +135,7 @@ class HTMLTag:
         :param enabled: (bool) Allow the user to submit the form.
 
         """
-        _btn = ActionSubmitButton(
+        _btn = splicsActionSubmitButton(
             form.identifier,
             identifier + "_action_btn"
         )

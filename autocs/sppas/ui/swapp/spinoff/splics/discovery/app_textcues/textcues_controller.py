@@ -39,17 +39,17 @@ from .textcues_msg import MSG_ERROR_EMPTY_PRON
 from .textcues_msg import MSG_ERROR_INVALID_FORMAT
 from .textcues_msg import MSG_YOYO_NOT_YET
 from .textcues_msg import MSG_ERROR_LEN_MISMATCH
-from .textcues_record import TextCueSRecord
-from .views.pathway_text_view import PathwayTextView
-from .views.pathway_sound_view import PathwaySoundView
-from .views.pathway_code_view import PathwayCodeView
+from .textcues_record import splicsTextCueSRecord
+from .views.pathway_text_view import splicsPathwayTextView
+from .views.pathway_sound_view import splicsPathwaySoundView
+from .views.pathway_code_view import splicsPathwayCodeView
 
-from .controllers.record_controller import TextCueSRecordController
+from .controllers.record_controller import splicsTextCueSRecordController
 
 # ---------------------------------------------------------------------------
 
 
-class TextCueSController:
+class splicsTextCueSController:
     """Coordinate model execution and view preparation for the TextCueS application.
 
     This controller implements the Controller role of the MVC pattern. It receives
@@ -63,15 +63,15 @@ class TextCueSController:
     def __init__(self, model, view):
         """Initialize the controller with a model and a view.
 
-        :param model: (TextCueSModel) The model managing the applications.
-        :param view: (TextCueSView) The view managing the HTML structure.
+        :param model: (splicsTextCueSModel) The model managing the applications.
+        :param view: (splicsTextCueSView) The view managing the HTML structure.
 
         """
         self.__model = model
         self.__view = view
 
         # Create a data record controller with default values.
-        self.__record_controller = TextCueSRecordController(self.__model)
+        self.__record_controller = splicsTextCueSRecordController(self.__model)
         self.__record = self.__record_controller.init_record()
 
     # -----------------------------------------------------------------------
@@ -86,7 +86,7 @@ class TextCueSController:
         (Sound), or coding/render preparation (Code). When inconsistencies are found,
         the record is adjusted to fall back to a previous step.
 
-        :param data: (dict) Data received from the client, expected to match a serialized TextCueSRecord.
+        :param data: (dict) Data received from the client, expected to match a serialized splicsTextCueSRecord.
 
         """
         # First access to the app: no previous record.
@@ -118,26 +118,26 @@ class TextCueSController:
 
         # The current page is "pathway_text". The user filled in the lang & text.
         # Launch the model for normalization and phonetization.
-        if self.__record.pathway == PathwayTextView.get_id():
+        if self.__record.pathway == splicsPathwayTextView.get_id():
             self._handle_pathway_text()
 
         # The current page is "pathway_sound".
         # textnorm should be properly assigned.
-        elif self.__record.pathway == PathwaySoundView.get_id():
+        elif self.__record.pathway == splicsPathwaySoundView.get_id():
             self._handle_pathway_sound(data)
             if "error" not in self.__record.extras:
                 self._handle_pathway_code()
 
         # The current page is "pathway_code".
         # cuedphons & cuedkeys should be properly assigned.
-        elif self.__record.pathway == PathwayCodeView.get_id():
+        elif self.__record.pathway == splicsPathwayCodeView.get_id():
             if self.__record.phonetize is not None:
                 self._handle_pathway_code()
             elif self.__record.textnorm is not None:
                 # an error ... we should not be here.
                 # redirect to the previous page.
                 self.__record.textnorm = None
-                self.__record.pathway = PathwaySoundView.get_id()
+                self.__record.pathway = splicsPathwaySoundView.get_id()
 
         if "error" in self.__record.extras:
             logging.error(self.__record.extras["error"])
@@ -155,7 +155,7 @@ class TextCueSController:
 
     # -----------------------------------------------------------------------
 
-    def handle_display_mode(self, data: dict) -> TextCueSRecord:
+    def handle_display_mode(self, data: dict) -> splicsTextCueSRecord:
         """Handle a display mode change request and prepare updated HTML content.
 
         If no 'pathway' key is provided, the current record is returned unchanged.
@@ -167,7 +167,7 @@ class TextCueSController:
         failure.
 
         :param data: (dict) Data received from the client for rebuilding the record.
-        :return: (TextCueSRecord) Record updated with extras['content'] or extras['error'].
+        :return: (splicsTextCueSRecord) Record updated with extras['content'] or extras['error'].
 
         """
         if "pathway" not in data:
@@ -330,9 +330,9 @@ class TextCueSController:
         # Tested once per pathway: a positive result is carried forward by
         # the record and never re-tested (it can only get more expensive to
         # re-check); a negative result is cheap to re-check (immediate raise).
-        if self.__record.overlay_status != TextCueSRecord.REASON_AVAILABLE:
+        if self.__record.overlay_status != splicsTextCueSRecord.REASON_AVAILABLE:
             self.__record.overlay_status = self.__model.test_overlay_available()
-        if self.__record.video_status != TextCueSRecord.REASON_AVAILABLE:
+        if self.__record.video_status != splicsTextCueSRecord.REASON_AVAILABLE:
             self.__record.video_status = self.__model.test_video_available()
 
         try:

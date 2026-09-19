@@ -37,25 +37,25 @@ from whakerpy.htmlmaker import HTMLNode
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
 from sppas.core.config import separators
 
-from sppas.ui.swapp.spinoff.splics.nodes.cues.illustration import CuedIllustration
+from sppas.ui.swapp.spinoff.splics.nodes.cues.illustration import splicsCuedIllustration
 
 from ...textcues_msg import MSG_KEY_PHONES
 from ...textcues_msg import MSG_KEY_CODE
 from ...textcues_msg import MSG_ERROR_NO_RESULT
-from ...textcues_record import TextCueSRecord
+from ...textcues_record import splicsTextCueSRecord
 
 # ---------------------------------------------------------------------------
 
 
-class CuedCode:
+class splicsCuedCode:
     """Create nodes to construct the displayed result HTML content.
 
     """
     
-    def __init__(self, record: TextCueSRecord):
-        """Initialize the CuedCode object.
+    def __init__(self, record: splicsTextCueSRecord):
+        """Initialize the splicsCuedCode object.
 
-        :param record: (TextCueSRecord) The record with all results to be displayed.
+        :param record: (splicsTextCueSRecord) The record with all results to be displayed.
 
         """
         self._record = record
@@ -72,14 +72,14 @@ class CuedCode:
 
         """
         if self._record.textnorm is None or self._record.cuedphons is None or self._record.cuedkeys is None:
-            CuedCode.__no_content_nodes(parent)
+            splicsCuedCode.__no_content_nodes(parent)
             return
 
         _tok_idx = 0
         for token, pron, keys in zip(self._record.textnorm, self._record.cuedphons, self._record.cuedkeys):
 
-            CuedCode.coded_token(parent, token)
-            _ol = CuedCode.coded_list(parent)
+            splicsCuedCode.coded_token(parent, token)
+            _ol = splicsCuedCode.coded_list(parent)
 
             _i = 0
             for _phon, _key in zip(pron.split(separators.syllables), keys.split(separators.syllables)):
@@ -90,20 +90,20 @@ class CuedCode:
                 if "vnil" in _phon:
                     _phon = _phon.replace("vnil", "&empty;")
 
-                _li = CuedCode.coded_phon(_ol, _phon, _key)
-                _figure = CuedIllustration.coded_illus(_li)
+                _li = splicsCuedCode.coded_phon(_ol, _phon, _key)
+                _figure = splicsCuedIllustration.coded_illus(_li)
 
                 if "cuedresult" in self._record.extras:
                     if len(self._record.extras["cuedresult"]) > _tok_idx:
                         _r = self._record.extras["cuedresult"][_tok_idx][_i]
                         if isinstance(_r, tuple) and len(_r) >= 2:
                             # shape and position in 2 different static images
-                            CuedIllustration.yoyo_hand_image(_figure, _r[0])
-                            CuedIllustration.yoyo_face_image(_figure, _r[1])
+                            splicsCuedIllustration.yoyo_hand_image(_figure, _r[0])
+                            splicsCuedIllustration.yoyo_face_image(_figure, _r[1])
                         else:
                             # the shape overlays the face and the target finger indicates the
                             # position on an estimated image
-                            CuedIllustration.yoyo_face_image(_figure, _r)
+                            splicsCuedIllustration.yoyo_face_image(_figure, _r)
 
                 _caption = HTMLNode(_figure.identifier, None, "figcaption", value=_key)
                 _figure.append_child(_caption)

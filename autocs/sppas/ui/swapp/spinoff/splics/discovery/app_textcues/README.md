@@ -1,7 +1,7 @@
 This package implements the SPPAS spin-off TextCueS web application following a
 Model–View–Controller (MVC) architecture with a clear separation of concerns.
 
-- **TextCueSResponseRecipe** is the single *HTTP transport layer* recipe,
+- **splicsTextCueSResponseRecipe** is the single *HTTP transport layer* recipe,
   for the fixed welcome page `textcues.html` and every random pathway page
   `textcues_<hex>.html`. There is no separate launcher: a language having
   reached the controller (welcome form, or a pathway step) is the only
@@ -12,7 +12,7 @@ Model–View–Controller (MVC) architecture with a clear separation of concerns
   the random URL the welcome form actually submits to may trigger it (see
   `set_requested_page()`).
 
-- **TextCueSController** represents the *MVC controller*.
+- **splicsTextCueSController** represents the *MVC controller*.
   It manages the application logic: interacting with the model, and invoking the
   view to construct the HTML representation of the content. According to the
   pathway identifier carried by the record, it dispatches to the corresponding
@@ -20,13 +20,13 @@ Model–View–Controller (MVC) architecture with a clear separation of concerns
   (the welcome form's navigation) the same way it treats a normal step, so
   there is only one code path to keep in sync.
 
-- **TextCueSView** is the *View* component responsible for building the static
+- **splicsTextCueSView** is the *View* component responsible for building the static
   and dynamic HTML structure (head, header, body, footer, scripts) using
-  WhakerPy's HTMLTree utilities. It shows **TextCueSWelcomeView** while
+  WhakerPy's HTMLTree utilities. It shows **splicsTextCueSWelcomeView** while
   `record.lang` is `None`, and the pathway views (Text, Sound, Code) once a
   language is known.
 
-- **TextCueSModel** is an interface with the CuedSpeech automatic annotation.
+- **splicsTextCueSModel** is an interface with the CuedSpeech automatic annotation.
   `test_overlay_available()`/`test_video_available()` do not return a plain
   bool: they return one of `REASON_AVAILABLE`, `REASON_NOT_INSTALLED`
   (a dependency or resource is missing in this environment) or
@@ -49,7 +49,7 @@ Pages:
   each carrying the language forward as a hidden field. The language has no
   selector of its own past welcome.
 
-`TextCueSRecord.overlay_status`/`video_status` carry the model's reason
+`splicsTextCueSRecord.overlay_status`/`video_status` carry the model's reason
 forward across pathway steps (transport only, no business logic): the Code
 view picks the "not installed" and/or "not implemented" message(s) actually
 in play, showing both if overlay and video fail for different reasons.

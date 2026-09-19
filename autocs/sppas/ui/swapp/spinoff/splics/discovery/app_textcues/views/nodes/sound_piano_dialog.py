@@ -53,11 +53,11 @@ STAGING_FIELD_ID = "sound-piano-staging"
 # ---------------------------------------------------------------------------
 
 
-class SoundPianoDialogNode(HTMLNode):
+class splicsSoundPianoDialogNode(HTMLNode):
     """A single dialog, shared by every row of the pronunciation table.
 
     It is opened by a row's "Phoneme keyboard" toggle button (see
-    :class:`SoundsTableNode`): the staging field is filled with that row's
+    :class:`splicsSoundsTableNode`): the staging field is filled with that row's
     current value, the dialog's title names the row's token, and "Apply"
     copies the (possibly piano-composed, possibly hand-edited) staging
     value back into that row's "<index>-sound_input" field.
@@ -76,7 +76,7 @@ class SoundPianoDialogNode(HTMLNode):
         :param vowels: (tuple) Every vowel phoneme of the current language
 
         """
-        super(SoundPianoDialogNode, self).__init__(parent_id, "sound-piano-dialog", "dialog")
+        super(splicsSoundPianoDialogNode, self).__init__(parent_id, "sound-piano-dialog", "dialog")
         self.add_attribute("id", "sound-piano-dialog")
         self.add_attribute("class", "hidden-alert")
         self.add_attribute("aria-labelledby", "sound-piano-dialog-title")

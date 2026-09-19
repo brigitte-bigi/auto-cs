@@ -30,5 +30,5 @@
 
 """
 
-from .splics.discovery.app_listcues import ListCueSWebData
-SWAPP_CLASS = ListCueSWebData
+from .splics.discovery.app_listcues import splicsListCueSWebData
+SWAPP_CLASS = splicsListCueSWebData

@@ -36,7 +36,7 @@ import re
 # ---------------------------------------------------------------------------
 
 
-class TwinCueSRecord:
+class splicsTwinCueSRecord:
     """Container for the word/cue data of a conversion request.
 
     Allows data check, and transport between the model and the views.
@@ -158,7 +158,7 @@ class TwinCueSRecord:
             raise TypeError(f"Given value must be a string or None. "
                             f"Got '{type(value)}' instead.")
         if value is not None:
-            value = TwinCueSRecord.strip_string(value)
+            value = splicsTwinCueSRecord.strip_string(value)
             if len(value) == 0:
                 value = None
 
@@ -185,7 +185,7 @@ class TwinCueSRecord:
             raise TypeError(f"Given value must be a string or None. "
                             f"Got '{type(value)}' instead.")
         if value is not None:
-            value = TwinCueSRecord.strip_string(value)
+            value = splicsTwinCueSRecord.strip_string(value)
             if len(value) == 0:
                 value = None
 

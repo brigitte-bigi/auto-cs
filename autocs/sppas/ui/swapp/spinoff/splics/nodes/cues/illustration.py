@@ -42,7 +42,7 @@ from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 # ---------------------------------------------------------------------------
 
 
-class CuedIllustration:
+class splicsCuedIllustration:
     """Build the "key-illus" figure and its hand/face "yoyo" images.
 
     Used identically by TextCueS (a coded result, already determined) and

@@ -52,11 +52,11 @@ from ..textcues_msg import MSG_TIMINGS
 from ..textcues_msg import MSG_TIMING_MODEL
 from ..textcues_msg import MSG_BUTTON_APPLY
 from ..textcues_msg import MSG_RESULT
-from ..textcues_record import TextCueSRecord
+from ..textcues_record import splicsTextCueSRecord
 
-from .nodes.tags import HTMLTag
-from .nodes.cuedcode import CuedCode
-from .pathway_base_view import PathwayBaseView
+from .nodes.tags import splicsHTMLTag
+from .nodes.cuedcode import splicsCuedCode
+from .pathway_base_view import splicsPathwayBaseView
 
 # ---------------------------------------------------------------------------
 
@@ -126,9 +126,9 @@ HTML_REFERENCE = """
 # ---------------------------------------------------------------------------
 
 
-class PathwayCodeView(PathwayBaseView):
+class splicsPathwayCodeView(splicsPathwayBaseView):
 
-    def __init__(self, parent: HTMLNode, record: TextCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsTextCueSRecord) -> None:
         """Create the HTML node for the pathway "lang&text" page of "TextCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
@@ -136,7 +136,7 @@ class PathwayCodeView(PathwayBaseView):
         """
         if record.mode is None:
             record.mode = 0
-        super(PathwayCodeView, self).__init__(parent, record)
+        super(splicsPathwayCodeView, self).__init__(parent, record)
         record.pathway = self.get_id()
 
     # -----------------------------------------------------------------------
@@ -169,7 +169,7 @@ class PathwayCodeView(PathwayBaseView):
 
         """
         _s = self.__create_display_container()
-        _view = CuedCode(self._record)
+        _view = splicsCuedCode(self._record)
 
         if self._record.mode == 1:
             _view.overlay_mode_content_nodes(_s)
@@ -196,7 +196,7 @@ class PathwayCodeView(PathwayBaseView):
         _paths = self._pathway_msg_to_dict( self._record.extras['pathway_msg'], self.get_msg())
 
         # Section: main container
-        _container = HTMLTag.create_section(self._parent, MSG_CUES_TITLE)
+        _container = splicsHTMLTag.create_section(self._parent, MSG_CUES_TITLE)
 
         # The tiles to indicate progress in the pathway
         self._create_tiles(_container, _paths, [self._record.textnorm, self._record.phonetize, self._record.cuedkeys])
@@ -213,7 +213,7 @@ class PathwayCodeView(PathwayBaseView):
         self.display_content()
 
         # Redirect
-        self._form = HTMLTag.create_form(self._parent, "pathway_form")
+        self._form = splicsHTMLTag.create_form(self._parent, "pathway_form")
         self._fill_form()
 
         # Any content to be added below the form
@@ -234,24 +234,24 @@ class PathwayCodeView(PathwayBaseView):
         # differ between the two (environment: a dependency/resource is
         # missing, or content: the current language is not covered yet) --
         # shown as two distinct messages, one per reason actually in play.
-        if self._record.overlay_status != TextCueSRecord.REASON_AVAILABLE \
-                and self._record.video_status != TextCueSRecord.REASON_AVAILABLE:
+        if self._record.overlay_status != splicsTextCueSRecord.REASON_AVAILABLE \
+                and self._record.video_status != splicsTextCueSRecord.REASON_AVAILABLE:
             _reasons = {self._record.overlay_status, self._record.video_status}
-            if TextCueSRecord.REASON_NOT_INSTALLED in _reasons:
+            if splicsTextCueSRecord.REASON_NOT_INSTALLED in _reasons:
                 _p = HTMLNode(parent.identifier, None, "p", value=MSG_SIMPLIFIED_MODE_NOT_INSTALLED)
                 parent.append_child(_p)
-            if TextCueSRecord.REASON_NOT_IMPLEMENTED in _reasons:
+            if splicsTextCueSRecord.REASON_NOT_IMPLEMENTED in _reasons:
                 _p = HTMLNode(parent.identifier, None, "p", value=MSG_SIMPLIFIED_MODE_NOT_IMPLEMENTED)
                 parent.append_child(_p)
             return
 
-        _f = HTMLTag.create_form(parent, "options_form")
+        _f = splicsHTMLTag.create_form(parent, "options_form")
 
         # Hidden fields
         # -------------
         dictionarized =  self._record.serialize()
         for item in dictionarized:
-            HTMLTag.append_hidden_input_in_form(_f, item, dictionarized[item])
+            splicsHTMLTag.append_hidden_input_in_form(_f, item, dictionarized[item])
 
         # Form: display mode
         # --------------------
@@ -261,9 +261,9 @@ class PathwayCodeView(PathwayBaseView):
         _container.add_attribute("class", "toggle-group")
         _f.append_child(_container)
         for _i, _msg in enumerate(MSG_MODES):
-            if _i == 1 and self._record.overlay_status != TextCueSRecord.REASON_AVAILABLE:
+            if _i == 1 and self._record.overlay_status != splicsTextCueSRecord.REASON_AVAILABLE:
                 continue
-            if _i == 2 and self._record.video_status != TextCueSRecord.REASON_AVAILABLE:
+            if _i == 2 and self._record.video_status != splicsTextCueSRecord.REASON_AVAILABLE:
                 continue
 
             _label = HTMLNode(_container.identifier, None, "label")
@@ -291,7 +291,7 @@ class PathwayCodeView(PathwayBaseView):
         self.__create_options(_f, "angle", MSG_ANGLE_MODEL, MSG_ANGLES, self._record.model_angle)
         self.__create_options(_f, "timing", MSG_TIMING_MODEL, MSG_TIMINGS, self._record.model_timing)
 
-        HTMLTag.append_submit_in_form(_f, "options_code", MSG_BUTTON_APPLY)
+        splicsHTMLTag.append_submit_in_form(_f, "options_code", MSG_BUTTON_APPLY)
 
     # -----------------------------------------------------------------------
 
@@ -314,10 +314,10 @@ class PathwayCodeView(PathwayBaseView):
         dictionarized = self._record.serialize()
         for item in dictionarized:
             if item not in excluded:
-                HTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
+                splicsHTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
 
         # Submit button
-        HTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_BUTTON_BACK)
+        splicsHTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_BUTTON_BACK)
 
     # -----------------------------------------------------------------------
 
@@ -367,6 +367,6 @@ class PathwayCodeView(PathwayBaseView):
     # -----------------------------------------------------------------------
 
     def __create_display_container(self):
-        _s = HTMLTag.create_section(self._parent)
+        _s = splicsHTMLTag.create_section(self._parent)
         _s.add_attribute("id", "displaymode_section")
         return _s

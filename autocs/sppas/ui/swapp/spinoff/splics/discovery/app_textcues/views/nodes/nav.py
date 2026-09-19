@@ -31,9 +31,9 @@
 """
 
 from whakerpy.htmlmaker.htmnodes.htmnode import TagNode
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
-from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import MenuLinkButtonNode
+from sppas.ui.swapp.spinoff.splics.nodes.buttons.button_action import splicsMenuLinkButtonNode
 
 from ...textcues_msg import MSG_ACS_PROJECT
 from ...textcues_msg import MSG_HOME
@@ -42,7 +42,7 @@ from ...textcues_msg import MSG_APP_TITLE
 # -----------------------------------------------------------------------
 
 
-class NavUtils:
+class splicsNavUtils:
     """Utility class to create HTML nodes for the menu.
 
     """
@@ -54,7 +54,7 @@ class NavUtils:
         :param parent: (TagNode) Parent node
 
         """
-        _acs = MenuLinkButtonNode(
+        _acs = splicsMenuLinkButtonNode(
             parent.identifier,
         "link-acs_button",
             "https://auto-cuedspeech.org/"
@@ -72,10 +72,10 @@ class NavUtils:
         :param parent: (TagNode) Parent node
 
         """
-        _home = MenuLinkButtonNode(
+        _home = splicsMenuLinkButtonNode(
             parent.identifier,
             "link-welcome_button",
-            wapp_settings.default_page()
+            swapp_settings.default_page()
         )
         # Handled by whakerexa's LinkController (see links.js): "_self"
         # navigates in the current tab, unlike the default "_blank".
@@ -96,7 +96,7 @@ class NavUtils:
         :param parent: (TagNode) Parent node
 
         """
-        _app = MenuLinkButtonNode(
+        _app = splicsMenuLinkButtonNode(
             parent.identifier,
             "link-app_button",
             "textcues.html"

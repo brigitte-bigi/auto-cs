@@ -39,7 +39,7 @@ from ...listcues_msg import MSG_TABLE_COL_WORDS
 # ---------------------------------------------------------------------------
 
 
-class PronsTableNode(HTMLNode):
+class splicsPronsTableNode(HTMLNode):
     """Manage the nodes for the table representing pronunciations and their words.
 
     """
@@ -48,10 +48,10 @@ class PronsTableNode(HTMLNode):
         """Create the HTML node for the table.
 
         :param parent_id: (str) The parent id of the HTML node
-        :param entries: (tuple) See :class:`Keys2PronsModel.convert`
+        :param entries: (tuple) See :class:`splicsKeys2PronsModel.convert`
 
         """
-        super(PronsTableNode, self).__init__(parent_id, "prons_table", "table")
+        super(splicsPronsTableNode, self).__init__(parent_id, "prons_table", "table")
         self.add_attribute("role", "grid")
         self.add_attribute("class", "sounds-table")
 

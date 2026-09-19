@@ -32,7 +32,7 @@
 
 from __future__ import annotations
 
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 
 # ---------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ class splicsPathSettings:
         # Temporarily mutable
         self._is_frozen = False
         # Where the statics of the spin-off are served from
-        statics = wapp_settings.statics + "spinoff/splics/"
+        statics = swapp_settings.statics + "spinoff/splics/"
 
         # Define the relative paths
         self.__dict__ = dict(

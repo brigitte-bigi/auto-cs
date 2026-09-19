@@ -34,12 +34,12 @@ import logging
 
 from .listcues_msg import MSG_INFO_NO_INPUT
 from .listcues_msg import MSG_INFO_NO_PRONS
-from .listcues_record import ListCueSRecord
+from .listcues_record import splicsListCueSRecord
 
 # ---------------------------------------------------------------------------
 
 
-class ListCueSController:
+class splicsListCueSController:
     """Coordinate model execution and view preparation for the ListCueS application.
 
     This controller implements the Controller role of the MVC pattern. It receives
@@ -50,8 +50,8 @@ class ListCueSController:
     def __init__(self, model, view):
         """Initialize the controller with a model and a view.
 
-        :param model: (ListCueSModel) The model managing the conversion.
-        :param view: (ListCueSView) The view managing the HTML structure.
+        :param model: (splicsListCueSModel) The model managing the conversion.
+        :param view: (splicsListCueSView) The view managing the HTML structure.
 
         """
         self.__model = model
@@ -71,7 +71,7 @@ class ListCueSController:
         unrelated request left the record in, instead of the welcome page.
 
         """
-        self.__record = ListCueSRecord()
+        self.__record = splicsListCueSRecord()
         self.__record.set_extra("lang_choices", self.__model.get_lang_choices())
 
     # -----------------------------------------------------------------------
@@ -84,7 +84,7 @@ class ListCueSController:
 
     # -----------------------------------------------------------------------
 
-    def handle_convert(self, data: dict) -> ListCueSRecord:
+    def handle_convert(self, data: dict) -> splicsListCueSRecord:
         """Handle a conversion request and update the record accordingly.
 
         A new record is built from the received data. The cue, when given, is
@@ -93,10 +93,10 @@ class ListCueSController:
         applicable; populate_view() renders it, including the Yoyo dialogs.
 
         :param data: (dict) Data received from the client, expected to contain 'cue'.
-        :return: (ListCueSRecord) The updated record.
+        :return: (splicsListCueSRecord) The updated record.
 
         """
-        self.__record = ListCueSRecord()
+        self.__record = splicsListCueSRecord()
         self.__record.parse(data)
         self.__record.set_extra("lang_choices", self.__model.get_lang_choices())
 
@@ -127,10 +127,10 @@ class ListCueSController:
     # Workers
     # -----------------------------------------------------------------------
 
-    def _handle_cue(self, record: ListCueSRecord) -> None:
+    def _handle_cue(self, record: splicsListCueSRecord) -> None:
         """Convert the cue of the record into pronunciations and store the result.
 
-        :param record: (ListCueSRecord) The record to update.
+        :param record: (splicsListCueSRecord) The record to update.
 
         """
         try:

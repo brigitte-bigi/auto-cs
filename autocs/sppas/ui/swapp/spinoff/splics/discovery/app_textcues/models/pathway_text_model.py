@@ -36,13 +36,13 @@ import os
 from sppas.core.config import paths
 from sppas.src.resources import sppasDictPron
 
-from sppas.ui.swapp.spinoff.splics.models.text_normalizer import CueingTextNormalizer
-from sppas.ui.swapp.spinoff.splics.models.phonetizer import CueingPhonetizer
+from sppas.ui.swapp.spinoff.splics.models.text_normalizer import splicsCueingTextNormalizer
+from sppas.ui.swapp.spinoff.splics.models.phonetizer import splicsCueingPhonetizer
 
 # ---------------------------------------------------------------------------
 
 
-class PathwayTextModel:
+class splicsPathwayTextModel:
     """Generates normalization and phonetization results for a given text.
 
     """
@@ -50,7 +50,7 @@ class PathwayTextModel:
     def __init__(self):
         """Create a new instance."""
         self.__lang = "und"
-        self.__normalizer = CueingTextNormalizer()
+        self.__normalizer = splicsCueingTextNormalizer()
 
     # ---------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ class PathwayTextModel:
         """Return the result of "Text Normalization" on the given text.
 
         The implementation lives in
-        :class:`sppas.ui.swapp.models.text_normalizer.CueingTextNormalizer`.
+        :class:`sppas.ui.swapp.models.text_normalizer.splicsCueingTextNormalizer`.
 
         :param text: (str) Input text to be normalized
         :return: (list) List of tokens
@@ -94,7 +94,7 @@ class PathwayTextModel:
         """Return the result of "Phonetization" on the given normalized text.
 
         The phonetizer implementation lives in
-        :class:`sppas.ui.swapp.models.phonetizer.CueingPhonetizer`.
+        :class:`sppas.ui.swapp.models.phonetizer.splicsCueingPhonetizer`.
         Known tokens get their dictionary pronunciation(s); unknown tokens
         get up to 4 generated variants.
 
@@ -108,7 +108,7 @@ class PathwayTextModel:
         pdict_file = os.path.join(paths.resources, 'dict', lang + '.dict')
         pdict = sppasDictPron(pdict_file, nodump=False)
 
-        phonetizer = CueingPhonetizer(pdict)
+        phonetizer = splicsCueingPhonetizer(pdict)
 
         # Phonetization of the given input normalized text
         results = list()

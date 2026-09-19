@@ -34,35 +34,35 @@ from __future__ import annotations
 import logging
 
 from sppas.ui.swapp.nodes.feedback.hstatusnode import HTMLTreeError410
-from sppas.ui.swapp.wappbase.wappresponse import swappBaseResponse
+from sppas.ui.swapp.swappbase.swappresponse import swappBaseResponse
 
-from .textcues_model import TextCueSModel
-from .textcues_view import TextCueSView
-from .textcues_controller import TextCueSController
+from .textcues_model import splicsTextCueSModel
+from .textcues_view import splicsTextCueSView
+from .textcues_controller import splicsTextCueSController
 
 # -----------------------------------------------------------------------
 
 
-class TextCueSResponseRecipe(swappBaseResponse):
+class splicsTextCueSResponseRecipe(swappBaseResponse):
     """The textcues.html HTTPD response baker: welcome and pathway in one page.
 
     No language is chosen yet -> the welcome content is shown (an intro and a
     language choice form). Once a language has reached the controller -- via
     the welcome form's GET navigation, or via a pathway POST -- the pathway
     content (Text, Sound or Code) is shown instead. Both cases are handled by
-    the very same :meth:`TextCueSController.handle`, so there is only one code
+    the very same :meth:`splicsTextCueSController.handle`, so there is only one code
     path to keep in sync.
 
     """
 
     def __init__(self, name="TextCueSCoding", tree=None):
-        self.__model = TextCueSModel()
+        self.__model = splicsTextCueSModel()
         self.__view = None
         self.__controller = None
         # Default: the fixed welcome page, until bake_response() records the
         # actual requested page name (see set_requested_page()).
         self.__requested_page = self.page()
-        super(TextCueSResponseRecipe, self).__init__(name, tree)
+        super(splicsTextCueSResponseRecipe, self).__init__(name, tree)
 
     # -----------------------------------------------------------------------
     # OVERRIDE METHODS FROM Whakerpy -- Create une UI
@@ -80,7 +80,7 @@ class TextCueSResponseRecipe(swappBaseResponse):
 
         The fixed, guessable welcome page ("textcues.html") must never
         process a "lang" query directly: only a random page name (see
-        HTMLTag.page_random(), used by the welcome form's own action) is
+        splicsHTMLTag.page_random(), used by the welcome form's own action) is
         allowed to trigger the expensive per-language processing, so a bot
         that only knows the fixed URL can never reach it directly.
 
@@ -99,8 +99,8 @@ class TextCueSResponseRecipe(swappBaseResponse):
 
         """
         super().create()
-        self.__view = TextCueSView(self._htree)
-        self.__controller = TextCueSController(self.__model, self.__view)
+        self.__view = splicsTextCueSView(self._htree)
+        self.__controller = splicsTextCueSController(self.__model, self.__view)
 
     # -----------------------------------------------------------------------
     # Callbacks
@@ -192,7 +192,7 @@ class TextCueSResponseRecipe(swappBaseResponse):
     def __process_displaymode_event(self, event_value: dict) -> None:
         """Process the given event value coming from the POST of options_form.
 
-        :param event_value: (dict) Data to fill in a TextCueSRecord
+        :param event_value: (dict) Data to fill in a splicsTextCueSRecord
 
         """
         if isinstance(event_value, dict) is False:

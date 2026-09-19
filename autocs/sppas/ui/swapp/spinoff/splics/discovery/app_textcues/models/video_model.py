@@ -57,14 +57,14 @@ from sppas.src.annotations.CuedSpeech.wherecue.wherecue import sppasWhereCuePred
 from sppas.src.annotations.CuedSpeech.whowtag import CuedSpeechVideoTagger
 from sppas.src.imgdata import sppasImage
 from sppas.src.videodata import sppasVideoWriter
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 
-from .images_model import PathwayCodeImagesModel
+from .images_model import splicsPathwayCodeImagesModel
 
 # ---------------------------------------------------------------------------
 
 
-class PathwayCodeVideoModel(PathwayCodeImagesModel):
+class splicsPathwayCodeVideoModel(splicsPathwayCodeImagesModel):
     """Generate a video result for a given cued speech sequence.
 
     """
@@ -95,16 +95,16 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         if success is False:
             raise RuntimeError("ffmpeg not found. Video can't be generated.")
         
-        if os.path.exists(PathwayCodeImagesModel.TMP_PATH) is False:
-            os.mkdir(PathwayCodeImagesModel.TMP_PATH)
+        if os.path.exists(splicsPathwayCodeImagesModel.TMP_PATH) is False:
+            os.mkdir(splicsPathwayCodeImagesModel.TMP_PATH)
 
         # Face image and sights file -- both must exist at construction time.
-        _face_path = PathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}.jpg"
+        _face_path = splicsPathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}.jpg"
         if os.path.exists(_face_path) is False:
             raise sppasIOError(_face_path)
         self._img = sppasImage(filename=_face_path)
 
-        _face_sight = PathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}-sights.xra"
+        _face_sight = splicsPathwayCodeImagesModel.IMAGES_PATH + f"{self._prefix}-sights.xra"
         if os.path.exists(_face_sight) is False:
             raise sppasIOError(_face_sight)
         self._sights_labels = self.__extract_image_sights(_face_sight)
@@ -126,8 +126,8 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         self.__tagger.set_option("vowelspos", False)
 
         # Others
-        self._fps = PathwayCodeVideoModel.DEFAULT_FPS
-        self._pdur = PathwayCodeVideoModel.DEFAULT_PHON_DURATION
+        self._fps = splicsPathwayCodeVideoModel.DEFAULT_FPS
+        self._pdur = splicsPathwayCodeVideoModel.DEFAULT_PHON_DURATION
 
     # -----------------------------------------------------------------------
     # Getters/Setters
@@ -546,7 +546,7 @@ class PathwayCodeVideoModel(PathwayCodeImagesModel):
         date_str = now.strftime('%Y_%m_%d')
         seconds_since_midnight = now.hour * 3600 + now.minute * 60 + now.second
 
-        return PathwayCodeImagesModel.TMP_PATH + self._prefix + date_str + "_" + str(seconds_since_midnight)
+        return splicsPathwayCodeImagesModel.TMP_PATH + self._prefix + date_str + "_" + str(seconds_since_midnight)
     
     # -----------------------------------------------------------------------
 
@@ -670,7 +670,7 @@ if __name__ == "__main__":
 
     cued_rules = CuedSpeechKeys(paths.resources + "/cuedspeech/cueConfig-fra.txt")
 
-    model = PathwayCodeVideoModel(cued_rules, prefix="yoyo")
+    model = splicsPathwayCodeVideoModel(cued_rules, prefix="yoyo")
     output_filename = model.generate(cuedkeys, cuedphons)
 
     print(output_filename)

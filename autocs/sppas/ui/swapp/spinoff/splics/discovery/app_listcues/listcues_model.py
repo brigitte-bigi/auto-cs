@@ -40,19 +40,19 @@ from sppas.src.annotations import sppasParam
 from sppas.src.annotations.CuedSpeech import CuedSpeechKeys
 from sppas.src.resources import sppasDictPron
 
-from sppas.ui.swapp.spinoff.splics.models.images_model import KeyPianoImagesModel
+from sppas.ui.swapp.spinoff.splics.models.images_model import splicsKeyPianoImagesModel
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NIL_CONSONANT_CODES
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NIL_VOWEL_CODES
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import NO_PHONEME_MARKER
 from sppas.ui.swapp.spinoff.splics.models.key_candidates import build_key_candidates
 
 from .listcues_msg import MSG_ERROR_INVALID_CUE
-from .models.keys2prons_model import Keys2PronsModel
+from .models.keys2prons_model import splicsKeys2PronsModel
 
 # ---------------------------------------------------------------------------
 
 
-class ListCueSModel:
+class splicsListCueSModel:
     """Model for the ListCueS application.
 
     Loads a pronunciation dictionary for the current language, restricts the
@@ -150,7 +150,7 @@ class ListCueSModel:
         vow_by_pos, vow_absent = build_key_candidates(
             cued_rules.get_vowels_codes(), cued_rules, attested, NIL_VOWEL_CODES)
 
-        self.__keys2prons = Keys2PronsModel(
+        self.__keys2prons = splicsKeys2PronsModel(
             cons_by_shape, cons_absent, vow_by_pos, vow_absent, ngrams, pron_index)
         self.__cons_by_shape = cons_by_shape
         self.__vow_by_pos = vow_by_pos
@@ -168,7 +168,7 @@ class ListCueSModel:
 
         :param cue: (str) 1 to 7 '<shape>-<position>' segments separated by '.'.
         :raises: ValueError: The language was not set, or the cue is invalid.
-        :return: (tuple) See :class:`Keys2PronsModel.convert`.
+        :return: (tuple) See :class:`splicsKeys2PronsModel.convert`.
 
         """
         if self.__keys2prons is None:
@@ -234,7 +234,7 @@ class ListCueSModel:
             _phonemes = self.__cons_by_shape.get(_code, tuple())
             if self.__cons_absent.get(_code, False) is True:
                 _phonemes = _phonemes + (NO_PHONEME_MARKER,)
-            _result.append({"code": _code, "image": KeyPianoImagesModel.shape_image(_code),
+            _result.append({"code": _code, "image": splicsKeyPianoImagesModel.shape_image(_code),
                             "phonemes": _phonemes})
 
         return tuple(_result)
@@ -259,7 +259,7 @@ class ListCueSModel:
             _phonemes = self.__vow_by_pos.get(_code, tuple())
             if self.__vow_absent.get(_code, False) is True:
                 _phonemes = _phonemes + (NO_PHONEME_MARKER,)
-            _result.append({"code": _code, "image": KeyPianoImagesModel.position_image(_code),
+            _result.append({"code": _code, "image": splicsKeyPianoImagesModel.position_image(_code),
                             "phonemes": _phonemes})
 
         return tuple(_result)
@@ -289,7 +289,7 @@ class ListCueSModel:
             raise ValueError(MSG_ERROR_INVALID_CUE.format(cue))
 
         _segments = _cue.split(separators.syllables)
-        if len(_segments) > ListCueSModel.MAX_KEYS:
+        if len(_segments) > splicsListCueSModel.MAX_KEYS:
             raise ValueError(MSG_ERROR_INVALID_CUE.format(cue))
 
         _keys = list()
@@ -312,7 +312,7 @@ class ListCueSModel:
     def __build_dict_index(pdict: sppasDictPron) -> tuple:
         """Build the dictionary-attested phonemes, n-grams, and the pron->words index.
 
-        The n-grams (see Keys2PronsModel.NGRAM_SIZE) are collected in this
+        The n-grams (see splicsKeys2PronsModel.NGRAM_SIZE) are collected in this
         same pass over the dictionary: iterating it a second time just for
         that would be wasteful.
 
@@ -324,7 +324,7 @@ class ListCueSModel:
         _attested = set()
         _pron_index = dict()
         _ngrams = set()
-        _n = Keys2PronsModel.NGRAM_SIZE
+        _n = splicsKeys2PronsModel.NGRAM_SIZE
 
         for _word in pdict:
             if pdict.is_unk(_word) is True:

@@ -40,10 +40,10 @@ from ..textcues_msg import MSG_LANGTEXT_FIELD_LEGEND
 from ..textcues_msg import MSG_SEE_ALSO
 from ..textcues_msg import MSG_TEXT_LABEL
 from ..textcues_msg import MSG_TEXT_HERE
-from ..textcues_record import TextCueSRecord
+from ..textcues_record import splicsTextCueSRecord
 
-from .nodes.tags import HTMLTag
-from .pathway_base_view import PathwayBaseView
+from .nodes.tags import splicsHTMLTag
+from .pathway_base_view import splicsPathwayBaseView
 
 # ---------------------------------------------------------------------------
 
@@ -77,9 +77,9 @@ HTML_REFERENCE = """
 # ---------------------------------------------------------------------------
 
 
-class PathwayTextView(PathwayBaseView):
+class splicsPathwayTextView(splicsPathwayBaseView):
 
-    def __init__(self, parent: HTMLNode, record: TextCueSRecord) -> None:
+    def __init__(self, parent: HTMLNode, record: splicsTextCueSRecord) -> None:
         """Create the view "Text" of the Pathway in "TextCueS".
 
         :param parent: (HTMLNode) The parent id of the HTML node
@@ -88,9 +88,9 @@ class PathwayTextView(PathwayBaseView):
         """
         if "lang_choices" not in record.extras:
             raise KeyError("Missing 'lang_choices' in the given record "
-                           "to PathwayTextView.__init__")
+                           "to splicsPathwayTextView.__init__")
 
-        super(PathwayTextView, self).__init__(parent, record)
+        super(splicsPathwayTextView, self).__init__(parent, record)
         record.pathway = self.get_id()
 
     # -----------------------------------------------------------------------
@@ -128,7 +128,7 @@ class PathwayTextView(PathwayBaseView):
         _paths = self._pathway_msg_to_dict(self._record.extras['pathway_msg'], self.get_msg())
 
         # Section: main container
-        _content = HTMLTag.create_section(self._parent, MSG_LANGTEXT_TITLE)
+        _content = splicsHTMLTag.create_section(self._parent, MSG_LANGTEXT_TITLE)
 
         # The tiles to indicate progress in the pathway
         self._create_tiles(_content, _paths, [None, None, None])
@@ -137,7 +137,7 @@ class PathwayTextView(PathwayBaseView):
         _fieldset = self._append_fieldset(_content, MSG_LANGTEXT_FIELD_LEGEND)
 
         # A form for user inputs
-        self._form = HTMLTag.create_form(_fieldset, "pathway_form")
+        self._form = splicsHTMLTag.create_form(_fieldset, "pathway_form")
         self._fill_form()
 
         # Any other Section container to be added below
@@ -159,13 +159,13 @@ class PathwayTextView(PathwayBaseView):
         dictionarized = self._record.serialize()
         for item in dictionarized:
             if item not in ("text", "textnorm", "phonetize", "cuedspeech"):
-                HTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
+                splicsHTMLTag.append_hidden_input_in_form(self._form, item, dictionarized[item])
 
         # Input text
         self._append_input_textarea()
 
         # Submit button
-        HTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_LANGTEXT_ANN_BUTTON)
+        splicsHTMLTag.append_submit_in_form(self._form, self.get_id(), MSG_LANGTEXT_ANN_BUTTON)
 
     # -----------------------------------------------------------------------
 

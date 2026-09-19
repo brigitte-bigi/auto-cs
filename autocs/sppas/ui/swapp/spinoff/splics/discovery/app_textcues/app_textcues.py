@@ -36,15 +36,15 @@ import logging
 from whakerpy.httpd import BaseResponseRecipe
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_paths
 from sppas.ui.swapp.spinoff.splics.splicssg import splics_categories
-from sppas.ui.swapp.wappbase.wappbakery import swappWebData
+from sppas.ui.swapp.swappbase.swappbakery import swappWebData
 
-from .textcuesmaker import TextCueSResponseRecipe
+from .textcuesmaker import splicsTextCueSResponseRecipe
 from .textcues_msg import MSG_DESCR
 
 # ---------------------------------------------------------------------------
 
 
-class TextCueSWebData(swappWebData):
+class splicsTextCueSWebData(swappWebData):
     """Parse the JSON file, store data and create the bakery system.
 
     """
@@ -53,15 +53,15 @@ class TextCueSWebData(swappWebData):
     CATEGORY = splics_categories.discovery
 
     def __init__(self, json_filename: str | None = None) -> None:
-        """Create a TextCueSWebData instance.
+        """Create a splicsTextCueSWebData instance.
 
         :param json_filename: (str|None) Path of the JSON file to parse, or None.
         :return: (None)
 
         """
-        super(TextCueSWebData, self).__init__(json_filename)
+        super(splicsTextCueSWebData, self).__init__(json_filename)
         # Filename of the default page.
-        self._default = TextCueSResponseRecipe.page()
+        self._default = splicsTextCueSResponseRecipe.page()
 
     # -----------------------------------------------------------------------
 
@@ -111,12 +111,12 @@ class TextCueSWebData(swappWebData):
             return True
 
         # The pathway pages, reached with a random name once a language has
-        # been chosen on welcome (see HTMLTag.page_random()).
+        # been chosen on welcome (see splicsHTMLTag.page_random()).
         if page_name.startswith("textcues_") is True and page_name.endswith(".html") is True:
             return True
 
         # The welcome page of the application.
-        if page_name == TextCueSResponseRecipe.page():
+        if page_name == splicsTextCueSResponseRecipe.page():
             return True
 
         return False
@@ -135,10 +135,10 @@ class TextCueSWebData(swappWebData):
 
         # The pathway pages (a random name), or the fixed welcome page.
         is_pathway = page_name.startswith("textcues_") is True and page_name.endswith(".html") is True
-        is_welcome = page_name == TextCueSResponseRecipe.page()
+        is_welcome = page_name == splicsTextCueSResponseRecipe.page()
 
         if is_pathway is True or is_welcome is True:
-            recipe = TextCueSResponseRecipe()
+            recipe = splicsTextCueSResponseRecipe()
             # Tells the recipe which of the two it actually is, so it can
             # refuse to process a "lang" query received on the fixed,
             # guessable welcome URL (see set_requested_page()).

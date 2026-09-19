@@ -30,7 +30,7 @@
 
 """
 
-class TextCueSSettings:
+class splicsTextCueSSettings:
     """Representation of global modifiable settings of TextCueS."""
 
     def __init__(self):

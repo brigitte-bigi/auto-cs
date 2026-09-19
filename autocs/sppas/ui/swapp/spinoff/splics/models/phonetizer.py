@@ -39,7 +39,7 @@ from sppas.src.annotations.Phon.phonetize import sppasDictPhonetizer
 # ---------------------------------------------------------------------------
 
 
-class CueingPhonetizer:
+class splicsCueingPhonetizer:
     """Return the pronunciation(s) of tokens, known or not, from a dictionary.
 
     This is the same phonetizer as used for full texts: if a token is a

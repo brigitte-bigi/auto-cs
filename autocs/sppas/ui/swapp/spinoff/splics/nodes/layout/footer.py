@@ -32,7 +32,7 @@
 
 from whakerpy.htmlmaker import HTMLNode
 
-from sppas.ui.swapp.wappcore.wappsg import wapp_settings
+from sppas.ui.swapp.swappcore.swappsg import swapp_settings
 
 
 FOOTER = """
@@ -68,12 +68,12 @@ FOOTER = """
     <p><a href="https://www.gnu.org/licenses/fdl-1.3.en.html" class="external-link">
         This site is under the terms of the GNU Free Documentation License, v1.3.</a></p>
 
-""".format(PATH=wapp_settings.logos)
+""".format(PATH=swapp_settings.logos)
 
 # ---------------------------------------------------------------------------
 
 
-class FooterNode(HTMLNode):
+class splicsFooterNode(HTMLNode):
     """Represent a footer element to display legal notices.
 
     """
@@ -82,6 +82,6 @@ class FooterNode(HTMLNode):
         """Create the footer node.
 
         """
-        super(FooterNode, self).__init__(parent, "body_footer", "footer")
+        super(splicsFooterNode, self).__init__(parent, "body_footer", "footer")
         self.add_attribute("id", "footer-content")
         self.set_value(FOOTER)
