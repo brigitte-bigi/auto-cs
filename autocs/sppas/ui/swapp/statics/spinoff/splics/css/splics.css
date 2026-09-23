@@ -40,14 +40,9 @@
     /* The ground of a coded key, and the sign written on its caption. */
     --coded-key-bg-color: var(--card-bg-color);
     --coded-key-border-color: var(--border-color);
-    --coded-key-fg-color: var(--card-fg-color);
+    --coded-key-fg-color: var(--h3-color);
     --coded-key-caption-bg-color: var(--buttons-bg-color);
     --coded-key-caption-fg-color: var(--buttons-fg-color);
-
-    /* An action button is swept from one end of the button colours to the
-       other, and back again under the pointer. */
-    --action-buttons-bg-color: linear-gradient(to right, var(--buttons-bg-color), var(--buttons-bg-color-hover));
-    --action-buttons-hover-bg-color: linear-gradient(to left, var(--buttons-bg-color), var(--buttons-bg-color-hover));
 
     /* The fieldset a user enters their choices in. */
     --fieldset-bg-color: linear-gradient(170deg, var(--card-bg-color) 0%, var(--bg-color-alt) 100%);
@@ -106,21 +101,24 @@ dialog button[name="popup-close-btn"] {
 }
 
 select {
+    font-family: var(--font-family-sans);
     color: var(--fg-color-alt);
     padding-left: 0.6rem;
     height: 2.6rem;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color-alt);
+    border: var(--border-width) solid var(--border-color);
     box-shadow: -0.2rem 0.2rem 0.6rem 0.2rem var(--shadow-color);
-}
-
-option {
-    font-size: calc(var(--font-size) * 0.5);
-    color: var(--fg-color);
-    background-color: var(--bg-color);
 }
 
 nav#nav-content {
     justify-content: space-around;
+}
+
+/* main_swapp.css only gives menu items half the common border width.
+   They take the same as other elements here. */
+#nav-content [role='menuitem'],
+#nav-content .menuitem {
+    border-width: var(--border-width);
 }
 
 .skip {
@@ -313,14 +311,13 @@ nav#nav-content {
     border: calc(1px + var(--border-width)) solid var(--border-color);
     overflow: hidden;
 
-    background-image: var(--action-buttons-bg-color);
-    background-size: 200% 100%;
-    background-position: left center;
-    transition: background-position 200ms ease-in-out;
+    background-color: var(--buttons-bg-color);
+    transition: background-color .4s ease, box-shadow .4s ease;
 }
 
 .app-cues-button:hover {
-    background-image: var(--action-buttons-hover-bg-color);
+    background-color: var(--buttons-bg-color-hover);
+    box-shadow: 0 0 20px rgb(238, 238, 238);
 }
 
 .app-cues-button img {

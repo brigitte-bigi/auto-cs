@@ -93,7 +93,7 @@ separators -- is not carried here.
        ground of the blocks when it is not given. The green of what is
        brought forward tells a card from the page and from a section alike. */
     --card-bg-color: rgb(223, 242, 210);
-    --card-fg-color: rgb(214, 127, 62);
+    --card-fg-color: var(--h3-color);
     --app-bg-image: rgb(255, 255, 255);
 
     /* ---- The banner, the footer and the menu --------------------------- */
@@ -107,15 +107,15 @@ separators -- is not carried here.
     --nav-bg-color: rgb(255, 249, 227);
     --header-fg-color: rgb(51, 51, 51);
     --footer-fg-color: rgb(51, 51, 51);
-    --nav-fg-color: rgb(102, 102, 102);
+    --nav-fg-color: rgb(182, 73, 0);
 
     /* An item of the menu is told from the bar by a veil, and not by a hue
-       of its own: the bar is light here, so the veil is dark. Three depths,
-       for the resting item, the pointed one and the current one. */
-    --nav-item-bg-color: rgba(0, 0, 0, 0.05);
-    --nav-item-bg-color-hover: rgba(0, 0, 0, 0.10);
-    --nav-item-bg-color-current: rgba(0, 0, 0, 0.16);
-    --nav-item-pressed-shadow-color: rgba(0, 0, 0, 0.15);
+       of its own: in light mode the item is lighter than the bar. Three
+       depths, for the resting item, the pointed one and the current one. */
+    --nav-item-bg-color: rgba(255, 255, 255, 0.10);
+    --nav-item-bg-color-hover: rgba(255, 255, 255, 0.20);
+    --nav-item-bg-color-current: rgba(255, 255, 255, 0.30);
+    --nav-item-pressed-shadow-color: rgba(255, 255, 255, 0.25);
 
     /* ---- The buttons --------------------------------------------------- */
 
@@ -134,12 +134,12 @@ separators -- is not carried here.
        green, so as not to be read as a first or second heading. */
     --h1-color: rgb(79, 121, 66);
     --h2-color: rgb(79, 121, 66);
-    --h3-color: rgb(171, 94, 36);
-    --h4-color: rgb(171, 94, 36);
+    --h3-color: rgb(154, 85, 32);
+    --h4-color: rgb(154, 85, 32);
     --h5-color: rgb(102, 102, 102);
     --h6-color: rgb(102, 102, 102);
     --a-color: rgb(57, 105, 90);
-    --li-color: rgb(171, 94, 36);
+    --li-color: rgb(154, 85, 32);
 
     /* ---- The quotations ------------------------------------------------ */
 
@@ -171,13 +171,14 @@ separators -- is not carried here.
     /* ---- Sundry --------------------------------------------------------- */
 
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --outline-color: rgb(0, 155, 52);
 
-    /* An image is drawn for another page than the one it is read on, and
-       does not answer for its own edges: wexa.css lays it on a ground the
-       theme has to name. Nearly every one of them is drawn for white, so
-       white is what carries them, in both modes -- veiled enough to let the
-       page show through, opaque enough to hold the drawing. */
-    --img-bg-color: rgba(255, 255, 255, 0.5);
+    /* An image's own colours are not controlled by the theme: a ground was
+       forced behind it (named here, laid by wexa.css) to guarantee enough
+       contrast whatever the image.
+       Disabled: in practice the forced ground looked bad. Kept here,
+       commented out, in case this gets reconsidered. */
+    /* --img-bg-color: rgba(255, 255, 255, 0.5); */
 }
 
 
@@ -192,35 +193,35 @@ separators -- is not carried here.
 
         /* ---- The page --------------------------------------------------- */
 
-        --bg-color: rgb(28, 43, 35);
+        --bg-color: rgb(18, 26, 21);
         --fg-color: rgb(244, 241, 230);
-        --bg-color-alt: rgb(47, 42, 30);
+        --bg-color-alt: rgb(38, 32, 20);
         --fg-color-alt: rgb(193, 189, 175);
         --border-color: rgb(244, 241, 230);
 
-        --panel-bg-color-alt: rgb(47, 42, 30);
+        --panel-bg-color-alt: rgb(38, 32, 20);
         --panel-fg-color-alt: rgb(193, 189, 175);
 
         /* ---- The cards -------------------------------------------------- */
 
-        --card-bg-color: rgb(45, 59, 42);
+        --card-bg-color: rgb(32, 43, 33);
         --card-fg-color: rgb(230, 162, 112);
         --app-bg-image: rgb(28, 43, 35);
 
         /* ---- The banner, the footer and the menu ------------------------- */
 
-        --header-bg-color: radial-gradient(rgba(255, 255, 255, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / calc(var(--font-size) * 0.8) calc(var(--font-size) * 0.8), rgb(45, 59, 42);
-        --footer-bg-color: rgb(45, 59, 42);
-        --nav-bg-color: rgb(47, 42, 30);
+        --header-bg-color: radial-gradient(rgba(255, 255, 255, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / calc(var(--font-size) * 0.8) calc(var(--font-size) * 0.8), rgb(40, 54, 42);
+        --footer-bg-color: rgb(40, 54, 42);
+        --nav-bg-color: rgb(38, 32, 20);
         --header-fg-color: rgb(244, 241, 230);
         --footer-fg-color: rgb(244, 241, 230);
-        --nav-fg-color: rgb(193, 189, 175);
+        --nav-fg-color: rgb(255, 102, 0);
 
-        /* The bar is dark here, so the veil telling an item from it is light. */
-        --nav-item-bg-color: rgba(255, 255, 255, 0.05);
-        --nav-item-bg-color-hover: rgba(255, 255, 255, 0.12);
-        --nav-item-bg-color-current: rgba(255, 255, 255, 0.18);
-        --nav-item-pressed-shadow-color: rgba(255, 255, 255, 0.15);
+        /* In dark mode the item is darker than the bar. */
+        --nav-item-bg-color: rgba(0, 0, 0, 0.10);
+        --nav-item-bg-color-hover: rgba(0, 0, 0, 0.22);
+        --nav-item-bg-color-current: rgba(0, 0, 0, 0.32);
+        --nav-item-pressed-shadow-color: rgba(0, 0, 0, 0.25);
 
         /* ---- The buttons ------------------------------------------------- */
 
@@ -270,8 +271,9 @@ separators -- is not carried here.
         /* ---- Sundry --------------------------------------------------------- */
 
         --shadow-color: rgba(255, 255, 255, 0.1);
-        /* Lighter here than in the light theme: on a dark page the same
-           veil reads as a plate of its own. */
-        --img-bg-color: rgba(255, 255, 255, 0.3);
+        --outline-color: rgb(122, 255, 90);
+        /* Disabled together with the light theme's --img-bg-color: the
+           forced ground behind images looked bad in practice. */
+        /* --img-bg-color: rgba(255, 255, 255, 0.3); */
     }
 }

@@ -524,9 +524,12 @@ It will be available -with UI in English- asap at: <https://sppas.org/textcues.h
 - **TextCueS** app results are provided with 3 different outputs: images (like the 
   previous version), overlay of images (hand+face) and video. The source code was also refactored.
 - a PoC of two new applications: **ListCueS** and **TwinCueS**.
+- Compatibility with sppas-5.0.1 to sppas-5.0.4.
+
+> There's no auto-cs version available for sppas-5.0.5 
 
 
-### 2.2 - Attached to SPPAS-5.0 with sppas-5.0.5 source code
+### 2.2 - Attached to SPPAS-5.1 with sppas-5.1.0 source code
  
 - Migrated to Whakerexa 4.1.
 - **TextCueS** app: fixed the hand transitions at the beginning and at the end of the generated video.
