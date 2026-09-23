@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="Python Class Documentation of sppasCuedSpeech. SPPAS integration of the automatic Cued Speech key-code generation." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+       </head>
+       
+       <body>
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
+            </nav>
+        
+    <h1>Auto-CS 2.2</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
+    <ul>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="sppasAnnsOnFrames.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+    </ul>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
+    <main id="main-content">
+    <section id="#sppas.src.annotations.CuedSpeech.whatkey" class="chapter nonumber">
+    <h1>sppas.src.annotations.CuedSpeech.whatkey module</h1>
+    <section id="readme">
+
+<h2>CuedSpeech: What key?</h2>
+
+<h3>Overview</h3>
+
+<p>The conversion of phonemes into keys of CS is performed using a rule-based system. 
+This RBS phoneme-to-key segmentation system is based on the following principle: 
+a key is always of the form CV. 
+A neutral position or a neutral shape is applied when respectively no vowel or no consonant is applicable.</p>
+
+<h3>Implementation</h3>
+
+<p>The "what" question is implemented into the <code>whatkey</code> package. This is a package to predict the key code to be coded. It requires time-aligned phonemes. 
+Its result is 3 tiers like in the following example:</p>
+
+<pre>
+
+    CS-PhonSegments:      |  b O~     |  Z u    |   R   |   #   |
+    CS-PhonStructs:       |  C V      |  C V    |   C   |       |
+    CS-Keys:              |  4 m      |  1 c    |  3 n  |  0 n  |
+    CS-KeysClass:         |  C V      |  C V    |  C N  |  N N  |
+</pre>
+<h3>Reference</h3>
+
+<p>To cite this work, use the following reference:</p>
+
+<blockquote>
+  <p>Brigitte Bigi (2023).
+  An analysis of produced versus predicted French Cued Speech keys.
+  In 10th Language &amp; Technology Conference: Human Language Technologies
+  as a Challenge for Computer Science and Linguistics, Poznań, Poland.</p>
+</blockquote>
+
+<h4>Abstract</h4>
+
+<p>Cued Speech is a communication system developed for deaf people to
+complement speechreading at the phonetic level with hands. This
+visual communication mode uses handshapes in different placements
+near the face in combination with the mouth movements of speech
+to make the phonemes of spoken language look different from each other.
+This paper presents an analysis on produced cues in 5 topics of CLeLfPC,
+a large corpus of read speech in French with Cued Speech.
+A phonemes-to-cues automatic system is proposed in order to predict the
+cue to be produced while speaking. This system is part of SPPAS -
+the automatic annotation an analysis of speech, an open source software
+tool. The predicted keys of the automatic system are compared to the
+produced keys of cuers. The number of inserted, deleted and substituted
+keys are analyzed. We observed that most of the differences between
+predicted and produced keys comes from 3 common position’s substitutions
+by some of the cuers.</p>
+
+<h4>Example of use</h4>
+
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="c1"># Get the time-aligned phonemes</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">trs_input</span> <span class="o">=</span> <span class="n">sppasTrsRW</span><span class="p">(</span><span class="s2">"file-palign.xra"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">phonemes</span> <span class="o">=</span> <span class="n">trs_input</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"PhonAlign"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="c1"># What? Create the transition predictor</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">cued</span> <span class="o">=</span> <span class="n">CuedSpeechKeys</span><span class="p">(</span><span class="s2">"path/cueConfig-fra.txt"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">genkey</span> <span class="o">=</span> <span class="n">sppasWhatKeyPredictor</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">genkey</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cued</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="c1"># Create the tiers with the CS keys from the phonemes</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">cs_segments</span> <span class="o">=</span> <span class="n">genkey</span><span class="o">.</span><span class="n">phons_to_segments</span><span class="p">(</span><span class="n">phonemes</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">cs_keys</span><span class="p">,</span> <span class="n">cs_class</span><span class="p">,</span> <span class="n">cs_struct</span> <span class="o">=</span> <span class="n">genkey</span><span class="o">.</span><span class="n">segments_to_keys</span><span class="p">(</span><span class="n">cs_segments</span><span class="p">,</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_first_point</span><span class="p">(),</span> <span class="n">phonemes</span><span class="o">.</span><span class="n">get_last_point</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+    </section>
+
+<h2>List of classes</h2>
+
+        <section class="cards-panel">
+        <article class="card">
+            <div class="card-header"><span>1</span></div>
+            <div class="card-body">
+                <h3>sppasCuedRulesValueError</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasCuedRulesValueError" class="wexa-link" data-target="_self" href="sppasCuedRulesValueError.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>2</span></div>
+            <div class="card-body">
+                <h3>sppasCuedRulesMinValueError</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasCuedRulesMinValueError" class="wexa-link" data-target="_self" href="sppasCuedRulesMinValueError.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>3</span></div>
+            <div class="card-body">
+                <h3>sppasCuedRulesMaxValueError</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasCuedRulesMaxValueError" class="wexa-link" data-target="_self" href="sppasCuedRulesMaxValueError.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>4</span></div>
+            <div class="card-body">
+                <h3>CuedSpeechCueingRules</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-CuedSpeechCueingRules" class="wexa-link" data-target="_self" href="CuedSpeechCueingRules.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>5</span></div>
+            <div class="card-body">
+                <h3>CuedSpeechKeys</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-CuedSpeechKeys" class="wexa-link" data-target="_self" href="CuedSpeechKeys.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>6</span></div>
+            <div class="card-body">
+                <h3>CueingPronTokenizer</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-CueingPronTokenizer" class="wexa-link" data-target="_self" href="CueingPronTokenizer.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>7</span></div>
+            <div class="card-body">
+                <h3>CueingKeysByToken</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-CueingKeysByToken" class="wexa-link" data-target="_self" href="CueingKeysByToken.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>8</span></div>
+            <div class="card-body">
+                <h3>sppasWhatKeyPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasWhatKeyPredictor" class="wexa-link" data-target="_self" href="sppasWhatKeyPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>9</span></div>
+            <div class="card-body">
+                <h3>CueingWordKeys</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-CueingWordKeys" class="wexa-link" data-target="_self" href="CueingWordKeys.html">Read me →</a>
+            </div>
+        </article>
+        </section>
+    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
+            </footer>
+        
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
+</body>
+</html>

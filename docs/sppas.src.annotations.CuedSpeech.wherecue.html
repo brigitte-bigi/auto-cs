@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+        <head>
+            
+            <title>Auto-CS doc</title>
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+            <meta name="description" content="WhenTransitionPredictorRevisedRules. Predict hand transition moments with a revised rule-based system." />
+
+            <link rel="logo icon" href="./statics/autocs32x32.ico" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
+            <link rel="stylesheet" id="wexa-theme" href="./statics/clamming_theme.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/print.css" type="text/css" media="print" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/layout.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/menu.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/code.css" type="text/css" />
+            <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/extras/book.css" type="text/css" />
+            <link rel="stylesheet" href="./statics/clamming.css" type="text/css" />
+
+       </head>
+       
+       <body>
+        <header>
+
+            <a role="button" class="skip" href="#main-content" aria-label="Go to main content">
+                Go to main content
+            </a>
+            <nav class="nav-wexa top" aria-label="Accessibility">
+                <button id="btn-contrast" class="menuitem accessibility print-off" aria-label="Contrast" aria-pressed="false" onclick="window.Wexa.accessibility.switchContrastScheme()"></button>
+                <button id="btn-color" class="menuitem accessibility print-off" aria-label="Color" aria-pressed="false" onclick="window.Wexa.accessibility.switchColorScheme()"></button>
+                <button id="btn-css-theme" class="menuitem print-off" type="button" aria-label="Switch CSS theme" title="Switch CSS theme" onclick="window.themes && window.themes.next()"></button>
+            </nav>
+        
+    <h1>Auto-CS 2.2</h1>
+        <p><img class="small-logo" src="./statics/autocs.png" alt="Software logo"/></p>
+        <p><a class="external-link" href="https://sourceforge.net/projects/autocs/">https://sourceforge.net/projects/autocs/</a></p>
+    </header>
+    <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
+    <h1>Table of Contents</h1>
+    <ul>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="WhenTransitionPredictorRules.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+    </ul>
+    <ul id="toc"></ul>
+    <hr>
+    <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
+</aside>
+    <main id="main-content">
+    <section id="#sppas.src.annotations.CuedSpeech.wherecue" class="chapter nonumber">
+    <h1>sppas.src.annotations.CuedSpeech.wherecue module</h1>
+    <section id="readme">
+
+<h2>Where?</h2>
+
+<h3>Overview</h3>
+
+<p>Another challenge is to model the hand’s trajectory: the research effort 
+concerns the proposal of efficient models and algorithms that can predict
+at any time the exact location of the cue position based on a general 
+positioning of the speaker’s head. </p>
+
+<p>At first, we have to define the position of the vowels around the face. 
+However, it’s variability is currently unknown. Then, the system is 
+calculating a ”rate” between sights on the face thanks to a 68-sights 
+face landmarks output. The ”rate” of each vowel was determined by experts 
+and is always the same. For example, coordinates of the vowel
+”m”, close to the mouth, are estimated by: </p>
+
+<ul>
+<li>x = x48 − |(x54 − x48)/4|</li>
+<li>y = y60</li>
+</ul>
+
+<p>Secondly, the trajectory between vowel positions has to be estimated during 
+the hand transitions. The hand is moving from a position to another following 
+a straight line, with a constant speed.</p>
+
+<p>Finally, the angle of the arm has to be adjusted.</p>
+
+<h3>Implementation</h3>
+
+<p>The "where" question is implemented into the <code>wherecue</code> package. 
+This is a package to predict the hand positions at any time in the video. 
+It requires predicted position and shape transitions. It produces a file
+with the hand coordinates.</p>
+
+<p>Two predictors are implemented for the vowel positions and 4 for the angle predictions.</p>
+
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span><span class="n">gencue</span> <span class="o">=</span> <span class="n">sppasWhereCuePredictor</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">gencue</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cued</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">gencue</span><span class="o">.</span><span class="n">set_wherepositionpredictor_version</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">gencue</span><span class="o">.</span><span class="n">set_whereanglepredictor_version</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="c1"># adjust annotations boundaries on frames of the video</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">ann_on_media</span> <span class="o">=</span> <span class="n">sppasAnnsOnFrames</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mf">60.</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">vf_pos</span> <span class="o">=</span> <span class="n">ann_on_media</span><span class="o">.</span><span class="n">adjust_boundaries</span><span class="p">(</span><span class="n">cs_pos</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">vf_shape</span> <span class="o">=</span> <span class="n">ann_on_media</span><span class="o">.</span><span class="n">adjust_boundaries</span><span class="p">(</span><span class="n">cs_shape</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">trs_coords</span> <span class="o">=</span> <span class="n">gencue</span><span class="o">.</span><span class="n">predict_where</span><span class="p">(</span><span class="s2">"path/file-ident.xra"</span><span class="p">,</span> <span class="n">vf_pos</span><span class="p">,</span> <span class="n">vf_shape</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+    </section>
+
+<h2>List of classes</h2>
+
+        <section class="cards-panel">
+        <article class="card">
+            <div class="card-header"><span>1</span></div>
+            <div class="card-body">
+                <h3>sppasWhereCuedSightsValueError</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasWhereCuedSightsValueError" class="wexa-link" data-target="_self" href="sppasWhereCuedSightsValueError.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>2</span></div>
+            <div class="card-body">
+                <h3>sppasFaceHeight</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasFaceHeight" class="wexa-link" data-target="_self" href="sppasFaceHeight.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>3</span></div>
+            <div class="card-body">
+                <h3>TargetProbabilitiesEstimator</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-TargetProbabilitiesEstimator" class="wexa-link" data-target="_self" href="TargetProbabilitiesEstimator.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>4</span></div>
+            <div class="card-body">
+                <h3>BaseWhereModelPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-BaseWhereModelPredictor" class="wexa-link" data-target="_self" href="BaseWhereModelPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>5</span></div>
+            <div class="card-body">
+                <h3>WhereVowelPositionsPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhereVowelPositionsPredictor" class="wexa-link" data-target="_self" href="WhereVowelPositionsPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>6</span></div>
+            <div class="card-body">
+                <h3>sppasWherePositionsPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasWherePositionsPredictor" class="wexa-link" data-target="_self" href="sppasWherePositionsPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>7</span></div>
+            <div class="card-body">
+                <h3>sppasWhereAnglesPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasWhereAnglesPredictor" class="wexa-link" data-target="_self" href="sppasWhereAnglesPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>8</span></div>
+            <div class="card-body">
+                <h3>sppasWhereCuePredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-sppasWhereCuePredictor" class="wexa-link" data-target="_self" href="sppasWhereCuePredictor.html">Read me →</a>
+            </div>
+        </article>
+        </section>
+    </section>    </main>
+    
+            <footer>
+                <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>
+                <p class="copyright">Powered by <a href="https://brigitte-bigi.github.io/Whakerexa/">Whakerexa</a></p>
+            </footer>
+        
+    
+    <script>
+        /**
+         * Start what this page has of its own: its table of contents, and the
+         * links that carry the theme and the accessibility choices to the page
+         * they open.
+         *
+         * @param {Object} wexa - The framework and the extras the loader was asked for.
+         * @returns {void}
+         */
+        function bootPage(wexa) {
+            const book = new wexa.Book("main-content");
+            book.fillTable(false);
+
+            const wexaLinks = [];
+            document.querySelectorAll('a.wexa-link[id]').forEach(function (a) { wexaLinks.push(a.id); });
+            wexa.links.handleLinksWithParameters(wexaLinks);
+        }
+    </script>
+
+    <script src="./Whakerexa-current/wexa_statics/js/wexa.loader.js"
+            data-base="./Whakerexa-current/wexa_statics/"
+            data-extras="js/extras/book.js"
+            data-themes-base="./Whakerexa-current/wexa_statics/css.min/themes/"
+            data-themes="clamming_theme:./statics/clamming_theme.css"
+            data-default="clamming_theme" ></script>
+
+</body>
+</html>

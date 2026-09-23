@@ -7,7 +7,7 @@
 
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-            <meta name="description" content="Python Class Documentation of CuedSpeechVideoTagger. " />
+            <meta name="description" content="Python Class Documentation of CuedSpeechVideoTagger. Create a video with hands tagged on the face of a video." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
             <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
@@ -40,31 +40,66 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.wherecue.position.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.wherecue.position.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" href="sppasHandFilters.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whowtag.hands.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whowtag.hands.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whowtag" class="chapter nonumber">    <h1>Module CuedSpeech.whowtag</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.whowtag" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.whowtag</h1>
 <section id="#CuedSpeechVideoTagger">
 <h2>Class CuedSpeechVideoTagger</h2>
 
 <section>
+<h3 id="#description_CuedSpeechVideoTagger">Description</h3>
+    <article class="docstring">
+<p><em>Create a video with hands tagged on the face of a video.</em></p>
+
+    </article>
+</section>
+<section>
 <h3 id="#constructor_CuedSpeechVideoTagger">Constructor</h3>
 <h4>__init__</h4>
+
+    <article class="docstring">
+<p><em>Create a new instance.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</li>
+</ul>
+
+    </article>
+
 
     <details>
     <summary>
 View Source
     </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s2">"The 'resources/cuedspeech' folder doesn't contains any hand-set."</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="o">=</span><span class="n">CuedSpeechKeys</span><span class="p">()):</span>
+<span class="w">    </span><span class="sd">"""Create a new instance.</span>
+
+<span class="sd">    :param cue_rules: (CuedSpeechKeys) Rules and codes for vowel positions and hand shapes</span>
+
+<span class="sd">    """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__gencoords</span> <span class="o">=</span> <span class="n">sppasHandCoordsGenerator</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span> <span class="o">=</span> <span class="n">sppasVideoReaderBuffer</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_writer</span> <span class="o">=</span> <span class="n">sppasBufferVideoWriter</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_path</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">),</span> <span class="s1">'CuedSpeechKeys'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">CuedSpeechVideoTagger</span><span class="o">.</span><span class="n">OPTIONS</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">CuedSpeechVideoTagger</span><span class="o">.</span><span class="n">OPTIONS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_img_vowel_tagger</span> <span class="o">=</span> <span class="n">sppasImageVowelPosTagger</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span> <span class="o">=</span> <span class="n">sppasImageHandTagger</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
 </code></pre></div>
 
     </details>
@@ -73,7 +108,372 @@ View Source
 </section>
 <section>
 <h3 id="#public_fct_CuedSpeechVideoTagger">Public functions</h3>
+<h4>set_cue_rules</h4>
+
+    <article class="docstring">
+<p><em>Set the CuedSpeechKeys used to tag the video.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>cue_rules</strong>: (CuedSpeechKeys) The instance of the cuedSpeechKeys to set</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li>**: sppasTypeError: If the parameter is not an instance of the CuedSpeechKeys class</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_cue_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cue_rules</span><span class="p">:</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Set the CuedSpeechKeys used to tag the video.</span>
+
+<span class="sd">        :param cue_rules: (CuedSpeechKeys) The instance of the cuedSpeechKeys to set</span>
+<span class="sd">        :raises: : sppasTypeError: If the parameter is not an instance of the CuedSpeechKeys class</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="n">CuedSpeechKeys</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasTypeError</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">,</span> <span class="s1">'CuedSpeechKeys'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_img_vowel_tagger</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__gencoords</span><span class="o">.</span><span class="n">set_cue_rules</span><span class="p">(</span><span class="n">cue_rules</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>load_hands</h4>
+
+    <article class="docstring">
+<p><em>Load the hand pictures with given name.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>prefix</strong>: (<em>str</em>) A hand set name (handcue, ...)</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasIOError</em>: If no hands are loaded (not found the hands files)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_hands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Load the hand pictures with given name.</span>
+
+<span class="sd">        :param prefix: (str) A hand set name (handcue, ...)</span>
+<span class="sd">        :raises: sppasIOError: If no hands are loaded (not found the hands files)</span>
+
+<span class="sd">        """</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span><span class="o">.</span><span class="n">load_hands</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">success</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasIOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Hand pictures with name </span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s1"> not loaded.'</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>load</h4>
+
+    <article class="docstring">
+<p><em>Open the video.</em></p>
+
+<p>Closes automatically the video if already was an open video.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>video_path</strong>: (<em>str</em>) File path of the input video</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>VideoBrowseError</em>: Can't open/read the video</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">video_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open the video.</span>
+
+<span class="sd">        Closes automatically the video if already was an open video.</span>
+
+<span class="sd">        :param video_path: (str) File path of the input video</span>
+<span class="sd">        :raises: VideoBrowseError: Can't open/read the video</span>
+
+<span class="sd">        """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_path</span> <span class="o">=</span> <span class="n">video_path</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_writer</span><span class="o">.</span><span class="n">set_fps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">get_framerate</span><span class="p">())</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>is_loaded</h4>
+
+    <article class="docstring">
+<p><em>Return the information of if a video is loaded or not.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) True if the buffer is currently opened or False else</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the information of if a video is loaded or not.</span>
+
+<span class="sd">        :return: (bool) True if the buffer is currently opened or False else</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">is_opened</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>close</h4>
+
+    <article class="docstring">
+<p><em>Release video streams.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Release video streams."""</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>is_opened</h4>
+
+    <article class="docstring">
+<p><em>Return the information of if the writer is currently opened.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>bool</em>) True if the video writer is open or False else.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_opened</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the information of if the writer is currently opened.</span>
+
+<span class="sd">        :return: (bool) True if the video writer is open or False else.</span>
+
+<span class="sd">        """</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_writer</span><span class="o">.</span><span class="n">is_opened</span><span class="p">()</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>set_option</h4>
+
+    <article class="docstring">
+<p><em>Set an option of the video tagger.</em></p>
+
+<p>Available options are :
+- handsset
+- handsfilter
+- infotext
+- vowelspos</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>option_key</strong>: (<em>str</em>) Name of the option</li>
+<li><strong>option_value</strong>: (any) Value of the option</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>AnnotationOptionError</em>: If the given key is unknown</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">option_value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Set an option of the video tagger.</span>
+
+<span class="sd">        Available options are :</span>
+<span class="sd">            - handsset</span>
+<span class="sd">            - handsfilter</span>
+<span class="sd">            - infotext</span>
+<span class="sd">            - vowelspos</span>
+
+<span class="sd">        :param option_key: (str) Name of the option</span>
+<span class="sd">        :param option_value: (any) Value of the option</span>
+<span class="sd">        :raises: AnnotationOptionError: If the given key is unknown</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="n">option_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="p">[</span><span class="n">option_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">option_value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AnnotationOptionError</span><span class="p">(</span><span class="n">option_key</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>tag_with_keys</h4>
+
+    <article class="docstring">
+<p><em>Tag the video with the given keys.</em></p>
+
+<p>The possible tiers of the given transcription are:
+- CS-ShapeProbas: probabilities of the shapes of the hand
+- CS-PosProbas: probabilities of the positions of the hand
+- CS-VowelsCoords: Coordinates of the position of the vowels
+- CS-TargetCoords: Coordinates of the target sight
+- CS-HandAngle: Coordinates of the target sight
+- PhonAlign: Time-aligned phonemes</p>
+
+<p>The video streams (buffer/writer) are not released... Use close().</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>transcription</strong>: (sppasTranscription) The transcription to use to tag the video.</li>
+<li><strong>output</strong>: (<em>str</em>) Output video filename</li>
+</ul>
+
+<h5>Raises</h5>
+
+<ul>
+<li><em>sppasError</em>: If no video is load.</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>) created files -- expected 1</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tag_with_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transcription</span><span class="p">:</span> <span class="n">sppasTranscription</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Tag the video with the given keys.</span>
+
+<span class="sd">        The possible tiers of the given transcription are:</span>
+<span class="sd">            - CS-ShapeProbas: probabilities of the shapes of the hand</span>
+<span class="sd">            - CS-PosProbas: probabilities of the positions of the hand</span>
+<span class="sd">            - CS-VowelsCoords: Coordinates of the position of the vowels</span>
+<span class="sd">            - CS-TargetCoords: Coordinates of the target sight</span>
+<span class="sd">            - CS-HandAngle: Coordinates of the target sight</span>
+<span class="sd">            - PhonAlign: Time-aligned phonemes</span>
+
+<span class="sd">        The video streams (buffer/writer) are not released... Use close().</span>
+
+<span class="sd">        :param transcription: (sppasTranscription) The transcription to use to tag the video.</span>
+<span class="sd">        :param output: (str) Output video filename</span>
+<span class="sd">        :raises: sppasError: If no video is load.</span>
+<span class="sd">        :return: (list) created files -- expected 1</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_loaded</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s1">'No video in the buffer. Nothing can be tagged.'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__load_options</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_tiers</span><span class="p">(</span><span class="n">transcription</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span><span class="o">.</span><span class="n">hand_mode</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">_tagger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_tagger</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">hand_coords_tier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gencoords</span><span class="o">.</span><span class="n">hands_to_handcoords</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-ShapeProbas'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-TargetCoords'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-HandAngle'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-FaceHeight'</span><span class="p">),</span> <span class="n">_tagger</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nb_buffer</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">read_next</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">seek_buffer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">image_duration</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">get_framerate</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">read_next</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">' ... buffer number </span><span class="si">{</span><span class="n">nb_buffer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="n">read_next</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">index</span> <span class="o">*</span> <span class="n">image_duration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__tag_buffer</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">hand_coords_tier</span><span class="p">,</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-ShapeProbas'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-PosProbas'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-VowelsCoords'</span><span class="p">),</span> <span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'PhonAlign'</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_writer</span><span class="o">.</span><span class="n">write_video</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_files</span><span class="p">)</span>
+        <span class="n">nb_buffer</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__video_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+
+    </details>
+
+
 <h4>get_hands_filters</h4>
+
+    <article class="docstring">
+<p><em>List of all available hands filters.</em></p>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>[<em>str</em>]) A list of all hands filters.</li>
+</ul>
+
+    </article>
+
 
     <details>
     <summary>
@@ -81,7 +481,536 @@ View Source
     </summary>
 <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_hands_filters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="k">return</span> <span class="p">[]</span>
+<span class="w">    </span><span class="sd">"""List of all available hands filters.</span>
+
+<span class="sd">        :return: (list[str]) A list of all hands filters.</span>
+
+<span class="sd">        """</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">'cartoon'</span><span class="p">,</span> <span class="s1">'sights'</span><span class="p">,</span> <span class="s1">'skeleton'</span><span class="p">,</span> <span class="s1">'sticks'</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_annotation_index</h4>
+
+    <article class="docstring">
+<p><em>Return the index corresponding to the given time point.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier</strong>: (sppasTier) The tier that contains the annotation who searched</li>
+<li><strong>timepoint</strong>: (sppasPo<em>int</em> or <em>float</em>) The time to search for the index</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) The index or -1 if no index associated with the given time point</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_annotation_index</span><span class="p">(</span><span class="n">tier</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">timepoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the index corresponding to the given time point.</span>
+
+<span class="sd">        :param tier: (sppasTier) The tier that contains the annotation who searched</span>
+<span class="sd">        :param timepoint: (sppasPoint or float) The time to search for the index</span>
+
+<span class="sd">        :return: (int) The index or -1 if no index associated with the given time point</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="n">tier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">annotation_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">tier</span><span class="o">.</span><span class="n">is_point</span><span class="p">():</span>
+        <span class="n">annotation_index</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">timepoint</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">annotation_index</span> <span class="o">=</span> <span class="n">tier</span><span class="o">.</span><span class="n">mindex</span><span class="p">(</span><span class="n">timepoint</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">annotation_index</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>get_annotation_index_starting_to</h4>
+
+    <article class="docstring">
+<p><em>Return the next index corresponding to the given time point starting to the start_index parameter.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>tier</strong>: (sppasTier) The tier that  contains the annotation who searched</li>
+<li><strong>timepoint</strong>: (sppasPo<em>int</em> or <em>float</em>) The time to search for the index</li>
+<li><strong>start_index</strong>: (<em>int</em>) The index to start to search for the index</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>int</em>) The next annotation index that corresponding with the given timepoint Or -1 if no annotation found</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">tier</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">timepoint</span><span class="p">,</span> <span class="n">start_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the next index corresponding to the given time point starting to the start_index parameter.</span>
+
+<span class="sd">        :param tier: (sppasTier) The tier that  contains the annotation who searched</span>
+<span class="sd">        :param timepoint: (sppasPoint or float) The time to search for the index</span>
+<span class="sd">        :param start_index: (int) The index to start to search for the index</span>
+
+<span class="sd">        :return: (int) The next annotation index that corresponding with the given timepoint</span>
+<span class="sd">                 Or -1 if no annotation found</span>
+
+<span class="sd">        """</span>
+    <span class="k">if</span> <span class="n">tier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">start_index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">start_index</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">CuedSpeechVideoTagger</span><span class="o">.</span><span class="n">get_annotation_index</span><span class="p">(</span><span class="n">tier</span><span class="p">,</span> <span class="n">timepoint</span><span class="p">)</span>
+    <span class="n">new_index</span> <span class="o">=</span> <span class="n">start_index</span>
+    <span class="k">while</span> <span class="n">new_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tier</span><span class="p">[</span><span class="n">new_index</span><span class="p">]</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">timepoint</span> <span class="o">&lt;=</span> <span class="n">tier</span><span class="p">[</span><span class="n">new_index</span><span class="p">]</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">():</span>
+            <span class="k">break</span>
+        <span class="n">new_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">new_index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tier</span><span class="p">):</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">timepoint</span> <span class="o">&gt;</span> <span class="n">tier</span><span class="p">[</span><span class="n">new_index</span><span class="p">]</span><span class="o">.</span><span class="n">get_highest_localization</span><span class="p">():</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">new_index</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#protected_fct_CuedSpeechVideoTagger">Protected functions</h3>
+<h4>__load_options</h4>
+
+    <article class="docstring">
+<p><em>Check the activated options and load the corresponding resources.</em></p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__load_options</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Check the activated options and load the corresponding resources."""</span>
+    <span class="n">hand_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'handsset'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hand_set</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_hands</span><span class="p">(</span><span class="n">hand_set</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Successfully loaded the hands set '</span><span class="si">{</span><span class="n">hand_set</span><span class="si">}</span><span class="s2">'."</span><span class="p">)</span>
+        <span class="n">hand_filter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'handsfilter'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hand_filter</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span><span class="o">.</span><span class="n">apply_hands_filter</span><span class="p">(</span><span class="n">hand_filter</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Successfully applied the hands filter '</span><span class="si">{</span><span class="n">hand_filter</span><span class="si">}</span><span class="s2">'."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'No hands set was defined. The video is tagged with badges.'</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__check_tiers</h4>
+
+    <article class="docstring">
+<p><em>Find the tiers used to tag the video.</em></p>
+
+<p>Searched tiers (on the order of the return list):
+- CS-ShapeProbas: probabilities of the shapes of the hand
+- CS-PosProbas: probabilities of the positions of the hand
+- CS-VowelsCoords: Coordinates of the position of the vowels
+- PhonAlign: Time-aligned phonemes</p>
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>transcription</strong></li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__check_tiers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transcription</span><span class="p">:</span> <span class="n">sppasTranscription</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Find the tiers used to tag the video.</span>
+
+<span class="sd">        Searched tiers (on the order of the return list):</span>
+<span class="sd">            - CS-ShapeProbas: probabilities of the shapes of the hand</span>
+<span class="sd">            - CS-PosProbas: probabilities of the positions of the hand</span>
+<span class="sd">            - CS-VowelsCoords: Coordinates of the position of the vowels</span>
+<span class="sd">            - PhonAlign: Time-aligned phonemes</span>
+
+<span class="sd">        """</span>
+    <span class="n">tiers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-ShapeProbas'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with shape probabilities.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-PosProbas'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with position probabilities.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-VowelsCoords'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with vowels coords.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'PhonAlign'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with time-aligned phonemes.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-TargetCoords'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with target coordinates.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-HandAngle'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with angle values.'</span><span class="p">)</span>
+    <span class="n">tiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'CS-FaceHeight'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">tiers</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Missing tier with face heights.'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="n">tiers</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="s1">'At least one of the expected tiers was not found in the transcription. Video tagging is aborted. See logging for details.'</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__tag_buffer</h4>
+
+    <article class="docstring">
+<p><em>Browse the buffer and tag the images.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>start_time</strong>: (<em>float</em>) The time when the tag begin</li>
+<li><strong>coords_tier</strong>: (sppasTier or None) The sights of the hand for the target, S0 and S9</li>
+<li><strong>pos_tier</strong>: (sppasTier or None) Positions and probabilities (CS-PosProbas)</li>
+<li><strong>shape_tier</strong>: (sppasTier or None) Shape codes and probabilities (CS-ShapeProbas)</li>
+<li><strong>vowels_tier</strong>: (sppasTier or None) The vowels positions (CS-VowelsCoords)</li>
+<li><strong>info_tier</strong>: (sppasTier or None) The phonemes, used to print on the image in debug mode (PhonAlign)</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__tag_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">coords_tier</span><span class="p">,</span> <span class="n">shape_tier</span><span class="p">,</span> <span class="n">pos_tier</span><span class="p">,</span> <span class="n">vowels_tier</span><span class="p">,</span> <span class="n">info_tier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Browse the buffer and tag the images.</span>
+
+<span class="sd">        :param start_time: (float) The time when the tag begin</span>
+<span class="sd">        :param coords_tier: (sppasTier or None) The sights of the hand for the target, S0 and S9</span>
+<span class="sd">        :param pos_tier: (sppasTier or None) Positions and probabilities (CS-PosProbas)</span>
+<span class="sd">        :param shape_tier: (sppasTier or None) Shape codes and probabilities (CS-ShapeProbas)</span>
+<span class="sd">        :param vowels_tier: (sppasTier or None) The vowels positions (CS-VowelsCoords)</span>
+<span class="sd">        :param info_tier: (sppasTier or None) The phonemes, used to print on the image in debug mode (PhonAlign)</span>
+
+<span class="sd">        """</span>
+    <span class="n">image_duration</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">get_framerate</span><span class="p">()</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="mf">0.0005</span>
+    <span class="n">pos_index</span> <span class="o">=</span> <span class="n">shape_index</span> <span class="o">=</span> <span class="n">vowels_index</span> <span class="o">=</span> <span class="n">info_index</span> <span class="o">=</span> <span class="n">coords_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="p">(</span><span class="n">start_buffer_index</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">get_buffer_range</span><span class="p">()</span>
+    <span class="n">iter_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="p">)):</span>
+        <span class="n">video_image_number</span> <span class="o">=</span> <span class="n">start_buffer_index</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iter_images</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'No frame at index </span><span class="si">{:d}</span><span class="s1">.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">video_image_number</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">ialpha</span><span class="p">(</span><span class="mi">254</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">start_time</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">image_duration</span>
+        <span class="n">middle_time</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">image_duration</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">point</span> <span class="o">=</span> <span class="n">sppasPoint</span><span class="p">(</span><span class="n">middle_time</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="n">coords_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">coords_tier</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">coords_index</span><span class="p">)</span>
+        <span class="n">pos_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">pos_tier</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">pos_index</span><span class="p">)</span>
+        <span class="n">shape_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">shape_tier</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">shape_index</span><span class="p">)</span>
+        <span class="n">vowels_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">vowels_tier</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">vowels_index</span><span class="p">)</span>
+        <span class="n">info_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_annotation_index_starting_to</span><span class="p">(</span><span class="n">info_tier</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">info_index</span><span class="p">)</span>
+        <span class="n">sights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_coords_data</span><span class="p">(</span><span class="n">coords_tier</span><span class="p">,</span> <span class="n">coords_index</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">shape_text</span><span class="p">,</span> <span class="n">shapes</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_shape_data</span><span class="p">(</span><span class="n">shape_tier</span><span class="p">,</span> <span class="n">shape_index</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">pos_text</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_position_data</span><span class="p">(</span><span class="n">pos_tier</span><span class="p">,</span> <span class="n">pos_index</span><span class="p">)</span>
+        <span class="n">vowels_positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extract_vowels_data</span><span class="p">(</span><span class="n">vowels_tier</span><span class="p">,</span> <span class="n">vowels_index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">shape_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">pos_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_hand_tagger</span><span class="o">.</span><span class="n">slap_on</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="p">[</span><span class="s1">'vowelspos'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">vowels_positions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_img_vowel_tagger</span><span class="o">.</span><span class="n">slap_on</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">vowels_positions</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__options</span><span class="p">[</span><span class="s1">'infotext'</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">info_text</span> <span class="o">=</span> <span class="s1">'Info: '</span>
+            <span class="k">if</span> <span class="n">info_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">info_text</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">info_tier</span><span class="p">[</span><span class="n">info_index</span><span class="p">]</span><span class="o">.</span><span class="n">get_lowest_localization</span><span class="p">()</span><span class="o">.</span><span class="n">get_midpoint</span><span class="p">(),</span> <span class="mi">3</span><span class="p">))</span>
+                <span class="n">info_text</span> <span class="o">+=</span> <span class="s1">' '</span>
+                <span class="n">info_text</span> <span class="o">+=</span> <span class="n">serialize_labels</span><span class="p">(</span><span class="n">info_tier</span><span class="p">[</span><span class="n">info_index</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">())</span>
+            <span class="n">frame_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'Frame: </span><span class="si">{</span><span class="n">video_image_number</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">middle_time</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1">)'</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__put_debug_texts</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="n">frame_text</span><span class="p">,</span> <span class="n">shape_text</span><span class="p">,</span> <span class="n">pos_text</span><span class="p">,</span> <span class="n">info_text</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__video_buffer</span><span class="o">.</span><span class="n">set_at</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">ibgra_to_bgr</span><span class="p">(),</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__put_debug_texts</h4>
+
+    <article class="docstring">
+<p><em>Put debug information on the given image.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>img</strong>: (sppasImage) The image to put the text on it.</li>
+<li><strong>texts</strong>: (<em>list</em>) The list that contains all texts to put in the image.</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__put_debug_texts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">sppasImage</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Put debug information on the given image.</span>
+
+<span class="sd">        :param img: (sppasImage) The image to put the text on it.</span>
+<span class="sd">        :param texts: (list) The list that contains all texts to put in the image.</span>
+
+<span class="sd">        """</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">texts</span><span class="p">):</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">put_text</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__extract_coords_data</h4>
+
+    <article class="docstring">
+<p><em>Extract the sights data to compute the hand scale factor.</em></p>
+
+<p>If the index equal to -1, this function returns a list of None.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>coords_tier</strong>: (sppasTier or None) The tier that contains the sights</li>
+<li><strong>index</strong>: (<em>int</em>) The index of the annotation</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>) A list of the coords for s0, s9, target</li>
+</ul>
+
+<p>Example of returned list:
+[sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)]</p>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__extract_coords_data</span><span class="p">(</span><span class="n">coords_tier</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Extract the sights data to compute the hand scale factor.</span>
+
+<span class="sd">        If the index equal to -1, this function returns a list of None.</span>
+
+<span class="sd">        :param coords_tier: (sppasTier or None) The tier that contains the sights</span>
+<span class="sd">        :param index: (int) The index of the annotation</span>
+<span class="sd">        :return: (list) A list of the coords for s0, s9, target</span>
+
+<span class="sd">        Example of returned list:</span>
+<span class="sd">        [sppasFuzzyPoint: (368,780), sppasFuzzyPoint: (432,684), sppasFuzzyPoint: (540,573)]</span>
+
+<span class="sd">        """</span>
+    <span class="n">sights</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">coords_tier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">coords_tier</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__extract_shape_data</h4>
+
+    <article class="docstring">
+<p><em>Extract the shape data (shapes codes and scores) from a shape tier.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>shape_tier</strong>: (sppasTier) The tier that contains our shape data</li>
+<li><strong>index</strong>: (<em>int</em>) The index of the annotation</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em>, <em>list</em>) The shape text information and the list of shapes codes and scores</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__extract_shape_data</span><span class="p">(</span><span class="n">shape_tier</span><span class="p">:</span> <span class="n">sppasTier</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Extract the shape data (shapes codes and scores) from a shape tier.</span>
+
+<span class="sd">        :param shape_tier: (sppasTier) The tier that contains our shape data</span>
+<span class="sd">        :param index: (int) The index of the annotation</span>
+<span class="sd">        :return: (str, list) The shape text information and the list of shapes codes and scores</span>
+
+<span class="sd">        """</span>
+    <span class="n">shape_text</span> <span class="o">=</span> <span class="s1">'Shape: '</span>
+    <span class="n">shapes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">shape_label</span> <span class="ow">in</span> <span class="n">shape_tier</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">shape_label</span><span class="p">:</span>
+            <span class="n">shape_code</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">score</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">score</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">shape_text</span> <span class="o">+=</span> <span class="n">shape_code</span>
+            <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">shape_code</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">shape_text</span><span class="p">,</span> <span class="n">shapes</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__extract_position_data</h4>
+
+    <article class="docstring">
+<p><em>Extract the position data from the position tiers.</em></p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>pos_tier</strong>: (sppasTier or None) The tier that contains the positions text information</li>
+<li><strong>index</strong>: (<em>int</em>) The index of the annotation</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>str</em>) The position text information and the position probability</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__extract_position_data</span><span class="p">(</span><span class="n">pos_tier</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Extract the position data from the position tiers.</span>
+
+<span class="sd">        :param pos_tier: (sppasTier or None) The tier that contains the positions text information</span>
+<span class="sd">        :param index: (int) The index of the annotation</span>
+<span class="sd">        :return: (str) The position text information and the position probability</span>
+
+<span class="sd">        """</span>
+    <span class="n">pos_text</span> <span class="o">=</span> <span class="s1">'Pos: '</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">pos_tier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">pos_label</span> <span class="ow">in</span> <span class="n">pos_tier</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">pos_label</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">pos_label</span><span class="o">.</span><span class="n">get_best</span><span class="p">())</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pos_label</span><span class="p">:</span>
+                <span class="n">pos_text</span> <span class="o">+=</span> <span class="n">tag</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">pos_text</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+</code></pre></div>
+
+    </details>
+
+
+<h4>__extract_vowels_data</h4>
+
+    <article class="docstring">
+<p><em>Extract the vowels data from the vowels tier.</em></p>
+
+<p>If the vowels tier is None or the index equal to -1 return an empty list by default.</p>
+
+<h5>Parameters</h5>
+
+<ul>
+<li><strong>vowels_tier</strong>: (sppasTier or None) The tier that contains our vowels data</li>
+<li><strong>index</strong>: (<em>int</em>) The index of the annotation</li>
+</ul>
+
+<h5>Returns</h5>
+
+<ul>
+<li>(<em>list</em>) A list of all vowels positions</li>
+</ul>
+
+    </article>
+
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">__extract_vowels_data</span><span class="p">(</span><span class="n">vowels_tier</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Extract the vowels data from the vowels tier.</span>
+
+<span class="sd">        If the vowels tier is None or the index equal to -1 return an empty list by default.</span>
+
+<span class="sd">        :param vowels_tier: (sppasTier or None) The tier that contains our vowels data</span>
+<span class="sd">        :param index: (int) The index of the annotation</span>
+<span class="sd">        :return: (list) A list of all vowels positions</span>
+
+<span class="sd">        """</span>
+    <span class="n">vowels_positions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">vowels_tier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">vowel_label</span> <span class="ow">in</span> <span class="n">vowels_tier</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">get_labels</span><span class="p">():</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">vowel_label</span><span class="o">.</span><span class="n">get_best</span><span class="p">()</span><span class="o">.</span><span class="n">get_typed_content</span><span class="p">()</span>
+            <span class="n">vowels_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vowels_positions</span>
+</code></pre></div>
+
+    </details>
+
+
+</section>
+<section>
+<h3 id="#overloads_CuedSpeechVideoTagger">Overloads</h3>
+<h4>__del__</h4>
+
+    <details>
+    <summary>
+View Source
+    </summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 
     </details>

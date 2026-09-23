@@ -56,9 +56,9 @@ sys.path.append(SPPAS)
 sys.path.append(os.path.join("autocs", "sppas", "src", "annotations"))
 
 import autocs
-import CuedSpeech
-import CuedSpeech.whowtag.hands
-import CuedSpeech.whowtag.whowimgtag
+import sppas.src.annotations.CuedSpeech as CuedSpeech
+import sppas.src.annotations.CuedSpeech.whowtag.hands
+import sppas.src.annotations.CuedSpeech.whowtag.whowimgtag
 
 try:
     import clamming

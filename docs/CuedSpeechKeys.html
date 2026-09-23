@@ -40,18 +40,18 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" href="CuedSpeechCueingRules.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" href="CueingPronTokenizer.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module CuedSpeech.whatkey</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.whatkey</h1>
 <section id="#CuedSpeechKeys">
 <h2>Class CuedSpeechKeys</h2>
 
@@ -202,13 +202,13 @@ View Source
         <span class="k">return</span> <span class="p">(</span><span class="n">span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">span</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">):</span>
-        <span class="n">c</span><span class="p">,</span> <span class="n">span_len</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">span_len</span><span class="p">)</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'W'</span><span class="p">,</span> <span class="s1">'V'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'V'</span><span class="p">,</span> <span class="s1">'W'</span><span class="p">)</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phonemes</span><span class="p">):</span>
                 <span class="n">syll</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">i_next</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">span_len</span>
-                <span class="n">c_next</span><span class="p">,</span> <span class="n">span_len_next</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i_next</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">c_next</span><span class="p">,</span> <span class="n">span_len_next</span><span class="p">)</span> <span class="o">=</span> <span class="n">_effective_class_and_len</span><span class="p">(</span><span class="n">i_next</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">c_next</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'V'</span><span class="p">,</span> <span class="s1">'W'</span><span class="p">):</span>
                     <span class="n">syll</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">i_next</span> <span class="o">+</span> <span class="n">span_len_next</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
                     <span class="n">i</span> <span class="o">+=</span> <span class="n">span_len</span> <span class="o">+</span> <span class="n">span_len_next</span>
@@ -312,7 +312,7 @@ View Source
 
 <span class="sd">        """</span>
     <span class="n">str_syll</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">syllables</span><span class="p">:</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">syllables</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">begin</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">phonemes</span><span class="p">[</span><span class="n">begin</span><span class="p">]</span>
             <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -424,11 +424,11 @@ View Source
             <span class="n">phones</span> <span class="o">=</span> <span class="n">syll</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phones</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">phones</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="s1">'W'</span><span class="p">:</span>
-                    <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">v1</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+                    <span class="p">((</span><span class="n">c1</span><span class="p">,</span> <span class="n">v1</span><span class="p">),</span> <span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
                     <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c1</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">v1</span><span class="p">)</span>
                     <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c2</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">consonant</span><span class="p">,</span> <span class="n">vowel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">consonant</span><span class="p">,</span> <span class="n">vowel</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">syll_to_key</span><span class="p">(</span><span class="n">syll</span><span class="p">)</span>
                     <span class="n">key_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">consonant</span> <span class="o">+</span> <span class="n">separators</span><span class="o">.</span><span class="n">phonemes</span> <span class="o">+</span> <span class="n">vowel</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Syllables must have two phonemes. Ignored: </span><span class="si">{</span><span class="n">syll</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>

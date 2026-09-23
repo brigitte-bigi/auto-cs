@@ -40,18 +40,18 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" href="sppasWhereAnglesPredictor.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.wherecue" class="chapter nonumber">    <h1>Module CuedSpeech.wherecue</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.wherecue" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.wherecue</h1>
 <section id="#sppasWhereCuePredictor">
 <h2>Class sppasWhereCuePredictor</h2>
 
@@ -472,7 +472,7 @@ View Source
         <span class="k">raise</span> <span class="n">sppasIOError</span><span class="p">(</span><span class="s1">'The sights file is not valid.'</span><span class="p">)</span>
     <span class="n">cur_sights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_current_sights</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">kid_index</span><span class="p">)</span>
     <span class="n">data_sights</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kids_sights</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sights</span><span class="p">):</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">kids_sights</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sights</span><span class="p">):</span>
         <span class="n">midpoint</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">midpoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">midpoint</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">sppasIOError</span><span class="p">(</span><span class="s1">'No time point value at index </span><span class="si">{:d}</span><span class="s1">.'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
@@ -560,7 +560,7 @@ View Source
 
 <span class="sd">        """</span>
     <span class="n">cur_sights</span> <span class="o">=</span> <span class="n">sppasSights</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kids_sights</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sights</span><span class="p">):</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">kids_sights</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sights</span><span class="p">):</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">kids_sights</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">kid_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">cur_sights</span> <span class="o">=</span> <span class="n">kids_sights</span><span class="p">[</span><span class="n">kid_index</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">cur_sights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

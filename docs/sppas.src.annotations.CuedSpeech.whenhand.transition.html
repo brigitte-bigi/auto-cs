@@ -7,7 +7,7 @@
 
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-            <meta name="description" content="Python Class Documentation of sppasCuedRulesValueError. :ERROR 1322:." />
+            <meta name="description" content="Python Class Documentation of sppasWhenHandTransitionPredictor. Create the CS coding scheme from time-aligned phonemes." />
 
             <link rel="logo icon" href="./statics/autocs32x32.ico" />
             <link rel="stylesheet" href="./Whakerexa-current/wexa_statics/css.min/wexa.css" type="text/css" media="screen" />
@@ -40,81 +40,78 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
-<li><a role="button" tabindex="0" id="nav-prev-class" aria-disabled="true"> &uarr; Prev. Class</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-class" href="WhenTransitionPredictor.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
-<li><a role="button" tabindex="0" id="nav-next-class" href="sppasCuedRulesMinValueError.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whenhand.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.wherecue.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#sppas.src.annotations.CuedSpeech.whatkey" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.whatkey</h1>
-<section id="#sppasCuedRulesValueError">
-<h2>Class sppasCuedRulesValueError</h2>
+    <section id="#sppas.src.annotations.CuedSpeech.whenhand.transition" class="chapter nonumber">
+    <h1>sppas.src.annotations.CuedSpeech.whenhand.transition module</h1>
+<h2>List of classes</h2>
 
-<section>
-<h3 id="#description_sppasCuedRulesValueError">Description</h3>
-    <article class="docstring">
-<p><em>:ERROR 1322:.</em></p>
-
-<p>A Cued Speech syllable must be a sequence of C-V phonemes.
-Got '{}' instead.</p>
-
-    </article>
-</section>
-<section>
-<h3 id="#constructor_sppasCuedRulesValueError">Constructor</h3>
-<h4>__init__</h4>
-
-    <details>
-    <summary>
-View Source
-    </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="mi">1322</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_status</span><span class="p">)</span> <span class="o">+</span> <span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_status</span><span class="p">,</span> <span class="s1">'annotations'</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-
-    </details>
-
-
-</section>
-<section>
-<h3 id="#public_fct_sppasCuedRulesValueError">Public functions</h3>
-<h4>get_status</h4>
-
-    <details>
-    <summary>
-View Source
-    </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status</span>
-</code></pre></div>
-
-    </details>
-
-
-</section>
-<section>
-<h3 id="#overloads_sppasCuedRulesValueError">Overloads</h3>
-<h4>__str__</h4>
-
-    <details>
-    <summary>
-View Source
-    </summary>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter</span><span class="p">)</span>
-</code></pre></div>
-
-    </details>
-
-
-</section>
-</section>    </section>    </main>
+        <section class="cards-panel">
+        <article class="card">
+            <div class="card-header"><span>1</span></div>
+            <div class="card-body">
+                <h3>BaseWhenTransitionPredictor</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-BaseWhenTransitionPredictor" class="wexa-link" data-target="_self" href="BaseWhenTransitionPredictor.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>2</span></div>
+            <div class="card-body">
+                <h3>WhenTransitionPredictorDuchnowski1998</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhenTransitionPredictorDuchnowski1998" class="wexa-link" data-target="_self" href="WhenTransitionPredictorDuchnowski1998.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>3</span></div>
+            <div class="card-body">
+                <h3>WhenTransitionPredictorDuchnowski2000</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhenTransitionPredictorDuchnowski2000" class="wexa-link" data-target="_self" href="WhenTransitionPredictorDuchnowski2000.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>4</span></div>
+            <div class="card-body">
+                <h3>WhenTransitionPredictorAttina</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhenTransitionPredictorAttina" class="wexa-link" data-target="_self" href="WhenTransitionPredictorAttina.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>5</span></div>
+            <div class="card-body">
+                <h3>WhenTransitionPredictorRules</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhenTransitionPredictorRules" class="wexa-link" data-target="_self" href="WhenTransitionPredictorRules.html">Read me →</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-header"><span>6</span></div>
+            <div class="card-body">
+                <h3>WhenTransitionPredictorRevisedRules</h3>
+            </div>
+            <div class="card-footer">
+                <a role="button" id="card-link-WhenTransitionPredictorRevisedRules" class="wexa-link" data-target="_self" href="WhenTransitionPredictorRevisedRules.html">Read me →</a>
+            </div>
+        </article>
+        </section>
+    </section>    </main>
     
             <footer>
                 <p class="copyright">Copyright (C) 2021-2026 Brigitte Bigi, CNRS, Laboratoire Parole et Langage, Aix-en-Provence, France</p>

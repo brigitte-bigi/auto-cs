@@ -40,18 +40,18 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whowtag.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whowtag.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" href="sppasHandFilters.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" aria-disabled="true"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whowtag.whowimgtag.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whowtag.whowimgtag.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whowtag.hands" class="chapter nonumber">    <h1>Module CuedSpeech.whowtag.hands</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.whowtag.hands" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.whowtag.hands</h1>
 <section id="#sppasHandsSet">
 <h2>Class sppasHandsSet</h2>
 
@@ -541,7 +541,7 @@ View Source
 
 <span class="sd">        """</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__hands_filter</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands_properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hands_properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">item</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__hands_filter</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">)(</span><span class="n">item</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">sppasValueError</span><span class="p">(</span><span class="s1">'filter_name'</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">)</span>
@@ -617,7 +617,7 @@ View Source
         <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Invalid number of hand images. Expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">_shapes</span><span class="p">)</span><span class="si">}</span><span class="s1">. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hands_images</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.'</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_shapes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hands_sights</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Invalid number of hand sights. Expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">_shapes</span><span class="p">)</span><span class="si">}</span><span class="s1">. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hands_sights</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.'</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">paths</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">hands_images</span><span class="p">,</span> <span class="n">hands_sights</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">hands_images</span><span class="p">,</span> <span class="n">hands_sights</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Can't find hand picture file </span><span class="si">{</span><span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
             <span class="k">break</span>

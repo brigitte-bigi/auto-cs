@@ -40,18 +40,18 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whowtag.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whowtag.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" aria-disabled="true"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" href="sppasHandFilters.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.whowtag.whowimgtag.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.whowtag.whowimgtag.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.whowtag.hands" class="chapter nonumber">    <h1>Module CuedSpeech.whowtag.hands</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.whowtag.hands" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.whowtag.hands</h1>
 <section id="#sppasHandProperties">
 <h2>Class sppasHandProperties</h2>
 
@@ -148,9 +148,9 @@ View Source
     <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span> <span class="o">=</span> <span class="n">sights</span>
     <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">target_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">target_index</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">target_index</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">IntervalRangeException</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__target</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">IntervalRangeException</span><span class="p">(</span><span class="n">target_index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sights</span><span class="p">))</span>
@@ -382,7 +382,7 @@ View Source
 
 <span class="sd">        """</span>
     <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">):</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">IntervalRangeException</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">))</span>
@@ -626,11 +626,11 @@ View Source
 <span class="sd">        :raises: sppasError: If the number sights is different of 21 or 4</span>
 
 <span class="sd">        """</span>
-    <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">)</span> <span class="o">==</span> <span class="mi">21</span><span class="p">:</span>
-        <span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">s9_x</span><span class="p">,</span> <span class="n">s9_y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="o">.</span><span class="n">get_sight</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">sppasError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'21 or 4 sights were expected. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">)</span><span class="si">}</span><span class="s1"> instead.'</span><span class="p">)</span>
     <span class="n">s0s9_x</span> <span class="o">=</span> <span class="n">s9_x</span> <span class="o">-</span> <span class="n">x0</span>
@@ -642,7 +642,7 @@ View Source
         <span class="n">angle</span> <span class="o">=</span> <span class="o">-</span><span class="n">angle</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__dist</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">s0s9_dist</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__beta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">current_sight</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">):</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">current_sight</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sights</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">sight_dist_x</span> <span class="o">=</span> <span class="n">current_sight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x0</span>
             <span class="n">sight_dist_y</span> <span class="o">=</span> <span class="n">current_sight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y0</span>

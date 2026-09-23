@@ -40,18 +40,18 @@
     <aside id="nav-book" class="book-toc-aside" aria-label="Table of contents">
     <h1>Table of Contents</h1>
     <ul>
-<li><a role="button" tabindex="0" id="nav-prev-module" href="CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
+<li><a role="button" tabindex="0" id="nav-prev-module" href="sppas.src.annotations.CuedSpeech.whenhand.transition.html" class="wexa-link" data-target="_self"> &crarr; Prev. Module</a></li>
 <li><a role="button" tabindex="0" id="nav-prev-class" href="WhereVowelPositionsPredictor.html" class="wexa-link" data-target="_self"> &uarr; Prev. Class</a></li>
 <li><a role="button" tabindex="0" id="nav-index" href="index.html" class="wexa-link" data-target="_self"> &#8962; Index</a></li>
 <li><a role="button" tabindex="0" id="nav-next-class" href="sppasWhereAnglesPredictor.html" class="wexa-link" data-target="_self"> &darr; Next Class</a></li>
-<li><a role="button" tabindex="0" id="nav-next-module" href="CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
+<li><a role="button" tabindex="0" id="nav-next-module" href="sppas.src.annotations.CuedSpeech.wherecue.angle.html" class="wexa-link" data-target="_self"> &rdsh; Next Module</a></li>
     </ul>
     <ul id="toc"></ul>
     <hr>
     <p><small>Automatically created</small></p><p><small>by <a class="external-link" href="https://github.com/brigitte-bigi/ClammingPy">ClammingPy</a></small></p>
 </aside>
     <main id="main-content">
-    <section id="#CuedSpeech.wherecue" class="chapter nonumber">    <h1>Module CuedSpeech.wherecue</h1>
+    <section id="#sppas.src.annotations.CuedSpeech.wherecue" class="chapter nonumber">    <h1>Module sppas.src.annotations.CuedSpeech.wherecue</h1>
 <section id="#sppasWherePositionsPredictor">
 <h2>Class sppasWherePositionsPredictor</h2>
 
@@ -313,12 +313,12 @@ View Source
         <span class="n">points_x</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">smooth_len</span><span class="p">)</span>
         <span class="n">points_y</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">smooth_len</span><span class="p">)</span>
         <span class="n">points_r</span><span class="p">[</span><span class="n">vowel</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">smooth_len</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">midpoint</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">sights</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data_sights</span><span class="p">:</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">midpoint</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">sights</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data_sights</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">set_sights_and_predict_coords</span><span class="p">(</span><span class="n">sights</span><span class="p">,</span> <span class="n">vowels</span><span class="p">)</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="n">vowels</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">vowel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">vowel_codes</span><span class="p">():</span>
-                <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_vowel_coords</span><span class="p">(</span><span class="n">vowel</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__predictor</span><span class="o">.</span><span class="n">get_vowel_coords</span><span class="p">(</span><span class="n">vowel</span><span class="p">)</span>
                 <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__append_and_smooth</span><span class="p">(</span><span class="n">points_x</span><span class="p">[</span><span class="n">vowel</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__append_and_smooth</span><span class="p">(</span><span class="n">points_y</span><span class="p">[</span><span class="n">vowel</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
                 <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__append_and_smooth</span><span class="p">(</span><span class="n">points_r</span><span class="p">[</span><span class="n">vowel</span><span class="p">],</span> <span class="n">r</span><span class="p">)</span>
