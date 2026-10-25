@@ -33,132 +33,53 @@ This file is a theme: it gives a value to colour variables already declared
 by Whakerexa and by SPPAS, and nothing else. Sizes, weights and radiuses are
 in splics.css.
 
-The colours are the ones of the auto-cuedspeech.org design, ported from its
-acs-theme.css. That design rests on four roles, each with its ground and its
-writing:
-
-  - the page          white ground,  rgb(51, 51, 51) writing
-  - the blocks        cream ground   rgb(255, 249, 227)
-  - what is actioned  peach ground   rgb(255, 231, 209)
-  - what is brought   green ground   rgb(223, 242, 210), with an orange
-    forward                          accent rgb(214, 127, 62)
-
-The dark theme takes the same four roles with its own hues.
-
-What the site names and these applications never show -- its panel of apps,
-its tooltips, the six deepest ranks of its table of contents, its column
-separators -- is not carried here.
-
-:note: Loaded through the link carrying the id "wexa-theme", whose target the
-       ThemeManager of Whakerexa swaps to change theme.
 */
 
 
-/* =========================================================================
-   VALUES SHARED BY BOTH THEMES
-   ========================================================================= */
-
-:root {
-
-    /* A ground SPPAS paints its own panels with, and which these pages do
-       not show: named so that nothing of SPPAS shows through this theme. */
-    --nav-bg-image: none;
-    --apps-panel-bg-image: none;
-    --links-panel-bg-image: none;
-}
-
 
 /* =========================================================================
-   LIGHT THEME
+   THÈME CLAIR
    ========================================================================= */
 
 :root:not(.dark) {
 
-    /* ---- The page ----------------------------------------------------- */
+    --bg-color-1: #F9FFFC;
+    --fg-color-1: #0F2314;
 
-    --bg-color: rgb(255, 255, 255);
-    --fg-color: rgb(51, 51, 51);
-    --bg-color-alt: rgb(255, 249, 227);
-    --fg-color-alt: rgb(102, 102, 102);
-    --border-color: rgb(51, 51, 51);
+    --bg-color-2: #ECFFEC;
+    --fg-color-2: #132417;
 
-    /* The sections of a page alternate two grounds: layout.css swaps the
-       two hues from one section to the next. */
-    --panel-bg-color-alt: rgb(230, 244, 230);
-    --panel-fg-color-alt: rgb(102, 102, 102);
+    --bg-color-3: #FFE7D1;
+    --fg-color-3: #9A5520;
 
-    /* ---- The cards ---------------------------------------------------- */
+    --bg-color-4: #FFF9E3;
+    --fg-color-4: #342929;
 
-    /* layout.css paints a card with --card-bg-color, and falls back on the
-       ground of the blocks when it is not given. The green of what is
-       brought forward tells a card from the page and from a section alike. */
-    --card-bg-color: rgb(223, 242, 210);
-    --card-fg-color: var(--h3-color);
-    --app-bg-image: rgb(255, 255, 255);
+    /* ---- La page ------------------------------------------------------ */
 
-    /* ---- The banner, the footer and the menu --------------------------- */
+    --border-color: rgb(71, 81, 71);
+    --border-color-alt: rgb(91, 111, 91);
 
-    /* These three share the green of what is brought forward: they stand
-       out of the page without leaving the range. */
-    /* wexa.css paints the banner with the background property: the texture
-       of the design is held there, laid over the colour of the ground. */
-    --header-bg-color: radial-gradient(rgba(0, 0, 0, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / var(--font-size) var(--font-size), rgb(223, 242, 210);
-    --footer-bg-color: rgb(223, 242, 210);
-    --nav-bg-color: rgb(255, 249, 227);
-    --header-fg-color: rgb(51, 51, 51);
-    --footer-fg-color: rgb(51, 51, 51);
-    --nav-fg-color: rgb(182, 73, 0);
-
-    /* An item of the menu is told from the bar by a veil, and not by a hue
-       of its own: in light mode the item is lighter than the bar. Three
-       depths, for the resting item, the pointed one and the current one. */
+    /* Un item du menu se distingue de la barre par un voile, pas par une
+       teinte propre : en mode clair, l'item est plus clair que la barre. */
     --nav-item-bg-color: rgba(255, 255, 255, 0.10);
     --nav-item-bg-color-hover: rgba(255, 255, 255, 0.20);
     --nav-item-bg-color-current: rgba(255, 255, 255, 0.30);
     --nav-item-pressed-shadow-color: rgba(255, 255, 255, 0.25);
 
-    /* ---- The buttons --------------------------------------------------- */
-
-    /* Peach ground, nearly black writing and border, green under the
-       pointer. */
-    --buttons-bg-color: rgb(255, 231, 209);
-    --buttons-fg-color: rgb(76, 116, 63);
-    --buttons-bg-color-hover: rgb(223, 242, 210);
-    --progress-bg-color: rgb(49, 85, 49);
-
-    /* ---- The headings, the links and the bullets ----------------------- */
-
-    /* The orange of the design is too pale to carry writing on a light
-       ground: the third and fourth headings and the bullets take a darker
-       version of it, of the same hue and saturation. The links take a blued
-       green, so as not to be read as a first or second heading. */
-    --h1-color: rgb(79, 121, 66);
-    --h2-color: rgb(79, 121, 66);
-    --h3-color: rgb(154, 85, 32);
-    --h4-color: rgb(154, 85, 32);
-    --h5-color: rgb(102, 102, 102);
-    --h6-color: rgb(102, 102, 102);
-    --a-color: rgb(57, 105, 90);
-    --li-color: rgb(154, 85, 32);
-
-    /* ---- The quotations ------------------------------------------------ */
-
-    --blockquote-border-color: rgb(88, 126, 105);
-    --blockquote-footer-color: rgb(88, 126, 105);
-
-    /* ---- The tables ---------------------------------------------------- */
-
-    --table-border-color: rgb(96, 108, 90);
+    /* ---- Les tableaux ------------------------------------------------- */
     --table-row-stripped-bg-color: rgba(184, 203, 208, 0.28);
-    --table-head-bg-color: rgb(202, 212, 204);
-    --table-head-fg-color: rgb(12, 22, 14);
-    --table-caption-bg-color: rgb(201, 227, 174);
-    --table-caption-fg-color: rgb(0, 0, 0);
 
-    /* ---- The table of contents of a page -------------------------------- */
+    /* ---- Le panneau des applications ---------------------------------- */
 
-    /* Read by main_swapp.css. The number of each entry carries a ground of
-       its own, one per rank. */
+    /* La texture des vagues sur le fond du panneau. */
+    --apps-panel-bg-color: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='20'><path d='M0 10 Q10 0 20 10 T40 10' fill='none' stroke='black' stroke-opacity='0.1' stroke-width='2'/></svg>"), var(--bg-color-2);
+    --app-bg-image: var(--bg-color-1);         /* le fond d'une carte */
+
+    /* ---- La table des matières d'une page ----------------------------- */
+
+    /* Lues par main_swapp.css. Le numéro de chaque entrée porte un fond
+       qui lui est propre, un par rang. */
     --toc-num-fg-color: rgb(255, 255, 255);
     --toc-num-bg-color: rgb(88, 126, 105);
     --toc-num-bg-color-1: rgb(65, 128, 65);
@@ -166,98 +87,68 @@ separators -- is not carried here.
     --toc-num-bg-color-3: rgb(190, 95, 0);
     --toc-num-bg-color-4: rgb(112, 145, 43);
     --toc-num-bg-color-5: rgb(130, 65, 25);
-    --toc-label-color-hover: rgb(175, 85, 0);
+    --toc-num-bg-color-6: rgb(45, 130, 120);
+    --toc-num-bg-color-7: rgb(160, 100, 0);
+    --toc-num-bg-color-8: rgb(175, 85, 0);
+    --toc-num-bg-color-9: rgb(60, 100, 50);
+    --toc-num-bg-color-10: rgb(88, 126, 105);
 
-    /* ---- Sundry --------------------------------------------------------- */
+    /* ---- Divers -------------------------------------------------------- */
 
     --shadow-color: rgba(0, 0, 0, 0.1);
     --outline-color: rgb(0, 155, 52);
 
-    /* An image's own colours are not controlled by the theme: a ground was
-       forced behind it (named here, laid by wexa.css) to guarantee enough
-       contrast whatever the image.
-       Disabled: in practice the forced ground looked bad. Kept here,
-       commented out, in case this gets reconsidered. */
-    /* --img-bg-color: rgba(255, 255, 255, 0.5); */
+    --dialog-bg-color: rgb(255, 249, 227);
+    --dialog-fg-color: rgb(31, 31, 31);
+
+    --img-bg-color: transparent;
 }
 
 
 /* =========================================================================
-   DARK THEME
+   THÈME SOMBRE
 
-   The same headings, in the same order, to be read beside the light one.
+   Mêmes rubriques, dans le même ordre, pour se lire en regard du thème
+   clair.
    ========================================================================= */
 
 @media screen {
     .dark {
 
-        /* ---- The page --------------------------------------------------- */
+        --fg-color-1: #EBFFF4;
+        --bg-color-1: #000600;
 
-        --bg-color: rgb(18, 26, 21);
-        --fg-color: rgb(244, 241, 230);
-        --bg-color-alt: rgb(38, 32, 20);
-        --fg-color-alt: rgb(193, 189, 175);
-        --border-color: rgb(244, 241, 230);
+        --fg-color-2: #FFF9E3;
+        --bg-color-2: #000E00;
 
-        --panel-bg-color-alt: rgb(38, 32, 20);
-        --panel-fg-color-alt: rgb(193, 189, 175);
+        --fg-color-3: #FFE7D1;
+        --bg-color-3: #462003;
 
-        /* ---- The cards -------------------------------------------------- */
+        --fg-color-4: #FFF9E3;
+        --bg-color-4: #1E140F;
 
-        --card-bg-color: rgb(32, 43, 33);
-        --card-fg-color: rgb(230, 162, 112);
-        --app-bg-image: rgb(28, 43, 35);
+        /* ---- La page -------------------------------------------------- */
+        --border-color: rgb(230, 240, 230);
+        --border-color-alt: rgb(200, 220, 200);
 
-        /* ---- The banner, the footer and the menu ------------------------- */
-
-        --header-bg-color: radial-gradient(rgba(255, 255, 255, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / calc(var(--font-size) * 0.8) calc(var(--font-size) * 0.8), rgb(40, 54, 42);
-        --footer-bg-color: rgb(40, 54, 42);
-        --nav-bg-color: rgb(38, 32, 20);
-        --header-fg-color: rgb(244, 241, 230);
-        --footer-fg-color: rgb(244, 241, 230);
-        --nav-fg-color: rgb(255, 102, 0);
-
-        /* In dark mode the item is darker than the bar. */
+        /* En mode sombre, l'item est plus foncé que la barre. */
         --nav-item-bg-color: rgba(0, 0, 0, 0.10);
-        --nav-item-bg-color-hover: rgba(0, 0, 0, 0.22);
-        --nav-item-bg-color-current: rgba(0, 0, 0, 0.32);
+        --nav-item-bg-color-hover: rgba(0, 0, 0, 0.20);
+        --nav-item-bg-color-current: rgba(0, 0, 0, 0.30);
         --nav-item-pressed-shadow-color: rgba(0, 0, 0, 0.25);
 
-        /* ---- The buttons ------------------------------------------------- */
+        /* ---- Les tableaux --------------------------------------------- */
 
-        --buttons-bg-color: rgb(75, 47, 31);
-        --buttons-fg-color: rgb(199, 228, 195);
-        --buttons-bg-color-hover: rgb(45, 59, 42);
-        --progress-bg-color: rgb(39, 56, 49);
-
-        /* ---- The headings, the links and the bullets ---------------------- */
-
-        /* On a dark ground the colours of the design are light enough to
-           carry writing: they serve as they are. */
-        --h1-color: rgb(166, 212, 160);
-        --h2-color: rgb(166, 212, 160);
-        --h3-color: rgb(230, 162, 112);
-        --h4-color: rgb(230, 162, 112);
-        --h5-color: rgb(193, 189, 175);
-        --h6-color: rgb(193, 189, 175);
-        --a-color: rgb(166, 212, 160);
-        --li-color: rgb(230, 162, 112);
-
-        /* ---- The quotations ----------------------------------------------- */
-
-        --blockquote-border-color: rgb(24, 57, 43);
-        --blockquote-footer-color: rgb(95, 150, 135);
-
-        /* ---- The tables --------------------------------------------------- */
-
-        --table-border-color: rgb(95, 150, 135);
         --table-row-stripped-bg-color: rgb(24, 28, 24);
-        --table-head-bg-color: rgb(29, 46, 40);
-        --table-head-fg-color: rgb(202, 212, 204);
-        --table-caption-bg-color: rgb(38, 67, 51);
-        --table-caption-fg-color: rgb(222, 252, 224);
 
-        /* ---- The table of contents of a page ------------------------------ */
+        /* ---- Le panneau des applications ------------------------------ */
+
+        --apps-panel-bg-color: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='20'><path d='M0 10 Q10 0 20 10 T40 10' fill='none' stroke='white' stroke-opacity='0.1' stroke-width='2'/></svg>"), rgb(47, 42, 30);
+        --app-bg-image: rgb(28, 43, 35);        /* le fond d'une carte */
+        --app-button-bg-color: linear-gradient(to right, rgb(0, 92, 151) 0%, rgb(54, 55, 149) 51%, rgb(0, 92, 151) 100%);
+        --app-button-fg-color: rgb(255, 255, 255);
+
+        /* ---- La table des matières d'une page ------------------------- */
 
         --toc-num-fg-color: rgb(24, 34, 28);
         --toc-num-bg-color: rgb(95, 150, 135);
@@ -266,14 +157,170 @@ separators -- is not carried here.
         --toc-num-bg-color-3: rgb(232, 160, 75);
         --toc-num-bg-color-4: rgb(160, 190, 100);
         --toc-num-bg-color-5: rgb(205, 150, 95);
-        --toc-label-color-hover: rgb(216, 155, 102);
+        --toc-num-bg-color-6: rgb(100, 180, 170);
+        --toc-num-bg-color-7: rgb(240, 190, 90);
+        --toc-num-bg-color-8: rgb(216, 155, 102);
+        --toc-num-bg-color-9: rgb(130, 175, 120);
+        --toc-num-bg-color-10: rgb(95, 150, 135);
 
-        /* ---- Sundry --------------------------------------------------------- */
+        /* ---- Divers ---------------------------------------------------- */
 
-        --shadow-color: rgba(255, 255, 255, 0.1);
+        --shadow-color: rgba(25, 25, 25);
         --outline-color: rgb(122, 255, 90);
-        /* Disabled together with the light theme's --img-bg-color: the
-           forced ground behind images looked bad in practice. */
-        /* --img-bg-color: rgba(255, 255, 255, 0.3); */
+
+        --dialog-bg-color: rgb(31, 32, 30);
+        --dialog-fg-color: rgb(241, 244, 230);
+
+        --img-bg-color: transparent;
+
     }
+}
+
+/* =========================================================================
+   VALEURS COMMUNES AUX DEUX MODES
+   ========================================================================= */
+
+:root {
+
+    /* ----------------- La page --------------- */
+    --bg-color: var(--bg-color-1);
+    --fg-color: var(--fg-color-1);
+    --bg-color-alt: var(--bg-color-2);
+    --fg-color-alt: var(--fg-color-2);
+    --columns-sep-color-light: var(--bg-color-3);
+    --columns-sep-color-dark: var(--fg-color-3);
+
+    /* Les sections d'une page alternent deux fonds : layout.css échange
+       les deux teintes d'une section à la suivante. */
+    --panel-bg-color-alt: var(--bg-color-1);
+    --panel-fg-color-alt: var(--fg-color-1);
+
+    /* ---- Le bandeau, le pied de page et le menu ----------------------- */
+
+    --header-bg-color: radial-gradient(rgba(0, 0, 0, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / var(--font-size) var(--font-size), var(--bg-color-2);
+    --footer-bg-color: radial-gradient(rgba(0, 0, 0, 0.1) calc(var(--font-size) / 15), transparent calc(var(--font-size) / 15)) 0 0 / var(--font-size) var(--font-size), var(--bg-color-2);
+    --nav-bg-color: var(--bg-color-2);
+    --header-fg-color: var(--fg-color-2);
+    --footer-fg-color: var(--fg-color-2);
+    --nav-fg-color: var(--fg-color-2);
+
+    /* ---- Les cartes --------------------------------------------------- */
+
+    /* layout.css peint une carte avec --card-bg-color, et se rabat sur le
+       fond des blocs si elle n'est pas donnée. Le vert de la mise en avant
+       la distingue aussi bien de la page que d'une section. */
+    --card-bg-color: var(--bg-color-4);
+    --card-fg-color: var(--fg-color-4);
+
+
+    /* ---- Les tables --------------------------------------------------- */
+
+    --table-border-color: var(--border-color);
+    --table-head-bg-color: var(--bg-color-2);
+    --table-head-fg-color: var(--fg-color-2);
+    --table-caption-bg-color: var(--bg-color-4);
+    --table-caption-fg-color: var(--fg-color-4);
+
+    /* ---- Les boutons ---------------------------------------------- */
+
+    --buttons-bg-color: var(--bg-color-3);
+    --buttons-fg-color: var(--fg-color-3);
+    --buttons-bg-color-hover: var(--bg-color-2);
+
+    /* ---- Les titres, les liens et les puces --------------------------- */
+    --h1-color: var(--fg-color-1);
+    --h2-color: var(--fg-color-2);
+    --h3-color: var(--fg-color-3);
+    --h4-color: var(--fg-color-3);
+    --h5-color: var(--fg-color-4);
+    --h6-color: var(--fg-color-4);
+
+    --a-color: var(--fg-color-3);
+
+    --li-color: var(--fg-color-4);
+
+    /* ---- Autres -------------------------------------------------- */
+
+    --blockquote-bg-color: var(--bg-color-4);
+    --blockquote-fg-color: var(--fg-color-4);
+    --blockquote-border-color: var(--bg-color-2);
+    --blockquote-footer-color: var(--bg-color-2);
+
+    --progress-bg-color: rgb(39, 56, 49);
+    --toc-label-color-hover: rgb(175, 85, 0);
+
+    --tooltip-bg-color: var(--bg-color-4);
+    --tooltip-fg-color: var(--fg-color-4);
+}
+
+
+
+/* =========================================================================
+   RÈGLES
+   ========================================================================= */
+
+
+/* --------------------------------------- */
+/* Le menu latéral                         */
+/* --------------------------------------- */
+
+/* Les icônes du menu sont orange et le libellé garde la couleur du texte.
+   wexa.css et menu.css donnent une seule couleur au bouton entier, que les
+   SVG suivent par currentColor : elle est posée ici sur le SVG seul.*/
+nav#nav-content .menuitem > svg {
+    color: rgb(172, 63, 0);
+}
+.dark nav#nav-content .menuitem > svg {
+    color: rgb(182, 73, 10);
+}
+
+
+
+/* --------------------------------------- */
+/* Le panneau des applications             */
+/* --------------------------------------- */
+
+.apps-panel {
+    background: var(--apps-panel-bg-color);
+}
+
+
+/* --------------------------------------- */
+/* La table des matières d'une page        */
+/* --------------------------------------- */
+
+/* main_swapp.css ne distingue que les cinq premiers numéros et donne la
+   couleur du premier rang à tous les suivants. Les pages de ce site en
+   comptent dix. */
+.page-toc li:nth-child(6) .toc-num {
+    background: var(--toc-num-bg-color-6);
+}
+
+.page-toc li:nth-child(7) .toc-num {
+    background: var(--toc-num-bg-color-7);
+}
+
+.page-toc li:nth-child(8) .toc-num {
+    background: var(--toc-num-bg-color-8);
+}
+
+.page-toc li:nth-child(9) .toc-num {
+    background: var(--toc-num-bg-color-9);
+}
+
+.page-toc li:nth-child(10) .toc-num {
+    background: var(--toc-num-bg-color-10);
+}
+
+
+/* --------------------------------------- */
+/* Divers                                  */
+/* --------------------------------------- */
+
+figure.img-video-visualization button[name=play-btn] {
+    color: red;
+}
+
+.default {
+    box-shadow: 0 0 1rem rgb(238, 238, 238);
 }

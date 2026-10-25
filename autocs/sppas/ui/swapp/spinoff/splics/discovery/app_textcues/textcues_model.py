@@ -83,6 +83,10 @@ class splicsTextCueSModel:
         config_name = annotation_id + ".json"
         self._parameters = sppasParam([config_name])
         self._ann_step_idx = self._parameters.activate_annotation(annotation_id)
+        if self._ann_step_idx == -1:
+            logging.error(f"Annotation id {annotation_id} is unknown.")
+        else:
+            logging.debug(f"Annotation {annotation_id} enabled with step index {self._ann_step_idx}.")
         self.__cs = None
         self.__consonants = tuple()
         self.__vowels = tuple()
@@ -91,6 +95,9 @@ class splicsTextCueSModel:
 
     def get_langlist(self) -> list:
         """Return the list of supported language codes."""
+        _ann_step = self._ann_step_idx
+        if _ann_step == -1:
+            return list()
         return self._parameters.get_langlist(self._ann_step_idx)
 
     # ---------------------------------------------------------------------------

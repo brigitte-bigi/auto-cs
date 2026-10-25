@@ -33,9 +33,9 @@
    the mode and the theme in force carry it. */
 
 :root {
-    --header-height: max(calc(8rem / var(--size-divisor)), 7rem);
-    --footer-height: max(calc(10rem / var(--size-divisor)), 7rem);
-    --border-width: 6px;
+
+    --header-height: max(calc(10rem / var(--size-divisor)), 8rem);
+    --footer-height: max(calc(16rem / var(--size-divisor)), 12rem);
 
     /* The ground of a coded key, and the sign written on its caption. */
     --coded-key-bg-color: var(--card-bg-color);
@@ -49,100 +49,37 @@
 }
 
 :root:not(.contrast) {
-    --border-width: 2px;
-    --border-radius: 4px;
+    --border-radius: 8px;
+    --border-radius-alt: 10px;
 }
 
 .contrast {
-    --border-width: 3px;
-    --border-radius: 6px;
+    --border-radius: 10px;
+    --border-radius-alt: 12px;
 }
+
 
 /* --------------------------------------- */
 /* Global overrides                        */
 /* --------------------------------------- */
 
-body {
-    width: 100%;
+body > main {
+    margin: 0;
+    padding: 0;
 }
 
-h3 {
-    margin-top: 0;
+select {
+    font-family: var(--font-family-sans);
 }
 
-blockquote {
-    border: none;
-}
-
-dialog {
-    border-width: calc(var(--border-width) * 2);
-    border-radius: calc(var(--border-radius) * 3);
-    max-width: 60%;
-}
+/* --------------------------------------- */
 
 /* The info dialog is used for short messages (missing input, no twin
    found...): it should not stretch as wide as the error dialog, which
    also has to display a longer error-details block. */
 #info_dialog {
     width: fit-content;
-    max-width: min(90%, 32rem);
-}
-
-dialog button[name="popup-close-btn"] {
-    position: absolute;
-    top: 1vh;
-    right: 1vw;
-    background-color: var(--bg-color);
-    border: var(--border-width) solid var(--bg-color);
-    border-radius: 10rem;
-    font-size: calc(var(--font-size) * 2.5);
-    width: 8rem;
-    height: 4rem;
-}
-
-select {
-    font-family: var(--font-family-sans);
-    color: var(--fg-color-alt);
-    padding-left: 0.6rem;
-    height: 2.6rem;
-    background-color: var(--bg-color-alt);
-    border: var(--border-width) solid var(--border-color);
-    box-shadow: -0.2rem 0.2rem 0.6rem 0.2rem var(--shadow-color);
-}
-
-nav#nav-content {
-    justify-content: space-around;
-}
-
-/* main_swapp.css only gives menu items half the common border width.
-   They take the same as other elements here. */
-#nav-content [role='menuitem'],
-#nav-content .menuitem {
-    border-width: var(--border-width);
-}
-
-.skip {
-    left: auto;
-    right: 1rem;
-}
-.skip:hover {
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* --------------------------------------- */
-/* Header and footer                       */
-/* --------------------------------------- */
-
-#header-content,
-#footer-content{
-    min-width: 100vw;
-    padding-left: 2rem;
-}
-
-#home-link-logo {
-    width: calc(3 * var(--font-size));
-    height: auto;
+    max-width: min(80%, 32rem);
 }
 
 #link-title-header > a {
@@ -154,11 +91,6 @@ nav#nav-content {
 #header-content h2 {
     margin-top: 0;
     padding-top: 0;
-}
-
-
-.dark #header-content img {
-    filter: brightness(0) invert(1);
 }
 
 
@@ -721,13 +653,6 @@ img.face-img {
     border-style: solid;
     border-width: 1px;
     border-color: var(--border-color);
-    border-radius: 10px;
-}
-
-summary {
-    padding: 1em;
-    color: var(--fg-color-alt);
-    background-color: var(--bg-color);
     border-radius: 10px;
 }
 
